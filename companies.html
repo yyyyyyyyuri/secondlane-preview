@@ -1,0 +1,458 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane · Companies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: the company hubs, live, as one page with a sticky hub bar: directory (filters and search work), sell-side,
+   IPO Watch, buying guide, glossary (A to Z jumps). Light nav on linen. In the build each hub is its own page. */
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{color-scheme:dark;
+ --green:#12301F;--green-2:#17392A;--linen:#F5F3EF;--stone:#D9D2C3;--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#191A16;--mute:#55604F;--ink-3:#5D6158;--rust:#8F442D;
+ --rule:rgba(245,243,239,.18);--rule-2:rgba(245,243,239,.2);
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --ease:cubic-bezier(.65,0,.35,1);--max:1312px}
+body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+button,input{font:inherit;color:inherit}
+img{display:block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(64px,env(safe-area-inset-left,0px));padding-right:max(64px,env(safe-area-inset-right,0px))}
+.sec{padding-block:136px}
+.c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+.t{font:400 56px/1.04 var(--serif);letter-spacing:-.012em;margin-top:14px;max-width:22ch;text-wrap:balance}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover{background:#EDFF8C;border-color:#EDFF8C;box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:active{background:#CFE844;border-color:#CFE844;box-shadow:none;transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.alink:hover::after{transform:translateX(4px)}
+.alink.down::after{transform:rotate(90deg)}.alink.down:hover::after{transform:rotate(90deg) translateX(4px)}
+
+/* glass and lit edge (lit only while hovered, or on the card that is set .on) */
+.glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
+
+/* nav: sits over the hero photograph */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--rule);background:transparent;transition:background-color .35s ease,-webkit-backdrop-filter .35s,backdrop-filter .35s}
+.nav.stuck{background:rgba(18,48,31,.88);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.nav .wrap{display:flex;align-items:center;gap:44px;height:88px;max-width:none;transition:height .35s ease}
+.nav.stuck .wrap{height:72px}
+.logo{display:block;width:128px;height:32px;flex:none;background:var(--linen);-webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
+.nav__links{display:flex;gap:36px;flex:1;font:500 16px/1 var(--sans)}
+.nav__links a{color:inherit;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav__links a:hover{border-bottom-color:rgba(245,243,239,.4)}
+.nav__links a.cur{border-bottom-color:var(--yel)}
+.nav__sign{font:500 16px/1 var(--sans);color:inherit;text-decoration:none}
+.nav .btn{height:46px;padding:0 22px;font-size:15px}
+.btn-o{border-color:rgba(245,243,239,.6);color:var(--linen);background:transparent}
+.btn-o:hover{border-color:var(--linen);background:rgba(245,243,239,.06)}
+a.btn{text-decoration:none}
+
+body{margin:0}
+/* 1. hero, 50/50 */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:max(820px,100svh);margin-top:-89px}
+.hero__body{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:160px 64px 104px max(64px,env(safe-area-inset-left,0px))}
+.hero h1{font:400 84px/1 var(--serif);letter-spacing:-.015em}
+.hero .lead{font-size:22px;line-height:1.5;color:var(--stone);max-width:30em}
+.hero__act{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.hero__media{position:relative;overflow:hidden}
+.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:settle 2.4s var(--ease) both}
+.hero__media::after{content:"";position:absolute;inset:0 0 auto;height:220px;background:linear-gradient(rgba(18,48,31,.7),rgba(18,48,31,0))}
+@keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+
+.lead{font-size:22px;line-height:1.5;color:var(--stone)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:end;margin-bottom:64px}
+.head .t{margin-top:0}
+
+/* cards */
+.card{position:relative;display:flex;flex-direction:column;gap:14px;padding:32px 28px 0;background:var(--green-2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.card h3{font:400 32px/1.12 var(--serif)}
+.card p{font-size:17px;line-height:1.55;color:var(--sand)}
+.card .lab{margin-top:4px}
+.card .ph{margin:18px -28px 0;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+
+.card .ph{margin-top:auto}
+/* 4. trust on linen */
+.trust{background:#fff;color:var(--green)}
+.trust .lead{color:var(--mute)}
+.trust .card{background:var(--linen);border-color:rgba(122,132,98,.35)}
+.trust .card .ph{margin-top:auto;margin-bottom:0;padding-top:18px;box-sizing:content-box;aspect-ratio:auto;height:240px}
+.trust .card .ph img{mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.04);-webkit-mask-image:linear-gradient(transparent,#000 28%);mask-image:linear-gradient(transparent,#000 28%)}
+.trust .card p{color:var(--mute)}
+.trust .card .lab{color:var(--rust)}
+.trust .card:hover{box-shadow:0 14px 32px rgba(18,48,31,.08)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+
+/* 5. closing band */
+.cb{position:relative;overflow:hidden;min-height:720px;display:flex;align-items:center}
+.cb__art{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.cb .wrap{position:relative;width:100%}
+.cb__in{max-width:720px;display:flex;flex-direction:column;gap:24px}
+.cb h2{font:400 66px/1.03 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.cb__act{display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-top:24px}
+
+/* 6. footer */
+.ft{padding-block:80px 44px;color:var(--sand);font-size:15px;border-top:1px solid var(--rule)}
+.ft__top{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:44px;padding-bottom:40px;border-bottom:1px solid var(--rule)}
+.ft__brand{display:flex;flex-direction:column;gap:18px}
+.ft__brand p{max-width:28ch;line-height:1.5}
+.ft__col{display:flex;flex-direction:column;gap:13px}
+.ft__col b{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);margin-bottom:4px}
+.ft a{color:inherit;text-decoration:none}.ft a:hover{color:var(--linen)}
+.ft__notes{display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;padding-block:32px}
+.ft__notes sup{color:var(--linen)}
+.ft__legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px}
+.ft__legal nav{display:flex;gap:22px}
+
+@media (max-width:900px){
+ .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+ .sec{padding-block:88px}
+ .nav__links,.nav__sign{display:none}
+ .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+ .hero__body{padding:150px 20px 56px}.hero h1{font-size:52px}.hero .lead,.lead{font-size:19px}
+ .hero__media{aspect-ratio:4/5}
+ .t{font-size:40px}.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:40px}
+ .g3,.strat{grid-template-columns:minmax(0,1fr);gap:32px}.partners__row{flex-wrap:wrap;gap:32px}
+ .stk{height:auto}.stk__pin{position:static;height:auto;padding:88px 20px;gap:32px}.stk__deck{height:auto !important;display:flex;flex-direction:column;gap:16px}
+ .stk__card{position:relative;height:auto;transform:none !important;opacity:1 !important;grid-template-columns:minmax(0,1fr)}.why__img{aspect-ratio:4/3}.why__txt{padding:28px 22px}.why__txt h3{font-size:30px}
+ .cb{min-height:0;padding-block:96px}.cb__art{width:100%;opacity:.35}.cb h2{font-size:42px}
+ .ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:1ms !important}}
+
+
+
+/* hubs: light page, dark closing band and footer */
+body{background:var(--linen)}
+.nav{background:rgba(245,243,239,.9);color:var(--green);border-bottom-color:rgba(18,48,31,.12);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.nav.stuck{background:rgba(245,243,239,.96)}
+.nav .logo{background:var(--green)}
+.nav__sign{white-space:nowrap}
+.nav__links a:hover{border-bottom-color:rgba(18,48,31,.4)}
+.nav__links a.cur{border-bottom:2px solid var(--green)}
+.cb,.ft{background:var(--green);color:var(--linen)}
+.ft{color:var(--sand)}
+.hubs{color:var(--green)}
+.hubs .lab{color:var(--rust)}
+.lead{color:var(--mute)}
+
+/* title band */
+.top{padding:104px 0 64px;border-bottom:1px solid rgba(18,48,31,.12)}
+.top .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:end}
+.top h1{font:400 68px/1.02 var(--serif);letter-spacing:-.015em;margin-top:16px;text-wrap:balance}
+
+/* two columns: pinned hub rail, content */
+.hub{display:grid;grid-template-columns:272px minmax(0,1fr);gap:72px;align-items:start;padding-block:56px 136px}
+.side{position:sticky;top:96px;display:flex;flex-direction:column;gap:28px;max-height:calc(100vh - 120px);overflow:auto;padding-bottom:12px}
+.side h4{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.srch{position:relative}
+.srch svg{position:absolute;left:14px;top:14px;width:20px;height:20px;stroke:var(--mute);fill:none;stroke-width:1.6;pointer-events:none}
+.srch input{width:100%;height:48px;padding:0 44px;border:1px solid rgba(18,48,31,.35);border-radius:4px;background:#fff;color:var(--green);font:400 16px var(--sans);outline:none;transition:border-color .15s,box-shadow .15s}
+.srch input:focus{border-color:#A3B62B;box-shadow:0 0 0 4px rgba(227,253,90,.3)}
+.srch input::-webkit-search-cancel-button{display:none}
+.srch .clr{position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;border:0;background:var(--yel);cursor:pointer;display:none;place-items:center}
+.srch.has .clr{display:grid}
+.srch .clr::before,.srch .clr::after{content:"";position:absolute;width:12px;height:1.6px;background:var(--on-yel);transform:rotate(45deg)}.srch .clr::after{transform:rotate(-45deg)}
+.toc{display:flex;flex-direction:column}
+.toc a{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;margin-inline:-12px;border-radius:6px;color:var(--mute);text-decoration:none;font:500 16px/1.2 var(--sans);transition:background .2s,color .2s}
+.toc a:hover{color:var(--green);background:rgba(18,48,31,.05)}
+.toc a.on{color:var(--green);background:#fff}
+.toc a.on::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
+.sfs{display:flex;flex-direction:column}
+.sf{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;padding:9px 12px;margin-inline:-12px;border:0;border-radius:6px;background:transparent;color:var(--mute);font:400 15px/1.3 var(--sans);cursor:pointer;transition:background .2s,color .2s}
+.sf span{font-size:13px;color:var(--mute);min-width:22px;text-align:right}
+.sf:hover{color:var(--green);background:rgba(18,48,31,.05)}
+.sf.on{color:var(--green);background:#DCE3CF;font-weight:500}
+
+.main>section+section{margin-top:120px}
+section[id]{scroll-margin-top:100px}
+.shead{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.shead h2{font:400 48px/1.06 var(--serif);letter-spacing:-.012em;text-wrap:balance;max-width:24ch}
+.shead .lead{max-width:52ch}
+
+/* directory */
+.count{font-size:14px;color:var(--mute);padding-bottom:16px;border-bottom:1px solid rgba(18,48,31,.12);margin-bottom:28px}
+.grp+.grp{margin-top:48px}
+.grp[hidden]{display:none}
+.band{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:22px 28px;background:#fff;border-radius:8px;margin-bottom:4px}
+.band h3{font:400 30px/1.1 var(--serif)}
+.band p{color:var(--mute);font-size:15.5px;text-align:right;max-width:40ch}
+.dir{width:100%;border-collapse:collapse;font-size:16px;color:inherit}
+.dir th{text-align:left;font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:16px 12px 12px 0;border-bottom:1px solid rgba(18,48,31,.18)}
+.dir td{padding:15px 12px 15px 0;border-bottom:1px solid rgba(18,48,31,.1);vertical-align:middle}
+.dir tr[hidden]{display:none}
+.dir tbody tr{transition:background .2s}.dir tbody tr:hover{background:rgba(255,255,255,.6)}
+.dir td:last-child,.dir th:last-child{text-align:right}
+.co{display:inline-flex;align-items:center;gap:14px;font:400 22px/1.1 var(--serif)}
+.co__lg{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--green);color:var(--yel);font:400 18px/1 var(--serif);font-style:normal}
+.ist{display:inline-block;padding:6px 12px;border-radius:999px;font:500 13px/1 var(--sans)}
+.ist--hot{background:var(--yel);color:var(--on-yel)}.ist--on{background:#DCE3CF;color:var(--green)}
+.lk{display:inline-flex;align-items:center;gap:8px;color:var(--green);text-decoration:none;font-weight:500;white-space:nowrap}
+.lk::after{content:"";width:14px;height:14px;background:var(--green);transition:transform .18s;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.lk:hover::after{transform:translateX(4px)}
+.empty{display:none;padding:48px 0;text-align:center;color:var(--mute)}.empty.on{display:block}
+.empty b{display:block;font:400 28px/1.1 var(--serif);color:var(--green);margin-bottom:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* for holders: a dark panel inside the column */
+.dark{background:var(--green);color:var(--linen);border-radius:12px;overflow:hidden}
+.sell{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+.sell__t{padding:48px;display:flex;flex-direction:column;gap:18px}
+.sell__t .lab{color:var(--sand)}
+.sell__t h2{font:400 44px/1.06 var(--serif);text-wrap:balance}
+.sell__t .lead{color:var(--sand);font-size:19px}
+.sell__t .btn{align-self:flex-start;margin-top:8px}
+.sell__img{position:relative;min-height:380px;background:#0E2E1B}.sell__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.steps3>div{padding:28px 32px}.steps3>div+div{border-left:1px solid var(--rule)}
+.steps3 h3{font:400 24px/1.15 var(--serif)}
+.steps3 p{color:var(--sand);font-size:15.5px;line-height:1.55;margin-top:10px}
+
+/* IPO Watch */
+.ph-row td{color:var(--mute)}
+
+/* guide */
+.guide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(122,132,98,.35)}
+.guide__t{padding:48px;display:flex;flex-direction:column;gap:18px;justify-content:center}
+.guide__t h2{font:400 40px/1.08 var(--serif);text-wrap:balance}
+.guide__t .btn{align-self:flex-start;margin-top:8px}
+.guide__img{position:relative;min-height:400px}.guide__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.btn-g{background:var(--green);border-color:var(--green);color:var(--linen)}.btn-g:hover{background:#1d4430}
+
+/* glossary */
+.az__rail{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.az__rail a,.az__rail span{display:grid;place-items:center;width:34px;height:34px;border-radius:6px;font:500 15px/1 var(--sans)}
+.az__rail a{color:var(--green);background:#fff;text-decoration:none;transition:background .2s}
+.az__rail a:hover,.az__rail a.on{background:var(--yel)}
+.az__rail span{color:rgba(18,48,31,.25)}
+.az__g{display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding:26px 0;border-top:1px solid rgba(18,48,31,.12);scroll-margin-top:100px}
+.az__letter{font:300 44px/1 var(--serif);color:var(--rust)}
+.term+.term{margin-top:22px}
+.term h3{font:400 24px/1.15 var(--serif)}
+.term p{color:var(--mute);font-size:16.5px;line-height:1.6;margin-top:8px;max-width:62ch}
+
+@media (max-width:1180px){.sell{grid-template-columns:minmax(0,1fr)}.sell__img{min-height:260px}}
+@media (max-width:900px){
+ .top{padding:72px 0 40px}.top .wrap,.hub,.sell,.guide,.steps3{grid-template-columns:minmax(0,1fr)}.top h1{font-size:42px}
+ .hub{gap:32px;padding-top:32px}.side{position:static;max-height:none}
+ .sfs{flex-direction:row;flex-wrap:wrap;gap:6px}.sf{margin:0;border:1px solid rgba(18,48,31,.2)}
+ .toc{display:none}.band{flex-direction:column;gap:6px}.band p{text-align:left}
+ .dir thead{display:none}.dir tr{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 0;border-bottom:1px solid rgba(18,48,31,.1)}.dir td{border:0;padding:0}
+ .shead h2,.sell__t h2{font-size:34px}.sell__t,.guide__t{padding:28px 22px}.steps3>div+div{border-left:0;border-top:1px solid var(--rule)}
+}
+
+.nav,.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important}
+.nav .logo{background:#F5F3EF!important}
+.nav__links a.cur{border-bottom-color:#E3FD5A!important}
+.side{transition:top .35s ease}
+body:has(.nav.is-hidden) .side{top:24px}
+
+/* shared site nav: six links */
+.nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
+
+/* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
+.nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck .logo{background:#F5F3EF!important}
+.nav.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+a.btn{text-decoration:none}
+.nav .logo{margin-right:auto}
+</style>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="SecondLane home"></a>
+    <nav class="nav__links" aria-label="Main"><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a><a class="cur" href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
+    <a class="nav__sign" href="access.html">Sign in</a>
+    <a class="btn btn-y" href="access.html">Get introduced</a>
+  </div>
+</header>
+
+<main id="top" class="hubs">
+  <!-- Title across the top -->
+  <header class="top"><div class="wrap">
+    <div><span class="lab">Companies</span><h1>Every private company you can access on SecondLane.</h1></div>
+    <p class="lead">Profiles of the private companies in our network, with public funding history and our view of each sector. Verified private as of [date].</p>
+  </div></header>
+
+  <!-- Two columns: the hub rail stays pinned on the left -->
+  <div class="wrap hub">
+    <aside class="side" aria-label="Browse companies">
+      <label class="srch" id="srch"><span class="sr">Search companies</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg><input id="q" type="search" placeholder="Search companies" autocomplete="off"><button class="clr" type="button" aria-label="Clear search"></button></label>
+      <nav class="toc" aria-label="Sections"><h4>Sections</h4><a href="#directory" class="on">Directory</a><a href="#sell">For holders</a><a href="#ipo">IPO Watch</a><a href="#guide">Buying guide</a><a href="#glossary">Glossary</a></nav>
+      <div><h4>Sectors</h4><div class="sfs" role="group" aria-label="Filter by sector"><button class="sf on" type="button" data-f="All">All sectors<span>18</span></button><button class="sf" type="button" data-f="AI">AI<span>7</span></button><button class="sf" type="button" data-f="Defense">Defense<span>2</span></button><button class="sf" type="button" data-f="Space">Space<span>1</span></button><button class="sf" type="button" data-f="Digital assets and markets">Digital assets and markets<span>2</span></button><button class="sf" type="button" data-f="Fintech">Fintech<span>1</span></button><button class="sf" type="button" data-f="Robotics and neurotech">Robotics and neurotech<span>2</span></button><button class="sf" type="button" data-f="Consumer and software">Consumer and software<span>3</span></button></div></div>
+    </aside>
+
+    <div class="main">
+      <!-- Directory -->
+      <section id="directory">
+        <p class="count" id="count" aria-live="polite"></p>
+        <div class="grp" data-s="AI">
+          <div class="band"><h3>AI</h3><p>Model builders, AI chips and the data companies behind them.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="AI" data-n="anthropic"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anthropic</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="anthropic.html">View company</a></td></tr><tr data-s="AI" data-n="openai"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OpenAI</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="perplexity"><td><span class="co"><i class="co__lg" aria-hidden="true">P</i>Perplexity</span></td><td>AI search</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="tenstorrent"><td><span class="co"><i class="co__lg" aria-hidden="true">T</i>Tenstorrent</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="databricks"><td><span class="co"><i class="co__lg" aria-hidden="true">D</i>Databricks</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="groq"><td><span class="co"><i class="co__lg" aria-hidden="true">G</i>Groq</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="scale ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Scale AI</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Defense">
+          <div class="band"><h3>Defense</h3><p>Autonomy and the companies rebuilding defense production.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Defense" data-n="anduril"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anduril</span></td><td>Defense and robotics</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Defense" data-n="shield ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Shield AI</span></td><td>Defense</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Space">
+          <div class="band"><h3>Space</h3><p>Launch and the supply chain in orbit.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Space" data-n="blue origin"><td><span class="co"><i class="co__lg" aria-hidden="true">B</i>Blue Origin</span></td><td>Space</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Digital assets and markets">
+          <div class="band"><h3>Digital assets and markets</h3><p>Payments networks and prediction markets.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Digital assets and markets" data-n="ripple"><td><span class="co"><i class="co__lg" aria-hidden="true">R</i>Ripple</span></td><td>Digital assets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Digital assets and markets" data-n="kalshi"><td><span class="co"><i class="co__lg" aria-hidden="true">K</i>Kalshi</span></td><td>Markets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Fintech">
+          <div class="band"><h3>Fintech</h3><p>Payments infrastructure for the internet.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Fintech" data-n="stripe"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Stripe</span></td><td>Fintech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Robotics and neurotech">
+          <div class="band"><h3>Robotics and neurotech</h3><p>Humanoid robots and brain-computer interfaces.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Robotics and neurotech" data-n="figure ai"><td><span class="co"><i class="co__lg" aria-hidden="true">F</i>Figure AI</span></td><td>Robotics</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Robotics and neurotech" data-n="neuralink"><td><span class="co"><i class="co__lg" aria-hidden="true">N</i>Neuralink</span></td><td>Neurotech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="grp" data-s="Consumer and software">
+          <div class="band"><h3>Consumer and software</h3><p>Games, design tools and creator platforms.</p></div>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Consumer and software" data-n="epic games"><td><span class="co"><i class="co__lg" aria-hidden="true">E</i>Epic Games</span></td><td>Gaming</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Consumer and software" data-n="canva"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>Canva</span></td><td>Software</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Consumer and software" data-n="onlyfans"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OnlyFans</span></td><td>Creator platform</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+        </div>
+        <div class="empty" id="empty"><b>No companies match that search.</b>Try another name, or clear the filters.</div>
+      </section>
+
+      <!-- For holders (sell-side hub) -->
+      <section id="sell" class="dark">
+        <div class="sell">
+          <div class="sell__t">
+            <span class="lab">For holders of private company interests</span>
+            <h2>Sell your private company shares before the listing.</h2>
+            <p class="lead">Hold private company interests? Get introduced to interested parties from a network of 17,000+ qualified participants. No listing required.</p>
+            <a class="btn btn-y" href="access.html">Get introduced</a>
+          </div>
+          <div class="sell__img"><img src="assets/htd2.jpg" alt=""></div>
+        </div>
+        <div class="steps3">
+          <div><h3>How selling works</h3><p>Tell us what you hold. We introduce you to interested parties, and you agree terms directly, under documented checks.</p></div>
+          <div><h3>Who can sell</h3><p>Employees, early backers and funds holding interests in private companies, subject to each company's transfer rules.</p></div>
+          <div><h3>Questions answered</h3><p>Transfer approval, right of first refusal and timing, explained before you start.</p></div>
+        </div>
+      </section>
+
+      <!-- IPO Watch -->
+      <section id="ipo">
+        <div class="shead"><span class="lab">IPO Watch</span><h2>Upcoming IPOs 2026, and how to own them before the bell.</h2><p class="lead">Private companies with a reported listing window, and where each one stands today.</p></div>
+        <table class="dir"><thead><tr><th>Company</th><th>Sector</th><th>Reported timing</th><th><span class="sr">Profile</span></th></tr></thead><tbody>
+          <tr><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anthropic</span></td><td>AI</td><td>Reported as early as October</td><td><a class="lk" href="anthropic.html">View company</a></td></tr>
+          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="#top">View company</a></td></tr>
+          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="#top">View company</a></td></tr>
+        </tbody></table>
+      </section>
+
+      <!-- Buying guide -->
+      <section id="guide">
+        <article class="guide">
+          <div class="guide__t"><span class="lab">Guide</span><h2>How to buy pre-IPO stock in 2026 (and get an allocation).</h2><p class="lead">Who can take part, how secondary opportunities are introduced, and what to read before you commit.</p><a class="btn btn-g" href="#top">Read the guide</a></div>
+          <div class="guide__img"><img src="assets/pb1.jpg" alt=""></div>
+        </article>
+      </section>
+
+      <!-- Glossary -->
+      <section id="glossary">
+        <div class="shead"><span class="lab">Learn</span><h2>What is the secondary market for private shares?</h2><p class="lead">The terms used across SecondLane, defined in plain language.</p></div>
+        <nav class="az__rail" aria-label="Glossary letters"><a href="#g-A">A</a><span>B</span><span>C</span><a href="#g-D">D</a><span>E</span><span>F</span><span>G</span><span>H</span><a href="#g-I">I</a><span>J</span><span>K</span><a href="#g-L">L</a><span>M</span><span>N</span><span>O</span><span>P</span><a href="#g-Q">Q</a><a href="#g-R">R</a><a href="#g-S">S</a><a href="#g-T">T</a><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span></nav>
+        <div class="az__terms"><div class="az__g" id="g-A"><span class="az__letter">A</span><div><div class="term"><h3>Accredited investor</h3><p>A person or entity that meets the US income or net worth thresholds set by the SEC to take part in private offerings.</p></div></div></div><div class="az__g" id="g-D"><span class="az__letter">D</span><div><div class="term"><h3>Dedicated vehicle</h3><p>A separate entity set up to hold one opportunity, so each participant's money goes only to that opportunity.</p></div></div></div><div class="az__g" id="g-I"><span class="az__letter">I</span><div><div class="term"><h3>Introduction</h3><p>SecondLane connecting an existing holder with an interested party. Each side agrees terms directly, under documented checks.</p></div></div></div><div class="az__g" id="g-L"><span class="az__letter">L</span><div><div class="term"><h3>Lock-up</h3><p>A period after a listing when early holders cannot sell their shares, usually 90 to 180 days.</p></div></div></div><div class="az__g" id="g-Q"><span class="az__letter">Q</span><div><div class="term"><h3>Qualified participant</h3><p>Someone outside the US who meets the eligibility rules of their own jurisdiction to take part in private market opportunities.</p></div></div></div><div class="az__g" id="g-R"><span class="az__letter">R</span><div><div class="term"><h3>Right of first refusal</h3><p>The company's right to buy shares on the same terms before a holder can transfer them to someone else.</p></div></div></div><div class="az__g" id="g-S"><span class="az__letter">S</span><div><div class="term"><h3>Secondary market</h3><p>Where existing holders of private company interests meet interested parties, before the company lists.</p></div></div></div><div class="az__g" id="g-T"><span class="az__letter">T</span><div><div class="term"><h3>Tender offer</h3><p>A company-run programme that lets employees and early holders turn ownership interest into cash before a listing.</p></div><div class="term"><h3>Transfer approval</h3><p>The company's sign-off on a change of holder, set out in its own documents.</p></div></div></div></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Closing band, dark -->
+  <section class="cb">
+    <img class="cb__art" src="assets/insulator.jpg" alt="">
+    <div class="wrap"><div class="cb__in">
+      <h2>The next decade's biggest companies are still private. For now.</h2>
+      <p class="lead" style="color:var(--stone)">Explore secondary opportunities before they list, or get introduced to interested parties before the window closes.</p>
+      <div class="cb__act"><a class="btn btn-y" href="access.html">Get introduced</a><a class="alink" href="access.html#how">See how introductions work</a></div>
+    </div></div>
+  </section>
+
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft__top">
+        <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane" style="background:var(--linen)"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
+        <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
+        <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+      </div>
+      <div class="ft__notes">
+        <span><sup>1</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span>
+        <span><sup>2</sup> Company names are trademarks of their owners. SecondLane is not affiliated with the companies listed. Interest levels are illustrative.</span>
+      </div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function stick(){ nav.classList.toggle('stuck',scrollY>40); } addEventListener('scroll',stick,{passive:true}); stick();
+
+  /* directory: sector list and search filter the rows */
+  var sfs=[].slice.call(document.querySelectorAll('.sf')), q=document.getElementById('q'), srch=document.getElementById('srch'),
+      groups=[].slice.call(document.querySelectorAll('.grp')), count=document.getElementById('count'), empty=document.getElementById('empty'), sec='All';
+  function apply(){
+    var t=q.value.trim().toLowerCase(), n=0; srch.classList.toggle('has',!!t);
+    groups.forEach(function(g){
+      var vis=0; g.querySelectorAll('tbody tr').forEach(function(r){ var ok=(sec==='All'||r.dataset.s===sec)&&(!t||r.textContent.toLowerCase().indexOf(t)>-1); r.hidden=!ok; if(ok)vis++; });
+      g.hidden=!vis; n+=vis;
+    });
+    count.textContent=n+(n===1?' company':' companies')+(sec==='All'?'':' in '+sec)+(t?' matching \u201c'+q.value.trim()+'\u201d':'');
+    empty.classList.toggle('on',!n);
+  }
+  function toDir(){ var d=document.getElementById('directory'); if(d.getBoundingClientRect().top<0||d.getBoundingClientRect().top>innerHeight*.6) d.scrollIntoView({behavior:'smooth'}); }
+  sfs.forEach(function(b){ b.addEventListener('click',function(){ sec=b.dataset.f; sfs.forEach(function(o){o.classList.toggle('on',o===b); o.setAttribute('aria-pressed',o===b);}); apply(); toDir(); }); });
+  q.addEventListener('input',function(){ apply(); });
+  q.addEventListener('keydown',function(e){ if(e.key==='Enter') toDir(); });
+  srch.querySelector('.clr').addEventListener('click',function(e){ e.preventDefault(); q.value=''; apply(); q.focus(); });
+  apply();
+
+  /* sections list: mark the section in view */
+  var links=[].slice.call(document.querySelectorAll('.toc a')), secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var i=secs.indexOf(e.target); links.forEach(function(a,k){a.classList.toggle('on',k===i);}); } }); },{rootMargin:'-35% 0px -60% 0px'}); secs.forEach(function(s){io.observe(s);}); }
+
+  /* glossary: mark the letter in view */
+  var al=[].slice.call(document.querySelectorAll('.az__rail a')), ag=al.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  if('IntersectionObserver' in window){ var gio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var i=ag.indexOf(e.target); al.forEach(function(a,k){a.classList.toggle('on',k===i);}); } }); },{rootMargin:'-30% 0px -60% 0px'}); ag.forEach(function(g){gio.observe(g);}); }
+})();
+</script>
+<script>
+/* nav: hide while scrolling down, show again as soon as the reader scrolls up */
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return; var last=scrollY, tick=false;
+  function check(){ tick=false; var y=Math.max(0,scrollY), d=y-last;
+    if(y<120||nav.contains(document.activeElement)) nav.classList.remove('is-hidden');
+    else if(d>6) nav.classList.add('is-hidden');
+    else if(d<-6) nav.classList.remove('is-hidden');
+    if(Math.abs(d)>6||y<120) last=y;
+    nav.classList.toggle('stuck',y>40); }
+  function req(){ if(!tick){ tick=true; requestAnimationFrame(check); } }
+  addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
+})();
+</script>

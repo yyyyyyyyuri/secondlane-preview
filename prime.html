@@ -1,0 +1,339 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane · Prime</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Prime, live. 50/50 hero with the photograph running up behind the nav; founders as a scroll story (pinned side,
+   steps come into focus one at a time); investors as four tabs that swap three cards; trust cards on linen; closing band; footer. */
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{color-scheme:dark;
+ --green:#12301F;--green-2:#17392A;--linen:#F5F3EF;--stone:#D9D2C3;--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#191A16;--mute:#55604F;--ink-3:#5D6158;--rust:#8F442D;
+ --rule:rgba(245,243,239,.18);--rule-2:rgba(245,243,239,.2);
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --ease:cubic-bezier(.65,0,.35,1);--max:1312px}
+body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+button,input{font:inherit;color:inherit}
+img{display:block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(64px,env(safe-area-inset-left,0px));padding-right:max(64px,env(safe-area-inset-right,0px))}
+.sec{padding-block:136px}
+.c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+.t{font:400 56px/1.04 var(--serif);letter-spacing:-.012em;margin-top:14px;max-width:22ch;text-wrap:balance}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover{background:#EDFF8C;border-color:#EDFF8C;box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:active{background:#CFE844;border-color:#CFE844;box-shadow:none;transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.alink:hover::after{transform:translateX(4px)}
+.alink.down::after{transform:rotate(90deg)}.alink.down:hover::after{transform:rotate(90deg) translateX(4px)}
+
+/* glass and lit edge (lit only while hovered, or on the card that is set .on) */
+.glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
+
+/* nav: sits over the hero photograph */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--rule);background:transparent;transition:background-color .35s ease,-webkit-backdrop-filter .35s,backdrop-filter .35s}
+.nav.stuck{background:rgba(18,48,31,.88);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.nav .wrap{display:flex;align-items:center;gap:44px;height:88px;max-width:none;transition:height .35s ease}
+.nav.stuck .wrap{height:72px}
+.logo{display:block;width:128px;height:32px;flex:none;background:var(--linen);-webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
+.nav__links{display:flex;gap:36px;flex:1;font:500 16px/1 var(--sans)}
+.nav__links a{color:inherit;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav__links a:hover{border-bottom-color:rgba(245,243,239,.4)}
+.nav__links a.cur{border-bottom-color:var(--yel)}
+.nav__sign{font:500 16px/1 var(--sans);color:inherit;text-decoration:none}
+.nav .btn{height:46px;padding:0 22px;font-size:15px}
+.btn-o{border-color:rgba(245,243,239,.6);color:var(--linen);background:transparent}
+.btn-o:hover{border-color:var(--linen);background:rgba(245,243,239,.06)}
+a.btn{text-decoration:none}
+
+body{margin:0}
+/* 1. hero, 50/50 */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:max(820px,100svh);margin-top:-89px}
+.hero__body{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:160px 64px 104px max(64px,env(safe-area-inset-left,0px))}
+.hero h1{font:400 84px/1 var(--serif);letter-spacing:-.015em}
+.hero .lead{font-size:22px;line-height:1.5;color:var(--stone);max-width:30em}
+.hero__act{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.hero__media{position:relative;overflow:hidden}
+.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:settle 2.4s var(--ease) both}
+.hero__media::after{content:"";position:absolute;inset:0 0 auto;height:220px;background:linear-gradient(rgba(18,48,31,.7),rgba(18,48,31,0))}
+@keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+
+.lead{font-size:22px;line-height:1.5;color:var(--stone)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:end;margin-bottom:64px}
+.head .t{margin-top:0}
+
+/* 2. founders: pinned stack. 4 cards over ~3.2 screens of scroll, eased so the motion feels weighted */
+.stk{position:relative;height:420vh}
+.stk__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px;padding:120px 20px 64px;overflow:hidden}
+.stk__head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;max-width:760px}
+.stk__head .t{margin-top:0}
+.stk__deck{list-style:none;margin:0;padding:0;position:relative;width:min(880px,100%);height:220px}
+.stk__card{position:absolute;inset:0 0 auto;display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px;align-items:start;padding:36px 44px;background:var(--green-2);border:1px solid var(--rule);border-radius:10px;box-shadow:0 -8px 24px rgba(0,0,0,.12);will-change:transform,opacity;transform:translateY(110vh)}
+.stk__card:first-child{transform:none}
+.stk__card::after{content:"";position:absolute;inset:0;background:var(--green);opacity:var(--dim,0);pointer-events:none;border-radius:inherit}
+.stk__card .n{font:300 72px/1 var(--serif);color:var(--yel)}
+.stk__card h3{font:400 34px/1.15 var(--serif)}
+.stk__card p{font-size:18px;line-height:1.55;color:var(--sand);margin-top:12px;max-width:52ch}
+.stk__card.top{border-color:rgba(227,253,90,.45)}
+@media (max-height:820px) and (min-width:901px){.stk__pin{gap:36px;padding-top:104px}.stk__head{gap:12px}.stk__head .t{font-size:48px}.stk__head .lead{font-size:19px}}
+
+/* 3. investors: tabs */
+.investors{border-top:1px solid var(--rule)}
+.tcard{border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--green-2)}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--green)}
+.tab{position:relative;min-height:84px;padding:20px 28px;text-align:left;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--sand);font:400 24px/1.2 var(--serif);cursor:pointer;transition:background .3s,color .3s}
+.tab+.tab{border-left:1px solid var(--rule)}
+.tab::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--yel);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tab:hover{color:var(--linen);background:rgba(245,243,239,.03)}
+.tab[aria-selected="true"]{background:var(--green-2);color:var(--linen);border-bottom-color:transparent}
+.tab[aria-selected="true"]::before{transform:none}
+.tcard .panel{padding:56px}
+.panel{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center}
+.panel[hidden]{display:none}
+.panel__t{display:flex;flex-direction:column;gap:22px;animation:fadein .6s cubic-bezier(.2,.7,.2,1) both}
+.panel__t h3{font:400 40px/1.1 var(--serif);letter-spacing:-.01em}
+.panel__t .alink{margin-top:10px}
+.panel__img{border-radius:12px;overflow:hidden;aspect-ratio:3/2;animation:fadein .8s cubic-bezier(.2,.7,.2,1) both}
+.panel__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.card{position:relative;display:flex;flex-direction:column;gap:14px;padding:32px 28px 0;background:var(--green-2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.card h3{font:400 32px/1.12 var(--serif)}
+.card p{font-size:17px;line-height:1.55;color:var(--sand)}
+.card .lab{margin-top:4px}
+.card .ph{margin:18px -28px 0;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+
+/* 4. trust on linen */
+.trust{background:#fff;color:var(--green)}
+.trust .lead{color:var(--mute)}
+.trust .card{background:var(--linen);border-color:rgba(122,132,98,.35)}
+.trust .card .ph{margin-top:auto;margin-bottom:0;padding-top:18px;box-sizing:content-box;aspect-ratio:auto;height:240px}
+.trust .card .ph img{mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.04);-webkit-mask-image:linear-gradient(transparent,#000 28%);mask-image:linear-gradient(transparent,#000 28%)}
+.trust .card p{color:var(--mute)}
+.trust .card .lab{color:var(--rust)}
+.trust .card:hover{box-shadow:0 14px 32px rgba(18,48,31,.08)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+
+/* 5. closing band */
+.cb{position:relative;overflow:hidden;min-height:720px;display:flex;align-items:center}
+.cb__art{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.cb .wrap{position:relative;width:100%}
+.cb__in{max-width:720px;display:flex;flex-direction:column;gap:24px}
+.cb h2{font:400 66px/1.03 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.cb__act{display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-top:24px}
+
+/* 6. footer */
+.ft{padding-block:80px 44px;color:var(--sand);font-size:15px;border-top:1px solid var(--rule)}
+.ft__top{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:44px;padding-bottom:40px;border-bottom:1px solid var(--rule)}
+.ft__brand{display:flex;flex-direction:column;gap:18px}
+.ft__brand p{max-width:28ch;line-height:1.5}
+.ft__col{display:flex;flex-direction:column;gap:13px}
+.ft__col b{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);margin-bottom:4px}
+.ft a{color:inherit;text-decoration:none}.ft a:hover{color:var(--linen)}
+.ft__notes{display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;padding-block:32px}
+.ft__notes sup{color:var(--linen)}
+.ft__legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px}
+.ft__legal nav{display:flex;gap:22px}
+
+@media (max-width:900px){
+ .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+ .sec{padding-block:88px}
+ .nav__links,.nav__sign{display:none}
+ .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+ .hero__body{padding:150px 20px 56px}.hero h1{font-size:52px}.hero .lead,.lead{font-size:19px}
+ .hero__media{aspect-ratio:4/5}
+ .t{font-size:40px}.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:40px}
+.stk{height:auto}.stk__pin{position:static;height:auto;padding:88px 20px;gap:36px}.stk__deck{height:auto;display:flex;flex-direction:column;gap:14px}
+ .stk__card{position:relative;transform:none !important;opacity:1 !important;grid-template-columns:52px minmax(0,1fr);padding:24px 22px;gap:16px;min-height:0}.stk__card .n{font-size:44px}.stk__card h3{font-size:26px}
+ .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tab{font-size:19px;min-height:72px;padding:16px 18px}.tab:nth-child(3){border-left:0}.tcard .panel{padding:28px 20px}
+ .panel,.g3{grid-template-columns:minmax(0,1fr);gap:32px}
+ .cb{min-height:0;padding-block:96px}.cb__art{width:100%;opacity:.35}.cb h2{font-size:42px}
+ .ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:1ms !important}}
+
+/* shared site nav: six links */
+.nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
+
+/* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
+.nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck .logo{background:#F5F3EF!important}
+.nav.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+a.btn{text-decoration:none}
+.nav .logo{margin-right:auto}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="SecondLane home"></a>
+    <nav class="nav__links" aria-label="Main"><a href="access.html">Access</a><a href="capital.html">Capital</a><a class="cur" href="prime.html">Prime</a><a href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
+    <a class="nav__sign" href="access.html">Sign in</a>
+    <a class="btn btn-y" href="access.html">Get introduced</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="hero__body">
+      <h1>SecondLane Prime</h1>
+      <p class="lead">Our multi-asset pre-IPO introductory network. Explore secondary opportunities across illiquid private company interests, fund interests and digital assets, with qualified participants and existing holders on both sides.</p>
+      <div class="hero__act"><a class="btn btn-y" href="access.html">Get introduced</a><a class="btn btn-o" href="#founders">See how it works</a></div>
+    </div>
+    <div class="hero__media"><img src="assets/pb5.jpg" alt=""></div>
+  </section>
+
+  <!-- 2. Empowering founders: the section pins, the title stays, the four cards slide up and stack in the centre -->
+  <section class="stk" id="founders">
+    <div class="stk__pin">
+      <div class="stk__head">
+        <span class="lab">For founders</span>
+        <h2 class="t">Empowering founders</h2>
+        <p class="lead">Liquidity on your terms, timed around the moments that matter for the company.</p>
+      </div>
+      <ol class="stk__deck" id="deck">
+          <li class="stk__card" data-i="0"><span class="n">1</span><div><h3>Reduce sell pressure</h3><p>Introduce large sales to verified interested parties instead of the open market, so a single exit never sets your secondary opportunity value.</p></div></li>
+          <li class="stk__card" data-i="1"><span class="n">2</span><div><h3>Keep your secondary value steady</h3><p>Time and size liquidity around vesting, unlocks and fundraises, so the market keeps its confidence in you.</p></div></li>
+          <li class="stk__card" data-i="2"><span class="n">3</span><div><h3>Retain your best people</h3><p>Give your team a way to turn ownership interest into cash without selling into the open market, through a compliant tender offer.</p></div></li>
+          <li class="stk__card" data-i="3"><span class="n">4</span><div><h3>Expand your participant network</h3><p>Bring in institutional participants, family offices and qualified interested parties, and add credibility as well as reach.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. Enabling investors -->
+  <section class="sec investors" id="investors">
+    <div class="wrap">
+      <div class="head"><div><span class="lab">For investors</span><h2 class="t" style="margin-top:14px">Enabling investors</h2></div><p class="lead">Four ways Prime works for participants. Pick one to see how.</p></div>
+      <div class="tcard">
+      <div class="tabs" role="tablist" aria-label="Ways Prime works for investors"><button class="tab" role="tab" id="t-pre" aria-controls="p-pre" aria-selected="true" tabindex="0">Pre-market opportunities</button><button class="tab" role="tab" id="t-reb" aria-controls="p-reb" aria-selected="false" tabindex="-1">Rebalance your holdings</button><button class="tab" role="tab" id="t-liq" aria-controls="p-liq" aria-selected="false" tabindex="-1">Enhance your liquidity</button><button class="tab" role="tab" id="t-com" aria-controls="p-com" aria-selected="false" tabindex="-1">Compliance first</button></div>
+        <div class="panel" role="tabpanel" id="p-pre" aria-labelledby="t-pre">
+          <div class="panel__t"><h3>Access pre-market opportunities</h3><p class="lead">Get into the companies everyone will be reading about after the IPO, while they are still private. Access private company interest years before a listing, at a secondary opportunity value set by real introductions.</p><a class="alink" href="companies.html#directory">See open opportunities</a></div>
+          <div class="panel__img"><img src="assets/pb7.jpg" alt=""></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-reb" aria-labelledby="t-reb" hidden>
+          <div class="panel__t"><h3>Rebalance your holdings</h3><p class="lead">See what your holdings are really worth, and get introduced to interested parties for private company interests or fund interests on the secondary market, when it suits you rather than when it is too late.</p><a class="alink" href="access.html">Get introduced</a></div>
+          <div class="panel__img"><img src="assets/pb10.jpg" alt=""></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-liq" aria-labelledby="t-liq" hidden>
+          <div class="panel__t"><h3>Enhance your liquidity</h3><p class="lead">Reach liquidity faster through our secondary market network, and rebalance your holdings in days rather than quarters.</p><a class="alink" href="access.html">Get introduced</a></div>
+          <div class="panel__img"><img src="assets/pb3.jpg" alt=""></div>
+        </div>
+        <div class="panel" role="tabpanel" id="p-com" aria-labelledby="t-com" hidden>
+          <div class="panel__t"><h3>Compliance first</h3><p class="lead">Every introduction runs through documented compliance checks, with third-party providers handling custody, escrow and administration.</p><a class="alink" href="access.html#how">How introductions work</a></div>
+          <div class="panel__img"><img src="assets/pb9.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Built on trust -->
+  <section class="sec trust" id="trust">
+    <div class="wrap">
+      <div class="head"><h2 class="t">Built on trust</h2><p class="lead">Every introduction runs through documented compliance checks, with third parties handling custody, escrow and administration.</p></div>
+      <div class="g3">
+        <article class="card"><h3>Data</h3><p>Four years of network data across equity, fund interests, private credit and digital assets.</p><span class="lab">Since 2022</span><div class="ph"><img src="assets/htl3.jpg" alt=""></div></article>
+        <article class="card"><h3>Privacy-preserving tech</h3><p>Counterparties stay confidential until an introduction is agreed.</p><span class="lab">Confidential by default</span><div class="ph"><img src="assets/htl1.jpg" alt=""></div></article>
+        <article class="card"><h3>Network</h3><p>17,000+ qualified participants and 1,500+ companies.</p><span class="lab">Both sides of each opportunity</span><div class="ph"><img src="assets/htl4.jpg" alt=""></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Closing band -->
+  <section class="cb">
+    <img class="cb__art" src="assets/insulator.jpg" alt="">
+    <div class="wrap">
+      <div class="cb__in">
+        <h2>Meet the other side of your position.</h2>
+        <p class="lead">Entering a private company or exiting one, Prime connects you with existing holders and interested parties.</p>
+        <div class="cb__act"><a class="btn btn-y" href="access.html">Get introduced</a><a class="alink" href="#founders">See how introductions work</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft__top">
+        <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
+        <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
+        <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+      </div>
+      <div class="ft__notes"><span><sup>1</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span></div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function stick(){ nav.classList.toggle('stuck',scrollY>40); } addEventListener('scroll',stick,{passive:true}); stick();
+
+  /* founders: progress through the pinned section drives each card from below into the stack.
+     Eased toward the target each frame, so the motion lags a little behind the wheel and feels weighted. */
+  var stk=document.getElementById('founders'), cards=[].slice.call(document.querySelectorAll('.stk__card')), N=cards.length,
+      small=matchMedia('(max-width:900px)'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, cur=0, tgt=0;
+  function target(){ var r=stk.getBoundingClientRect(), run=stk.offsetHeight-innerHeight; tgt=Math.min(1,Math.max(0,-r.top/run)); }
+  function paint(p){
+    var seg=1/(N-1+.35);
+    cards.forEach(function(c,i){
+      if(i===0){ var arr=1; } else { var arr=Math.min(1,Math.max(0,(p-(i-1)*seg)/seg)); }
+      arr=arr<.5?4*arr*arr*arr:1-Math.pow(-2*arr+2,3)/2;
+      var above=0; for(var k=i+1;k<N;k++){ var a2=Math.min(1,Math.max(0,(p-(k-1)*seg)/seg)); above+=a2; }
+      var y=(1-arr)*innerHeight*1.05 - above*16, sc=1-above*.045, op=arr<1?1:Math.max(.55,1-above*.15);
+      c.style.transform='translateY('+y.toFixed(1)+'px) scale('+sc.toFixed(3)+')'; c.style.setProperty('--dim',(1-op).toFixed(3)); c.style.zIndex=i+1;
+      c.classList.toggle('top',arr>.95&&above<.05);
+    });
+  }
+  function frame(){ if(!small.matches&&!reduce){ cur+=(tgt-cur)*.085; if(Math.abs(tgt-cur)<.0005)cur=tgt; paint(cur);} requestAnimationFrame(frame); }
+  var deck=document.getElementById('deck'); function fit(){ if(small.matches){deck.style.height='';return;} deck.style.height=Math.max.apply(null,cards.map(function(c){return c.offsetHeight;}))+'px'; }
+  fit(); addEventListener('resize',fit); if(document.fonts) document.fonts.ready.then(fit);
+  addEventListener('scroll',target,{passive:true}); addEventListener('resize',target); target(); cur=tgt;
+  if(reduce) paint(1); frame();
+
+  /* investors: tabs swap the copy and photograph */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function pick(t,focus){ tabs.forEach(function(o){ var on=o===t; o.setAttribute('aria-selected',on); o.tabIndex=on?0:-1; document.getElementById(o.getAttribute('aria-controls')).hidden=!on; }); if(focus) t.focus(); }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){pick(t);});
+    t.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(d){ e.preventDefault(); pick(tabs[(i+d+tabs.length)%tabs.length],true); } });
+  });
+})();
+</script>
+<script>
+/* nav: hide while scrolling down, show again as soon as the reader scrolls up */
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return; var last=scrollY, tick=false;
+  function check(){ tick=false; var y=Math.max(0,scrollY), d=y-last;
+    if(y<120||nav.contains(document.activeElement)) nav.classList.remove('is-hidden');
+    else if(d>6) nav.classList.add('is-hidden');
+    else if(d<-6) nav.classList.remove('is-hidden');
+    if(Math.abs(d)>6||y<120) last=y;
+    nav.classList.toggle('stuck',y>40); }
+  function req(){ if(!tick){ tick=true; requestAnimationFrame(check); } }
+  addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
+})();
+</script>
