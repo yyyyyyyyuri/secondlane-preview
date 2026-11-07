@@ -551,12 +551,12 @@ document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ loc
   addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
 })();
 </script>
-<script src="assets/halftone-drift.js?v=12"></script>
+<script src="assets/halftone-drift.js?v=13"></script>
 <script>
 (function(){
-  var SRC={drone:'assets/hero-drone-v2.jpg',cooling:'assets/ht-cooling-flip.jpg'}, FOCAL={drone:[1,.5],gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.38,.5],grid:[.52,.55]};
+  var SRC={drone:'assets/hero-drone-v2.jpg',cooling:'assets/ht-cooling-rot.jpg'}, FOCAL={drone:[1,.5],gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.7,.5],grid:[.52,.55]};
   // measured object centres in each source print; each lands 60% across the canvas (centred on phones)
-  var OBJ={drone:{c:[.62,.4],at:[.6,.46]},gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.29,.5]},grid:{c:[.65,.55]}};
+  var OBJ={drone:{c:[.62,.4],at:[.6,.46]},gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.7,.51]},grid:{c:[.65,.55]}};
   var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:SRC.drone,focal:FOCAL.drone,still:document.getElementById('heroRef'),preset:'fine',detail:2.5,intro:.3,introDur:1.5,firstFrom:'right',scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
   var tabs=[].slice.call(document.querySelectorAll('.ht-tabs__row button')), still=document.getElementById('heroStill');
   function pick(i){ var k=tabs[i].dataset.k; tabs.forEach(function(t,j){ t.setAttribute('aria-selected',j===i?'true':'false'); t.tabIndex=j===i?0:-1; });
