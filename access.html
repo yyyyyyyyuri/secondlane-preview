@@ -90,6 +90,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .done b{display:block;font:400 32px/1.1 var(--serif)}
 .done span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--sand)}
 .done .alink{margin-top:16px}
+.done .next{list-style:none;margin:22px 0 0;padding:0;counter-reset:n;display:grid;gap:12px;text-align:left}
+.done .next li{counter-increment:n;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.45;color:var(--sand)}
+.done .next li::before{content:counter(n);width:26px;height:26px;border-radius:50%;border:1px solid rgba(227,253,90,.55);color:var(--yel);display:grid;place-items:center;font-size:13px}
+.done .next li b{display:inline;font-family:inherit;font-size:15px;font-weight:500;line-height:1.45;color:var(--linen,#F5F3EF)}
+.done .next li div{padding-top:3px}
+.done .resend{margin-top:18px;font-size:14px;line-height:1.5;color:var(--sand)}
+.done .resend .alink{margin-top:0;display:inline;font-size:14px}
 .join.sent form{display:none}.join.sent .done{display:grid}
 .join.sent>p{display:none}
 
@@ -212,11 +219,18 @@ a.btn{text-decoration:none}
           <button class="btn btn-y" type="submit">Get on the list</button>
           <p class="fine">We use your email only for news about Access. You can leave the list at any time.</p>
         </form>
-        <div class="done" role="status"><i aria-hidden="true"></i><div><b>You're on the list.</b><span id="doneTxt">We sent you a note. Confirm it and your place is held.</span><button class="alink" type="button" id="change">Change email</button></div></div>
+        <div class="done" role="status"><i aria-hidden="true"></i><div><b>You're on the list.</b><span id="doneTxt">We sent you a note. Confirm it and your place is held.</span><ol class="next">
+            <li><div><b>Confirm your email.</b> So we can hold your place.</div></li>
+            <li><div><b>Watch your inbox.</b> Places open in small groups, and yours could be next.</div></li>
+            <li><div><b>Get verified.</b> A quick identity and eligibility check, done once.</div></li>
+            <li><div><b>See your first opportunity.</b> Read the memo, with terms and risks included, before you commit.</div></li>
+          </ol>
+          <p class="resend">No email after 10 minutes? Check your spam folder, or <button class="alink" type="button" id="resend">send it again</button>.</p>
+          <button class="alink" type="button" id="change">Change email</button></div></div>
       </div>
       <div class="stats lit">
-        <div><b>1</b>dedicated vehicle per opportunity</div>
         <div><b>0%</b>platform fee at launch</div>
+        <div><b>1</b>dedicated vehicle per opportunity</div>
         <div><b>2</b>ways to fund: USDC or wire</div>
         <a href="#how"><span class="lab">How it works</span><span class="alink down">See the 4 steps</span></a>
       </div>
@@ -230,9 +244,9 @@ a.btn{text-decoration:none}
       <h2 class="t">Four steps between you and your first private company.</h2>
       <ol class="steps" id="steps">
         <li class="step lit rv1"><span class="n">1</span><div><h3>Join the waitlist</h3><p>One minute, no commitment.</p></div></li>
-        <li class="step lit rv1"><span class="n">2</span><div><h3>Get verified</h3><p>We check your identity and eligibility once, before your first introduction.</p></div></li>
-        <li class="step lit rv1"><span class="n">3</span><div><h3>Read the memo</h3><p>The desk writes a memo for every opportunity. It sets out the terms and the risks before you decide.</p></div></li>
-        <li class="step lit rv1"><span class="n">4</span><div><h3>Sign and fund</h3><p>By USDC or wire, straight into that opportunity's own dedicated vehicle.</p></div></li>
+        <li class="step lit rv1"><span class="n">2</span><div><h3>Get verified</h3><p>Identity and eligibility, checked once.</p></div></li>
+        <li class="step lit rv1"><span class="n">3</span><div><h3>Read the memo</h3><p>Every opportunity, with its terms and risks laid out before you decide.</p></div></li>
+        <li class="step lit rv1"><span class="n">4</span><div><h3>Sign and fund</h3><p>By USDC or wire, straight into that opportunity's own vehicle.</p></div></li>
       </ol>
     </div>
   </section>
@@ -240,11 +254,11 @@ a.btn{text-decoration:none}
   <!-- 4. The desk -->
   <section class="sec" id="desk">
     <div class="wrap"><div class="desk">
-      <div><span class="lab">The SecondLane desk</span>
-      <h2 class="t">Every opportunity comes from the desk.</h2></div>
-      <p class="body">For more than a decade, SecondLane has worked private markets from the inside. The desk sources each opportunity and checks its terms. It writes the memo and sets up the dedicated vehicle. You read the memo before you commit.</p>
+      <div><span class="lab">Why SecondLane</span>
+      <h2 class="t">Get the call before the round is news.</h2></div>
+      <p class="body">For more than a decade, SecondLane has worked private markets from the inside. Until now, what came through our network stayed with a close circle of funds and family offices. SecondLane Access is the first time it opens to individuals.</p>
       <div class="art"><img src="assets/desk-watch.jpg" alt="A hand resting on a walnut desk, a gold watch at the wrist"></div>
-      <div class="ctab lit"><span class="ctab__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg></span><div><span class="lab">Opening in stages</span><h3>We open Access in small groups.</h3><p>The waitlist hears first. We email you when your group opens.</p></div><a class="btn btn-y" href="#join" style="text-decoration:none">Get on the list</a></div>
+      <div class="ctab lit"><span class="ctab__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg></span><div><span class="lab">Opening in stages</span><h3>Access opens one group at a time.</h3><p>The waitlist hears first.</p></div><a class="btn btn-y" href="#join" style="text-decoration:none">Get on the list</a></div>
     </div></div>
   </section>
 
@@ -256,7 +270,7 @@ a.btn{text-decoration:none}
       <div class="qas" id="qas">
         <div class="qa open"><button class="q" type="button" aria-expanded="true">What can I get into?<i aria-hidden="true"></i></button><div class="a"><div><p>Private companies across AI, defense, space and the sectors shaping what comes next, sourced through our network.</p></div></div></div>
         <div class="qa"><button class="q" type="button" aria-expanded="false">Who can join?<i aria-hidden="true"></i></button><div class="a"><div><p>Accredited investors in the US and qualified participants elsewhere, as individuals, through an entity or through an adviser. We confirm eligibility before your first opportunity.</p></div></div></div>
-        <div class="qa"><button class="q" type="button" aria-expanded="false">What does it cost?<i aria-hidden="true"></i></button><div class="a"><div><p>Nothing to join, and no platform fee at launch. Each opportunity sets out its own terms in its documents.</p></div></div></div>
+        <div class="qa"><button class="q" type="button" aria-expanded="false">What does it cost?<i aria-hidden="true"></i></button><div class="a"><div><p>Nothing to join, and no platform fee at launch. Each opportunity sets out its own terms in its documents, so you know exactly what you are signing.</p></div></div></div>
         <div class="qa"><button class="q" type="button" aria-expanded="false">How do I fund?<i aria-hidden="true"></i></button><div class="a"><div><p>By USDC or wire. Every opportunity sits in its own dedicated vehicle, so your money goes only to the one you chose.</p></div></div></div>
         <div class="qa"><button class="q" type="button" aria-expanded="false">When does Access open?<i aria-hidden="true"></i></button><div class="a"><div><p>Soon, in small groups. The waitlist hears first.</p></div></div></div>
       </div>
@@ -309,6 +323,7 @@ a.btn{text-decoration:none}
     join.classList.add('sent'); });
   em.addEventListener('input',function(){ em.classList.remove('e'); err.classList.remove('on'); });
   document.getElementById('change').addEventListener('click',function(){ join.classList.remove('sent'); em.focus(); });
+  document.getElementById('resend').addEventListener('click',function(){ this.textContent='sent again'; });
 
   /* questions: one open at a time */
   var qas=[].slice.call(document.querySelectorAll('.qa'));
