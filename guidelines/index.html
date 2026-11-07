@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane Visual Guidelines</title>
+<meta name="description" content="Fonts, colours, layout, components, imagery, motion and wording for the SecondLane website build.">
+<style>
+@font-face{font-family:'Ashcroft';src:url("../assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("../assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("../assets/fonts/ashcroft-500.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:'SFT';src:url("../assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("../assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+
+:root{
+ --green:#12301F;--green-2:#17392A;--linen:#F5F3EF;--stone:#D9D2C3;--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#191A16;--mute:#55604F;--rust:#8F442D;--white:#FFFFFF;
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --rule-d:rgba(245,243,239,.18);--rule-l:rgba(18,48,31,.14);
+ --side:248px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--linen);color:var(--green);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,figure{margin:0}
+a{color:inherit}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+img{display:block;max-width:100%}
+
+/* shell */
+.side{position:fixed;inset:0 auto 0 0;width:var(--side);background:var(--green);color:var(--linen);padding:32px 28px;display:flex;flex-direction:column;gap:28px;overflow-y:auto;z-index:5}
+.logo{display:block;width:128px;height:32px;background:var(--linen);-webkit-mask:url("../assets/logo.svg") left center/contain no-repeat;mask:url("../assets/logo.svg") left center/contain no-repeat}
+.side small{display:block;font:500 11px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--sand)}
+.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;counter-reset:t}
+.toc a{display:flex;gap:12px;padding:7px 10px;margin:0 -10px;border-radius:4px;text-decoration:none;font-size:14.5px;color:var(--stone);transition:background .18s,color .18s}
+.toc a span{font-variant-numeric:tabular-nums;color:var(--sand);opacity:.7;width:18px}
+.toc a:hover{background:rgba(245,243,239,.08);color:var(--linen)}
+.toc a.on{background:rgba(227,253,90,.12);color:var(--yel)}
+.toc a.on span{color:var(--yel);opacity:1}
+.side .meta{margin-top:auto;font-size:12.5px;line-height:1.5;color:var(--sand)}
+main{margin-left:var(--side)}
+.sec{padding:96px 72px;border-bottom:1px solid var(--rule-l)}
+.sec.dark{background:var(--green);color:var(--linen);border-color:transparent}
+.in{max-width:1040px}
+.eb{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--rust);margin-bottom:16px}
+.dark .eb{color:var(--yel)}
+h1{font:400 64px/1.02 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+h2{font:400 44px/1.06 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+h3{font:400 26px/1.15 var(--serif);margin:56px 0 16px}
+h4{font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.dark h4{color:var(--sand)}
+.lead{font-size:18px;line-height:1.55;color:var(--mute);max-width:44em;margin-top:20px}
+.dark .lead{color:var(--stone)}
+p+p{margin-top:12px}
+.note{border-left:2px solid var(--rust);padding:14px 18px;background:rgba(143,68,45,.06);font-size:15px;margin-top:24px;border-radius:0 4px 4px 0}
+.dark .note{border-color:var(--yel);background:rgba(227,253,90,.07)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.box{border:1px solid var(--rule-l);border-radius:8px;padding:24px;background:var(--white)}
+.dark .box{background:var(--green-2);border-color:var(--rule-d)}
+.box h4{margin-bottom:8px}
+ul.list{margin:0;padding-left:18px}ul.list li+li{margin-top:6px}
+.do,.dont{font-size:15px}
+.do b,.dont b{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+.do b{color:#3D6B2E}.dont b{color:var(--rust)}
+.dark .do b{color:var(--yel)}.dark .dont b{color:#F0A88A}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font:500 11px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);padding:0 12px 12px 0;border-bottom:1px solid var(--rule-l)}
+td{padding:14px 12px 14px 0;border-bottom:1px solid var(--rule-l);vertical-align:top}
+.dark th{color:var(--sand);border-color:var(--rule-d)}.dark td{border-color:var(--rule-d)}
+td code{background:rgba(18,48,31,.06);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.dark td code{background:rgba(245,243,239,.08)}
+.tw{overflow-x:auto}
+
+/* cover */
+.cover{background:var(--green);color:var(--linen);padding:120px 72px 96px;position:relative;overflow:hidden;border:0}
+.cover canvas{position:absolute;inset:0;width:100%;height:100%}
+.cover .in{position:relative}
+.cover .lead{color:var(--stone)}
+.cover .eb{color:var(--yel)}
+.cover dl{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:8px 48px;margin:56px 0 0}
+.cover dt{font:500 11px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--sand)}
+.cover dd{margin:8px 0 0;font-size:15px}
+
+/* logo */
+.lg-tile{border-radius:8px;height:200px;display:grid;place-items:center;position:relative}
+.lg-tile .logo{width:192px;height:48px}
+.lg-tile.l{background:var(--linen);border:1px solid var(--rule-l)}.lg-tile.l .logo{background:var(--green)}
+.lg-tile.w{background:var(--white);border:1px solid var(--rule-l)}.lg-tile.w .logo{background:var(--green)}
+.lg-tile.g{background:var(--green)}
+.lg-tile.cs .logo{outline:1px dashed rgba(227,253,90,.7);outline-offset:16px}
+.lg-tile figcaption{position:absolute;left:16px;bottom:12px;font-size:12.5px;color:var(--mute)}
+.lg-tile.g figcaption{color:var(--sand)}
+.lg-tile.bad .logo{background:var(--yel)}
+.lg-tile.bad2 .logo{transform:scaleX(1.35)}
+.lg-tile.bad3{background:url("../assets/funds.jpg") center/cover}.lg-tile.bad3 .logo{background:var(--linen)}
+.lg-tile.bad::before,.lg-tile.bad2::before,.lg-tile.bad3::before{content:"";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--rust) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4.5 4.5l7 7M11.5 4.5l-7 7'/%3E%3C/svg%3E") center/12px no-repeat}
+
+/* colour */
+.sw{border-radius:8px;overflow:hidden;border:1px solid var(--rule-l);background:var(--white);display:flex;flex-direction:column}
+.sw i{display:block;height:120px}
+.sw div{padding:16px 18px 18px;font-size:13.5px;line-height:1.5}
+.sw b{display:block;font:400 22px/1.2 var(--serif);margin-bottom:6px}
+.sw code{display:block;color:var(--mute)}
+.sw p{margin-top:10px;color:var(--green)}
+.big .sw i{height:180px}
+.ratio{display:flex;height:56px;border-radius:8px;overflow:hidden;margin-top:12px;border:1px solid var(--rule-l)}
+.ratio span{display:flex;align-items:flex-end;padding:8px 10px;font-size:12px}
+.pair{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:6px;font-size:15px}
+.pair em{font-style:normal;margin-left:auto;font:500 12px/1 var(--sans);letter-spacing:.04em;padding:5px 8px;border-radius:3px;background:rgba(0,0,0,.08)}
+.theme{border-radius:8px;padding:28px;min-height:220px;display:flex;flex-direction:column;gap:10px}
+.theme .t{font:400 28px/1.1 var(--serif)}
+.theme .s{font-size:14px}
+.theme .rule{height:1px;margin:8px 0}
+
+/* type */
+.spec{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;padding:28px 0;border-bottom:1px solid var(--rule-l);align-items:baseline}
+.spec:first-of-type{border-top:1px solid var(--rule-l)}
+.spec .k{font-size:13px;line-height:1.55;color:var(--mute)}
+.spec .k b{display:block;color:var(--green);font:500 14px/1.4 var(--sans);margin-bottom:4px}
+.fam{border-radius:8px;padding:32px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+.fam .glyph{font-size:96px;line-height:1}
+.fam .chars{font-size:18px;line-height:1.5;word-break:break-all;margin-top:18px}
+.fam .m{display:flex;justify-content:space-between;font-size:13px;margin-top:24px;gap:16px;flex-wrap:wrap}
+
+/* layout */
+.cols{position:relative;height:240px;border:1px solid var(--rule-l);border-radius:8px;background:var(--white);overflow:hidden}
+.cols .pad{position:absolute;top:0;bottom:0;width:5.4%;background:repeating-linear-gradient(45deg,rgba(143,68,45,.12) 0 6px,transparent 6px 12px)}
+.cols .grid12{position:absolute;inset:0 5.4%;display:grid;grid-template-columns:repeat(12,1fr);gap:2%}
+.cols .grid12 i{background:rgba(227,253,90,.35);border-left:1px solid rgba(18,48,31,.15);border-right:1px solid rgba(18,48,31,.15)}
+.cols figcaption{position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--mute)}
+.space{display:flex;flex-direction:column;gap:8px}
+.space div{display:grid;grid-template-columns:64px 72px 1fr;align-items:center;gap:16px;font-size:14px}
+.space i{display:block;height:14px;background:var(--yel);border:1px solid rgba(18,48,31,.25);border-radius:2px}
+.space code{color:var(--mute)}
+
+/* components (copied from the live site) */
+.stage{border-radius:8px;padding:40px;display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.stage.g{background:var(--green);color:var(--linen)}
+.stage.l{background:var(--linen);color:var(--green);border:1px solid var(--rule-l)}
+.stage.w{background:var(--white);color:var(--green);border:1px solid var(--rule-l)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;text-decoration:none;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover,.btn-y.h{background:#EDFF8C;border-color:#EDFF8C;box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:active,.btn-y.a{background:#CFE844;border-color:#CFE844;box-shadow:none;transform:translateY(1px)}
+.btn-o{background:transparent;border-color:rgba(245,243,239,.6);color:var(--linen)}
+.btn-o:hover,.btn-o.h{background:rgba(245,243,239,.08);border-color:var(--linen)}
+.l .btn-o,.w .btn-o{border-color:rgba(18,48,31,.6);color:var(--green)}
+.l .btn-o:hover,.w .btn-o:hover,.l .btn-o.h{background:rgba(18,48,31,.08);border-color:var(--green)}
+.btn-g{background:var(--green);border-color:var(--green);color:var(--linen)}
+.btn-g:hover,.btn-g.h{background:#24493A;border-color:#24493A}
+.btn.sm{height:46px;padding:0 22px;font-size:15px}
+.btn:focus-visible,.alink:focus-visible,.btn.f{outline:2px solid currentColor;outline-offset:3px}
+.btn-y.f{outline-color:var(--yel)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 17px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.l .alink::after,.w .alink::after{background:var(--green)}
+.alink:hover::after{transform:translateX(4px)}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+.l .lab,.w .lab{color:var(--rust)}
+.fl{display:flex;flex-direction:column;gap:8px;width:360px;max-width:100%}
+.fl__l{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.g .fl__l{color:var(--sand)}
+.inp{height:52px;padding:0 16px;border:1px solid rgba(18,48,31,.35);border-radius:4px;background:#FFFFFF;color:var(--green);font:400 17px var(--sans);outline:none;transition:border-color .15s,box-shadow .15s;width:100%}
+.inp:focus,.inp.f{border-color:#A3B62B;box-shadow:0 0 0 4px rgba(227,253,90,.3)}
+.inp.e{border-color:#B5543A}
+.err{font-size:13px;color:#B5543A}
+.g .err{color:#F0A88A}
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit:hover::after{--lo:1}
+.card{background:var(--green);color:var(--linen);border:1px solid #7A846280;border-radius:8px;padding:30px 26px 26px;display:flex;flex-direction:column;gap:18px;cursor:pointer;transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s cubic-bezier(.2,.7,.2,1);width:300px}
+.card:hover{box-shadow:0 27px 67px rgba(0,0,0,.45);transform:translateY(-6px)}
+.card h5{font:400 30px/1.1 var(--serif);margin:0}
+.card p{font-size:16px;line-height:1.45;color:var(--sand);margin:0}
+.card .ph{margin:auto -26px -26px;aspect-ratio:5/4;overflow:hidden;border-radius:0 0 7px 7px}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.fact{background:rgba(18,48,31,.55);backdrop-filter:blur(24px);border:1px solid rgba(245,243,239,.2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12);padding:30px 34px;display:flex;flex-direction:column;gap:10px;min-width:240px}
+.fact b{font:300 64px/1 var(--serif);letter-spacing:-.01em;color:var(--linen)}
+.fact span{font-size:14px;color:var(--sand)}
+.qa{width:100%;max-width:640px}
+.qa details{border-bottom:1px solid var(--rule-l)}
+.qa summary{list-style:none;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font:400 28px/1.15 var(--serif);cursor:pointer}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font:300 28px/1 var(--sans);color:var(--mute)}
+.qa details[open] summary::after{content:"\2212"}
+.qa details p{padding:0 0 22px;color:var(--mute);font-size:16px;max-width:36em}
+.navdemo{width:100%;height:76px;border-radius:8px;background:rgba(18,48,31,.88);border:1px solid var(--rule-d);display:flex;align-items:center;gap:36px;padding:0 28px;color:var(--linen);font:500 15px var(--sans)}
+.navdemo .logo{width:112px;height:28px}
+.navdemo .cur{box-shadow:inset 0 -2px 0 var(--yel);padding-bottom:4px}
+.navdemo .sp{margin-left:auto}
+
+/* imagery */
+.shot{border-radius:8px;overflow:hidden;position:relative;background:var(--green)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);background:rgba(18,48,31,.7);padding:4px 8px;border-radius:3px}
+.dots{height:260px;border-radius:8px;overflow:hidden;position:relative;cursor:crosshair}
+.dots canvas{width:100%;height:100%;display:block}
+.dots span{position:absolute;left:16px;bottom:12px;font-size:12.5px;color:var(--sand)}
+.ar{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
+.ar div{background:var(--stone);border-radius:6px;display:flex;align-items:flex-end;padding:8px;font-size:12.5px;color:var(--green)}
+
+/* motion */
+.mo{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--rule-d)}
+.mo .track{flex:none;width:160px;height:36px;border-radius:4px;background:rgba(245,243,239,.06);position:relative;overflow:hidden}
+.mo .track i{position:absolute;left:4px;top:8px;width:20px;height:20px;border-radius:3px;background:var(--yel)}
+.mo:hover .track i,.mo.play .track i{animation:mv var(--d) var(--e) infinite alternate}
+@keyframes mv{to{left:136px}}
+
+/* code */
+.code{position:relative;margin-top:16px}
+.code pre{background:#0C2216;color:#E6E3DC;padding:24px;border-radius:8px;overflow:auto;line-height:1.6;max-height:520px}
+.code button{position:absolute;top:12px;right:12px;font:500 12px var(--sans);background:var(--yel);color:var(--on-yel);border:0;border-radius:4px;padding:7px 10px;cursor:pointer}
+.tabs{display:flex;gap:4px;margin-top:24px}
+.tabs button{font:500 14px var(--sans);background:transparent;border:1px solid var(--rule-l);color:var(--green);padding:8px 14px;border-radius:4px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--green);color:var(--linen);border-color:var(--green)}
+.panel[hidden]{display:none}
+
+/* glossary */
+.gl td:first-child{font-weight:500;white-space:nowrap}
+.gl td:nth-child(2){color:var(--rust)}
+
+.foot{padding:48px 72px;font-size:13px;color:var(--mute)}
+.fam h4{color:inherit;opacity:.7}
+.stage.g h4{color:var(--sand)}
+.spec{align-items:start}
+.box .alink::after{background:var(--green)}
+.in,.stage>*,.grid>*{min-width:0}
+.stage .navdemo{overflow-x:auto}
+@media (max-width:1000px){.navdemo span:not(.cur):not(.btn){display:none}.navdemo{gap:20px}}
+pre{max-width:100%}
+
+@media (max-width:1000px){
+ :root{--side:0px}
+ .side{position:static;width:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:20px}
+ .side .toc,.side .meta,.side small{display:none}
+ main{margin-left:0}
+ .sec,.cover{padding:64px 20px}.foot{padding:32px 20px}
+ h1{font-size:40px}h2{font-size:32px}
+ .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .spec{grid-template-columns:1fr;gap:10px}
+ .cover dl{grid-template-columns:repeat(2,auto)}
+}
+@media (max-width:600px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}.stage{padding:24px}.fam .glyph{font-size:72px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.card:hover{transform:none}}
+@media print{
+ .side,.code button,.tabs,.cover canvas{display:none}
+ .cover{background:#12301F!important;color:#F5F3EF!important;min-height:255mm;display:flex;align-items:flex-end}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ main{margin:0}
+ .panel[hidden]{display:block}
+ .sec,.cover{padding:40px 32px;break-inside:auto}
+ .sec{break-before:page}
+ .box,.sw,.spec,.stage,figure,tr{break-inside:avoid}
+ .code pre{max-height:none;white-space:pre-wrap}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<aside class="side" aria-label="Sections">
+  <a href="#top" aria-label="SecondLane guidelines, top"><i class="logo"></i></a>
+  <small>Visual guidelines · v1.0</small>
+  <ol class="toc" id="toc">
+    <li><a href="#principles"><span>01</span>Principles</a></li>
+    <li><a href="#logo"><span>02</span>Logo</a></li>
+    <li><a href="#colour"><span>03</span>Colour</a></li>
+    <li><a href="#type"><span>04</span>Typography</a></li>
+    <li><a href="#layout"><span>05</span>Layout and spacing</a></li>
+    <li><a href="#components"><span>06</span>Components</a></li>
+    <li><a href="#imagery"><span>07</span>Imagery</a></li>
+    <li><a href="#motion"><span>08</span>Motion</a></li>
+    <li><a href="#a11y"><span>09</span>Accessibility</a></li>
+    <li><a href="#words"><span>10</span>Words and compliance</a></li>
+    <li><a href="#tokens"><span>11</span>Design tokens</a></li>
+    <li><a href="#resources"><span>12</span>Resources</a></li>
+  </ol>
+  <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.<br><br>To save as PDF: print this page (Cmd/Ctrl + P) and choose Save as PDF.</div>
+</aside>
+
+<main id="top">
+
+<!-- COVER -->
+<header class="sec cover">
+  <canvas id="coverDots" aria-hidden="true"></canvas>
+  <div class="in">
+    <span class="eb">SecondLane · Website build</span>
+    <h1>Visual guidelines for the platform team</h1>
+    <p class="lead">Fonts, colours, layout, components, imagery, motion and wording for building the SecondLane website. Every value on this page is taken from the approved prototype, which stays the visual reference for anything not covered here.</p>
+    <dl>
+      <div><dt>Version</dt><dd>1.0</dd></div>
+      <div><dt>Date</dt><dd>7 Nov 2026</dd></div>
+      <div><dt>Reference build</dt><dd><a href="../index.html">Live prototype</a></dd></div>
+      <div><dt>Target</dt><dd>Desktop, 1440px design width</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- 01 PRINCIPLES -->
+<section class="sec" id="principles">
+  <div class="in">
+    <span class="eb">01 · Principles</span>
+    <h2>A private office, not a trading app</h2>
+    <p class="lead">SecondLane should feel calm, established, discreet and expensive. When a decision is not covered by these guidelines, these four rules settle it.</p>
+    <div class="grid g4" style="margin-top:40px">
+      <div class="box"><h4>Quiet by default</h4><p>Bottle green and linen carry the page. Yellow is a signal, used once or twice a screen, never as decoration.</p></div>
+      <div class="box"><h4>Editorial type</h4><p>A serif for headlines, a clean sans for everything else. Large, well spaced, sentence case.</p></div>
+      <div class="box"><h4>Real objects</h4><p>Warm editorial photography and halftone objects from the sectors we cover. No stock clichés, no neon.</p></div>
+      <div class="box"><h4>Careful words</h4><p>Pre-licence wording everywhere: opportunities and introductions, never trades. See section 10.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 LOGO -->
+<section class="sec" id="logo">
+  <div class="in">
+    <span class="eb">02 · Logo</span>
+    <h2>Logo</h2>
+    <p class="lead">The logo is the diamond mark with the SecondLane wordmark, supplied as one SVG (<code>assets/logo.svg</code>, 128 × 32 viewBox). Use it as a single colour: linen on green, green on linen or white.</p>
+    <div class="grid g3" style="margin-top:40px">
+      <figure class="lg-tile g"><i class="logo"></i><figcaption>Linen on bottle green · primary</figcaption></figure>
+      <figure class="lg-tile l"><i class="logo"></i><figcaption>Green on linen</figcaption></figure>
+      <figure class="lg-tile w"><i class="logo"></i><figcaption>Green on white</figcaption></figure>
+    </div>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="box"><h4>Clear space</h4><p>Keep at least half the logo height free on every side (16px at the 32px nav size).</p></div>
+      <div class="box"><h4>Sizes</h4><p>Nav: 128 × 32px. Footer: 112 × 28px. Minimum: 96px wide on screen. Never set it smaller than the body text.</p></div>
+      <div class="box"><h4>Implementation</h4><p>Inline the SVG or use it as a CSS mask so the colour follows a token. Give the link <code>aria-label="SecondLane home"</code>.</p></div>
+    </div>
+    <h3>Don't</h3>
+    <div class="grid g3">
+      <figure class="lg-tile g bad"><i class="logo"></i><figcaption>Recolour it yellow or any other colour</figcaption></figure>
+      <figure class="lg-tile l bad2"><i class="logo"></i><figcaption>Stretch, skew or redraw it</figcaption></figure>
+      <figure class="lg-tile bad3"><i class="logo"></i><figcaption style="color:var(--linen)">Place it on busy photography</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 COLOUR -->
+<section class="sec" id="colour">
+  <div class="in">
+    <span class="eb">03 · Colour</span>
+    <h2>Colour</h2>
+    <p class="lead">A small palette: two grounds, three warm neutrals for text and lines, one signal yellow and one terracotta accent. Use the tokens, not raw hex values.</p>
+
+    <h3>Core</h3>
+    <div class="grid g3 big">
+      <div class="sw"><i style="background:#12301F"></i><div><b>Bottle green</b><code>--green · #12301F</code><code>RGB 18 48 31</code><p>Primary ground. Hero, nav, footer, most sections, cards.</p></div></div>
+      <div class="sw"><i style="background:#F5F3EF"></i><div><b>Linen</b><code>--linen · #F5F3EF</code><code>RGB 245 243 239</code><p>Text on green. Light ground for contrast sections (FAQ, audiences).</p></div></div>
+      <div class="sw"><i style="background:#E3FD5A"></i><div><b>SL Yellow</b><code>--yel · #E3FD5A</code><code>RGB 227 253 90</code><p>Signal only: primary buttons, eyebrows on green, active states, the dot field. Never text on light grounds.</p></div></div>
+    </div>
+    <h3>Supporting</h3>
+    <div class="grid g4">
+      <div class="sw"><i style="background:#17392A"></i><div><b>Green 2</b><code>--green-2 · #17392A</code><p>Raised panels on green.</p></div></div>
+      <div class="sw"><i style="background:#D9D2C3"></i><div><b>Stone</b><code>--stone · #D9D2C3</code><p>Lead text on green.</p></div></div>
+      <div class="sw"><i style="background:#CBBFA8"></i><div><b>Sand</b><code>--sand · #CBBFA8</code><p>Secondary text on green, footer.</p></div></div>
+      <div class="sw"><i style="background:#55604F"></i><div><b>Mute</b><code>--mute · #55604F</code><p>Secondary text on linen and white.</p></div></div>
+      <div class="sw"><i style="background:#8F442D"></i><div><b>Rust</b><code>--rust · #8F442D</code><p>Eyebrow labels on light grounds. Accent only.</p></div></div>
+      <div class="sw"><i style="background:#191A16"></i><div><b>On yellow</b><code>--on-yel · #191A16</code><p>Text on yellow buttons.</p></div></div>
+      <div class="sw"><i style="background:#FFFFFF"></i><div><b>White</b><code>--white · #FFFFFF</code><p>Logo rail, inputs, light cards.</p></div></div>
+      <div class="sw"><i style="background:linear-gradient(90deg,#12301F 50%,#F5F3EF 50%)"></i><div><b>Lines</b><code>rgba(245,243,239,.18)</code><code>rgba(18,48,31,.14)</code><p>Hairlines on green and on linen.</p></div></div>
+    </div>
+
+    <h3>Interaction states</h3>
+    <div class="tw"><table>
+      <tr><th>State</th><th>Value</th><th>Where</th></tr>
+      <tr><td>Yellow hover</td><td><code>#EDFF8C</code> + <code>0 0 0 4px rgba(227,253,90,.16)</code></td><td>Primary button hover</td></tr>
+      <tr><td>Yellow pressed</td><td><code>#CFE844</code></td><td>Primary button active</td></tr>
+      <tr><td>Green hover</td><td><code>#24493A</code></td><td>Green button hover</td></tr>
+      <tr><td>Focus ring (inputs)</td><td>border <code>#A3B62B</code> + <code>0 0 0 4px rgba(227,253,90,.3)</code></td><td>Text fields</td></tr>
+      <tr><td>Error</td><td><code>#B5543A</code> on light · <code>#F0A88A</code> on green</td><td>Field errors</td></tr>
+      <tr><td>Card edge</td><td><code>#7A846280</code> (50%)</td><td>Card border on green</td></tr>
+    </table></div>
+
+    <h3>Proportion</h3>
+    <p>Across a page, roughly: green 70%, linen and white 25%, neutrals for text, yellow under 5%.</p>
+    <div class="ratio" aria-hidden="true">
+      <span style="flex:70;background:#12301F;color:#CBBFA8">Green 70%</span>
+      <span style="flex:22;background:#F5F3EF;color:#55604F">Linen 22%</span>
+      <span style="flex:3;background:#fff"></span>
+      <span style="flex:3;background:#E3FD5A;color:#191A16">Y</span>
+      <span style="flex:2;background:#8F442D"></span>
+    </div>
+
+    <h3>Section themes</h3>
+    <p>Each section sets <code>data-theme</code>; the theme swaps a few variables and every component reads from them.</p>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="theme" style="background:#12301F;color:#F5F3EF"><span class="lab">green</span><span class="t">Heading in linen</span><span class="s" style="color:#D9D2C3">Lead in stone, secondary in sand.</span><i class="rule" style="background:rgba(245,243,239,.18)"></i><code style="color:#CBBFA8">--fg linen · --lead stone · --sub sand</code></div>
+      <div class="theme" style="background:#F5F3EF;color:#12301F;border:1px solid var(--rule-l)"><span class="lab" style="color:#8F442D">linen</span><span class="t">Heading in green</span><span class="s" style="color:#55604F">Lead and secondary in mute.</span><i class="rule" style="background:rgba(18,48,31,.14)"></i><code style="color:#55604F">--fg green · --lead mute · eyebrow rust</code></div>
+      <div class="theme" style="background:#fff;color:#12301F;border:1px solid var(--rule-l)"><span class="lab" style="color:#8F442D">white</span><span class="t">Heading in green</span><span class="s" style="color:#55604F">Used for the logo rail.</span><i class="rule" style="background:rgba(18,48,31,.12)"></i><code style="color:#55604F">--fg green · --rule 12%</code></div>
+    </div>
+
+    <h3>Contrast (WCAG 2.2)</h3>
+    <div class="grid g2">
+      <div>
+        <div class="pair" style="background:#12301F;color:#F5F3EF">Linen on green<em style="background:rgba(227,253,90,.2)">12.9 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#D9D2C3">Stone on green<em style="background:rgba(227,253,90,.2)">9.5 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#CBBFA8">Sand on green<em style="background:rgba(227,253,90,.2)">7.9 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#E3FD5A">Yellow on green<em style="background:rgba(227,253,90,.2)">12.6 · AAA</em></div>
+        <div class="pair" style="background:#E3FD5A;color:#191A16">On-yellow on yellow<em>15.4 · AAA</em></div>
+      </div>
+      <div>
+        <div class="pair" style="background:#F5F3EF;color:#12301F;border:1px solid var(--rule-l)">Green on linen<em>12.9 · AAA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#55604F;border:1px solid var(--rule-l)">Mute on linen<em>6.0 · AA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#8F442D;border:1px solid var(--rule-l)">Rust on linen<em>6.3 · AA</em></div>
+        <div class="pair" style="background:#fff;color:#12301F;border:1px solid var(--rule-l)">Green on white<em>14.3 · AAA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#E3FD5A;border:1px solid var(--rule-l)">Yellow on linen<em style="background:#8F442D;color:#fff">1.0 · Fail</em></div>
+      </div>
+    </div>
+    <p class="note">Yellow fails on linen and white. On light grounds, eyebrows switch to rust and arrows to green; yellow buttons stay because their text is on-yellow.</p>
+  </div>
+</section>
+
+<!-- 04 TYPE -->
+<section class="sec" id="type">
+  <div class="in">
+    <span class="eb">04 · Typography</span>
+    <h2>Typography</h2>
+    <p class="lead">Two families. Ashcroft, a serif, for headlines and large figures. SFT Schrifted Sans for body, labels, buttons and UI.</p>
+    <div class="grid g2" style="margin-top:40px">
+      <div class="fam" style="background:#12301F;color:#F5F3EF"><div><h4>Display · headlines, figures</h4><div class="glyph" style="font-family:var(--serif)">Aa</div><div class="chars" style="font-family:var(--serif)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 $%&amp;·→</div></div><div class="m" style="color:#CBBFA8"><span>Ashcroft</span><span>Light 300 · Regular 400 · Medium 500</span></div></div>
+      <div class="fam" style="background:#fff;border:1px solid var(--rule-l)"><div><h4>Text · body, UI, labels</h4><div class="glyph" style="font-family:var(--sans)">Aa</div><div class="chars" style="font-family:var(--sans)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 $%&amp;·→</div></div><div class="m" style="color:#55604F"><span>SFT Schrifted Sans</span><span>Regular 400 · Medium 500</span></div></div>
+    </div>
+    <p class="note"><b>Licensing:</b> the prototype uses trial files of both fonts, which are for review only. Production needs web licences for Ashcroft and SFT Schrifted Sans, served as WOFF2 with <code>font-display: swap</code>. The client should buy the licences before launch; until then use the fallback stacks below.</p>
+    <div class="tw" style="margin-top:24px"><table>
+      <tr><th>Token</th><th>Stack</th></tr>
+      <tr><td><code>--serif</code></td><td><code>'Ashcroft', 'Iowan Old Style', Georgia, serif</code></td></tr>
+      <tr><td><code>--sans</code></td><td><code>'SFT Schrifted Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</code></td></tr>
+    </table></div>
+
+    <h3>Type scale</h3>
+    <p>Desktop sizes at 1440px; the phone size applies below 900px. Line height is unitless; letter spacing is in em.</p>
+    <div style="margin-top:28px">
+      <div class="spec"><div class="k"><b>Display · page hero</b>Ashcroft 400 · 68 / 1.02 · −0.015em<br>Phone 44 · Capital, Prime</div><div style="font:400 68px/1.02 var(--serif);letter-spacing:-.015em">SecondLane Capital</div></div>
+      <div class="spec"><div class="k"><b>H1 · home hero</b>Ashcroft 400 · 58 / 1.04 · −0.015em<br>Phone 36</div><div style="font:400 58px/1.04 var(--serif);letter-spacing:-.015em">Get into the companies defining AI, defense, and space.</div></div>
+      <div class="spec"><div class="k"><b>H2 · section title</b>Ashcroft 400 · 48 / 1.05 · −0.012em<br>Phone 34</div><div style="font:400 48px/1.05 var(--serif);letter-spacing:-.012em">Liquidity starts here.</div></div>
+      <div class="spec"><div class="k"><b>H3 · card and FAQ title</b>Ashcroft 400 · 36 / 1.1<br>Phone 28 · FAQ 32 → 24</div><div style="font:400 36px/1.1 var(--serif)">SecondLane Prime</div></div>
+      <div class="spec"><div class="k"><b>H4 · small serif</b>Ashcroft 400 · 30 / 1.15<br>Phone 24</div><div style="font:400 30px/1.15 var(--serif)">Independent administration</div></div>
+      <div class="spec"><div class="k"><b>Figure · stats</b>Ashcroft 300 · 64 / 1 · −0.01em<br>Phone 48</div><div style="font:300 64px/1 var(--serif);letter-spacing:-.01em">17,000+</div></div>
+      <div class="spec"><div class="k"><b>Lead · standfirst</b>SFT 400 · 18 / 1.5 · max 34em<br>Phone 16</div><div style="font:400 18px/1.5 var(--sans);color:var(--mute);max-width:34em">Three verticals connect our participants and founders to private market opportunities.</div></div>
+      <div class="spec"><div class="k"><b>Body</b>SFT 400 · 17 / 1.55<br>Phone 16</div><div style="font:400 17px/1.55 var(--sans);max-width:38em">Every introduction runs through documented compliance checks, with third-party providers handling custody, escrow and administration.</div></div>
+      <div class="spec"><div class="k"><b>Small · footer, help text</b>SFT 400 · 15 / 1.5 · captions 13</div><div style="font:400 15px/1.5 var(--sans);color:var(--mute)">We use your email only for the report. Leave at any time.</div></div>
+      <div class="spec"><div class="k"><b>Eyebrow</b>SFT 500 · 12 / 16 · +0.07em · uppercase</div><div><span class="lab" style="color:var(--rust)">Three verticals</span></div></div>
+      <div class="spec"><div class="k"><b>Button</b>SFT 500 · 16 / 1 · compact 15</div><div style="font:500 16px/1 var(--sans)">Get introduced</div></div>
+      <div class="spec"><div class="k"><b>Field label</b>SFT 500 · 11 / 16 · +0.06em · uppercase</div><div style="font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)">Email</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:40px">
+      <div class="do"><b>Do</b><ul class="list"><li>Sentence case for every heading and button.</li><li>Balance headline lines (<code>text-wrap: balance</code>).</li><li>Keep body lines between 50 and 75 characters.</li><li>Use tabular figures in tables and stats.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Set body copy in Ashcroft or headlines in the sans.</li><li>Use bold weights above 500, italics or underlines for emphasis.</li><li>Use all caps outside eyebrows and field labels.</li><li>Track headlines positively.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 LAYOUT -->
+<section class="sec" id="layout">
+  <div class="in">
+    <span class="eb">05 · Layout and spacing</span>
+    <h2>Layout and spacing</h2>
+    <p class="lead">One centred container, a 12-column grid inside it and generous vertical rhythm. Every section sits on the same left and right edges.</p>
+    <h3>Container and grid</h3>
+    <figure class="cols"><i class="pad" style="left:0"></i><i class="pad" style="right:0"></i><div class="grid12"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><figcaption>Max 1312px · 64px side padding · 12 columns · 24px gutter</figcaption></figure>
+    <div class="tw" style="margin-top:24px"><table>
+      <tr><th>Property</th><th>Desktop</th><th>Below 900px</th></tr>
+      <tr><td>Container max width</td><td><code>1312px</code> (1184px of content)</td><td>Full width</td></tr>
+      <tr><td>Side padding</td><td><code>64px</code></td><td><code>20px</code></td></tr>
+      <tr><td>Columns / gutter</td><td>12 / <code>24px</code></td><td>4 / <code>16px</code></td></tr>
+      <tr><td>Section padding (vertical)</td><td><code>136px</code></td><td><code>88px</code></td></tr>
+      <tr><td>Section head to content</td><td><code>72px</code></td><td><code>40px</code></td></tr>
+      <tr><td>Section head</td><td>Title 6 cols, standfirst 5 cols, bottom aligned, 72px apart</td><td>Stacked</td></tr>
+      <tr><td>Nav height</td><td><code>96px</code>, <code>76px</code> once scrolled</td><td><code>64px</code></td></tr>
+    </table></div>
+    <h3>Common layouts</h3>
+    <div class="tw"><table>
+      <tr><th>Pattern</th><th>Columns</th><th>Used for</th></tr>
+      <tr><td>Three cards</td><td>3 × 4 cols</td><td>Verticals, insights, LP advantages</td></tr>
+      <tr><td>Four tiles</td><td>4 × 3 cols</td><td>Team, Prime founder blocks</td></tr>
+      <tr><td>Split</td><td>5 + 7 cols</td><td>Text beside an image or panel</td></tr>
+      <tr><td>Stats band</td><td>3 equal glass cards</td><td>2013 · 17,000+ · 1,500+</td></tr>
+      <tr><td>Footer</td><td>5 + 2 + 2 + 2 cols</td><td>Brand line and three link columns</td></tr>
+    </table></div>
+    <h3>Spacing scale</h3>
+    <p>Use only these steps (px). Small steps space components internally; large steps separate blocks and sections.</p>
+    <div class="space" style="margin-top:20px">
+      <div><b>space-1</b><code>4</code><i style="width:4px"></i></div>
+      <div><b>space-2</b><code>8</code><i style="width:8px"></i></div>
+      <div><b>space-3</b><code>12</code><i style="width:12px"></i></div>
+      <div><b>space-4</b><code>16</code><i style="width:16px"></i></div>
+      <div><b>space-5</b><code>24</code><i style="width:24px"></i></div>
+      <div><b>space-6</b><code>32</code><i style="width:32px"></i></div>
+      <div><b>space-7</b><code>44</code><i style="width:44px"></i></div>
+      <div><b>space-8</b><code>56</code><i style="width:56px"></i></div>
+      <div><b>space-9</b><code>72</code><i style="width:72px"></i></div>
+      <div><b>space-10</b><code>88</code><i style="width:88px"></i></div>
+      <div><b>space-11</b><code>136</code><i style="width:136px"></i></div>
+    </div>
+    <h3>Radius and elevation</h3>
+    <div class="tw"><table>
+      <tr><th>Token</th><th>Value</th><th>Used for</th></tr>
+      <tr><td><code>--radius-sm</code></td><td>4px</td><td>Buttons, inputs, tags</td></tr>
+      <tr><td><code>--radius-md</code></td><td>8px</td><td>Cards, image frames</td></tr>
+      <tr><td><code>--radius-lg</code></td><td>12px</td><td>Glass panels (stats, waitlist form)</td></tr>
+      <tr><td><code>--shadow-lift</code></td><td><code>0 27px 67px rgba(0,0,0,.45)</code></td><td>Card hover only. Nothing has a shadow at rest.</td></tr>
+      <tr><td><code>--glass</code></td><td>fill <code>rgba(18,48,31,.55)</code>, <code>blur(24px)</code>, 1px line at 20%, inner top highlight 12%</td><td>Panels over the dot field or photos</td></tr>
+    </table></div>
+    <p class="note">Breakpoints: <code>900px</code> switches to the phone layout, <code>1180px</code> moves the company directory's sidebar above the list. Phone layouts are not designed yet: they follow once the desktop layouts and components are approved. Until then, stack columns in reading order at 900px.</p>
+  </div>
+</section>
+
+<!-- 06 COMPONENTS -->
+<section class="sec" id="components">
+  <div class="in">
+    <span class="eb">06 · Components</span>
+    <h2>Components</h2>
+    <p class="lead">The examples below are live: hover them to see the states. They use the same CSS as the prototype.</p>
+
+    <h3>Buttons</h3>
+    <div class="stage g">
+      <a class="btn btn-y" href="#components">Get introduced</a>
+      <a class="btn btn-o" href="#components">See how it works</a>
+      <a class="btn btn-y sm" href="#components">Get introduced</a>
+      <span class="btn btn-y h">Hover</span><span class="btn btn-y a">Pressed</span><span class="btn btn-y f">Focus</span>
+    </div>
+    <div class="stage l" style="margin-top:16px">
+      <a class="btn btn-g" href="#components">Get the report</a>
+      <a class="btn btn-o" href="#components">See how it works</a>
+      <a class="btn btn-y" href="#components">Get on the list</a>
+      <button class="btn btn-g" disabled>Disabled</button>
+    </div>
+    <div class="tw" style="margin-top:20px"><table>
+      <tr><th>Variant</th><th>Spec</th><th>Use</th></tr>
+      <tr><td>Primary · yellow</td><td>52px tall, 26px side padding, radius 4, SFT 500 16. Compact: 46px, 22px, 15.</td><td>One main action per screen.</td></tr>
+      <tr><td>Outline</td><td>1px line at 60% of the text colour; hover fills 8%.</td><td>Secondary action next to a primary.</td></tr>
+      <tr><td>Green</td><td>Green fill, linen text, hover <code>#24493A</code>.</td><td>Primary action on linen or white grounds when yellow would be too loud.</td></tr>
+    </table></div>
+    <p class="note">At most two buttons side by side: one primary, one outline. Transitions: colour .18s, press moves 1px down.</p>
+
+    <h3>Arrow link and eyebrow</h3>
+    <div class="grid g2">
+      <div class="stage g"><div><span class="lab">Monthly report</span><p style="margin:14px 0 20px;font:400 30px/1.1 var(--serif)">Know what the market did before it moves</p><a class="alink" href="#components">Read all insights</a></div></div>
+      <div class="stage l"><div><span class="lab">Who SecondLane works with</span><p style="margin:14px 0 20px;font:400 30px/1.1 var(--serif)">Four ways in, one network</p><a class="alink" href="#components">See how funds use Prime</a></div></div>
+    </div>
+    <p style="margin-top:14px">Arrow links: SFT 500 17, 10px gap, 16px arrow in yellow (green on light grounds), arrow moves 4px right on hover. Eyebrow: always above an H2 or card title.</p>
+
+    <h3>Form fields</h3>
+    <div class="grid g2">
+      <div class="stage l" style="flex-direction:column;align-items:flex-start">
+        <label class="fl"><span class="fl__l">Email</span><input class="inp" type="email" placeholder="you@company.com"></label>
+        <label class="fl"><span class="fl__l">Email · focus</span><input class="inp f" type="email" value="eugenie@" aria-label="Email, focus example"></label>
+        <label class="fl"><span class="fl__l">Email · error</span><input class="inp e" type="email" value="eugenie" aria-invalid="true" aria-label="Email, error example"><span class="err">Enter an email address, like you@company.com</span></label>
+      </div>
+      <div class="box">
+        <h4>Rules</h4>
+        <ul class="list"><li>52px tall, radius 4, white fill on every ground, 1px line at 35% green.</li><li>A visible label above every field. The placeholder is an example, never the label.</li><li>Errors appear under the field, say how to fix it, and set <code>aria-invalid</code> plus <code>aria-describedby</code>.</li><li>Validate on submit, then live while the person corrects.</li><li>After submit, replace the form in place with the confirmation (Access: "You're on the list." with the four next steps).</li><li>Help line under the button: what we do with the email.</li></ul>
+      </div>
+    </div>
+
+    <h3>Card</h3>
+    <div class="stage g">
+      <article class="card lit"><h5>SecondLane Capital</h5><p>Our institutional arm. Positions handled end to end, around your mandate.</p><span class="lab">Institutions · Family offices</span><div class="ph"><img src="../assets/lidar.jpg" alt=""></div></article>
+      <div style="flex:1;min-width:260px;font-size:15px;line-height:1.6">
+        <h4>One card style everywhere</h4>
+        <ul class="list"><li>Green fill, 1px edge <code>#7A846280</code>, radius 8, padding 30 / 26 / 26, 18px gap.</li><li>Image bleeds to the card's sides and bottom, 5:4, bottom corners 7px.</li><li>Hover: lifts 6px with the lift shadow over .7s <code>cubic-bezier(.2,.7,.2,1)</code>, and a 1px yellow edge lights up near the cursor.</li><li>The image never zooms on hover.</li><li>The whole card is one link; inner text is not separately clickable.</li></ul>
+      </div>
+    </div>
+
+    <h3>Stat panel</h3>
+    <div class="stage g" style="background:#12301F radial-gradient(rgba(227,253,90,.25) 1.05px,transparent 1.3px) 0 0/9px 9px">
+      <div class="fact"><b>2013</b><span>Working private markets since</span></div>
+      <div class="fact"><b>17,000+</b><span>Qualified participants in the network</span></div>
+      <div class="fact"><b>1,500+</b><span>Private companies covered</span></div>
+    </div>
+
+    <h3>Questions (accordion)</h3>
+    <div class="stage l">
+      <div class="qa">
+        <details open><summary>What can I get into?</summary><p>Private companies across AI, defense, space and the sectors shaping what comes next, sourced through our network.</p></details>
+        <details><summary>Who can join?</summary><p>Accredited investors in the US and qualified participants elsewhere. We confirm eligibility before your first opportunity.</p></details>
+        <details><summary>How do I fund?</summary><p>By USDC or wire. Every opportunity sits in its own dedicated vehicle.</p></details>
+      </div>
+    </div>
+    <p style="margin-top:14px">Use native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> or a button with <code>aria-expanded</code>. First item open. Plus becomes minus when open.</p>
+
+    <h3>Navigation</h3>
+    <div class="stage g" style="padding:24px">
+      <div class="navdemo"><i class="logo"></i><span>Access</span><span>Capital</span><span class="cur">Prime</span><span>Companies</span><span>Insights</span><span>About</span><span class="sp">Sign in</span><span class="btn btn-y sm">Get introduced</span></div>
+    </div>
+    <ul class="list" style="margin-top:14px">
+      <li>Sticky. Transparent over the hero, then green at 88% with a 24px blur and a bottom hairline once the page scrolls past 40px; height 96 → 76px.</li>
+      <li>Links SFT 500 15, 36–44px apart. Current page: 2px yellow underline.</li>
+      <li>The nav button carries the page's main action: Get introduced; Get on the list on Access; Get connected on Capital.</li>
+      <li>Footer: same green, column headings in yellow (SFT 500 11, uppercase), links in sand, disclaimers at 13px.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 IMAGERY -->
+<section class="sec dark" id="imagery">
+  <div class="in">
+    <span class="eb">07 · Imagery</span>
+    <h2>Imagery</h2>
+    <p class="lead">Two approved styles: warm editorial photography for people and places, and halftone objects for the sectors SecondLane covers. Plus one generated pattern, the dot field.</p>
+    <h3>Photography</h3>
+    <div class="grid g3">
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/funds.jpg" alt="Editorial photograph of a person at a window above a city"><figcaption>People</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/report.jpg" alt="Editorial photograph of a stone-walled office"><figcaption>Places</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/desk-watch.jpg" alt="Close-up of a hand with a watch resting on a wooden desk"><figcaption>Details</figcaption></figure>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="do"><b>Do</b><ul class="list"><li>Natural light, warm tones, real materials: stone, wood, wool, brass.</li><li>Quiet, unposed moments; people seen at work, not smiling at the camera.</li><li>Leave calm space for text when the image sits behind type.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Filters, heavy grading, neon or yellow light.</li><li>Trading screens, charts on monitors, handshakes, piles of cash.</li><li>Stock photography that looks staged.</li></ul></div>
+    </div>
+    <h3>Halftone objects</h3>
+    <div class="grid g4">
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/ins-chip.jpg" alt="Halftone rendering of a processor chip"><figcaption>AI</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/cooling.jpg" alt="Halftone rendering of a cooling component"><figcaption>Infrastructure</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/ins-insulators.jpg" alt="Halftone rendering of power line insulators"><figcaption>Energy</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4;background:#F5F3EF"><img src="../assets/htl1.jpg" alt="Halftone object on a linen ground"><figcaption>Light version</figcaption></figure>
+    </div>
+    <ul class="list" style="margin-top:20px">
+      <li>One object per image from a SecondLane sector: AI, crypto, fintech, consumer tech, gaming, space, deep tech, autonomy, defense, energy.</li>
+      <li>Dark version: object on <code>#12301F</code> with a soft dot halo that fades out, never an opaque glow. Light version: object alone on <code>#F5F3EF</code>.</li>
+      <li>One small terracotta or bronze accent per image. No yellow or neon inside images: yellow belongs to the interface.</li>
+    </ul>
+    <h3>Dot field</h3>
+    <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
+    <div class="tw" style="margin-top:20px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Ground</td><td><code>#12301F</code>, drawn on a <code>&lt;canvas&gt;</code> at up to 2× device pixel ratio</td></tr>
+      <tr><td>Grid</td><td>9px cell, dot centred in each cell</td></tr>
+      <tr><td>Dot at rest</td><td>radius 1.05px, <code>rgba(227,253,90,.22)</code></td></tr>
+      <tr><td>Near the pointer</td><td>within 220px, smoothstep falloff <code>f</code>: radius <code>1.05 × (1 + f)</code>, alpha <code>.22 + .5 × f</code></td></tr>
+      <tr><td>Pointer easing</td><td>follows at 0.12 per frame; fades in at 0.08, out at 0.03</td></tr>
+      <tr><td>Performance</td><td>draw only while on screen (IntersectionObserver); static at rest under reduced motion</td></tr>
+    </table></div>
+    <h3>Image ratios</h3>
+    <div class="ar" aria-hidden="true">
+      <div style="width:160px;aspect-ratio:3/2">3:2 · hero art</div>
+      <div style="width:128px;aspect-ratio:4/5">4:5 · page hero</div>
+      <div style="width:160px;aspect-ratio:5/4">5:4 · card</div>
+      <div style="width:160px;aspect-ratio:4/3">4:3 · split image</div>
+      <div style="width:108px;aspect-ratio:3/4">3:4 · portrait</div>
+    </div>
+    <p class="note">Serve images as AVIF or WebP with a JPEG fallback through <code>srcset</code>, lazy-load everything below the first screen, and give each image meaningful <code>alt</code> text (empty <code>alt=""</code> for decorative halftones). The images in the prototype are placeholders; final art is produced per page.</p>
+  </div>
+</section>
+
+<!-- 08 MOTION -->
+<section class="sec dark" id="motion" style="border-top:1px solid var(--rule-d)">
+  <div class="in">
+    <span class="eb">08 · Motion</span>
+    <h2>Motion</h2>
+    <p class="lead">Slow and soft: things settle rather than snap. Motion only responds to the visitor or reveals content once. Hover a row to play it.</p>
+    <div style="margin-top:32px">
+      <div class="mo" style="--d:.7s;--e:cubic-bezier(.2,.7,.2,1)"><div class="track"><i></i></div><div><b>Card lift</b> · 6px up, .7s, <code>cubic-bezier(.2,.7,.2,1)</code></div></div>
+      <div class="mo" style="--d:.9s;--e:cubic-bezier(.2,.7,.2,1)"><div class="track"><i></i></div><div><b>Reveal</b> · 24px rise plus fade, .9s, items 160ms apart, once per page view</div></div>
+      <div class="mo" style="--d:.18s;--e:ease"><div class="track"><i></i></div><div><b>Controls</b> · buttons and links .18s; press 1px down in .08s</div></div>
+      <div class="mo" style="--d:.35s;--e:ease"><div class="track"><i></i></div><div><b>Edges and nav</b> · lit edge and nav background .35s ease</div></div>
+      <div class="mo" style="--d:.6s;--e:cubic-bezier(.65,0,.35,1)"><div class="track"><i></i></div><div><b>Panels</b> · tabs and accordions, <code>--ease: cubic-bezier(.65,0,.35,1)</code></div></div>
+    </div>
+    <div class="grid g2" style="margin-top:32px">
+      <div class="do"><b>Do</b><ul class="list"><li>Animate <code>transform</code> and <code>opacity</code> only.</li><li>Honour <code>prefers-reduced-motion</code>: no lifts, rises or moving dots; everything visible at once.</li><li>Keep content readable if scripts fail: hidden-until-revealed content must default to visible.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Parallax, auto-playing carousels, tilt or bouncing easings.</li><li>Zoom images on hover.</li><li>Loop anything for more than 5 seconds without a pause control.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 A11Y -->
+<section class="sec" id="a11y">
+  <div class="in">
+    <span class="eb">09 · Accessibility</span>
+    <h2>Accessibility</h2>
+    <p class="lead">Target WCAG 2.2 level AA on every page. Most of it comes for free from the palette and the components above; these are the parts to check in the build.</p>
+    <div class="grid g3" style="margin-top:40px">
+      <div class="box"><h4>Contrast</h4><p>Body text at least 4.5:1, large text and UI 3:1. Every token pair in section 3 passes; yellow never sits on light grounds as text.</p></div>
+      <div class="box"><h4>Keyboard</h4><p>Everything reachable by Tab in reading order. Visible focus: 2px outline in the text colour, 3px offset. A skip link to the main content.</p></div>
+      <div class="box"><h4>Targets</h4><p>At least 44 × 44px for anything clickable, including the arrow links and accordion rows.</p></div>
+      <div class="box"><h4>Structure</h4><p>One H1 per page, headings in order, landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>), tabs with proper ARIA roles.</p></div>
+      <div class="box"><h4>Forms</h4><p>Real labels, errors in text, <code>autocomplete</code> set (email), confirmation announced with <code>role="status"</code>.</p></div>
+      <div class="box"><h4>Motion and media</h4><p>Reduced motion respected; decorative canvases <code>aria-hidden</code>; meaningful images described in <code>alt</code>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 WORDS -->
+<section class="sec" id="words">
+  <div class="in">
+    <span class="eb">10 · Words and compliance</span>
+    <h2>Words and compliance</h2>
+    <p class="lead">SecondLane is an introduction network until its licence is live. Interface copy, button labels, alt text and metadata all follow the pre-licence glossary. Final copy comes from the client's copy deck; Omar signs it off.</p>
+    <h3>Pre-licence glossary</h3>
+    <div class="tw"><table class="gl">
+      <tr><th>Write</th><th>Not</th></tr>
+      <tr><td>opportunity, secondary opportunity</td><td>deal, trade, investment, offering</td></tr>
+      <tr><td>introduction, get introduced</td><td>buy, sell, trade, invest, order</td></tr>
+      <tr><td>interested party, existing holder</td><td>buyer, seller, counterparty (in UI)</td></tr>
+      <tr><td>qualified participants</td><td>investors, clients (in UI)</td></tr>
+      <tr><td>private company interests</td><td>shares, stock, equity (in UI)</td></tr>
+      <tr><td>dedicated vehicle</td><td>SPV</td></tr>
+      <tr><td>last publicly reported valuation</td><td>price, current price, order book</td></tr>
+    </table></div>
+    <h3>Calls to action</h3>
+    <div class="tw"><table>
+      <tr><th>Page</th><th>Main action</th></tr>
+      <tr><td>Site default, Prime, company pages</td><td>Get introduced</td></tr>
+      <tr><td>Home hero</td><td>Access network</td></tr>
+      <tr><td>Access</td><td>Get on the list</td></tr>
+      <tr><td>Capital</td><td>Get connected</td></tr>
+      <tr><td>Monthly report</td><td>Get the report</td></tr>
+    </table></div>
+    <h3>Required disclaimer</h3>
+    <div class="box"><p>SecondLane is an introduction network and is not a registered broker-dealer in the United States.</p></div>
+    <p style="margin-top:12px">Show it under the home hero and in every footer. Pages with opportunities also carry a risk line, for example: "Private company interests are illiquid and you may lose the full amount you put in. Nothing on this page is an offer to buy or sell, or a recommendation."</p>
+    <p class="note">FINRA Rule 2210: scarcity and timing are fine ("closes when the company lists"); promised or implied returns, "guaranteed", price predictions and fake countdowns are not. Figures in square brackets in the prototype, such as <code>$[X]B</code>, are placeholders for real data.</p>
+  </div>
+</section>
+
+<!-- 11 TOKENS -->
+<section class="sec" id="tokens">
+  <div class="in">
+    <span class="eb">11 · Design tokens</span>
+    <h2>Design tokens</h2>
+    <p class="lead">Copy these into the codebase as the single source for colour, type and spacing. The CSS version is what the prototype runs on.</p>
+    <div class="tabs" role="tablist" aria-label="Token format">
+      <button role="tab" aria-selected="true" aria-controls="t-css" id="b-css">CSS</button>
+      <button role="tab" aria-selected="false" aria-controls="t-json" id="b-json">JSON</button>
+      <button role="tab" aria-selected="false" aria-controls="t-tw" id="b-tw">Tailwind</button>
+    </div>
+    <div class="panel" id="t-css" role="tabpanel" aria-labelledby="b-css"><div class="code"><button type="button" data-copy>Copy</button><pre><code>:root {
+  /* colour */
+  --green: #12301F;      /* primary ground */
+  --green-2: #17392A;    /* raised panels on green */
+  --linen: #F5F3EF;      /* text on green, light ground */
+  --stone: #D9D2C3;      /* lead text on green */
+  --sand: #CBBFA8;       /* secondary text on green */
+  --mute: #55604F;       /* secondary text on light */
+  --rust: #8F442D;       /* eyebrows on light */
+  --yel: #E3FD5A;        /* signal: primary action, active */
+  --yel-hover: #EDFF8C;
+  --yel-press: #CFE844;
+  --on-yel: #191A16;
+  --green-hover: #24493A;
+  --white: #FFFFFF;
+  --error: #B5543A;
+  --error-on-green: #F0A88A;
+  --rule-on-green: rgba(245, 243, 239, .18);
+  --rule-on-light: rgba(18, 48, 31, .14);
+  --card-edge: rgba(122, 132, 98, .5);
+
+  /* type */
+  --serif: 'Ashcroft', 'Iowan Old Style', Georgia, serif;
+  --sans: 'SFT Schrifted Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --fs-display: 68px;  --lh-display: 1.02;
+  --fs-h1: 58px;       --lh-h1: 1.04;
+  --fs-h2: 48px;       --lh-h2: 1.05;
+  --fs-h3: 36px;       --lh-h3: 1.1;
+  --fs-h4: 30px;       --lh-h4: 1.15;
+  --fs-figure: 64px;   --lh-figure: 1;
+  --fs-lead: 18px;     --lh-lead: 1.5;
+  --fs-body: 17px;     --lh-body: 1.55;
+  --fs-small: 15px;
+  --fs-caption: 13px;
+  --fs-eyebrow: 12px;  --ls-eyebrow: .07em;
+  --ls-display: -.015em;
+  --ls-h2: -.012em;
+
+  /* layout */
+  --container: 1312px;
+  --gutter-x: 64px;
+  --grid-gap: 24px;
+  --section-y: 136px;
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 44px; --space-8: 56px;
+  --space-9: 72px; --space-10: 88px; --space-11: 136px;
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+  --shadow-lift: 0 27px 67px rgba(0, 0, 0, .45);
+  --focus-ring: 0 0 0 4px rgba(227, 253, 90, .3);
+
+  /* motion */
+  --ease: cubic-bezier(.65, 0, .35, 1);
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: .18s;
+  --dur-base: .35s;
+  --dur-slow: .7s;
+  --stagger: 160ms;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --fs-display: 44px; --fs-h1: 36px; --fs-h2: 34px; --fs-h3: 28px;
+    --fs-h4: 24px; --fs-figure: 48px; --fs-lead: 16px; --fs-body: 16px;
+    --gutter-x: 20px; --grid-gap: 16px; --section-y: 88px;
+  }
+}
+
+[data-theme="green"] { --bg: var(--green); --fg: var(--linen); --lead: var(--stone); --sub: var(--sand); --rule: var(--rule-on-green); --eyebrow: var(--yel); }
+[data-theme="linen"] { --bg: var(--linen); --fg: var(--green); --lead: var(--mute); --sub: var(--mute); --rule: var(--rule-on-light); --eyebrow: var(--rust); }
+[data-theme="white"] { --bg: var(--white); --fg: var(--green); --lead: var(--mute); --sub: var(--mute); --rule: rgba(18, 48, 31, .12); --eyebrow: var(--rust); }</code></pre></div></div>
+    <div class="panel" id="t-json" role="tabpanel" aria-labelledby="b-json" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code>{
+  "color": {
+    "green":   { "$value": "#12301F", "$type": "color" },
+    "green-2": { "$value": "#17392A", "$type": "color" },
+    "linen":   { "$value": "#F5F3EF", "$type": "color" },
+    "stone":   { "$value": "#D9D2C3", "$type": "color" },
+    "sand":    { "$value": "#CBBFA8", "$type": "color" },
+    "mute":    { "$value": "#55604F", "$type": "color" },
+    "rust":    { "$value": "#8F442D", "$type": "color" },
+    "yellow":  { "$value": "#E3FD5A", "$type": "color" },
+    "yellow-hover": { "$value": "#EDFF8C", "$type": "color" },
+    "yellow-press": { "$value": "#CFE844", "$type": "color" },
+    "on-yellow": { "$value": "#191A16", "$type": "color" },
+    "green-hover": { "$value": "#24493A", "$type": "color" },
+    "white":   { "$value": "#FFFFFF", "$type": "color" },
+    "error":   { "$value": "#B5543A", "$type": "color" },
+    "error-on-green": { "$value": "#F0A88A", "$type": "color" }
+  },
+  "font": {
+    "serif": { "$value": ["Ashcroft", "Iowan Old Style", "Georgia", "serif"], "$type": "fontFamily" },
+    "sans":  { "$value": ["SFT Schrifted Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"], "$type": "fontFamily" }
+  },
+  "type": {
+    "display": { "family": "serif", "weight": 400, "size": 68, "sizeMobile": 44, "lineHeight": 1.02, "letterSpacing": "-0.015em" },
+    "h1":      { "family": "serif", "weight": 400, "size": 58, "sizeMobile": 36, "lineHeight": 1.04, "letterSpacing": "-0.015em" },
+    "h2":      { "family": "serif", "weight": 400, "size": 48, "sizeMobile": 34, "lineHeight": 1.05, "letterSpacing": "-0.012em" },
+    "h3":      { "family": "serif", "weight": 400, "size": 36, "sizeMobile": 28, "lineHeight": 1.1 },
+    "h4":      { "family": "serif", "weight": 400, "size": 30, "sizeMobile": 24, "lineHeight": 1.15 },
+    "figure":  { "family": "serif", "weight": 300, "size": 64, "sizeMobile": 48, "lineHeight": 1, "letterSpacing": "-0.01em" },
+    "lead":    { "family": "sans", "weight": 400, "size": 18, "sizeMobile": 16, "lineHeight": 1.5 },
+    "body":    { "family": "sans", "weight": 400, "size": 17, "sizeMobile": 16, "lineHeight": 1.55 },
+    "small":   { "family": "sans", "weight": 400, "size": 15, "lineHeight": 1.5 },
+    "eyebrow": { "family": "sans", "weight": 500, "size": 12, "lineHeight": 16, "letterSpacing": "0.07em", "transform": "uppercase" },
+    "button":  { "family": "sans", "weight": 500, "size": 16, "sizeCompact": 15, "lineHeight": 1 },
+    "label":   { "family": "sans", "weight": 500, "size": 11, "lineHeight": 16, "letterSpacing": "0.06em", "transform": "uppercase" }
+  },
+  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 44, "8": 56, "9": 72, "10": 88, "11": 136 },
+  "radius": { "sm": 4, "md": 8, "lg": 12 },
+  "layout": { "container": 1312, "gutterX": 64, "gutterXMobile": 20, "gridGap": 24, "sectionY": 136, "sectionYMobile": 88, "breakpoint": 900 },
+  "shadow": { "lift": "0 27px 67px rgba(0,0,0,.45)", "focus": "0 0 0 4px rgba(227,253,90,.3)" },
+  "motion": {
+    "ease": "cubic-bezier(.65,0,.35,1)", "easeOut": "cubic-bezier(.2,.7,.2,1)",
+    "fast": "180ms", "base": "350ms", "slow": "700ms", "reveal": "900ms", "stagger": "160ms"
+  }
+}</code></pre></div></div>
+    <div class="panel" id="t-tw" role="tabpanel" aria-labelledby="b-tw" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code>// tailwind.config.js (theme.extend)
+module.exports = {
+  theme: {
+    screens: { md: '900px', lg: '1180px' },
+    extend: {
+      colors: {
+        green: { DEFAULT: '#12301F', 2: '#17392A', hover: '#24493A' },
+        linen: '#F5F3EF', stone: '#D9D2C3', sand: '#CBBFA8',
+        mute: '#55604F', rust: '#8F442D',
+        yellow: { DEFAULT: '#E3FD5A', hover: '#EDFF8C', press: '#CFE844', on: '#191A16' },
+        error: { DEFAULT: '#B5543A', ongreen: '#F0A88A' },
+      },
+      fontFamily: {
+        serif: ['Ashcroft', 'Iowan Old Style', 'Georgia', 'serif'],
+        sans: ['SFT Schrifted Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+      },
+      fontSize: {
+        display: ['68px', { lineHeight: '1.02', letterSpacing: '-0.015em' }],
+        h1: ['58px', { lineHeight: '1.04', letterSpacing: '-0.015em' }],
+        h2: ['48px', { lineHeight: '1.05', letterSpacing: '-0.012em' }],
+        h3: ['36px', { lineHeight: '1.1' }],
+        h4: ['30px', { lineHeight: '1.15' }],
+        figure: ['64px', { lineHeight: '1', letterSpacing: '-0.01em' }],
+        lead: ['18px', { lineHeight: '1.5' }],
+        body: ['17px', { lineHeight: '1.55' }],
+        small: ['15px', { lineHeight: '1.5' }],
+        eyebrow: ['12px', { lineHeight: '16px', letterSpacing: '0.07em' }],
+      },
+      spacing: { 11: '44px', 14: '56px', 18: '72px', 22: '88px', 34: '136px' },
+      maxWidth: { container: '1312px' },
+      borderRadius: { sm: '4px', md: '8px', lg: '12px' },
+      boxShadow: { lift: '0 27px 67px rgba(0,0,0,.45)', focus: '0 0 0 4px rgba(227,253,90,.3)' },
+      transitionTimingFunction: { brand: 'cubic-bezier(.65,0,.35,1)', out: 'cubic-bezier(.2,.7,.2,1)' },
+      transitionDuration: { 180: '180ms', 350: '350ms', 700: '700ms', 900: '900ms' },
+    },
+  },
+};</code></pre></div></div>
+  </div>
+</section>
+
+<!-- 12 RESOURCES -->
+<section class="sec" id="resources">
+  <div class="in">
+    <span class="eb">12 · Resources</span>
+    <h2>Resources</h2>
+    <p class="lead">The prototype is the visual reference for every page. Open it next to this document while building.</p>
+    <div class="grid g3" style="margin-top:40px">
+      <a class="box" href="../index.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Home</p></a>
+      <a class="box" href="../access.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Access (waitlist)</p></a>
+      <a class="box" href="../prime.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Prime</p></a>
+      <a class="box" href="../capital.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Capital</p></a>
+      <a class="box" href="../companies.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Companies directory</p></a>
+      <a class="box" href="../anthropic.html" style="text-decoration:none"><h4>Prototype</h4><p class="alink" style="color:var(--green)">Company page (Anthropic)</p></a>
+    </div>
+    <h3>Files</h3>
+    <div class="tw"><table>
+      <tr><th>Asset</th><th>Where</th><th>Notes</th></tr>
+      <tr><td>Logo</td><td><a href="../assets/logo.svg" download>logo.svg</a></td><td>Single-colour SVG, recolour with CSS.</td></tr>
+      <tr><td>Fonts</td><td>From the foundries</td><td>Buy web licences; the prototype's trial files must not ship.</td></tr>
+      <tr><td>Images</td><td>Supplied per page by design</td><td>Prototype images are placeholders.</td></tr>
+      <tr><td>Figma</td><td>SecondLane — Visual Exploration, page "Website · live prototypes"</td><td>Editable copies of the prototype pages.</td></tr>
+    </table></div>
+    <h3>Still open</h3>
+    <ul class="list">
+      <li>Phone layouts, after desktop sign-off.</li>
+      <li>Production font licences.</li>
+      <li>Final imagery for each page.</li>
+      <li>Body of the company page template, and the post-licence wording (Phase 2).</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">SecondLane visual guidelines · v1.0 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* table of contents: highlight the section on screen */
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.remove('on');}); var a=map[e.target.id]; if(a) a.classList.add('on'); } }); },{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(map).forEach(function(id){ var s=document.getElementById(id); if(s) io.observe(s); });
+  }
+  /* lit edges */
+  document.querySelectorAll('.lit').forEach(function(el){
+    el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+    el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); });
+  });
+  /* token tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ tabs.forEach(function(o){ var on=o===t; o.setAttribute('aria-selected',on); document.getElementById(o.getAttribute('aria-controls')).hidden=!on; }); });
+    t.addEventListener('keydown',function(e){ var n=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:null; if(n!==null){ tabs[n].click(); tabs[n].focus(); } });
+  });
+  /* copy buttons */
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){ var txt=b.parentNode.querySelector('code').textContent; (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ b.textContent='Copied'; setTimeout(function(){b.textContent='Copy';},1600); },function(){ b.textContent='Select and copy'; }); });
+  });
+  /* dot field, same parameters as the site */
+  function Dots(cv,host){
+    var ctx=cv.getContext('2d'),W=0,H=0,C=9,m={x:-1e4,y:-1e4,tx:-1e4,ty:-1e4,a:0,ta:0},vis=true;
+    function size(){ var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2); W=r.width;H=r.height; cv.width=W*d; cv.height=H*d; ctx.setTransform(d,0,0,d,0,0); draw(); }
+    if(!reduce){
+      host.addEventListener('pointermove',function(e){ var r=cv.getBoundingClientRect(); m.tx=e.clientX-r.left; m.ty=e.clientY-r.top; if(m.x<-9e3){m.x=m.tx;m.y=m.ty;} m.ta=1; });
+      host.addEventListener('pointerleave',function(){ m.ta=0; });
+    }
+    function draw(){
+      ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
+      m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
+      for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
+        var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/220); f=f*f*(3-2*f)*m.a; }
+        ctx.fillStyle='rgba(227,253,90,'+(.22+.5*f)+')'; ctx.beginPath(); ctx.arc(x,y,1.05*(1+f),0,6.283); ctx.fill();
+      }
+    }
+    size(); addEventListener('resize',size);
+    if(reduce) return;
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){vis=es[0].isIntersecting;}).observe(cv);
+    (function loop(){ if(vis) draw(); requestAnimationFrame(loop); })();
+  }
+  Dots(document.getElementById('dotCanvas'),document.getElementById('dotDemo'));
+  Dots(document.getElementById('coverDots'),document.querySelector('.cover'));
+})();
+</script>
+</body>
+</html>
