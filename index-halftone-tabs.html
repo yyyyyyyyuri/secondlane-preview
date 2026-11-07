@@ -288,7 +288,7 @@ a.btn{text-decoration:none}
     <section class="hero" data-theme="green">
       <!-- halftone drift: the drone and four Halftone B prints as 3D dots; the tabs switch print, scroll lifts the dots at their own speeds -->
       <canvas class="hero__art" id="heroDots" aria-hidden="true"></canvas>
-      <img class="hero__art" id="heroStill" src="assets/hero-drone.jpg" alt="" hidden>
+      <img class="hero__art" id="heroStill" src="assets/hero-drone-v2.jpg" alt="" hidden>
       <div class="ht-tabs wrap"><div class="ht-tabs__row" role="tablist" aria-label="Illustration">
         <button type="button" role="tab" aria-selected="true" data-k="drone">Drone</button>
         <button type="button" role="tab" aria-selected="false" data-k="gimbal">Gimbal camera</button>
@@ -547,13 +547,13 @@ document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ loc
   addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
 })();
 </script>
-<script src="assets/halftone-drift.js?v=8"></script>
+<script src="assets/halftone-drift.js?v=9"></script>
 <script>
 (function(){
-  var SRC={drone:'assets/hero-drone.jpg'}, FOCAL={drone:[.6,.4],gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.38,.5],grid:[.52,.55]};
+  var SRC={drone:'assets/hero-drone-v2.jpg'}, FOCAL={drone:[.62,.4],gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.38,.5],grid:[.52,.55]};
   // measured object centres in each source print; each lands 60% across the canvas (centred on phones)
-  var OBJ={drone:{c:[.6,.42],at:[.6,.48]},gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.29,.5]},grid:{c:[.65,.55]}};
-  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:SRC.drone,focal:FOCAL.drone,object:OBJ.drone,preset:'fine',detail:2.5,scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
+  var OBJ={drone:{c:[.62,.4],at:[.6,.46]},gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.29,.5]},grid:{c:[.65,.55]}};
+  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:SRC.drone,focal:FOCAL.drone,object:OBJ.drone,preset:'fine',detail:2.5,intro:.3,introDur:1.5,scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
   var tabs=[].slice.call(document.querySelectorAll('.ht-tabs__row button')), still=document.getElementById('heroStill');
   function pick(i){ var k=tabs[i].dataset.k; tabs.forEach(function(t,j){ t.setAttribute('aria-selected',j===i?'true':'false'); t.tabIndex=j===i?0:-1; });
     var src=SRC[k]||'assets/ht-'+k+'.jpg'; ht.show(src,FOCAL[k],OBJ[k]); still.src=src; }

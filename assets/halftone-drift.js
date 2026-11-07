@@ -3,7 +3,7 @@
    so scrolling lifts them at different speeds and the camera sway slides the layers past each other.
 
    Usage:  SecondLaneHalftone.mount(canvas, { src:'assets/ht-accelerator.jpg', focal:[.62,.48], scrollEl:heroSection })
-   Options (all optional): intro .3 / introDur 1 (how far the dots start scattered and how long they take to land), detail 1 (multiplies each tier's dot budget), spacing (overrides the preset's), clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
+   Options (all optional): intro .3 / introDur 1.5 (how far the dots start scattered and how long they take to land), detail 1 (multiplies each tier's dot budget), spacing (overrides the preset's), clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
    object {c:[x,y] object centre in the source, at:[x,y] where it lands, atSmall} places the object instead of focal.
    Returns { show(src, focal, object), pause(), play(), playing, destroy() }; show() fades to another illustration. Respects prefers-reduced-motion and stops drawing off screen. */
@@ -85,12 +85,12 @@
     }
     // scroll: 0 while the hero sits at the top, 1 once it has scrolled out of view
     function progress(){ var r=scrollEl.getBoundingClientRect(); return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height*CLEAR))); }
-    var swA=1, swT=1, pending=null, inT=-1, INA=o.intro!=null?o.intro:.3, IND=o.introDur||1, cache={}, cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
+    var swA=1, swT=1, pending=null, inT=-1, INA=o.intro!=null?o.intro:.3, IND=o.introDur||1.5, cache={}, cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
     function frame(now){
       now=now||performance.now(); var dt=Math.min(.1,(now-last)/1000); last=now;
       var p=reduce?0:progress(), ip=0, inA=1;
-      // arrival: each new print starts scattered along the dots' depths and flies into place over IND seconds, then settles
-      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); ip=INA*Math.pow(1-it,3); inA=Math.min(1,inT/(IND*.3)); if(it>=1) inT=-1; }
+      // arrival (ease in-out, a soft start and a soft landing): each new print starts scattered along the dots' depths and flies into place over IND seconds, then settles
+      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); var ie=io(it); ip=INA*(1-ie); inA=io(Math.min(1,inT/(IND*.35))); if(it>=1) inT=-1; }
       p=p+ip*(1-p);
       if(playing) clock+=dt;
       // ambient sway: camera to the left, back through the centre, to the right and home, once per period
