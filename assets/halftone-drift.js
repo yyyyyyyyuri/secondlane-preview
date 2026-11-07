@@ -5,7 +5,8 @@
    Usage:  SecondLaneHalftone.mount(canvas, { src:'assets/ht-accelerator.jpg', focal:[.62,.48], scrollEl:heroSection })
    Options (all optional): clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
-   Returns { pause(), play(), playing, destroy() }. Respects prefers-reduced-motion and stops drawing off screen. */
+   object {c:[x,y] object centre in the source, at:[x,y] where it lands, atSmall} places the object instead of focal.
+   Returns { show(src, focal, object), pause(), play(), playing, destroy() }; show() fades to another illustration. Respects prefers-reduced-motion and stops drawing off screen. */
 (function(){
   var PRE={fine:{spacing:1.8,dsize:.95,faint:.03,soft:.1,sq:0},standard:{spacing:2.4,dsize:1,faint:.04,soft:.1,sq:0},
     coarse:{spacing:4.5,dsize:1,faint:.05,soft:.12,sq:0},bold:{spacing:7,dsize:1.25,faint:.08,soft:.06,sq:0},pixel:{spacing:4,dsize:1.05,faint:.04,soft:.04,sq:1}};
@@ -31,7 +32,7 @@
   }
 
   function mount(cv,o){
-    o=o||{}; var P=PRE[o.preset||'standard'], focal=o.focal||[.5,.5], spread=o.depth!=null?o.depth:2.6, order=o.depthOrder!=null?o.depthOrder:.5,
+    o=o||{}; var P=PRE[o.preset||'standard'], focal=o.focal||[.5,.5], obj=o.object||null, zf=[.5,.5], spread=o.depth!=null?o.depth:2.6, order=o.depthOrder!=null?o.depthOrder:.5,
       ZOOM=o.zoom||1.8, PUSH=o.push!=null?o.push:.3, SWAY=o.sway!=null?o.sway:.05, PER=o.swayPeriod||20, K=o.light!=null?o.light:.1, scrollEl=o.scrollEl||cv, CLEAR=o.clearAt||.9;
     var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     var gl=cv.getContext('webgl',{antialias:true,premultipliedAlpha:true,alpha:true});
@@ -53,7 +54,13 @@
       var gw=Math.ceil(W/cell), gh=Math.ceil(H/cell), g=document.createElement('canvas'); g.width=gw; g.height=gh;
       var gx=g.getContext('2d',{willReadFrequently:true}); gx.imageSmoothingEnabled=true; gx.imageSmoothingQuality='high';
       var sc=Math.max(gw/img.width,gh/img.height); gx.fillStyle='rgb('+BG.join(',')+')'; gx.fillRect(0,0,gw,gh);
-      gx.drawImage(img,(gw-img.width*sc)*focal[0],(gh-img.height*sc)*focal[1],img.width*sc,img.height*sc);
+      var iw=img.width*sc, ih=img.height*sc, ox=(gw-iw)*focal[0], oy=(gh-ih)*focal[1];
+      // object placement: put the object's centre (obj, a share of the source) at a share of the canvas (at); on wide canvases
+      // the print may shift right past the cover crop, the gap is the print's own ground colour
+      if(obj){ var at=W<TIERS.small.max?(obj.atSmall||[.5,.5]):(obj.at||[.6,.5]);
+        ox=Math.min(Math.max(at[0]*gw-obj.c[0]*iw,gw-iw),.35*gw); oy=Math.min(Math.max(at[1]*gh-obj.c[1]*ih,gh-ih),0); }
+      zf=[(ox/gw)+(obj?obj.c[0]:.5)*iw/gw,(oy/gh)+(obj?obj.c[1]:.5)*ih/gh]; if(!obj) zf=[focal[0],focal[1]];
+      gx.drawImage(img,ox,oy,iw,ih);
       var px=gx.getImageData(0,0,gw,gh).data, cellA=cell*cell, out=[], i=0;
       for(var y=0;y<gh;y++)for(var x=0;x<gw;x++,i++){
         var k=i*4,R=px[k],G=px[k+1],B=px[k+2],dR=R-BG[0],dG=G-BG[1],dB=B-BG[2], c=Math.min(1,Math.sqrt(dR*dR+dG*dG+dB*dB)/140);
@@ -78,7 +85,7 @@
     }
     // scroll: 0 while the hero sits at the top, 1 once it has scrolled out of view
     function progress(){ var r=scrollEl.getBoundingClientRect(); return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height*CLEAR))); }
-    var cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
+    var swA=1, swT=1, pending=null, cache={}, cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
     function frame(now){
       now=now||performance.now(); var dt=Math.min(.1,(now-last)/1000); last=now;
       var p=reduce?0:progress();
@@ -87,18 +94,24 @@
       var swayT=playing?-Math.sin(2*Math.PI*clock/PER)*SWAY*W:0; swayNow+=(swayT-swayNow)*.04;
       var cEnd=.42*PUSH, need=1.22*(zMax-cEnd)+.12, ds=Math.pow(p,1.6), zm=1+(1-Math.pow(1-p,2))*(ZOOM-1);
       var k=reduce?1:.09; cam.p=(cam.p||0)+(p-(cam.p||0))*k; var fp=cam.p; cam.d+=(ds*need*H/zm-cam.d)*k; cam.c+=((1-Math.pow(1-p,2))*cEnd-cam.c)*k; cam.z+=(zm-cam.z)*k;
+      // switching illustration: fade the dots out, rebuild with the new print, fade back in
+      swA+=(swT-swA)*(reduce?1:.14); if(pending&&swA<.03){ apply(pending); pending=null; swT=1; }
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(focal[0]-.5)*W,(focal[1]-.5)*H);
-      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,1-Math.min(1,Math.max(0,(fp-.78)/.2)));
+      gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(zf[0]-.5)*W,(zf[1]-.5)*H);
+      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,swA*(1-Math.min(1,Math.max(0,(fp-.78)/.2))));
       if(N) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }
-    var im=new Image(); im.onload=function(){ img=im; BG=o.ground||ground(im); W=H=0; size(); if(o.fallback) o.fallback.hidden=true; if(!raf) raf=requestAnimationFrame(loop); }; im.src=o.src;
+    function load(src,cb){ if(cache[src]) return cb(cache[src]); var im=new Image(); im.onload=function(){ cache[src]={img:im,bg:o.ground||ground(im)}; cb(cache[src]); }; im.src=src; }
+    function apply(e){ img=e.img; BG=e.bg; focal=e.focal; obj=e.object||null; if(W&&H) build(); }
+    load(o.src,function(e){ apply({img:e.img,bg:e.bg,focal:focal,object:obj}); W=H=0; size(); if(o.fallback) o.fallback.hidden=true; if(!raf) raf=requestAnimationFrame(loop); });
     var ro=('ResizeObserver' in window)?new ResizeObserver(size):null; if(ro) ro.observe(cv); else addEventListener('resize',size);
     var ob=('IntersectionObserver' in window)?new IntersectionObserver(function(es){ vis=es[0].isIntersecting; last=performance.now(); }):null; if(ob) ob.observe(cv);
     if(reduce) addEventListener('resize',function(){ requestAnimationFrame(frame); });
     raf=requestAnimationFrame(loop);
-    var api={ get playing(){return playing;}, play:function(){playing=true;}, pause:function(){playing=false;},
+    var api={ show:function(src,f,ob){ load(src,function(e){ var nx={img:e.img,bg:e.bg,focal:f||[.5,.5],object:ob||null};
+        if(reduce||!img){ apply(nx); requestAnimationFrame(frame); } else { pending=nx; swT=0; } }); },
+      get playing(){return playing;}, play:function(){playing=true;}, pause:function(){playing=false;},
       destroy:function(){ alive=false; if(ro) ro.disconnect(); if(ob) ob.disconnect(); cancelAnimationFrame(raf); } };
     window.__htFrame=frame; return api;
   }
