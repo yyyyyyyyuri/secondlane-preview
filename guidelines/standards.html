@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standards · SecondLane Guidelines</title>
+<meta name="description" content="SecondLane visual guidelines v0.1 for the platform team: standards.">
+<link rel="stylesheet" href="gl.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="side" aria-label="Guide">
+  <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
+  <small>Visual guidelines · v0.1</small>
+  <nav aria-label="Pages"><ol class="toc" id="toc">
+<li><a class="pg" href="index.html"><span>00</span>Overview</a>
+</li>
+<li><a class="pg" href="foundations.html"><span>01</span>Foundations</a>
+</li>
+<li><a class="pg" href="components.html"><span>02</span>Components</a>
+</li>
+<li><a class="pg" href="standards.html" aria-current="page"><span>03</span>Standards</a>
+<ol class="sub"><li><a href="#a11y">Accessibility</a></li><li><a href="#words">Words and compliance</a></li></ol>
+</li>
+<li><a class="pg" href="tokens.html"><span>04</span>Tokens and code</a>
+</li>
+<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+</li>
+</ol></nav>
+  <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.</div>
+</aside>
+<main id="main">
+<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.1</span><h1>Standards</h1></div></header>
+<!-- 09 A11Y -->
+<section class="sec" id="a11y">
+  <div class="in">
+    <span class="eb">Standards · Accessibility</span>
+    <h2>Accessibility</h2>
+    <p class="lead">Target WCAG 2.2 level AA on every page. Most of it comes for free from the palette and the components above; these are the parts to check in the build.</p>
+    <div class="grid g3" style="margin-top:40px">
+      <div class="box"><h4>Contrast</h4><p>Body text at least 4.5:1, large text and UI 3:1. Every token pair on the Foundations page passes; yellow never sits on light grounds as text.</p></div>
+      <div class="box"><h4>Keyboard</h4><p>Everything reachable by Tab in reading order. Visible focus: 2px outline in the text colour, 3px offset. A skip link to the main content.</p></div>
+      <div class="box"><h4>Targets</h4><p>At least 44 × 44px for anything clickable, including the arrow links and accordion rows.</p></div>
+      <div class="box"><h4>Structure</h4><p>One H1 per page, headings in order, landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>), tabs with proper ARIA roles.</p></div>
+      <div class="box"><h4>Forms</h4><p>Real labels, errors in text, <code>autocomplete</code> set (email), confirmation announced with <code>role="status"</code>.</p></div>
+      <div class="box"><h4>Motion and media</h4><p>Reduced motion respected; decorative canvases <code>aria-hidden</code>; meaningful images described in <code>alt</code>.</p></div>
+    </div>
+  </div>
+</section>
+<!-- 10 WORDS -->
+<section class="sec" id="words">
+  <div class="in">
+    <span class="eb">Standards · Words and compliance</span>
+    <h2>Words and compliance</h2>
+    <p class="lead">SecondLane is an introduction network until its licence is live. Interface copy, button labels, alt text and metadata all follow the pre-licence glossary. Final copy comes from the client's copy deck; Omar signs it off.</p>
+    <h3>Pre-licence glossary</h3>
+    <div class="tw"><table class="gl">
+      <tr><th>Write</th><th>Not</th></tr>
+      <tr><td>opportunity, secondary opportunity</td><td>deal, trade, investment, offering</td></tr>
+      <tr><td>introduction, get introduced</td><td>buy, sell, trade, invest, order</td></tr>
+      <tr><td>interested party, existing holder</td><td>buyer, seller, counterparty (in UI)</td></tr>
+      <tr><td>qualified participants</td><td>investors, clients (in UI)</td></tr>
+      <tr><td>private company interests</td><td>shares, stock, equity (in UI)</td></tr>
+      <tr><td>dedicated vehicle</td><td>SPV</td></tr>
+      <tr><td>last publicly reported valuation</td><td>price, current price, order book</td></tr>
+    </table></div>
+    <h3>Calls to action</h3>
+    <div class="tw"><table>
+      <tr><th>Page</th><th>Main action</th></tr>
+      <tr><td>Site default, Prime, company pages</td><td>Get introduced</td></tr>
+      <tr><td>Home hero</td><td>Access network</td></tr>
+      <tr><td>Access</td><td>Get on the list</td></tr>
+      <tr><td>Capital</td><td>Get connected</td></tr>
+      <tr><td>Monthly report</td><td>Get the report</td></tr>
+    </table></div>
+    <h3>Required disclaimer</h3>
+    <div class="box"><p>SecondLane is an introduction network and is not a registered broker-dealer in the United States.</p></div>
+    <p style="margin-top:12px">Show it under the home hero and in every footer. Pages with opportunities also carry a risk line, for example: "Private company interests are illiquid and you may lose the full amount you put in. Nothing on this page is an offer to buy or sell, or a recommendation."</p>
+    <p class="note">FINRA Rule 2210: scarcity and timing are fine ("closes when the company lists"); promised or implied returns, "guaranteed", price predictions and fake countdowns are not. Figures in square brackets in the prototype, such as <code>$[X]B</code>, are placeholders for real data.</p>
+  </div>
+</section>
+<nav class="pnav" aria-label="Pages"><a href="components.html"><small>Previous</small><b>Components</b></a><a href="tokens.html"><small>Next</small><b>Tokens and code</b></a></nav>
+<footer class="foot">SecondLane visual guidelines · v0.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+<script src="gl.js"></script>
+</body>
+</html>

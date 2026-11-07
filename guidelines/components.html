@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · SecondLane Guidelines</title>
+<meta name="description" content="SecondLane visual guidelines v0.1 for the platform team: components.">
+<link rel="stylesheet" href="gl.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="side" aria-label="Guide">
+  <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
+  <small>Visual guidelines · v0.1</small>
+  <nav aria-label="Pages"><ol class="toc" id="toc">
+<li><a class="pg" href="index.html"><span>00</span>Overview</a>
+</li>
+<li><a class="pg" href="foundations.html"><span>01</span>Foundations</a>
+</li>
+<li><a class="pg" href="components.html" aria-current="page"><span>02</span>Components</a>
+<ol class="sub"><li><a href="#conventions">Conventions</a></li><li><a href="#c-button">Button</a></li><li><a href="#c-arrow">Arrow link</a></li><li><a href="#c-section">Section and head</a></li><li><a href="#c-hero">Hero</a></li><li><a href="#c-cta">Closing band</a></li><li><a href="#c-nav">Top navigation</a></li><li><a href="#c-footer">Footer</a></li><li><a href="#c-crumbs">Breadcrumbs</a></li><li><a href="#c-tabs">Tabs</a></li><li><a href="#c-card">Card</a></li><li><a href="#c-audience">Audience columns</a></li><li><a href="#c-steps">Steps</a></li><li><a href="#c-stats">Stats</a></li><li><a href="#c-team">Team tile</a></li><li><a href="#c-rail">Logo rail</a></li><li><a href="#c-accordion">Accordion</a></li><li><a href="#c-field">Text field</a></li><li><a href="#c-signup">Sign-up form</a></li><li><a href="#c-search">Search</a></li><li><a href="#c-filters">Filters</a></li><li><a href="#c-table">Directory table</a></li><li><a href="#c-tag">Tag</a></li><li><a href="#c-chart">Funding chart</a></li><li><a href="#c-alert">Alert</a></li><li><a href="#c-skeleton">Loading</a></li><li><a href="#c-empty">Empty state</a></li><li><a href="#c-404">Not found</a></li><li><a href="#c-dots">Dot field</a></li><li><a href="#starter">React starter files</a></li></ol>
+</li>
+<li><a class="pg" href="standards.html"><span>03</span>Standards</a>
+</li>
+<li><a class="pg" href="tokens.html"><span>04</span>Tokens and code</a>
+</li>
+<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+</li>
+</ol></nav>
+  <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.</div>
+</aside>
+<main id="main">
+<header class="sec pagehead">
+  <div class="in">
+    <span class="eb">Components</span>
+    <h1>Components</h1>
+    <p class="lead">Every building block of the site, specified for the build: its parts, variants, states, phone behaviour, accessibility and the Tailwind classes or React starter that implements it. Examples are live; hover and tab through them.</p>
+    <div class="cmpidx">
+      <div><h4>Actions</h4><a href="#c-button">Button</a><a href="#c-arrow">Arrow link</a></div>
+      <div><h4>Structure</h4><a href="#c-section">Section and head</a><a href="#c-hero">Hero</a><a href="#c-cta">Closing band</a></div>
+      <div><h4>Navigation</h4><a href="#c-nav">Top navigation</a><a href="#c-footer">Footer</a><a href="#c-crumbs">Breadcrumbs</a><a href="#c-tabs">Tabs</a></div>
+      <div><h4>Content</h4><a href="#c-card">Card</a><a href="#c-audience">Audience columns</a><a href="#c-steps">Steps</a><a href="#c-stats">Stat panel and strip</a><a href="#c-team">Team tile</a><a href="#c-rail">Logo rail</a><a href="#c-accordion">Accordion</a></div>
+      <div><h4>Forms</h4><a href="#c-field">Text field</a><a href="#c-signup">Sign-up form</a><a href="#c-search">Search</a><a href="#c-filters">Filters</a></div>
+      <div><h4>Data</h4><a href="#c-table">Directory table</a><a href="#c-tag">Tag</a><a href="#c-chart">Funding chart</a></div>
+      <div><h4>Feedback</h4><a href="#c-alert">Alert</a><a href="#c-skeleton">Loading</a><a href="#c-empty">Empty state</a><a href="#c-404">Not found</a></div>
+      <div><h4>Brand</h4><a href="#c-dots">Dot field</a></div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="conventions">
+  <div class="in">
+    <span class="eb">Components · How to read this page</span>
+    <h2>Conventions</h2>
+    <div class="grid g3" style="margin-top:32px">
+      <div class="box"><h4>Tokens only</h4><p>Specs name role tokens (<code>--accent</code>, <code>--fg-muted</code>) and Tailwind utilities from <a href="tokens.html">the theme</a>. Raw hex values never appear in component code.</p></div>
+      <div class="box"><h4>States</h4><p>Every interactive component defines rest, hover, focus-visible, pressed, disabled and, where it applies, loading, error, selected and empty.</p></div>
+      <div class="box"><h4>Phone</h4><p>Phone layouts are not designed yet. "Below 900px" notes are the interim rule: stack in reading order, keep tokens, full-width actions.</p></div>
+      <div class="box"><h4>Themes</h4><p>Components read <code>--bg</code>, <code>--fg</code> and friends, so they work inside any <code>data-theme</code> section unless a spec says otherwise.</p></div>
+      <div class="box"><h4>Starter code</h4><p>Components marked <span class="pill">React starter</span> ship as <code>.tsx</code> files in <a href="files/components/">files/components</a>, typed and built on the theme. Copy them into the app.</p></div>
+      <div class="box"><h4>Anatomy</h4><p>Numbered outlines mark each part of a component; the list beside it names the part and its token.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACTIONS ================= -->
+<section class="sec cmp" id="c-button">
+  <div class="in">
+    <span class="eb">Actions</span>
+    <h2>Button <span class="pill">React starter</span></h2>
+    <p class="lead">Triggers an action or navigates to a main destination. One primary button per screen.</p>
+    <div class="anat-wrap">
+      <div class="stage g anat"><a class="btn btn-y" href="#c-button" data-n="1"><span data-n="2">Get introduced</span></a><a class="btn btn-o" href="#c-button" data-n="3">See how it works</a></div>
+      <ol class="parts"><li><b>Container</b> 52px tall, 26px side padding, <code>--radius-sm</code>, 1px border</li><li><b>Label</b> SFT 500 16px, sentence case, verb first</li><li><b>Secondary</b> outline variant sits 14px to the right</li></ol>
+    </div>
+    <div class="stage g" style="margin-top:16px">
+      <span class="btn btn-y">Rest</span><span class="btn btn-y h">Hover</span><span class="btn btn-y a">Pressed</span><span class="btn btn-y f">Focus</span><span class="btn btn-y" aria-disabled="true" style="opacity:.4">Disabled</span><span class="btn btn-y"><i class="spin" aria-hidden="true"></i>Sending</span>
+    </div>
+    <div class="stage l" style="margin-top:16px">
+      <span class="btn btn-g">Get the report</span><span class="btn btn-o">See how it works</span><span class="btn btn-y sm">Compact</span>
+    </div>
+    <div class="spec2">
+      <div><h4>Variants</h4><table><tr><th>Variant</th><th>Tokens</th><th>Use</th></tr>
+        <tr><td>primary</td><td><code>bg-accent text-on-accent</code></td><td>The main action. Once per screen.</td></tr>
+        <tr><td>outline</td><td><code>border-border-strong text-fg</code></td><td>Secondary action beside a primary.</td></tr>
+        <tr><td>solid</td><td><code>bg-action text-on-action</code></td><td>Main action on linen or white when yellow is too loud.</td></tr>
+        <tr><td>size md / sm</td><td>52px · 16px / 46px · 15px</td><td>sm only in the nav and dense panels.</td></tr></table></div>
+      <div><h4>States</h4><table><tr><th>State</th><th>Change</th></tr>
+        <tr><td>hover</td><td>primary <code>--accent-hover</code> + 4px <code>--accent-glow</code>; outline fills <code>--fg</code> 8%; solid <code>--action-hover</code></td></tr>
+        <tr><td>pressed</td><td>primary <code>--accent-pressed</code>, moves 1px down (80ms)</td></tr>
+        <tr><td>focus-visible</td><td>2px <code>--focus</code> outline, 3px offset</td></tr>
+        <tr><td>disabled</td><td>40% opacity, no hover, <code>aria-disabled</code>; prefer explaining why over disabling</td></tr>
+        <tr><td>loading</td><td>16px spinner before the label, label changes to the ongoing verb ("Sending"), width locked, <code>aria-busy="true"</code></td></tr></table></div>
+    </div>
+    <div class="grid g3 notes">
+      <div><h4>Below 900px</h4><p>Full width when stacked; 46px tall; primary sits above outline.</p></div>
+      <div><h4>Accessibility</h4><p>Use <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> for navigation, styled the same. Label says what happens. Minimum target 44 × 44px.</p></div>
+      <div><h4>Copy</h4><p>Verb + object, from the approved list: Get introduced, Get on the list, Get connected, Get the report, Access network.</p></div>
+    </div>
+    <div class="code"><button type="button" data-copy>Copy</button><pre><code>&lt;!-- primary --&gt;
+&lt;a class="inline-flex h-13 items-center justify-center rounded-sm border border-accent bg-accent px-6.5 text-button text-on-accent
+          transition-[background-color,box-shadow,transform] duration-180 hover:bg-accent-hover hover:border-accent-hover
+          hover:shadow-[0_0_0_4px_var(--accent-glow)] active:translate-y-px active:bg-accent-pressed"
+   href="/get-introduced"&gt;Get introduced&lt;/a&gt;
+
+&lt;!-- React starter --&gt;
+&lt;Button href="/get-introduced"&gt;Get introduced&lt;/Button&gt;
+&lt;Button variant="outline" href="#how"&gt;See how it works&lt;/Button&gt;
+&lt;Button variant="solid" size="sm" loading&gt;Sending&lt;/Button&gt;</code></pre></div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-arrow">
+  <div class="in">
+    <span class="eb">Actions</span>
+    <h2>Arrow link <span class="pill">React starter</span></h2>
+    <p class="lead">A quieter link to a related page: "Read all insights", "See how funds use Prime".</p>
+    <div class="grid g2"><div class="stage g"><a class="alink" href="#c-arrow">Read all insights</a></div><div class="stage l"><a class="alink" href="#c-arrow">See how funds use Prime</a></div></div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Label</td><td>SFT 500 17px, <code>--fg</code></td></tr><tr><td>Icon</td><td>16px arrow, 1.5px stroke, <code>--arrow</code> (yellow on green, green on light), 10px gap</td></tr><tr><td>Hover</td><td>arrow moves 4px right, 180ms</td></tr><tr><td>Focus</td><td>2px <code>--focus</code> outline, 3px offset</td></tr><tr><td>Small</td><td>15px label, 14px icon, 8px gap (tables)</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Always a real link; never a button styled as a link.</li><li>Label names the destination; never "Learn more" or "Click here".</li><li>One per block, under the content it relates to.</li><li>Pad the hit area to 44px tall with 12px vertical padding.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRUCTURE ================= -->
+<section class="sec cmp" id="c-section">
+  <div class="in">
+    <span class="eb">Structure</span>
+    <h2>Section and section head <span class="pill">React starter</span></h2>
+    <p class="lead">Every page is a stack of full-width sections. Each sets its theme and holds one container; most open with a head.</p>
+    <div class="anat-wrap">
+      <div class="stage g anat" style="display:block">
+        <div class="shead">
+          <div data-n="1"><span class="lab" data-n="2">Three verticals</span><p class="mini-h2" data-n="3">Liquidity starts here.</p></div>
+          <p class="mini-lead" data-n="4">Three verticals connect our participants and founders to private market opportunities.</p>
+        </div>
+        <div class="mini-row" data-n="5"><i></i><i></i><i></i></div>
+      </div>
+      <ol class="parts"><li><b>Title block</b> 6 of 12 columns</li><li><b>Eyebrow</b> optional, 14px above the title</li><li><b>Title</b> H2, one per section</li><li><b>Standfirst</b> 5 columns, bottom-aligned, <code>--fg-lead</code>, max 34em</li><li><b>Content</b> 72px below the head</li></ol>
+    </div>
+    <div class="spec2">
+      <div><h4>Section</h4><table><tr><td>Element</td><td><code>&lt;section data-theme="green|linen|white"&gt;</code></td></tr><tr><td>Padding</td><td><code>--section-y</code>: 136px (88px below 900px)</td></tr><tr><td>Container</td><td><code>.wrap</code>: max 1312px, <code>--gutter</code> 64px (20px)</td></tr><tr><td>Rhythm</td><td>Mostly green; a linen or white section every 2–3 sections. Never two light sections in a row.</td></tr><tr><td>Anchors</td><td>Give each section an <code>id</code> for in-page links; <code>scroll-margin-top</code> = nav height.</td></tr></table></div>
+      <div><h4>Head variants</h4><table><tr><td>split</td><td>Default. Title left, standfirst right.</td></tr><tr><td>stacked</td><td>Title and standfirst on the left, for narrow content.</td></tr><tr><td>centred</td><td>Access page and FAQs only. Max 760px.</td></tr><tr><td>with link</td><td>Arrow link under the title (team: "Meet the whole team").</td></tr></table></div>
+    </div>
+    <div class="grid g2 notes"><div><h4>Below 900px</h4><p>Head stacks: eyebrow, title, standfirst, 40px above content.</p></div><div><h4>Accessibility</h4><p>Label sections with their H2 (<code>aria-labelledby</code>). The eyebrow is decorative text, not a heading.</p></div></div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-hero">
+  <div class="in">
+    <span class="eb">Structure</span>
+    <h2>Hero</h2>
+    <p class="lead">The first screen of every page: what SecondLane offers here, for whom, and the one main action.</p>
+    <div class="grid g3">
+      <figure class="hv"><div class="hv-a"><i class="t"></i><i class="t s"></i><i class="b"></i><i class="art"></i></div><figcaption><b>Home</b> Text left (740px max), art on the right 64%, fading into green to the left and bottom. 80vh.</figcaption></figure>
+      <figure class="hv"><div class="hv-b"><i class="t"></i><i class="t s"></i><i class="b"></i><i class="media"></i></div><figcaption><b>Product</b> Capital, Prime, company pages. Text in 7 columns, 4:5 media in 5.</figcaption></figure>
+      <figure class="hv"><div class="hv-c"><i class="t"></i><i class="t s"></i><i class="panel"></i><i class="strip"></i></div><figcaption><b>Centred</b> Access only. Centred title, glass sign-up panel, key facts strip over the dot field.</figcaption></figure>
+    </div>
+    <div class="spec2">
+      <div><h4>Content order</h4><ol class="list"><li>Eyebrow (optional, product pages)</li><li>H1 (one per page): <code>text-h1</code> on home, <code>text-display</code> on product pages</li><li>Standfirst, <code>text-lead</code>, max 34em</li><li>Primary + outline button</li><li>Disclaimer, 13.5px <code>--fg-muted</code> (home)</li></ol></div>
+      <div><h4>Spec</h4><table><tr><td>Height</td><td>Home 80vh (min 640px); product heroes size to content, 120px top padding</td></tr><tr><td>Nav</td><td>The hero runs under the transparent nav (<code>margin-top: -96px</code>)</td></tr><tr><td>Art</td><td>LCP image: <code>fetchpriority="high"</code>, no lazy loading, AVIF/WebP, 2400px wide max</td></tr><tr><td>Mask</td><td><code>linear-gradient(90deg, transparent, #000 34%)</code> intersected with <code>linear-gradient(180deg, #000 55%, transparent)</code></td></tr></table></div>
+    </div>
+    <div class="grid g2 notes"><div><h4>Below 900px</h4><p>Home art goes full width behind the text at 40% opacity; buttons stack full width; H1 36px.</p></div><div><h4>Accessibility</h4><p>Hero art is decorative (<code>alt=""</code>). Text never sits on a busy part of the image without the mask behind it.</p></div></div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-cta">
+  <div class="in">
+    <span class="eb">Structure</span>
+    <h2>Closing band</h2>
+    <p class="lead">The last section before the footer: one line, one standfirst, the page's main action.</p>
+    <div class="stage g" style="display:block;min-height:220px;position:relative;overflow:hidden">
+      <p style="font:400 40px/1.05 var(--serif);max-width:12em;margin:0">The next decade's biggest companies are still private. For now.</p>
+      <div style="display:flex;gap:32px;align-items:center;margin-top:24px"><span class="btn btn-y">Get introduced</span><a class="alink" href="#c-cta">See how introductions work</a></div>
+    </div>
+    <ul class="list notes1"><li>Green, min-height 720px, content vertically centred; halftone object image on the right, masked like the home hero.</li><li>Title <code>text-h2</code> at 53px max 12em; primary button and arrow link 40px apart.</li><li>Below 900px: image behind at 40%, actions stacked.</li></ul>
+  </div>
+</section>
+
+<!-- ================= NAVIGATION ================= -->
+<section class="sec cmp" id="c-nav">
+  <div class="in">
+    <span class="eb">Navigation</span>
+    <h2>Top navigation</h2>
+    <p class="lead">Site-wide, sticky. Logo, six sections, sign in and the page's main action.</p>
+    <div class="anat-wrap wide">
+      <div class="stage g anat" style="padding:32px 28px"><div class="navdemo"><i class="logo" data-n="1"></i><span data-n="2">Access</span><span>Capital</span><span class="cur" data-n="3">Prime</span><span>Companies</span><span>Insights</span><span>About</span><span class="sp" data-n="4">Sign in</span><span class="btn btn-y sm" data-n="5">Get introduced</span></div></div>
+      <ol class="parts"><li><b>Logo</b> 128 × 32, links home</li><li><b>Links</b> SFT 500 15px, 36–44px apart</li><li><b>Current page</b> 2px <code>--accent</code> underline, <code>aria-current="page"</code></li><li><b>Sign in</b> text link</li><li><b>Main action</b> compact primary button</li></ol>
+    </div>
+    <div class="spec2">
+      <div><h4>States</h4><table><tr><td>Over hero</td><td>Transparent, 96px tall</td></tr><tr><td>Scrolled &gt; 40px</td><td><code>--scrim</code> fill, 24px backdrop blur, bottom <code>--border</code>, 76px, 350ms</td></tr><tr><td>Link hover</td><td>underline 1px <code>--fg</code> at 40%</td></tr><tr><td>Link focus</td><td>2px <code>--focus</code> outline</td></tr></table></div>
+      <div><h4>Main action per page</h4><table><tr><td>Default, Prime, companies</td><td>Get introduced</td></tr><tr><td>Access</td><td>Get on the list</td></tr><tr><td>Capital</td><td>Get connected</td></tr></table></div>
+    </div>
+    <div class="grid g2 notes"><div><h4>Below 900px (interim)</h4><p>64px bar: logo left, main action and a menu button right. The menu opens a full-screen green sheet with links at 28px Ashcroft, sign in and the main action at the bottom. Final design follows with the phone layouts.</p></div><div><h4>Accessibility</h4><p><code>&lt;header&gt;</code> with <code>&lt;nav aria-label="Main"&gt;</code>; skip link "Skip to content" as the first focusable element. Menu button has <code>aria-expanded</code> and <code>aria-controls</code>; the sheet traps focus and closes on Escape.</p></div></div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-footer">
+  <div class="in">
+    <span class="eb">Navigation</span>
+    <h2>Footer</h2>
+    <div class="stage g" style="display:block">
+      <div class="ftdemo"><div><i class="logo" style="width:112px;height:28px"></i><p>Secondary market introductions for private companies, since 2013.</p></div><div><b>Platform</b><span>Access</span><span>Capital</span><span>Prime</span></div><div><b>Companies</b><span>Directory</span><span>IPO Watch</span><span>For holders</span></div><div><b>SecondLane</b><span>About</span><span>Team</span><span>Insights</span></div></div>
+      <p class="ftlegal">¹ SecondLane is not a registered broker-dealer in the United States. This page is for information only.</p>
+      <div class="ftbar"><span>© 2026 SecondLane</span><span>Privacy · Terms · Cookies</span></div>
+    </div>
+    <ul class="list notes1"><li>Grid 5 + 2 + 2 + 2 columns; 80px top, 44px bottom padding.</li><li>Column headings: <code>label</code> style in <code>--accent</code>. Links 15px <code>--fg-muted</code>, 13px apart, hover <code>--fg</code>.</li><li>Footnotes 13px; numbered markers in the page link to them. Legal row above a <code>--border</code> line.</li><li>Below 900px: brand line on top, link columns in a 2-column grid, legal stacked.</li><li><code>&lt;footer&gt;</code> with each column as a <code>&lt;nav aria-label&gt;</code>.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-crumbs">
+  <div class="in">
+    <span class="eb">Navigation</span>
+    <h2>Breadcrumbs</h2>
+    <div class="stage g"><nav class="crumbsdemo" aria-label="Breadcrumb"><a href="#c-crumbs">Companies</a><span>/</span><a href="#c-crumbs">AI</a><span>/</span><b aria-current="page">Anthropic</b></nav></div>
+    <ul class="list notes1"><li>Company pages only, above the H1. SFT 500 13px, +0.06em, uppercase, <code>--fg-muted</code>; current item <code>--fg</code>.</li><li><code>&lt;nav aria-label="Breadcrumb"&gt;</code> with an ordered list; separators are <code>aria-hidden</code>; last item <code>aria-current="page"</code>. Add BreadcrumbList structured data.</li><li>Below 900px: show only the parent link ("← Companies").</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-tabs">
+  <div class="in">
+    <span class="eb">Navigation</span>
+    <h2>Tabs</h2>
+    <p class="lead">Switches between related panels in place: "Enabling investors" on Prime.</p>
+    <div class="stage g" style="display:block;padding:0;overflow:hidden">
+      <div class="tabsdemo" role="tablist" aria-label="Example"><button role="tab" aria-selected="true">Pre-market opportunities</button><button role="tab" aria-selected="false">Rebalance your holdings</button><button role="tab" aria-selected="false">Enhance your liquidity</button><button role="tab" aria-selected="false">Compliance first</button></div>
+      <div style="padding:32px 28px;background:var(--green-2)"><p style="font:400 28px/1.15 var(--serif);margin:0">Access pre-market opportunities</p><p style="color:var(--sand);margin-top:10px;max-width:36em">Get into the companies everyone will be reading about after the IPO, while they are still private.</p></div>
+    </div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Tab</td><td>Ashcroft 24px, 84px tall, 20px 28px padding, <code>--fg-muted</code>; divided by <code>--border</code></td></tr><tr><td>Hover</td><td><code>--fg</code>, background <code>--fg</code> at 3%</td></tr><tr><td>Selected</td><td><code>--bg-raised</code> fill, <code>--fg</code>, 2px <code>--accent</code> bar on top (draws in 450ms <code>--ease-brand</code>)</td></tr><tr><td>Panel</td><td><code>--bg-raised</code>, cross-fade 300ms</td></tr></table></div>
+      <div><h4>Behaviour</h4><ul class="list"><li>Click or Enter/Space selects. Arrow keys move between tabs, Home/End jump to the ends.</li><li>Never auto-rotate.</li><li>Below 900px: 2 × 2 grid at 19px, 72px tall. Above 4 tabs, use an accordion instead.</li><li>ARIA: <code>tablist</code>, <code>tab</code> with <code>aria-selected</code> and <code>aria-controls</code>, <code>tabpanel</code> with <code>aria-labelledby</code>; roving <code>tabindex</code>.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTENT ================= -->
+<section class="sec cmp" id="c-card">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Card <span class="pill">React starter</span></h2>
+    <p class="lead">One card style for verticals, insights and LP advantages. The whole card is a link.</p>
+    <div class="anat-wrap">
+      <div class="stage g anat">
+        <article class="card lit" data-n="1"><h5 data-n="2">SecondLane Capital</h5><p data-n="3">Our institutional arm. Positions handled end to end, around your mandate.</p><span class="lab" data-n="4">Institutions · Family offices</span><div class="ph" data-n="5"><img src="../assets/lidar.jpg" alt=""></div></article>
+      </div>
+      <ol class="parts"><li><b>Container</b> <code>--bg</code>, 1px <code>--border-card</code>, <code>--radius-md</code>, padding 30/26/26, 18px gap</li><li><b>Title</b> <code>text-h3</code> (36px)</li><li><b>Body</b> 18px <code>--fg-muted</code>, 3 lines max</li><li><b>Meta</b> eyebrow style: category, date or audience</li><li><b>Image</b> 5:4, bleeds to the sides and bottom, 7px bottom corners</li></ol>
+    </div>
+    <div class="spec2">
+      <div><h4>Variants</h4><table><tr><td>vertical</td><td>Home verticals: meta = audience</td></tr><tr><td>insight</td><td>Meta = "Report · 12 Nov 2026"; image is a halftone object</td></tr><tr><td>feature</td><td>Capital LP advantages: no link, no lift, no lit edge</td></tr><tr><td>no image</td><td>Body grows; meta stays at the bottom</td></tr></table></div>
+      <div><h4>States</h4><table><tr><td>hover</td><td>lifts 6px + <code>--shadow-lift</code>, 700ms <code>--ease-settle</code>; 1px yellow edge near the pointer</td></tr><tr><td>focus-visible</td><td>2px <code>--focus</code> outline on the card, 3px offset</td></tr><tr><td>pressed</td><td>lift returns to 3px</td></tr><tr><td>reduced motion</td><td>no lift, no lit edge; shadow only</td></tr></table></div>
+    </div>
+    <div class="grid g3 notes"><div><h4>Layout</h4><p>3 per row (4 columns each), 32px gap; equal heights, images aligned to the bottom.</p></div><div><h4>Below 900px</h4><p>One per row; title 28px; image keeps 5:4.</p></div><div><h4>Accessibility</h4><p>One link per card: wrap the title in the <code>&lt;a&gt;</code> and stretch its hit area over the card with <code>::after</code>, so screen readers hear the title, not the whole card. Image <code>alt=""</code>.</p></div></div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-audience">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Audience columns</h2>
+    <p class="lead">Four expanding photo columns on Home ("Four ways in, one network"). One is open at a time.</p>
+    <div class="stage l"><div class="auddemo"><div class="on"><b>For funds &amp; institutions</b><small>Turn liquidity into AUM growth…</small></div><div><b>For qualified participants</b></div><div><b>For founders</b></div><div><b>For integration partners</b></div></div></div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Row</td><td>620px tall, 14px gap, columns <code>--radius-lg</code></td></tr><tr><td>Closed</td><td>photo + 52% progressive blur at the bottom, title 22px vertical-bottom</td></tr><tr><td>Open</td><td>flex-grow 3.2 (720ms <code>--ease-brand</code>); title 30px, body 16px, arrow link</td></tr><tr><td>Opens on</td><td>hover after 90ms (mouse only), click, Enter/Space, arrow keys</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>First column open by default.</li><li>Below 900px: stacked rows, 860px total; the open row is tallest.</li><li>ARIA: behaves as tabs (<code>role="tab"</code>, <code>aria-selected</code>); body text of closed columns is <code>hidden</code>, so it isn't read twice.</li><li>Reduced motion: switch instantly.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-steps">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Steps</h2>
+    <div class="stage g" style="display:block"><ol class="stepsdemo"><li><b>1</b><div><p>Join the waitlist</p><small>One minute, no commitment.</small></div></li><li><b>2</b><div><p>Get verified</p><small>Identity and eligibility, checked once.</small></div></li></ol></div>
+    <ul class="list notes1"><li>Numbered process on Access (and future guides). <code>&lt;ol&gt;</code>, 14px gap, max 940px.</li><li>Row: <code>--bg-raised</code> panel, 1px <code>--border</code>, <code>--radius-md</code>, grid 104px + content, padding 32px 36px. Number Ashcroft 300 72px <code>--accent</code>; title Ashcroft 32px; text 16px <code>--fg-muted</code>.</li><li>Reveal: rows rise one by one (160ms stagger), once.</li><li>Below 900px: 56px number column, number 44px, title 26px, padding 24px 22px.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-stats">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Stat panel and stat strip</h2>
+    <div class="stage g" style="background:#12301F radial-gradient(rgba(227,253,90,.25) 1.05px,transparent 1.3px) 0 0/9px 9px">
+      <div class="fact"><b>17,000+</b><span>Qualified participants in the network</span></div>
+      <div class="strip"><div><b>0%</b>platform fee at launch</div><div><b>1</b>dedicated vehicle per opportunity</div><div><b>2</b>ways to fund</div></div>
+    </div>
+    <div class="spec2">
+      <div><h4>Panel (Home)</h4><table><tr><td>Fill</td><td><code>--glass</code> + 24px blur, 1px line at 20%, <code>--shadow-glass</code>, <code>--radius-lg</code></td></tr><tr><td>Padding</td><td>30px 34px, 10px gap</td></tr><tr><td>Figure</td><td><code>text-figure</code> (Ashcroft 300 64px)</td></tr><tr><td>Label</td><td>14px <code>--fg-muted</code></td></tr><tr><td>Layout</td><td>3 across, 18px gap; stacked below 900px</td></tr></table></div>
+      <div><h4>Strip (Access)</h4><table><tr><td>Fill</td><td>green at 82% + 4px blur, 1px <code>--border</code>, <code>--radius-lg</code></td></tr><tr><td>Items</td><td>figure 60px + label 15.5px, baseline-aligned, 28px apart; a link at the end</td></tr><tr><td>Below 900px</td><td>one item per row</td></tr></table></div>
+    </div>
+    <p class="note">Figures are content, not decoration: render them as text, never as images. Use <code>&lt;dl&gt;</code> (figure as <code>&lt;dd&gt;</code>, label as <code>&lt;dt&gt;</code>) and keep the "+" inside the figure. Placeholder figures in brackets must be replaced before launch.</p>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-team">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Team tile</h2>
+    <div class="stage g"><figure class="tmdemo"><div class="ph"><img src="../assets/team-ben.jpg" alt=""></div><b>Name Surname</b><span>Role</span></figure><figure class="tmdemo"><div class="ph"><img src="../assets/team-frank.jpg" alt=""></div><b>Name Surname</b><span>Role</span></figure></div>
+    <ul class="list notes1"><li>4 per row, 32px gap. Portrait 3:4, <code>--radius-md</code> (10px in the prototype), photo cropped from the bottom so faces sit in the top third.</li><li>Name Ashcroft 32px (<code>text-h4</code> on phones), role 16px <code>--fg-muted</code>, 6px apart, 18px under the photo.</li><li>Portraits: same light, same crop, black-and-white halftone or colour, never mixed in one row.</li><li>Below 900px: 2 per row. <code>alt</code> is the person's name.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-rail">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Logo rail</h2>
+    <div class="stage w" style="display:block;text-align:center"><span class="lab" style="color:var(--mute);margin-bottom:28px">The funds moving private markets already partner with us</span><div class="raildemo"><i style="--src:url('../assets/lg-spectral.webp')"></i><i style="--src:url('../assets/lg-kamino.webp')"></i><i style="--src:url('../assets/lg-zksync.webp')"></i><i style="--src:url('../assets/lg-sei.webp')"></i><i style="--src:url('../assets/lg-scroll.webp')"></i></div></div>
+    <ul class="list notes1"><li>White section, 80px padding. Centred eyebrow in <code>--fg-muted</code>, 44px above the logos.</li><li>Grid of 5 (2 below 900px), 44px × 56px gaps. Each logo fits 150 × 40px, single colour <code>--fg</code> via CSS mask, optically balanced by hand.</li><li>No hover effects, no links, no carousel. Each logo has <code>role="img"</code> and the company name as its label.</li><li>Use SVG logos supplied by each company, with permission.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-accordion">
+  <div class="in">
+    <span class="eb">Content</span>
+    <h2>Accordion</h2>
+    <div class="stage l"><div class="qa"><details open><summary>What can I get into?</summary><p>Private companies across AI, defense, space and the sectors shaping what comes next.</p></details><details><summary>Who can join?</summary><p>Accredited investors in the US and qualified participants elsewhere.</p></details></div></div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Row</td><td>26px vertical padding, divider <code>--border</code></td></tr><tr><td>Question</td><td>Ashcroft 32px (24px below 900px), <code>--fg</code></td></tr><tr><td>Icon</td><td>plus / minus, 24px, <code>--fg-muted</code></td></tr><tr><td>Answer</td><td>16px <code>--fg-lead</code>, max 36em, 22px bottom padding</td></tr><tr><td>Motion</td><td>height + fade 600ms <code>--ease-brand</code></td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>First item open; several may be open at once.</li><li>Native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>, or a <code>&lt;button aria-expanded aria-controls&gt;</code> inside an <code>&lt;h3&gt;</code>.</li><li>Answers stay in the HTML (searchable, indexable); add FAQPage structured data.</li><li>Focus: 2px <code>--focus</code> outline around the question row.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMS ================= -->
+<section class="sec cmp" id="c-field">
+  <div class="in">
+    <span class="eb">Forms</span>
+    <h2>Text field <span class="pill">React starter</span></h2>
+    <div class="anat-wrap">
+      <div class="stage l anat" style="flex-direction:column;align-items:flex-start">
+        <label class="fl" data-n="1"><span class="fl__l" data-n="2">Email</span><input class="inp" type="email" placeholder="you@company.com" data-n="3"><span class="hint" data-n="4">We use your email only for news about Access.</span></label>
+      </div>
+      <ol class="parts"><li><b>Field</b> 8px gap, 360px or full width</li><li><b>Label</b> <code>label</code> style (11px, uppercase), always visible</li><li><b>Input</b> 52px, white, 1px <code>--field-border</code>, <code>--radius-sm</code>, 17px text</li><li><b>Help / error</b> 13px, <code>--fg-muted</code> or <code>--danger</code></li></ol>
+    </div>
+    <div class="stage l" style="margin-top:16px">
+      <label class="fl"><span class="fl__l">Rest</span><input class="inp" placeholder="you@company.com" aria-label="Rest example"></label>
+      <label class="fl"><span class="fl__l">Focus</span><input class="inp f" value="eugenie@" aria-label="Focus example"></label>
+      <label class="fl"><span class="fl__l">Error</span><input class="inp e" value="eugenie" aria-invalid="true" aria-label="Error example"><span class="err">Enter an email address, like you@company.com</span></label>
+      <label class="fl"><span class="fl__l">Disabled</span><input class="inp" disabled value="you@company.com" style="opacity:.5" aria-label="Disabled example"></label>
+    </div>
+    <div class="spec2">
+      <div><h4>States</h4><table><tr><td>hover</td><td>border <code>--fg</code> at 60%</td></tr><tr><td>focus</td><td><code>--focus-field</code> border + 4px <code>--focus-ring</code></td></tr><tr><td>error</td><td><code>--danger-border</code>, message below in <code>--danger</code>, <code>aria-invalid="true"</code>, <code>aria-describedby</code> → message</td></tr><tr><td>disabled</td><td>50% opacity, not focusable</td></tr><tr><td>read-only</td><td>no border, <code>--bg-raised</code> fill</td></tr></table></div>
+      <div><h4>Validation</h4><ul class="list"><li>Validate on submit; after the first error, re-check live as the person types.</li><li>Error text says how to fix it, in the field's terms.</li><li>Set <code>type</code>, <code>autocomplete</code> and <code>inputmode</code> (<code>email</code> for email).</li><li>Inputs stay white on every theme so text contrast never changes.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-signup">
+  <div class="in">
+    <span class="eb">Forms</span>
+    <h2>Sign-up form</h2>
+    <p class="lead">Email capture with an in-place confirmation: the Access waitlist (glass panel) and the monthly report (white panel on a photo).</p>
+    <div class="grid g2">
+      <div class="stage g" style="display:block"><div class="glassdemo"><span class="lab">SecondLane Access · Opening soon</span><p class="gt">Get on the list</p><label class="fl" style="width:100%"><span class="fl__l">Email</span><input class="inp" placeholder="you@company.com" aria-label="Email"></label><span class="btn btn-y" style="width:100%;margin-top:12px">Get on the list</span><small>We use your email only for news about Access.</small></div></div>
+      <div class="stage g" style="display:block"><div class="glassdemo"><div class="donedemo"><i></i><div><p class="gt" style="margin:0">You're on the list.</p><small>We sent a note to you@company.com. Confirm it and your place is held.</small><ol><li><b>Confirm your email.</b> So we can hold your place.</li><li><b>Watch your inbox.</b> Places open in small groups.</li></ol></div></div></div></div>
+    </div>
+    <div class="spec2">
+      <div><h4>Flow</h4><ol class="list"><li>Rest: eyebrow, title, one line of context, field, full-width button, privacy line.</li><li>Submitting: button shows the loading state; field read-only.</li><li>Success: the form is replaced in place by the confirmation (yellow check, title, the address used, next steps, "Change email" link). Focus moves to the confirmation title.</li><li>Error from the server: alert above the button; field keeps its value.</li></ol></div>
+      <div><h4>Spec</h4><table><tr><td>Glass panel</td><td>linen 9% + 36px blur, 1px <code>--border</code>, <code>--radius-lg</code>, 36px padding, max 520px</td></tr><tr><td>Confirmation</td><td>32px yellow check circle; title Ashcroft 32px; next steps as a numbered list with 26px outlined numbers in <code>--accent</code></td></tr><tr><td>Announce</td><td>confirmation container <code>role="status"</code></td></tr><tr><td>Spam</td><td>honeypot field + server rate limit; no CAPTCHA</td></tr></table></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-search">
+  <div class="in">
+    <span class="eb">Forms</span>
+    <h2>Search</h2>
+    <div class="stage l"><div class="srchdemo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg><input placeholder="Search companies" aria-label="Search companies" value="anth"><i class="clr" aria-hidden="true"></i></div><span class="hint" style="font-size:13px;color:var(--mute)">1 company</span></div>
+    <ul class="list notes1"><li>Directory filter. 48px tall, white, 1px <code>--field-border</code>, 44px padding left and right for the icons; focus as the text field.</li><li>Search icon 20px <code>--fg-muted</code>; a 28px yellow clear button appears once there is text.</li><li>Filters as you type (no submit). Result count below in a live region: "1 company", "No companies match 'xyz'".</li><li><code>type="search"</code>, visible or visually hidden label, Escape clears.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-filters">
+  <div class="in">
+    <span class="eb">Forms</span>
+    <h2>Filters</h2>
+    <div class="stage l"><div class="sfdemo"><button aria-pressed="true">All sectors <span>18</span></button><button aria-pressed="false">AI <span>7</span></button><button aria-pressed="false">Defense <span>2</span></button><button aria-pressed="false">Space <span>1</span></button></div></div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Item</td><td>15px <code>--fg-muted</code>, 9px 12px padding, <code>--radius-md</code>, count 13px right-aligned</td></tr><tr><td>Hover</td><td><code>--fg</code>, background <code>--fg</code> at 5%</td></tr><tr><td>Selected</td><td><code>green-100</code> fill, <code>--fg</code>, weight 500 (the prototype's <code>#DCE3CF</code> maps to green-100)</td></tr><tr><td>Desktop</td><td>vertical list in the sticky sidebar</td></tr><tr><td>Below 1180px</td><td>wrapping chips with a 1px border</td></tr></table></div>
+      <div><h4>Behaviour</h4><ul class="list"><li>Single choice; "All" resets. Combine with search.</li><li>Update the URL (<code>?sector=ai</code>) so filtered views can be shared and indexed.</li><li><code>&lt;button aria-pressed&gt;</code> in a group labelled "Sectors"; counts are part of the accessible name ("AI, 7 companies").</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATA ================= -->
+<section class="sec cmp" id="c-table">
+  <div class="in">
+    <span class="eb">Data</span>
+    <h2>Directory table</h2>
+    <div class="stage l" style="display:block">
+      <table class="dirdemo"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr><td><span class="co"><i>A</i>Anthropic</span></td><td>AI</td><td><span class="tag hot">Most active</span></td><td><a class="lk" href="#c-table">View company</a></td></tr><tr><td><span class="co"><i>P</i>Perplexity</span></td><td>AI search</td><td><span class="tag">Active</span></td><td><a class="lk" href="#c-table">View company</a></td></tr></tbody></table>
+    </div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Header</td><td><code>label</code> style, <code>--fg-muted</code>, bottom border 18%</td></tr><tr><td>Row</td><td>15px vertical padding, divider <code>--border</code>, 16px text</td></tr><tr><td>Company</td><td>36px monogram tile (<code>--radius-md</code>, green, yellow initial, Ashcroft 18px) + name Ashcroft 22px</td></tr><tr><td>Link</td><td>small arrow link, right-aligned</td></tr><tr><td>Grouping</td><td>sector bands: Ashcroft 30px title + one-line description, left-aligned</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Real <code>&lt;table&gt;</code> with <code>&lt;th scope&gt;</code>; the link column header is visually hidden ("Profile").</li><li>The whole row is not clickable; the company name and link are.</li><li>Below 900px: each row becomes a 2-line block (name + link, then focus + tag).</li><li>Replace monograms with real logos when supplied (same 36px tile).</li><li>"Interest" shows activity only; never prices or volumes before the licence.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-tag">
+  <div class="in">
+    <span class="eb">Data</span>
+    <h2>Tag</h2>
+    <div class="stage l"><span class="tag hot">Most active</span><span class="tag">Active</span><span class="tag quiet">Opening soon</span><span class="tag warn">Pending review</span></div>
+    <ul class="list notes1"><li>Pill (<code>--radius-full</code>), 6px 12px padding, SFT 500 13px.</li><li>Variants: <b>highlight</b> <code>--accent</code> / <code>--on-accent</code> (one per row at most) · <b>default</b> <code>green-100</code> / <code>--fg</code> · <b>quiet</b> transparent with 1px <code>--border</code> · <b>status</b> uses <code>--warning-bg</code>, <code>--danger-bg</code> or <code>--success-bg</code> with matching text.</li><li>Tags label; they are not buttons. Status tags need text, not colour alone.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-chart">
+  <div class="in">
+    <span class="eb">Data</span>
+    <h2>Funding chart</h2>
+    <div class="stage l" style="display:block">
+      <div class="chartdemo"><h5>Amount raised per round</h5>
+        <svg viewBox="0 0 520 200" role="img" aria-label="Amount raised per round, example data"><line x1="0" y1="170" x2="520" y2="170" class="ax"/><line x1="0" y1="110" x2="520" y2="110" class="ax"/><line x1="0" y1="50" x2="520" y2="50" class="ax"/>
+          <rect x="30" y="150" width="56" height="20" class="br"/><rect x="130" y="140" width="56" height="30" class="br"/><rect x="230" y="128" width="56" height="42" class="br"/><rect x="330" y="105" width="56" height="65" class="br"/><rect x="430" y="40" width="56" height="130" class="br hi"/>
+          <text x="58" y="190" class="lb">Seed</text><text x="158" y="190" class="lb">A</text><text x="258" y="190" class="lb">B</text><text x="358" y="190" class="lb">C</text><text x="458" y="190" class="lb">E</text><text x="458" y="32" class="vl">$3.5B</text></svg>
+        <small>Illustrative figures, not real data</small></div>
+    </div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Panel</td><td>white, 1px <code>--border-card</code>, <code>--radius-lg</code>, padding 28/28/20</td></tr><tr><td>Title</td><td>SFT 500 15px <code>--fg-muted</code></td></tr><tr><td>Bars</td><td><code>--chart-1</code>; latest round <code>yellow-400</code> (prototype <code>#C9DC4E</code> maps here); hover <code>rust-700</code></td></tr><tr><td>Grid</td><td>horizontal lines only, <code>--fg</code> at 15%</td></tr><tr><td>Labels</td><td>axis SFT 500 12px <code>--fg-muted</code>; values Ashcroft 15px <code>--fg</code>, tabular figures</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Series colours in order <code>--chart-1</code> … <code>--chart-5</code>; never encode meaning by colour alone.</li><li>Source line under every chart; "Illustrative figures, not real data" until real data is wired.</li><li>Public, reported figures only (pre-licence): rounds, amounts, lead investors. No prices.</li><li>SVG with <code>role="img"</code> + <code>aria-label</code>, and the same data as a visually hidden table. Tooltips also open on focus.</li><li>Below 900px: horizontal bars, labels on the left.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEEDBACK ================= -->
+<section class="sec cmp" id="c-alert">
+  <div class="in">
+    <span class="eb">Feedback</span>
+    <h2>Alert</h2>
+    <p class="lead">Inline messages for form and page feedback. New in this guide: built from the role tokens, not in the prototype yet.</p>
+    <div class="stage l" style="flex-direction:column;align-items:stretch">
+      <div class="al ok" role="status"><i></i><div><b>You're on the list.</b> We sent a note to you@company.com.</div></div>
+      <div class="al err" role="alert"><i></i><div><b>We couldn't add you to the list.</b> Check your connection and try again.</div></div>
+      <div class="al warn"><i></i><div><b>Access is opening in stages.</b> We'll email you when your group opens.</div></div>
+      <div class="al info"><i></i><div><b>Figures in brackets are placeholders.</b> Real data arrives with the company feed.</div></div>
+    </div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Container</td><td><code>--{status}-bg</code>, 1px border in the status colour at 30%, <code>--radius-md</code>, 16px 18px padding</td></tr><tr><td>Icon</td><td>20px, status colour: check, exclamation, clock, info</td></tr><tr><td>Text</td><td>15px; bold first sentence says what happened, second what to do</td></tr><tr><td>On green</td><td>same tokens resolve to dark backgrounds and light text</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Errors: <code>role="alert"</code>; confirmations: <code>role="status"</code>.</li><li>Inline next to the thing it's about; no toasts, no auto-dismiss for errors.</li><li>Never colour alone: icon + text.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-skeleton">
+  <div class="in">
+    <span class="eb">Feedback</span>
+    <h2>Loading</h2>
+    <div class="grid g2">
+      <div class="stage g" style="display:block"><div class="skel"><i style="width:60%;height:28px"></i><i style="width:90%"></i><i style="width:75%"></i><i style="height:140px;margin-top:12px"></i></div></div>
+      <div class="stage l" style="display:block"><div class="skel l"><i style="width:40%;height:22px"></i><i></i><i></i><i style="width:80%"></i></div></div>
+    </div>
+    <ul class="list notes1"><li>Skeletons for anything that loads after the page (directory rows, charts, company data): blocks in <code>--fg</code> at 8%, <code>--radius-sm</code>, matching the final layout so nothing shifts.</li><li>A slow shimmer (1.6s) only when motion is allowed; static otherwise.</li><li>Buttons use their own loading state; never a full-page spinner.</li><li>Container gets <code>aria-busy="true"</code>; announce when content arrives if the person asked for it.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-empty">
+  <div class="in">
+    <span class="eb">Feedback</span>
+    <h2>Empty state</h2>
+    <div class="stage l" style="display:block;text-align:center;padding:56px 40px"><p style="font:400 28px/1.15 var(--serif);margin:0">No companies match "xyz".</p><p style="color:var(--mute);margin:10px auto 22px;max-width:30em">Try another name or sector, or see every company we cover.</p><span class="btn btn-o">Clear search</span></div>
+    <ul class="list notes1"><li>Says what's empty, why, and offers one way forward (clear the filter, browse all, get introduced).</li><li>Title Ashcroft 28px, text 16px <code>--fg-muted</code>, outline button. Centred, 56px padding.</li><li>No illustrations or jokes; calm and short.</li></ul>
+  </div>
+</section>
+
+<section class="sec cmp" id="c-404">
+  <div class="in">
+    <span class="eb">Feedback</span>
+    <h2>Not found (404)</h2>
+    <div class="stage g" style="display:block;position:relative;overflow:hidden;min-height:240px;background:#12301F radial-gradient(rgba(227,253,90,.22) 1.05px,transparent 1.3px) 0 0/9px 9px"><span class="lab">Error 404</span><p style="font:400 44px/1.05 var(--serif);margin:14px 0 12px">This page isn't here.</p><p style="color:var(--stone);max-width:30em;margin:0 0 22px">It may have moved, or the company may have listed. Try the directory or go back home.</p><div style="display:flex;gap:14px"><span class="btn btn-y">Browse companies</span><span class="btn btn-o">Go home</span></div></div>
+    <ul class="list notes1"><li>Green section over the dot field, full nav and footer, centred in the first screen.</li><li>Company pages that are removed (for example after an IPO) redirect (301) to the directory instead of showing a 404.</li><li>Return the real 404 status; log the missing URL.</li></ul>
+  </div>
+</section>
+
+<!-- ================= BRAND ================= -->
+<section class="sec cmp dark" id="c-dots">
+  <div class="in">
+    <span class="eb">Brand</span>
+    <h2>Dot field <span class="pill">React starter</span></h2>
+    <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
+    <div class="spec2">
+      <div><h4>Spec</h4><table><tr><td>Ground</td><td><code>green-900</code>, canvas at up to 2× device pixel ratio</td></tr><tr><td>Grid</td><td>9px cell, one dot per cell</td></tr><tr><td>Rest</td><td>radius 1.05px, <code>yellow-300</code> at 22%</td></tr><tr><td>Pointer</td><td>within 220px, smoothstep falloff f: radius 1.05 × (1 + f), alpha 0.22 + 0.5 × f</td></tr><tr><td>Easing</td><td>pointer follows at 0.12 per frame; fade in 0.08, out 0.03</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Behind stats, panels and the Access hero only; never behind body text.</li><li>Draw only while on screen (IntersectionObserver); pause when the tab is hidden.</li><li>Reduced motion: draw once, no pointer response.</li><li>Decorative: <code>aria-hidden="true"</code>, <code>pointer-events: none</code> on the canvas (listen on the parent).</li><li>Mouse only; touch devices get the static field.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="starter">
+  <div class="in">
+    <span class="eb">Components · Code</span>
+    <h2>React starter files</h2>
+    <p class="lead">Seven typed components for Next.js (App Router) and Tailwind v4, built on the SecondLane theme. No dependencies beyond React. They type-check with TypeScript strict mode; adapt them to the codebase's conventions (for example, swap the <code>cx</code> helper for <code>clsx</code> + <code>tailwind-merge</code>).</p>
+    <div class="dl">
+      <a class="btn btn-g sm" href="files/components/button.tsx" download>button.tsx</a>
+      <a class="btn btn-g sm" href="files/components/arrow-link.tsx" download>arrow-link.tsx</a>
+      <a class="btn btn-g sm" href="files/components/eyebrow.tsx" download>eyebrow.tsx</a>
+      <a class="btn btn-g sm" href="files/components/section.tsx" download>section.tsx</a>
+      <a class="btn btn-g sm" href="files/components/card.tsx" download>card.tsx</a>
+      <a class="btn btn-g sm" href="files/components/field.tsx" download>field.tsx</a>
+      <a class="btn btn-g sm" href="files/components/dot-field.tsx" download>dot-field.tsx</a>
+      <a class="btn btn-g sm" href="files/components/cx.ts" download>cx.ts</a>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Starter file">
+      <button role="tab" aria-selected="true" aria-controls="s-btn" id="sb-btn">button.tsx</button>
+      <button role="tab" aria-selected="false" aria-controls="s-card" id="sb-card">card.tsx</button>
+      <button role="tab" aria-selected="false" aria-controls="s-field" id="sb-field">field.tsx</button>
+      <button role="tab" aria-selected="false" aria-controls="s-sec" id="sb-sec">section.tsx</button>
+      <button role="tab" aria-selected="false" aria-controls="s-dots" id="sb-dots">dot-field.tsx</button>
+    </div>
+    <div class="panel" id="s-btn" role="tabpanel" aria-labelledby="sb-btn"><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/components/button.tsx">Loading…</code></pre></div></div>
+    <div class="panel" id="s-card" role="tabpanel" aria-labelledby="sb-card" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/components/card.tsx">Loading…</code></pre></div></div>
+    <div class="panel" id="s-field" role="tabpanel" aria-labelledby="sb-field" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/components/field.tsx">Loading…</code></pre></div></div>
+    <div class="panel" id="s-sec" role="tabpanel" aria-labelledby="sb-sec" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/components/section.tsx">Loading…</code></pre></div></div>
+    <div class="panel" id="s-dots" role="tabpanel" aria-labelledby="sb-dots" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/components/dot-field.tsx">Loading…</code></pre></div></div>
+  </div>
+</section>
+<nav class="pnav" aria-label="Pages"><a href="foundations.html"><small>Previous</small><b>Foundations</b></a><a href="standards.html"><small>Next</small><b>Standards</b></a></nav>
+<footer class="foot">SecondLane visual guidelines · v0.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+<script src="gl.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokens and code · SecondLane Guidelines</title>
+<meta name="description" content="SecondLane visual guidelines v0.1 for the platform team: tokens and code.">
+<link rel="stylesheet" href="gl.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="side" aria-label="Guide">
+  <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
+  <small>Visual guidelines · v0.1</small>
+  <nav aria-label="Pages"><ol class="toc" id="toc">
+<li><a class="pg" href="index.html"><span>00</span>Overview</a>
+</li>
+<li><a class="pg" href="foundations.html"><span>01</span>Foundations</a>
+</li>
+<li><a class="pg" href="components.html"><span>02</span>Components</a>
+</li>
+<li><a class="pg" href="standards.html"><span>03</span>Standards</a>
+</li>
+<li><a class="pg" href="tokens.html" aria-current="page"><span>04</span>Tokens and code</a>
+<ol class="sub"><li><a href="#tokens">Design tokens</a></li></ol>
+</li>
+<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+</li>
+</ol></nav>
+  <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.</div>
+</aside>
+<main id="main">
+<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.1</span><h1>Tokens and code</h1></div></header>
+<!-- 11 TOKENS -->
+<section class="sec" id="tokens">
+  <div class="in">
+    <span class="eb">Tokens and code · Design tokens</span>
+    <h2>Design tokens</h2>
+    <p class="lead">One source, four formats. Use the Tailwind file in the Next.js build; the CSS file works anywhere; the JSON loads into Tokens Studio or Style Dictionary; DESIGN.md is the written spec for people and AI agents.</p>
+    <div class="dl">
+      <a class="btn btn-g sm" href="files/DESIGN.md" download>DESIGN.md</a>
+      <a class="btn btn-g sm" href="files/tailwind.css" download>Tailwind v4</a>
+      <a class="btn btn-g sm" href="files/tokens.css" download>CSS variables</a>
+      <a class="btn btn-g sm" href="files/tokens.json" download>Design tokens (JSON)</a>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Token format">
+      <button role="tab" aria-selected="true" aria-controls="t-md" id="b-md">DESIGN.md</button>
+      <button role="tab" aria-selected="false" aria-controls="t-tw" id="b-tw">Tailwind v4</button>
+      <button role="tab" aria-selected="false" aria-controls="t-css" id="b-css">CSS variables</button>
+      <button role="tab" aria-selected="false" aria-controls="t-json" id="b-json">Design tokens</button>
+    </div>
+    <div class="panel" id="t-md" role="tabpanel" aria-labelledby="b-md"><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/DESIGN.md">Loading…</code></pre></div></div>
+    <div class="panel" id="t-tw" role="tabpanel" aria-labelledby="b-tw" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tailwind.css">Loading…</code></pre></div></div>
+    <div class="panel" id="t-css" role="tabpanel" aria-labelledby="b-css" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tokens.css">Loading…</code></pre></div></div>
+    <div class="panel" id="t-json" role="tabpanel" aria-labelledby="b-json" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tokens.json">Loading…</code></pre></div></div>
+    <p class="note">Tailwind v4: import after <code>tailwindcss</code>. The default palette is removed, ramps give <code>bg-green-900</code>-style utilities, role tokens give <code>bg-bg</code>, <code>text-fg-lead</code>, <code>bg-accent</code>, and each <code>text-*</code> size carries its own line height, tracking and weight. Spacing is on a 4px base, so <code>p-18</code> is 72px.</p>
+  </div>
+</section>
+<nav class="pnav" aria-label="Pages"><a href="standards.html"><small>Previous</small><b>Standards</b></a><a href="resources.html"><small>Next</small><b>Resources</b></a></nav>
+<footer class="foot">SecondLane visual guidelines · v0.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+<script src="gl.js"></script>
+</body>
+</html>

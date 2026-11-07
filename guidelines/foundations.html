@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundations · SecondLane Guidelines</title>
+<meta name="description" content="SecondLane visual guidelines v0.1 for the platform team: foundations.">
+<link rel="stylesheet" href="gl.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="side" aria-label="Guide">
+  <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
+  <small>Visual guidelines · v0.1</small>
+  <nav aria-label="Pages"><ol class="toc" id="toc">
+<li><a class="pg" href="index.html"><span>00</span>Overview</a>
+</li>
+<li><a class="pg" href="foundations.html" aria-current="page"><span>01</span>Foundations</a>
+<ol class="sub"><li><a href="#logo">Logo</a></li><li><a href="#colour">Colour</a></li><li><a href="#type">Typography</a></li><li><a href="#layout">Layout and spacing</a></li><li><a href="#imagery">Imagery</a></li><li><a href="#motion">Motion</a></li></ol>
+</li>
+<li><a class="pg" href="components.html"><span>02</span>Components</a>
+</li>
+<li><a class="pg" href="standards.html"><span>03</span>Standards</a>
+</li>
+<li><a class="pg" href="tokens.html"><span>04</span>Tokens and code</a>
+</li>
+<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+</li>
+</ol></nav>
+  <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.</div>
+</aside>
+<main id="main">
+<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.1</span><h1>Foundations</h1></div></header>
+<!-- 02 LOGO -->
+<section class="sec" id="logo">
+  <div class="in">
+    <span class="eb">Foundations · Logo</span>
+    <h2>Logo</h2>
+    <p class="lead">The logo is the diamond mark with the SecondLane wordmark, supplied as one SVG (<code>assets/logo.svg</code>, 128 × 32 viewBox). Use it as a single colour: linen on green, green on linen or white.</p>
+    <div class="grid g3" style="margin-top:40px">
+      <figure class="lg-tile g"><i class="logo"></i><figcaption>Linen on bottle green · primary</figcaption></figure>
+      <figure class="lg-tile l"><i class="logo"></i><figcaption>Green on linen</figcaption></figure>
+      <figure class="lg-tile w"><i class="logo"></i><figcaption>Green on white</figcaption></figure>
+    </div>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="box"><h4>Clear space</h4><p>Keep at least half the logo height free on every side (16px at the 32px nav size).</p></div>
+      <div class="box"><h4>Sizes</h4><p>Nav: 128 × 32px. Footer: 112 × 28px. Minimum: 96px wide on screen. Never set it smaller than the body text.</p></div>
+      <div class="box"><h4>Implementation</h4><p>Inline the SVG or use it as a CSS mask so the colour follows a token. Give the link <code>aria-label="SecondLane home"</code>.</p></div>
+    </div>
+    <h3>Don't</h3>
+    <div class="grid g3">
+      <figure class="lg-tile g bad"><i class="logo"></i><figcaption>Recolour it yellow or any other colour</figcaption></figure>
+      <figure class="lg-tile l bad2"><i class="logo"></i><figcaption>Stretch, skew or redraw it</figcaption></figure>
+      <figure class="lg-tile bad3"><i class="logo"></i><figcaption style="color:var(--linen)">Place it on busy photography</figcaption></figure>
+    </div>
+  </div>
+</section>
+<!-- 03 COLOUR -->
+<section class="sec" id="colour">
+  <div class="in">
+    <span class="eb">Foundations · Colour</span>
+    <h2>Colour</h2>
+    <p class="lead">A small palette: two grounds, warm neutrals for text and lines, one signal yellow and one terracotta accent, each on a full shade ramp. Components use role tokens, never raw hex values.</p>
+
+    <h3>Core</h3>
+    <div class="grid g3 big">
+      <div class="sw"><i style="background:#12301F"></i><div><b>Bottle green</b><code>--green · #12301F</code><code>RGB 18 48 31</code><p>Primary ground. Hero, nav, footer, most sections, cards.</p></div></div>
+      <div class="sw"><i style="background:#F5F3EF"></i><div><b>Linen</b><code>--linen · #F5F3EF</code><code>RGB 245 243 239</code><p>Text on green. Light ground for contrast sections (FAQ, audiences).</p></div></div>
+      <div class="sw"><i style="background:#E3FD5A"></i><div><b>SL Yellow</b><code>--yel · #E3FD5A</code><code>RGB 227 253 90</code><p>Signal only: primary buttons, eyebrows on green, active states, the dot field. Never text on light grounds.</p></div></div>
+    </div>
+    <h3>Supporting</h3>
+    <div class="grid g4">
+      <div class="sw"><i style="background:#17392A"></i><div><b>Green 2</b><code>--green-2 · #17392A</code><p>Raised panels on green.</p></div></div>
+      <div class="sw"><i style="background:#D9D2C3"></i><div><b>Stone</b><code>--stone · #D9D2C3</code><p>Lead text on green.</p></div></div>
+      <div class="sw"><i style="background:#CBBFA8"></i><div><b>Sand</b><code>--sand · #CBBFA8</code><p>Secondary text on green, footer.</p></div></div>
+      <div class="sw"><i style="background:#55604F"></i><div><b>Mute</b><code>--mute · #55604F</code><p>Secondary text on linen and white.</p></div></div>
+      <div class="sw"><i style="background:#8F442D"></i><div><b>Rust</b><code>--rust · #8F442D</code><p>Eyebrow labels on light grounds. Accent only.</p></div></div>
+      <div class="sw"><i style="background:#191A16"></i><div><b>On yellow</b><code>--on-yel · #191A16</code><p>Text on yellow buttons.</p></div></div>
+      <div class="sw"><i style="background:#FFFFFF"></i><div><b>White</b><code>--white · #FFFFFF</code><p>Logo rail, inputs, light cards.</p></div></div>
+      <div class="sw"><i style="background:linear-gradient(90deg,#12301F 50%,#F5F3EF 50%)"></i><div><b>Lines</b><code>rgba(245,243,239,.18)</code><code>rgba(18,48,31,.14)</code><p>Hairlines on green and on linen.</p></div></div>
+    </div>
+
+
+    <h3>Shade ramps</h3>
+    <p>Every brand colour sits on a ramp from 50 to 950, built in OKLCH so the steps look even. Outlined swatches are the brand anchors: fixed values the other steps are generated around.</p>
+    <div class="ramps"><div class="rrow"><span class="rname">green</span><div class="rcells"><div class="rs" style="background:#E2EEE8;color:#191A16" title=""><b>50</b><code>#E2EEE8</code></div><div class="rs" style="background:#D4E2DB;color:#191A16" title=""><b>100</b><code>#D4E2DB</code></div><div class="rs" style="background:#B9CAC2;color:#191A16" title=""><b>200</b><code>#B9CAC2</code></div><div class="rs" style="background:#9FB3AA;color:#191A16" title=""><b>300</b><code>#9FB3AA</code></div><div class="rs" style="background:#859D92;color:#191A16" title=""><b>400</b><code>#859D92</code></div><div class="rs" style="background:#6C877B;color:#F5F3EF" title=""><b>500</b><code>#6C877B</code></div><div class="rs" style="background:#547264;color:#F5F3EF" title=""><b>600</b><code>#547264</code></div><div class="rs" style="background:#3C5D4F;color:#F5F3EF" title=""><b>700</b><code>#3C5D4F</code></div><div class="rs an" style="background:#24493A;color:#F5F3EF" title="Green hover"><b>800</b><code>#24493A</code></div><div class="rs an" style="background:#17392A;color:#F5F3EF" title="Green 2, raised panels on green"><b>850</b><code>#17392A</code></div><div class="rs an" style="background:#12301F;color:#F5F3EF" title="Bottle green, the brand ground"><b>900</b><code>#12301F</code></div><div class="rs an" style="background:#0C2216;color:#F5F3EF" title="Deep green (code, deepest panels)"><b>950</b><code>#0C2216</code></div></div></div><div class="rrow"><span class="rname">neutral</span><div class="rcells"><div class="rs an" style="background:#F5F3EF;color:#191A16" title="Linen"><b>50</b><code>#F5F3EF</code></div><div class="rs" style="background:#ECE8E0;color:#191A16" title=""><b>100</b><code>#ECE8E0</code></div><div class="rs an" style="background:#D9D2C3;color:#191A16" title="Stone"><b>200</b><code>#D9D2C3</code></div><div class="rs an" style="background:#CBBFA8;color:#191A16" title="Sand"><b>300</b><code>#CBBFA8</code></div><div class="rs" style="background:#ACA68F;color:#191A16" title=""><b>400</b><code>#ACA68F</code></div><div class="rs" style="background:#8E8E78;color:#191A16" title=""><b>500</b><code>#8E8E78</code></div><div class="rs" style="background:#717763;color:#F5F3EF" title=""><b>600</b><code>#717763</code></div><div class="rs an" style="background:#55604F;color:#F5F3EF" title="Mute"><b>700</b><code>#55604F</code></div><div class="rs" style="background:#3D4236;color:#F5F3EF" title=""><b>800</b><code>#3D4236</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#252720;color:#F5F3EF" title=""><b>900</b><code>#252720</code></div><div class="rs an" style="background:#191A16;color:#F5F3EF" title="On-yellow ink"><b>950</b><code>#191A16</code></div></div></div><div class="rrow"><span class="rname">yellow</span><div class="rcells"><div class="rs" style="background:#F7FFD6;color:#191A16" title=""><b>50</b><code>#F7FFD6</code></div><div class="rs" style="background:#F4FFC2;color:#191A16" title=""><b>100</b><code>#F4FFC2</code></div><div class="rs an" style="background:#EDFF8C;color:#191A16" title="Yellow hover"><b>200</b><code>#EDFF8C</code></div><div class="rs an" style="background:#E3FD5A;color:#191A16" title="SL Yellow, the signal"><b>300</b><code>#E3FD5A</code></div><div class="rs an" style="background:#CFE844;color:#191A16" title="Yellow pressed"><b>400</b><code>#CFE844</code></div><div class="rs" style="background:#B9CF37;color:#191A16" title=""><b>500</b><code>#B9CF37</code></div><div class="rs an" style="background:#A3B62B;color:#191A16" title="Focus border"><b>600</b><code>#A3B62B</code></div><div class="rs" style="background:#7F8E1C;color:#F5F3EF" title=""><b>700</b><code>#7F8E1C</code></div><div class="rs" style="background:#5D690E;color:#F5F3EF" title=""><b>800</b><code>#5D690E</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#3D4603;color:#F5F3EF" title=""><b>900</b><code>#3D4603</code></div><div class="rs" style="background:#2E3500;color:#F5F3EF" title=""><b>950</b><code>#2E3500</code></div></div></div><div class="rrow"><span class="rname">rust</span><div class="rcells"><div class="rs" style="background:#FEE7DE;color:#191A16" title=""><b>50</b><code>#FEE7DE</code></div><div class="rs" style="background:#FCDBCD;color:#191A16" title=""><b>100</b><code>#FCDBCD</code></div><div class="rs" style="background:#F7C1AB;color:#191A16" title=""><b>200</b><code>#F7C1AB</code></div><div class="rs an" style="background:#F0A88A;color:#191A16" title="Rust light (error on green)"><b>300</b><code>#F0A88A</code></div><div class="rs" style="background:#DD8C6E;color:#191A16" title=""><b>400</b><code>#DD8C6E</code></div><div class="rs" style="background:#C97054;color:#F5F3EF" title=""><b>500</b><code>#C97054</code></div><div class="rs an" style="background:#B5543A;color:#F5F3EF" title="Error border"><b>600</b><code>#B5543A</code></div><div class="rs an" style="background:#8F442D;color:#F5F3EF" title="Rust, eyebrows and error text on light"><b>700</b><code>#8F442D</code></div><div class="rs" style="background:#6D3220;color:#F5F3EF" title=""><b>800</b><code>#6D3220</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#4C2114;color:#F5F3EF" title=""><b>900</b><code>#4C2114</code></div><div class="rs" style="background:#3C190E;color:#F5F3EF" title=""><b>950</b><code>#3C190E</code></div></div></div></div>
+    <h3>How we use the ramps</h3>
+    <div class="grid g2">
+      <div class="box"><h4>1 · Components use role tokens</h4><p>Write <code>var(--bg)</code> or <code>bg-bg</code>, never <code>#12301F</code> or <code>bg-green-900</code>. Role tokens switch with the section theme, so one component works on green, linen and white.</p></div>
+      <div class="box"><h4>2 · Ramps feed the roles</h4><p>Use a ramp step directly only for one-off needs with no role yet: chart series, illustration fills, a tinted row, a status tag. If a step is used twice, it gets a role token.</p></div>
+      <div class="box"><h4>3 · No new hex values</h4><p>If a colour is missing, ask design for a role token rather than picking a nearby hex. Anchors never change without a brand decision.</p></div>
+      <div class="box"><h4>4 · Bands have jobs</h4><p><b>50–200</b> light surfaces and tints · <b>300–500</b> decorative fills, charts, text on green (300 and lighter) · <b>600–700</b> text and icons on light (AA) · <b>800–950</b> dark surfaces and hovers on green.</p></div>
+      <div class="box"><h4>5 · Pairing rule</h4><p>On green: neutral 400 or lighter, green and rust 300 or lighter, yellow 300. On linen and white: 700 or darker (yellow 800 or darker).</p></div>
+      <div class="box"><h4>6 · Yellow stays a signal</h4><p>300 is the brand yellow, 200 and 400 its hover and press, 600 the input focus border, 700–900 warning text on light only. Lines use transparency, not ramp steps.</p></div>
+    </div>
+    <h3>Role tokens</h3>
+    <p>Set <code>data-theme="green"</code>, <code>"linen"</code> or <code>"white"</code> on each section. Green is the default.</p>
+    <div class="tw"><table class="roles"><tr><th>Role token</th><th>Green theme</th><th>Linen / white theme</th><th>Use</th></tr><tr><td><code>--bg</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td>Section background</td></tr><tr><td><code>--bg-raised</code></td><td><span class="dot" style="background:#17392A"></span><code>green-850</code></td><td><span class="dot" style="background:#FFFFFF"></span><code>white</code></td><td>Panels and cards that sit on the background</td></tr><tr><td><code>--bg-inverse</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>A block in the opposite theme</td></tr><tr><td><code>--fg</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Headings and body text</td></tr><tr><td><code>--fg-lead</code></td><td><span class="dot" style="background:#D9D2C3"></span><code>neutral-200</code></td><td><span class="dot" style="background:#55604F"></span><code>neutral-700</code></td><td>Standfirsts and lead paragraphs</td></tr><tr><td><code>--fg-muted</code></td><td><span class="dot" style="background:#CBBFA8"></span><code>neutral-300</code></td><td><span class="dot" style="background:#55604F"></span><code>neutral-700</code></td><td>Secondary text, captions, footer links</td></tr><tr><td><code>--fg-subtle</code></td><td><span class="dot" style="background:#ACA68F"></span><code>neutral-400</code></td><td><span class="dot" style="background:#717763"></span><code>neutral-600</code></td><td>Placeholders and disabled text (large text only)</td></tr><tr><td><code>--eyebrow</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#8F442D"></span><code>rust-700</code></td><td>Uppercase labels above titles</td></tr><tr><td><code>--accent</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td>Primary button fill, active underline, arrows on green</td></tr><tr><td><code>--accent-hover</code></td><td><span class="dot" style="background:#EDFF8C"></span><code>yellow-200</code></td><td><span class="dot" style="background:#EDFF8C"></span><code>yellow-200</code></td><td>Primary button hover</td></tr><tr><td><code>--accent-pressed</code></td><td><span class="dot" style="background:#CFE844"></span><code>yellow-400</code></td><td><span class="dot" style="background:#CFE844"></span><code>yellow-400</code></td><td>Primary button pressed</td></tr><tr><td><code>--on-accent</code></td><td><span class="dot" style="background:#191A16"></span><code>neutral-950</code></td><td><span class="dot" style="background:#191A16"></span><code>neutral-950</code></td><td>Text and icons on the accent</td></tr><tr><td><code>--action</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Secondary solid button fill (green button on light)</td></tr><tr><td><code>--action-hover</code></td><td><span class="dot" style="background:#ECE8E0"></span><code>neutral-100</code></td><td><span class="dot" style="background:#24493A"></span><code>green-800</code></td><td>Secondary solid button hover</td></tr><tr><td><code>--on-action</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td>Text on the secondary solid button</td></tr><tr><td><code>--arrow</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Arrow-link icon</td></tr><tr><td><code>--focus</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Focus outline (2px, 3px offset); at least 3:1 on the ground</td></tr><tr><td><code>--focus-field</code></td><td><span class="dot" style="background:#A3B62B"></span><code>yellow-600</code></td><td><span class="dot" style="background:#A3B62B"></span><code>yellow-600</code></td><td>Input border when focused, always paired with --focus-ring</td></tr><tr><td><code>--danger</code></td><td><span class="dot" style="background:#F0A88A"></span><code>rust-300</code></td><td><span class="dot" style="background:#8F442D"></span><code>rust-700</code></td><td>Error text and icons</td></tr><tr><td><code>--danger-border</code></td><td><span class="dot" style="background:#F0A88A"></span><code>rust-300</code></td><td><span class="dot" style="background:#B5543A"></span><code>rust-600</code></td><td>Error field border</td></tr><tr><td><code>--danger-bg</code></td><td><span class="dot" style="background:#3C190E"></span><code>rust-950</code></td><td><span class="dot" style="background:#FEE7DE"></span><code>rust-50</code></td><td>Error message background</td></tr><tr><td><code>--success</code></td><td><span class="dot" style="background:#9FB3AA"></span><code>green-300</code></td><td><span class="dot" style="background:#3C5D4F"></span><code>green-700</code></td><td>Success text and icons</td></tr><tr><td><code>--success-bg</code></td><td><span class="dot" style="background:#17392A"></span><code>green-850</code></td><td><span class="dot" style="background:#E2EEE8"></span><code>green-50</code></td><td>Success message background</td></tr><tr><td><code>--warning</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#5D690E"></span><code>yellow-800</code></td><td>Warning text and icons</td></tr><tr><td><code>--warning-bg</code></td><td><span class="dot" style="background:#2E3500"></span><code>yellow-950</code></td><td><span class="dot" style="background:#F7FFD6"></span><code>yellow-50</code></td><td>Warning message background</td></tr></table></div>
+
+    <h3>Interaction states</h3>
+    <div class="tw"><table>
+      <tr><th>State</th><th>Value</th><th>Where</th></tr>
+      <tr><td>Yellow hover</td><td><code>#EDFF8C</code> + <code>0 0 0 4px rgba(227,253,90,.16)</code></td><td>Primary button hover</td></tr>
+      <tr><td>Yellow pressed</td><td><code>#CFE844</code></td><td>Primary button active</td></tr>
+      <tr><td>Green hover</td><td><code>#24493A</code></td><td>Green button hover</td></tr>
+      <tr><td>Focus ring (inputs)</td><td>border <code>#A3B62B</code> + <code>0 0 0 4px rgba(227,253,90,.3)</code></td><td>Text fields</td></tr>
+      <tr><td>Error</td><td><code>#B5543A</code> on light · <code>#F0A88A</code> on green</td><td>Field errors</td></tr>
+      <tr><td>Card edge</td><td><code>#7A846280</code> (50%)</td><td>Card border on green</td></tr>
+    </table></div>
+
+    <h3>Proportion</h3>
+    <p>Roughly how much of each colour a page uses. Dark pages (the default) lead with green; light pages invert green and linen. Yellow stays under 5% and rust under 2% in both.</p>
+    <h4 style="margin-top:20px">Dark · green-led</h4>
+    <div class="ratio" aria-hidden="true">
+      <span style="flex:70;background:#12301F;color:#CBBFA8">Green 70%</span>
+      <span style="flex:22;background:#F5F3EF;color:#55604F">Linen 22%</span>
+      <span style="flex:3;background:#fff"></span>
+      <span style="flex:3;background:#E3FD5A;color:#191A16">Y</span>
+      <span style="flex:2;background:#8F442D"></span>
+    </div>
+    <h4 style="margin-top:20px">Light · linen-led</h4>
+    <div class="ratio" aria-hidden="true">
+      <span style="flex:70;background:#F5F3EF;color:#55604F">Linen 70%</span>
+      <span style="flex:22;background:#12301F;color:#CBBFA8">Green 22%</span>
+      <span style="flex:3;background:#fff"></span>
+      <span style="flex:3;background:#E3FD5A;color:#191A16">Y</span>
+      <span style="flex:2;background:#8F442D"></span>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--mute)">White counts with linen (logo rail, cards, inputs). On light pages, yellow appears only as button fills, never as text or eyebrows; eyebrows and arrows switch to rust and green.</p>
+
+    <h3>Section themes</h3>
+    <p>Each section sets <code>data-theme</code>; the theme swaps a few variables and every component reads from them.</p>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="theme" style="background:#12301F;color:#F5F3EF"><span class="lab">green</span><span class="t">Heading in linen</span><span class="s" style="color:#D9D2C3">Lead in stone, secondary in sand.</span><i class="rule" style="background:rgba(245,243,239,.18)"></i><code style="color:#CBBFA8">--fg linen · --lead stone · --sub sand</code></div>
+      <div class="theme" style="background:#F5F3EF;color:#12301F;border:1px solid var(--rule-l)"><span class="lab" style="color:#8F442D">linen</span><span class="t">Heading in green</span><span class="s" style="color:#55604F">Lead and secondary in mute.</span><i class="rule" style="background:rgba(18,48,31,.14)"></i><code style="color:#55604F">--fg green · --lead mute · eyebrow rust</code></div>
+      <div class="theme" style="background:#fff;color:#12301F;border:1px solid var(--rule-l)"><span class="lab" style="color:#8F442D">white</span><span class="t">Heading in green</span><span class="s" style="color:#55604F">Used for the logo rail.</span><i class="rule" style="background:rgba(18,48,31,.12)"></i><code style="color:#55604F">--fg green · --rule 12%</code></div>
+    </div>
+
+    <h3>Contrast (WCAG 2.2)</h3>
+    <div class="grid g2">
+      <div>
+        <div class="pair" style="background:#12301F;color:#F5F3EF">Linen on green<em style="background:rgba(227,253,90,.2)">12.9 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#D9D2C3">Stone on green<em style="background:rgba(227,253,90,.2)">9.5 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#CBBFA8">Sand on green<em style="background:rgba(227,253,90,.2)">7.9 · AAA</em></div>
+        <div class="pair" style="background:#12301F;color:#E3FD5A">Yellow on green<em style="background:rgba(227,253,90,.2)">12.6 · AAA</em></div>
+        <div class="pair" style="background:#E3FD5A;color:#191A16">On-yellow on yellow<em>15.4 · AAA</em></div>
+      </div>
+      <div>
+        <div class="pair" style="background:#F5F3EF;color:#12301F;border:1px solid var(--rule-l)">Green on linen<em>12.9 · AAA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#55604F;border:1px solid var(--rule-l)">Mute on linen<em>6.0 · AA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#8F442D;border:1px solid var(--rule-l)">Rust on linen<em>6.3 · AA</em></div>
+        <div class="pair" style="background:#fff;color:#12301F;border:1px solid var(--rule-l)">Green on white<em>14.3 · AAA</em></div>
+        <div class="pair" style="background:#F5F3EF;color:#E3FD5A;border:1px solid var(--rule-l)">Yellow on linen<em style="background:#8F442D;color:#fff">1.0 · Fail</em></div>
+      </div>
+    </div>
+    <p class="note">Yellow fails on linen and white. On light grounds, eyebrows switch to rust and arrows to green; yellow buttons stay because their text is on-yellow.</p>
+  </div>
+</section>
+<!-- 04 TYPE -->
+<section class="sec" id="type">
+  <div class="in">
+    <span class="eb">Foundations · Typography</span>
+    <h2>Typography</h2>
+    <p class="lead">Two families. Ashcroft, a serif, for headlines and large figures. SFT Schrifted Sans for body, labels, buttons and UI.</p>
+    <div class="grid g2" style="margin-top:40px">
+      <div class="fam" style="background:#12301F;color:#F5F3EF"><div><h4>Display · headlines, figures</h4><div class="glyph" style="font-family:var(--serif)">Aa</div><div class="chars" style="font-family:var(--serif)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 $%&amp;·→</div></div><div class="m" style="color:#CBBFA8"><span>Ashcroft</span><span>Light 300 · Regular 400 · Medium 500</span></div></div>
+      <div class="fam" style="background:#fff;border:1px solid var(--rule-l)"><div><h4>Text · body, UI, labels</h4><div class="glyph" style="font-family:var(--sans)">Aa</div><div class="chars" style="font-family:var(--sans)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 $%&amp;·→</div></div><div class="m" style="color:#55604F"><span>SFT Schrifted Sans</span><span>Regular 400 · Medium 500</span></div></div>
+    </div>
+    <p class="note"><b>Licensing:</b> the prototype uses trial files of both fonts, which are for review only. Production needs web licences for Ashcroft and SFT Schrifted Sans, served as WOFF2 with <code>font-display: swap</code>. The client should buy the licences before launch; until then use the fallback stacks below.</p>
+    <div class="tw" style="margin-top:24px"><table>
+      <tr><th>Token</th><th>Stack</th></tr>
+      <tr><td><code>--serif</code></td><td><code>'Ashcroft', 'Iowan Old Style', Georgia, serif</code></td></tr>
+      <tr><td><code>--sans</code></td><td><code>'SFT Schrifted Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif</code></td></tr>
+    </table></div>
+
+    <h3>Type scale</h3>
+    <p>Desktop sizes at 1440px; the phone size applies below 900px. Line height is unitless; letter spacing is in em.</p>
+    <div style="margin-top:28px">
+      <div class="spec"><div class="k"><b>Display · page hero</b>Ashcroft 400 · 68 / 1.02 · −0.015em<br>Phone 44 · Capital, Prime</div><div style="font:400 68px/1.02 var(--serif);letter-spacing:-.015em">SecondLane Capital</div></div>
+      <div class="spec"><div class="k"><b>H1 · home hero</b>Ashcroft 400 · 58 / 1.04 · −0.015em<br>Phone 36</div><div style="font:400 58px/1.04 var(--serif);letter-spacing:-.015em">Get into the companies defining AI, defense, and space.</div></div>
+      <div class="spec"><div class="k"><b>H2 · section title</b>Ashcroft 400 · 48 / 1.05 · −0.012em<br>Phone 34</div><div style="font:400 48px/1.05 var(--serif);letter-spacing:-.012em">Liquidity starts here.</div></div>
+      <div class="spec"><div class="k"><b>H3 · card and FAQ title</b>Ashcroft 400 · 36 / 1.1<br>Phone 28 · FAQ 32 → 24</div><div style="font:400 36px/1.1 var(--serif)">SecondLane Prime</div></div>
+      <div class="spec"><div class="k"><b>H4 · small serif</b>Ashcroft 400 · 30 / 1.15<br>Phone 24</div><div style="font:400 30px/1.15 var(--serif)">Independent administration</div></div>
+      <div class="spec"><div class="k"><b>Figure · stats</b>Ashcroft 300 · 64 / 1 · −0.01em<br>Phone 48</div><div style="font:300 64px/1 var(--serif);letter-spacing:-.01em">17,000+</div></div>
+      <div class="spec"><div class="k"><b>Lead · standfirst</b>SFT 400 · 18 / 1.5 · max 34em<br>Phone 16</div><div style="font:400 18px/1.5 var(--sans);color:var(--mute);max-width:34em">Three verticals connect our participants and founders to private market opportunities.</div></div>
+      <div class="spec"><div class="k"><b>Body</b>SFT 400 · 17 / 1.55<br>Phone 16</div><div style="font:400 17px/1.55 var(--sans);max-width:38em">Every introduction runs through documented compliance checks, with third-party providers handling custody, escrow and administration.</div></div>
+      <div class="spec"><div class="k"><b>Small · footer, help text</b>SFT 400 · 15 / 1.5 · captions 13</div><div style="font:400 15px/1.5 var(--sans);color:var(--mute)">We use your email only for the report. Leave at any time.</div></div>
+      <div class="spec"><div class="k"><b>Eyebrow</b>SFT 500 · 12 / 16 · +0.07em · uppercase</div><div><span class="lab" style="color:var(--rust)">Three verticals</span></div></div>
+      <div class="spec"><div class="k"><b>Button</b>SFT 500 · 16 / 1 · compact 15</div><div style="font:500 16px/1 var(--sans)">Get introduced</div></div>
+      <div class="spec"><div class="k"><b>Field label</b>SFT 500 · 11 / 16 · +0.06em · uppercase</div><div style="font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)">Email</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:40px">
+      <div class="do"><b>Do</b><ul class="list"><li>Sentence case for every heading and button.</li><li>Balance headline lines (<code>text-wrap: balance</code>).</li><li>Keep body lines between 50 and 75 characters.</li><li>Use tabular figures in tables and stats.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Set body copy in Ashcroft or headlines in the sans.</li><li>Use bold weights above 500, italics or underlines for emphasis.</li><li>Use all caps outside eyebrows and field labels.</li><li>Track headlines positively.</li></ul></div>
+    </div>
+  </div>
+</section>
+<!-- 05 LAYOUT -->
+<section class="sec" id="layout">
+  <div class="in">
+    <span class="eb">Foundations · Layout and spacing</span>
+    <h2>Layout and spacing</h2>
+    <p class="lead">One centred container, a 12-column grid inside it and generous vertical rhythm. Every section sits on the same left and right edges.</p>
+    <h3>Container and grid</h3>
+    <figure class="cols"><i class="pad" style="left:0"></i><i class="pad" style="right:0"></i><div class="grid12"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><figcaption>Max 1312px · 64px side padding · 12 columns · 24px gutter</figcaption></figure>
+    <div class="tw" style="margin-top:24px"><table>
+      <tr><th>Property</th><th>Desktop</th><th>Below 900px</th></tr>
+      <tr><td>Container max width</td><td><code>1312px</code> (1184px of content)</td><td>Full width</td></tr>
+      <tr><td>Side padding</td><td><code>64px</code></td><td><code>20px</code></td></tr>
+      <tr><td>Columns / gutter</td><td>12 / <code>24px</code></td><td>4 / <code>16px</code></td></tr>
+      <tr><td>Section padding (vertical)</td><td><code>136px</code></td><td><code>88px</code></td></tr>
+      <tr><td>Section head to content</td><td><code>72px</code></td><td><code>40px</code></td></tr>
+      <tr><td>Section head</td><td>Title 6 cols, standfirst 5 cols, bottom aligned, 72px apart</td><td>Stacked</td></tr>
+      <tr><td>Nav height</td><td><code>96px</code>, <code>76px</code> once scrolled</td><td><code>64px</code></td></tr>
+    </table></div>
+    <h3>Common layouts</h3>
+    <div class="tw"><table>
+      <tr><th>Pattern</th><th>Columns</th><th>Used for</th></tr>
+      <tr><td>Three cards</td><td>3 × 4 cols</td><td>Verticals, insights, LP advantages</td></tr>
+      <tr><td>Four tiles</td><td>4 × 3 cols</td><td>Team, Prime founder blocks</td></tr>
+      <tr><td>Split</td><td>5 + 7 cols</td><td>Text beside an image or panel</td></tr>
+      <tr><td>Stats band</td><td>3 equal glass cards</td><td>2013 · 17,000+ · 1,500+</td></tr>
+      <tr><td>Footer</td><td>5 + 2 + 2 + 2 cols</td><td>Brand line and three link columns</td></tr>
+    </table></div>
+    <h3>Spacing scale</h3>
+    <p>Use only these steps (px). Small steps space components internally; large steps separate blocks and sections.</p>
+    <div class="space" style="margin-top:20px">
+      <div><b>space-1</b><code>4</code><i style="width:4px"></i></div>
+      <div><b>space-2</b><code>8</code><i style="width:8px"></i></div>
+      <div><b>space-3</b><code>12</code><i style="width:12px"></i></div>
+      <div><b>space-4</b><code>16</code><i style="width:16px"></i></div>
+      <div><b>space-5</b><code>24</code><i style="width:24px"></i></div>
+      <div><b>space-6</b><code>32</code><i style="width:32px"></i></div>
+      <div><b>space-7</b><code>44</code><i style="width:44px"></i></div>
+      <div><b>space-8</b><code>56</code><i style="width:56px"></i></div>
+      <div><b>space-9</b><code>72</code><i style="width:72px"></i></div>
+      <div><b>space-10</b><code>88</code><i style="width:88px"></i></div>
+      <div><b>space-11</b><code>136</code><i style="width:136px"></i></div>
+    </div>
+    <h3>Radius and elevation</h3>
+    <div class="tw"><table>
+      <tr><th>Token</th><th>Value</th><th>Used for</th></tr>
+      <tr><td><code>--radius-sm</code></td><td>4px</td><td>Buttons, inputs, tags</td></tr>
+      <tr><td><code>--radius-md</code></td><td>8px</td><td>Cards, image frames</td></tr>
+      <tr><td><code>--radius-lg</code></td><td>12px</td><td>Glass panels (stats, waitlist form)</td></tr>
+      <tr><td><code>--shadow-lift</code></td><td><code>0 27px 67px rgba(0,0,0,.45)</code></td><td>Card hover only. Nothing has a shadow at rest.</td></tr>
+      <tr><td><code>--glass</code></td><td>fill <code>rgba(18,48,31,.55)</code>, <code>blur(24px)</code>, 1px line at 20%, inner top highlight 12%</td><td>Panels over the dot field or photos</td></tr>
+    </table></div>
+    <p class="note">Breakpoints: <code>900px</code> switches to the phone layout, <code>1180px</code> moves the company directory's sidebar above the list. Phone layouts are not designed yet: they follow once the desktop layouts and components are approved. Until then, stack columns in reading order at 900px.</p>
+  </div>
+</section>
+<!-- 07 IMAGERY -->
+<section class="sec dark" id="imagery">
+  <div class="in">
+    <span class="eb">Foundations · Imagery</span>
+    <h2>Imagery</h2>
+    <p class="lead">Two approved styles: warm editorial photography for people and places, and halftone objects for the sectors SecondLane covers. Plus one generated pattern, the dot field.</p>
+    <h3>Photography</h3>
+    <div class="grid g3">
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/funds.jpg" alt="Editorial photograph of a person at a window above a city"><figcaption>People</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/report.jpg" alt="Editorial photograph of a stone-walled office"><figcaption>Places</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:4/5"><img src="../assets/desk-watch.jpg" alt="Close-up of a hand with a watch resting on a wooden desk"><figcaption>Details</figcaption></figure>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="do"><b>Do</b><ul class="list"><li>Natural light, warm tones, real materials: stone, wood, wool, brass.</li><li>Quiet, unposed moments; people seen at work, not smiling at the camera.</li><li>Leave calm space for text when the image sits behind type.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Filters, heavy grading, neon or yellow light.</li><li>Trading screens, charts on monitors, handshakes, piles of cash.</li><li>Stock photography that looks staged.</li></ul></div>
+    </div>
+    <h3>Halftone objects</h3>
+    <div class="grid g4">
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/ins-chip.jpg" alt="Halftone rendering of a processor chip"><figcaption>AI</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/cooling.jpg" alt="Halftone rendering of a cooling component"><figcaption>Infrastructure</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4"><img src="../assets/ins-insulators.jpg" alt="Halftone rendering of power line insulators"><figcaption>Energy</figcaption></figure>
+      <figure class="shot" style="aspect-ratio:5/4;background:#F5F3EF"><img src="../assets/htl1.jpg" alt="Halftone object on a linen ground"><figcaption>Light version</figcaption></figure>
+    </div>
+    <ul class="list" style="margin-top:20px">
+      <li>One object per image from a SecondLane sector: AI, crypto, fintech, consumer tech, gaming, space, deep tech, autonomy, defense, energy.</li>
+      <li>Dark version: object on <code>#12301F</code> with a soft dot halo that fades out, never an opaque glow. Light version: object alone on <code>#F5F3EF</code>.</li>
+      <li>One small terracotta or bronze accent per image. No yellow or neon inside images: yellow belongs to the interface.</li>
+    </ul>
+    <h3>Dot field</h3>
+    <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
+    <div class="tw" style="margin-top:20px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Ground</td><td><code>#12301F</code>, drawn on a <code>&lt;canvas&gt;</code> at up to 2× device pixel ratio</td></tr>
+      <tr><td>Grid</td><td>9px cell, dot centred in each cell</td></tr>
+      <tr><td>Dot at rest</td><td>radius 1.05px, <code>rgba(227,253,90,.22)</code></td></tr>
+      <tr><td>Near the pointer</td><td>within 220px, smoothstep falloff <code>f</code>: radius <code>1.05 × (1 + f)</code>, alpha <code>.22 + .5 × f</code></td></tr>
+      <tr><td>Pointer easing</td><td>follows at 0.12 per frame; fades in at 0.08, out at 0.03</td></tr>
+      <tr><td>Performance</td><td>draw only while on screen (IntersectionObserver); static at rest under reduced motion</td></tr>
+    </table></div>
+    <h3>Image ratios</h3>
+    <div class="ar" aria-hidden="true">
+      <div style="width:160px;aspect-ratio:3/2">3:2 · hero art</div>
+      <div style="width:128px;aspect-ratio:4/5">4:5 · page hero</div>
+      <div style="width:160px;aspect-ratio:5/4">5:4 · card</div>
+      <div style="width:160px;aspect-ratio:4/3">4:3 · split image</div>
+      <div style="width:108px;aspect-ratio:3/4">3:4 · portrait</div>
+    </div>
+    <p class="note">Serve images as AVIF or WebP with a JPEG fallback through <code>srcset</code>, lazy-load everything below the first screen, and give each image meaningful <code>alt</code> text (empty <code>alt=""</code> for decorative halftones). The images in the prototype are placeholders; final art is produced per page.</p>
+  </div>
+</section>
+<!-- 08 MOTION -->
+<section class="sec dark" id="motion" style="border-top:1px solid var(--rule-d)">
+  <div class="in">
+    <span class="eb">Foundations · Motion</span>
+    <h2>Motion</h2>
+    <p class="lead">Slow and soft: things settle rather than snap. Motion only responds to the visitor or reveals content once. Hover a row to play it.</p>
+    <div style="margin-top:32px">
+      <div class="mo" style="--d:.7s;--e:cubic-bezier(.2,.7,.2,1)"><div class="track"><i></i></div><div><b>Card lift</b> · 6px up, .7s, <code>cubic-bezier(.2,.7,.2,1)</code></div></div>
+      <div class="mo" style="--d:.9s;--e:cubic-bezier(.2,.7,.2,1)"><div class="track"><i></i></div><div><b>Reveal</b> · 24px rise plus fade, .9s, items 160ms apart, once per page view</div></div>
+      <div class="mo" style="--d:.18s;--e:ease"><div class="track"><i></i></div><div><b>Controls</b> · buttons and links .18s; press 1px down in .08s</div></div>
+      <div class="mo" style="--d:.35s;--e:ease"><div class="track"><i></i></div><div><b>Edges and nav</b> · lit edge and nav background .35s ease</div></div>
+      <div class="mo" style="--d:.6s;--e:cubic-bezier(.65,0,.35,1)"><div class="track"><i></i></div><div><b>Panels</b> · tabs and accordions, <code>--ease: cubic-bezier(.65,0,.35,1)</code></div></div>
+    </div>
+    <div class="grid g2" style="margin-top:32px">
+      <div class="do"><b>Do</b><ul class="list"><li>Animate <code>transform</code> and <code>opacity</code> only.</li><li>Honour <code>prefers-reduced-motion</code>: no lifts, rises or moving dots; everything visible at once.</li><li>Keep content readable if scripts fail: hidden-until-revealed content must default to visible.</li></ul></div>
+      <div class="dont"><b>Don't</b><ul class="list"><li>Parallax, auto-playing carousels, tilt or bouncing easings.</li><li>Zoom images on hover.</li><li>Loop anything for more than 5 seconds without a pause control.</li></ul></div>
+    </div>
+  </div>
+</section>
+<nav class="pnav" aria-label="Pages"><a href="index.html"><small>Previous</small><b>Overview</b></a><a href="components.html"><small>Next</small><b>Components</b></a></nav>
+<footer class="foot">SecondLane visual guidelines · v0.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+<script src="gl.js"></script>
+</body>
+</html>

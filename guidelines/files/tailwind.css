@@ -1,5 +1,5 @@
 /* SecondLane theme for Tailwind CSS v4
-   v1.1 · 7 Nov 2026 · import after tailwindcss:  @import "tailwindcss"; @import "./secondlane.css";
+   v0.1 · 7 Nov 2026 · import after tailwindcss:  @import "tailwindcss"; @import "./secondlane.css";
 
    - Ramps and brand aliases go in @theme, so bg-green-900, text-linen, border-rust-600 exist.
    - Role tokens live on :root and [data-theme] and are exposed through @theme inline,

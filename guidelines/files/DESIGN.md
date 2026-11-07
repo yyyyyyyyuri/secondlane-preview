@@ -2,9 +2,9 @@
 > private office in bottle green and linen
 
 **Theme:** dark-first (green), with linen and white sections
-**Version:** 1.1 · 7 Nov 2026
-**Files:** `tokens.css` (CSS custom properties) · `tailwind.css` (Tailwind v4 theme) · `tokens.json` (W3C design tokens) · this file
-**Visual reference:** the live prototype, https://yyyyyyyyuri.github.io/secondlane-preview/ · full guide with live components: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/
+**Version:** 0.1 · 7 Nov 2026
+**Files:** `tokens.css` (CSS custom properties) · `tailwind.css` (Tailwind v4 theme) · `tokens.json` (W3C design tokens) · this file · React starters in `components/` (Button, ArrowLink, Eyebrow, Section, Card, Field, DotField)
+**Visual reference:** the live prototype, https://yyyyyyyyuri.github.io/secondlane-preview/ · full guide: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/ · component specs: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/components.html
 
 SecondLane is an introduction network for secondary opportunities in private companies (AI, defense, space, fintech). The site should feel like a private office: calm, established, discreet and expensive, never like a trading app. Bottle green carries most of the page, with linen and white sections for contrast. A single signal yellow marks the main action and active states; a terracotta rust marks labels on light grounds. Headlines are set in Ashcroft, a warm serif, at regular weight with slight negative tracking; everything else is set in SFT Schrifted Sans. Imagery is warm editorial photography plus halftone renderings of sector objects, with a generated yellow dot field as the one recurring texture. Motion is slow and soft: cards lift 6px, content rises once, nothing loops.
 
