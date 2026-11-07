@@ -6,7 +6,7 @@
    Options (all optional): firstFrom 'right'|'left' (the first load slides in from that side), intro .3 / introDur 1.5 (how far the dots start scattered and how long they take to land), detail 1 (multiplies each tier's dot budget), spacing (overrides the preset's), clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
    object {c:[x,y] object centre in the source, at:[x,y] where it lands, atSmall} places the object instead of focal.
-   Returns { show(src, focal, object), pause(), play(), playing, destroy() }; show() fades to another illustration. Respects prefers-reduced-motion and stops drawing off screen. */
+   Returns { show(src, focal, object), pause(), play(), playing, destroy() }; show() fades to another illustration. still <canvas> (optional) shows the exact reference image once the dots have landed. Respects prefers-reduced-motion and stops drawing off screen. */
 (function(){
   var PRE={fine:{spacing:1.8,dsize:.95,faint:.03,soft:.1,sq:0},standard:{spacing:2.4,dsize:1,faint:.04,soft:.1,sq:0},
     coarse:{spacing:4.5,dsize:1,faint:.05,soft:.12,sq:0},bold:{spacing:7,dsize:1.25,faint:.08,soft:.06,sq:0},pixel:{spacing:4,dsize:1.05,faint:.04,soft:.04,sq:1}};
@@ -46,21 +46,26 @@
     var lx=-.55,ly=.55,lz=.75,m=Math.hypot(lx,ly,lz);lx/=m;ly/=m;lz/=m;var sum=0,n=0;
     for(var a=-1;a<=1;a+=.1)for(var b=-1;b<=1;b+=.1){var r=a*a+b*b;if(r>1)continue;sum+=.3+.95*Math.max(a*lx+b*ly+Math.sqrt(1-r)*lz,0);n++;}
     gl.uniform1f(U.uNorm,sum/n);gl.uniform3f(U.uL,lx,ly,lz);gl.uniform1f(U.uK,K);gl.uniform1f(U.uSoft,P.soft);gl.uniform1f(U.uSquare,P.sq);
-    var buf=gl.createBuffer(), N=0, W=0, H=0, dpr=1, img=null, BG=[18,48,31], zMax=.32+spread;
+    var place=null, ST=o.still||null, stA=0, buf=gl.createBuffer(), N=0, W=0, H=0, dpr=1, img=null, BG=[18,48,31], zMax=.32+spread;
 
+    // the still: the reference image itself, drawn with the same crop; it shows once the dots have landed
+    function drawStill(){ if(!ST||!place) return; var sd=Math.min(devicePixelRatio||1,2); ST.width=Math.round(W*sd); ST.height=Math.round(H*sd);
+      var x=ST.getContext('2d'); x.imageSmoothingEnabled=true; x.imageSmoothingQuality='high'; x.setTransform(sd,0,0,sd,0,0);
+      x.fillStyle='rgb('+BG.join(',')+')'; x.fillRect(0,0,W,H); x.drawImage(img,place[0],place[1],place[2],place[3]); }
     function build(){
       var area=W*H, tier=W<TIERS.small.max?'small':W<TIERS.medium.max?'medium':'large';
       var look=P.spacing*Math.min(1.5,Math.max(.75,Math.sqrt(area/(1280*800)))), cell=Math.max(look,Math.sqrt(area/(TIERS[tier].dots*DET)),2.2/dpr);
       var gw=Math.ceil(W/cell), gh=Math.ceil(H/cell), g=document.createElement('canvas'); g.width=gw; g.height=gh;
       var gx=g.getContext('2d',{willReadFrequently:true}); gx.imageSmoothingEnabled=true; gx.imageSmoothingQuality='high';
-      var sc=Math.max(gw/img.width,gh/img.height); gx.fillStyle='rgb('+BG.join(',')+')'; gx.fillRect(0,0,gw,gh);
-      var iw=img.width*sc, ih=img.height*sc, ox=(gw-iw)*focal[0], oy=(gh-ih)*focal[1];
+      gx.fillStyle='rgb('+BG.join(',')+')'; gx.fillRect(0,0,gw,gh);
+      // crop in CSS pixels, exactly like object-fit:cover with object-position = focal, so the dots and the still image line up
+      var sc=Math.max(W/img.width,H/img.height), iw=img.width*sc, ih=img.height*sc, ox=(W-iw)*focal[0], oy=(H-ih)*focal[1];
       // object placement: put the object's centre (obj, a share of the source) at a share of the canvas (at); on wide canvases
       // the print may shift right past the cover crop, the gap is the print's own ground colour
       if(obj){ var at=W<TIERS.small.max?(obj.atSmall||[.5,.5]):(obj.at||[.6,.5]);
-        ox=Math.min(Math.max(at[0]*gw-obj.c[0]*iw,gw-iw),.35*gw); oy=Math.min(Math.max(at[1]*gh-obj.c[1]*ih,gh-ih),0); }
-      zf=[(ox/gw)+(obj?obj.c[0]:.5)*iw/gw,(oy/gh)+(obj?obj.c[1]:.5)*ih/gh]; if(!obj) zf=[focal[0],focal[1]];
-      gx.drawImage(img,ox,oy,iw,ih);
+        ox=Math.min(Math.max(at[0]*W-obj.c[0]*iw,W-iw),.35*W); oy=Math.min(Math.max(at[1]*H-obj.c[1]*ih,H-ih),0); }
+      zf=obj?[(ox+obj.c[0]*iw)/W,(oy+obj.c[1]*ih)/H]:[focal[0],focal[1]];
+      place=[ox,oy,iw,ih]; gx.drawImage(img,ox/cell,oy/cell,iw/cell,ih/cell); drawStill();
       var px=gx.getImageData(0,0,gw,gh).data, cellA=cell*cell, out=[], i=0;
       for(var y=0;y<gh;y++)for(var x=0;x<gw;x++,i++){
         var k=i*4,R=px[k],G=px[k+1],B=px[k+2],dR=R-BG[0],dG=G-BG[1],dB=B-BG[2], c=Math.min(1,Math.sqrt(dR*dR+dG*dG+dB*dB)/140);
@@ -90,7 +95,7 @@
       now=now||performance.now(); var dt=Math.min(.1,(now-last)/1000); last=now;
       var p=reduce?0:progress(), ip=0, inA=1, sideX=0;
       // arrival (ease in-out, a soft start and a soft landing): each new print starts scattered along the dots' depths and flies into place over IND seconds, then settles
-      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); var ie=io(it); if(inFirst&&SIDE){ sideX=-SIDE*(1-ie)*W; } else ip=INA*(1-ie); inA=io(Math.min(1,inT/(IND*.35))); if(it>=1) inT=-1; }
+      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); var ie=io(it); if(SIDE){ sideX=-SIDE*(1-ie)*W; } else ip=INA*(1-ie); inA=io(Math.min(1,inT/(IND*.35))); if(it>=1) inT=-1; }
       p=p+ip*(1-p);
       if(playing) clock+=dt;
       // ambient sway: camera to the left, back through the centre, to the right and home, once per period
@@ -102,7 +107,9 @@
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(zf[0]-.5)*W,(zf[1]-.5)*H);
       gl.uniform2f(U.uCam,swayNow+sideX,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,swA*inA*(1-Math.min(1,Math.max(0,(fp-.78)/.2))));
-      if(N) gl.drawArrays(gl.POINTS,0,N);
+      // settled at the top: show the exact reference image; any scroll, switch or arrival hands back to the dots
+      if(ST){ var still=reduce||(inT<0&&!pending&&swT===1&&swA>.97&&p<.002); stA+=((still?1:0)-stA)*(reduce?1:still?.07:.35); if(stA<.002) stA=0; if(stA>.998) stA=1; ST.style.setProperty('--st',stA.toFixed(3)); }
+      if(N&&stA<1) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }
     function load(src,cb){ if(cache[src]) return cb(cache[src]); var im=new Image(); im.onload=function(){ cache[src]={img:im,bg:o.ground||ground(im)}; cb(cache[src]); }; im.src=src; }
