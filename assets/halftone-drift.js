@@ -3,7 +3,7 @@
    so scrolling lifts them at different speeds and the camera sway slides the layers past each other.
 
    Usage:  SecondLaneHalftone.mount(canvas, { src:'assets/ht-accelerator.jpg', focal:[.62,.48], scrollEl:heroSection })
-   Options (all optional): intro .3 / introDur 1.5 (how far the dots start scattered and how long they take to land), detail 1 (multiplies each tier's dot budget), spacing (overrides the preset's), clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
+   Options (all optional): firstFrom 'right'|'left' (the first load slides in from that side), intro .3 / introDur 1.5 (how far the dots start scattered and how long they take to land), detail 1 (multiplies each tier's dot budget), spacing (overrides the preset's), clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
    object {c:[x,y] object centre in the source, at:[x,y] where it lands, atSmall} places the object instead of focal.
    Returns { show(src, focal, object), pause(), play(), playing, destroy() }; show() fades to another illustration. Respects prefers-reduced-motion and stops drawing off screen. */
@@ -85,12 +85,12 @@
     }
     // scroll: 0 while the hero sits at the top, 1 once it has scrolled out of view
     function progress(){ var r=scrollEl.getBoundingClientRect(); return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height*CLEAR))); }
-    var swA=1, swT=1, pending=null, inT=-1, INA=o.intro!=null?o.intro:.3, IND=o.introDur||1.5, cache={}, cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
+    var swA=1, swT=1, pending=null, inT=-1, inFirst=false, SIDE=o.firstFrom==='right'?.4:o.firstFrom==='left'?-.4:0, INA=o.intro!=null?o.intro:.3, IND=o.introDur||1.5, cache={}, cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
     function frame(now){
       now=now||performance.now(); var dt=Math.min(.1,(now-last)/1000); last=now;
-      var p=reduce?0:progress(), ip=0, inA=1;
+      var p=reduce?0:progress(), ip=0, inA=1, sideX=0;
       // arrival (ease in-out, a soft start and a soft landing): each new print starts scattered along the dots' depths and flies into place over IND seconds, then settles
-      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); var ie=io(it); ip=INA*(1-ie); inA=io(Math.min(1,inT/(IND*.35))); if(it>=1) inT=-1; }
+      if(inT>=0&&!reduce){ inT+=dt; var it=Math.min(1,inT/IND); var ie=io(it); if(inFirst&&SIDE){ sideX=-SIDE*(1-ie)*W; } else ip=INA*(1-ie); inA=io(Math.min(1,inT/(IND*.35))); if(it>=1) inT=-1; }
       p=p+ip*(1-p);
       if(playing) clock+=dt;
       // ambient sway: camera to the left, back through the centre, to the right and home, once per period
@@ -101,13 +101,13 @@
       swA+=(swT-swA)*(reduce?1:.28); if(pending&&swA<.03){ apply(pending); pending=null; swT=1; swA=1; }
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(zf[0]-.5)*W,(zf[1]-.5)*H);
-      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,swA*inA*(1-Math.min(1,Math.max(0,(fp-.78)/.2))));
+      gl.uniform2f(U.uCam,swayNow+sideX,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,swA*inA*(1-Math.min(1,Math.max(0,(fp-.78)/.2))));
       if(N) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }
     function load(src,cb){ if(cache[src]) return cb(cache[src]); var im=new Image(); im.onload=function(){ cache[src]={img:im,bg:o.ground||ground(im)}; cb(cache[src]); }; im.src=src; }
-    function apply(e){ img=e.img; BG=e.bg; focal=e.focal; obj=e.object||null; if(W&&H) build(); inT=0; }
-    load(o.src,function(e){ apply({img:e.img,bg:e.bg,focal:focal,object:obj}); W=H=0; size(); if(o.fallback) o.fallback.hidden=true; if(!raf) raf=requestAnimationFrame(loop); });
+    function apply(e,first){ img=e.img; BG=e.bg; focal=e.focal; obj=e.object||null; if(W&&H) build(); inT=0; inFirst=!!first; }
+    load(o.src,function(e){ apply({img:e.img,bg:e.bg,focal:focal,object:obj},true); W=H=0; size(); if(o.fallback) o.fallback.hidden=true; if(!raf) raf=requestAnimationFrame(loop); });
     var ro=('ResizeObserver' in window)?new ResizeObserver(size):null; if(ro) ro.observe(cv); else addEventListener('resize',size);
     var ob=('IntersectionObserver' in window)?new IntersectionObserver(function(es){ vis=es[0].isIntersecting; last=performance.now(); }):null; if(ob) ob.observe(cv);
     if(reduce) addEventListener('resize',function(){ requestAnimationFrame(frame); });
