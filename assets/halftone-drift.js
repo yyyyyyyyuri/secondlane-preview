@@ -3,7 +3,7 @@
    so scrolling lifts them at different speeds and the camera sway slides the layers past each other.
 
    Usage:  SecondLaneHalftone.mount(canvas, { src:'assets/ht-accelerator.jpg', focal:[.62,.48], scrollEl:heroSection })
-   Options (all optional): clearAt .5 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
+   Options (all optional): clearAt .9 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
    Returns { pause(), play(), playing, destroy() }. Respects prefers-reduced-motion and stops drawing off screen. */
 (function(){
@@ -32,7 +32,7 @@
 
   function mount(cv,o){
     o=o||{}; var P=PRE[o.preset||'standard'], focal=o.focal||[.5,.5], spread=o.depth!=null?o.depth:2.6, order=o.depthOrder!=null?o.depthOrder:.5,
-      ZOOM=o.zoom||1.8, PUSH=o.push!=null?o.push:.3, SWAY=o.sway!=null?o.sway:.05, PER=o.swayPeriod||20, K=o.light!=null?o.light:.1, scrollEl=o.scrollEl||cv, CLEAR=o.clearAt||.5;
+      ZOOM=o.zoom||1.8, PUSH=o.push!=null?o.push:.3, SWAY=o.sway!=null?o.sway:.05, PER=o.swayPeriod||20, K=o.light!=null?o.light:.1, scrollEl=o.scrollEl||cv, CLEAR=o.clearAt||.9;
     var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     var gl=cv.getContext('webgl',{antialias:true,premultipliedAlpha:true,alpha:true});
     if(!gl){ if(o.fallback) o.fallback.hidden=false; cv.hidden=true; return {pause:function(){},play:function(){},playing:false,destroy:function(){}}; }
@@ -85,11 +85,11 @@
       if(playing) clock+=dt;
       // ambient sway: camera to the left, back through the centre, to the right and home, once per period
       var swayT=playing?-Math.sin(2*Math.PI*clock/PER)*SWAY*W:0; swayNow+=(swayT-swayNow)*.04;
-      var cEnd=.42*PUSH, need=1.22*(zMax-cEnd)+.12, ds=p*(1.15-.15*p), zm=1+(1-Math.pow(1-p,2))*(ZOOM-1);
+      var cEnd=.42*PUSH, need=1.22*(zMax-cEnd)+.12, ds=Math.pow(p,1.6), zm=1+(1-Math.pow(1-p,2))*(ZOOM-1);
       var k=reduce?1:.09; cam.p=(cam.p||0)+(p-(cam.p||0))*k; var fp=cam.p; cam.d+=(ds*need*H/zm-cam.d)*k; cam.c+=((1-Math.pow(1-p,2))*cEnd-cam.c)*k; cam.z+=(zm-cam.z)*k;
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(focal[0]-.5)*W,(focal[1]-.5)*H);
-      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,1-Math.min(1,Math.max(0,(fp-.6)/.35)));
+      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,1-Math.min(1,Math.max(0,(fp-.78)/.2)));
       if(N) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }

@@ -20,7 +20,7 @@ body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-
 *{box-sizing:border-box}
 h1,h2,h3,p{margin:0}
 button{font:inherit;color:inherit}
-img{display:block}
+img{display:block}[hidden]{display:none!important}
 
 /* page themes: the wrapper carries the colours, sections stay transparent */
 .site{--bg:var(--green);--fg:var(--linen);--sub:var(--sand);--lead:var(--stone);--rule:rgba(245,243,239,.18);
@@ -85,15 +85,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
 .hero .wrap{position:relative;width:100%}
 canvas.hero__art{display:block}
-.hero__pause{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:32px;z-index:2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
- color:var(--linen);background:rgba(18,48,31,.5);border:1px solid rgba(245,243,239,.28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:border-color .2s,background-color .2s}
-.hero__pause:hover{border-color:var(--yel);background:rgba(18,48,31,.75)}
-.hero__pause:active{transform:scale(.95)}
-.hero__pause:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
-.hero__pause svg{width:14px;height:14px;fill:currentColor;grid-area:1/1}.hero__pause .i-pl{display:none}
-.hero__pause[aria-pressed="true"] .i-pa{display:none}.hero__pause[aria-pressed="true"] .i-pl{display:block}
-@media (prefers-reduced-motion:reduce){.hero__pause{display:none}}
-@media (max-width:900px){.hero__pause{top:112px;bottom:auto;right:max(20px,env(safe-area-inset-right,0px))}}
 .hero__body{max-width:740px;padding-block:96px 72px;display:flex;flex-direction:column;gap:28px}
 .hero h1{font:400 72px/1.02 var(--serif);letter-spacing:-.015em;text-wrap:balance}
 .hero .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
@@ -285,10 +276,9 @@ a.btn{text-decoration:none}
   <main id="top">
     <!-- 1. Hero -->
     <section class="hero" data-theme="green">
-      <!-- halftone drift: the AI accelerator print as 3D dots; scroll lifts them, the camera sways slowly -->
+      <!-- halftone drift: the AI accelerator print as 3D dots; scroll lifts them at their own speeds -->
       <canvas class="hero__art" id="heroDots" aria-hidden="true"></canvas>
       <img class="hero__art" id="heroStill" src="assets/ht-accelerator.jpg" alt="" hidden>
-      <button class="hero__pause" id="heroPause" type="button" aria-label="Pause motion" aria-pressed="false"><svg class="i-pa" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg><svg class="i-pl" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6a.8.8 0 0 0 1.2.7l7.6-4.8a.8.8 0 0 0 0-1.4L6.2 2.5A.8.8 0 0 0 5 3.2z"/></svg></button>
       <div class="wrap">
         <div class="hero__body">
           <h1>Get into the companies defining AI, defense and space before they go public.</h1>
@@ -540,11 +530,9 @@ document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ loc
   addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
 })();
 </script>
-<script src="assets/halftone-drift.js?v=3"></script>
+<script src="assets/halftone-drift.js?v=4"></script>
 <script>
 (function(){
-  var hero=document.querySelector('.hero'), btn=document.getElementById('heroPause');
-  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:'assets/ht-accelerator.jpg',focal:[.62,.48],scrollEl:hero,fallback:document.getElementById('heroStill'),sway:.05,swayPeriod:20});
-  btn.addEventListener('click',function(){ var on=ht.playing; if(on) ht.pause(); else ht.play(); btn.setAttribute('aria-pressed',on?'true':'false'); btn.setAttribute('aria-label',on?'Play motion':'Pause motion'); });
+  SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:'assets/ht-accelerator.jpg',focal:[.62,.48],scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
 })();
 </script>
