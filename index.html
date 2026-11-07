@@ -37,7 +37,7 @@ main [data-theme="white"]{--bg:#FFFFFF;--fg:var(--green);--sub:var(--mute);--lea
 .sec{padding-block:136px}
 .lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
 main [data-theme="linen"] .lab,main [data-theme="white"] .lab{color:var(--rust)}
-.h2{font:400 60px/1.03 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.h2{font:400 48px/1.05 var(--serif);letter-spacing:-.012em;text-wrap:balance}
 .lead{font-size:22px;line-height:1.5;color:var(--lead);max-width:34em;transition:color 1.8s var(--theme-ease)}
 .head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:end;margin-bottom:72px}
 
@@ -85,6 +85,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
 .hero .wrap{position:relative;width:100%}
 .hero__body{max-width:740px;padding-block:96px 72px;display:flex;flex-direction:column;gap:28px}
+.hero .lead{font-size:18px}
 .hero h1{font:400 58px/1.04 var(--serif);letter-spacing:-.015em;text-wrap:balance}
 .hero .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
 .disclose{font-size:13.5px;line-height:1.5;color:var(--sand);padding-bottom:36px}
@@ -171,7 +172,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .report{position:relative;border-radius:0;overflow:hidden;min-height:760px;display:flex;align-items:center;justify-content:center;padding:48px}
 .report>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .report__in{position:relative;background:var(--linen);color:var(--green);border-radius:12px;max-width:660px;padding:56px 52px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.report__in h2{font:400 56px/1.04 var(--serif);text-wrap:balance}
+.report__in h2{font:400 45px/1.06 var(--serif);text-wrap:balance}
 .report__in .lead{font-size:19px}
 .fl{display:flex;flex-direction:column;gap:8px;width:100%;text-align:left}
 .fl__l{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
@@ -209,7 +210,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cb__art{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
 .cb .wrap{position:relative;width:100%}
 .cb__in{max-width:720px;display:flex;flex-direction:column;gap:24px}
-.cb h2{font:400 66px/1.03 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.cb h2{font:400 53px/1.05 var(--serif);letter-spacing:-.015em;text-wrap:balance}
 .cb__act{display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-top:24px}
 
 /* 11. footer */
@@ -231,7 +232,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:900px){
  .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
  .sec{padding-block:88px}.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:44px}
- .h2,.cb h2{font-size:42px}.hero h1{font-size:36px}.lead{font-size:19px}
+ .h2,.cb h2{font-size:34px}.hero h1{font-size:36px}.hero .lead{font-size:16px}.lead{font-size:19px}
  .nav__links,.nav__sign{display:none}
  .hero__art{width:100%;opacity:.4}
  .band{height:auto}.band .wrap{padding-block:40px}.facts{grid-template-columns:minmax(0,1fr)}
@@ -240,7 +241,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
  .aud{flex-direction:column;height:860px}.tx{width:calc(100vw - 100px)}
  .vg,.ig{grid-template-columns:minmax(0,1fr)}.team{grid-template-columns:repeat(2,minmax(0,1fr))}
  .frow{flex-direction:column}.ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
- .report__in{padding:36px 24px}.report__in h2{font-size:38px}
+ .report__in{padding:36px 24px}.report__in h2{font-size:30px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:1ms !important;transition-delay:0s !important}.rv>*{opacity:1;transform:none;animation:none !important}}
 
@@ -379,7 +380,7 @@ a.btn{text-decoration:none}
     <!-- 8. Team -->
     <section class="sec" id="team" data-theme="green">
       <div class="wrap">
-        <div class="head"><div style="display:flex;flex-direction:column;gap:28px"><h2 class="h2" style="font-size:72px">Meet our team</h2><a class="alink" href="#team">Meet the whole team</a></div><p class="lead">Operators from Tier 1 finance, digital assets and energy, working secondaries through every cycle since 2013.</p></div>
+        <div class="head"><div style="display:flex;flex-direction:column;gap:28px"><h2 class="h2" style="font-size:54px">Meet our team</h2><a class="alink" href="#team">Meet the whole team</a></div><p class="lead">Operators from Tier 1 finance, digital assets and energy, working secondaries through every cycle since 2013.</p></div>
         <div class="team rv" id="teamGrid">
           <div class="tm" style="--i:0"><div class="ph"><img src="assets/team-ben.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
           <div class="tm" style="--i:1"><div class="ph"><img src="assets/team-frank.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
