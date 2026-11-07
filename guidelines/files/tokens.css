@@ -1,0 +1,285 @@
+/* SecondLane design tokens: CSS custom properties
+   v1.1 · 7 Nov 2026 · generated from the same source as tailwind.css, tokens.json and DESIGN.md.
+
+   Three layers:
+   1. Ramps (--color-green-900 ...): the full palette. Do not use them in components.
+   2. Brand aliases (--color-linen ...): the names the brand uses, pointing at ramp steps.
+   3. Role tokens (--bg, --fg, --accent ...): what components use. They change with data-theme. */
+
+:root {
+  /* ---------- 1. Ramps ---------- */
+  /* green: Brand ground. Dark steps carry surfaces; light steps are tints for charts and success states. */
+  --color-green-50: #E2EEE8;
+  --color-green-100: #D4E2DB;
+  --color-green-200: #B9CAC2;
+  --color-green-300: #9FB3AA;
+  --color-green-400: #859D92;
+  --color-green-500: #6C877B;
+  --color-green-600: #547264;
+  --color-green-700: #3C5D4F;
+  --color-green-800: #24493A;  /* anchor: Green hover */
+  --color-green-850: #17392A;  /* anchor: Green 2, raised panels on green */
+  --color-green-900: #12301F;  /* anchor: Bottle green, the brand ground */
+  --color-green-950: #0C2216;  /* anchor: Deep green (code, deepest panels) */
+
+  /* neutral: Warm neutrals from linen to near-black ink. Text, lines and light surfaces. */
+  --color-neutral-50: #F5F3EF;  /* anchor: Linen */
+  --color-neutral-100: #ECE8E0;
+  --color-neutral-200: #D9D2C3;  /* anchor: Stone */
+  --color-neutral-300: #CBBFA8;  /* anchor: Sand */
+  --color-neutral-400: #ACA68F;
+  --color-neutral-500: #8E8E78;
+  --color-neutral-600: #717763;
+  --color-neutral-700: #55604F;  /* anchor: Mute */
+  --color-neutral-800: #3D4236;
+  --color-neutral-900: #252720;
+  --color-neutral-950: #191A16;  /* anchor: On-yellow ink */
+
+  /* yellow: The signal colour. 300 is the brand yellow; other steps exist for states, focus and warning text. */
+  --color-yellow-50: #F7FFD6;
+  --color-yellow-100: #F4FFC2;
+  --color-yellow-200: #EDFF8C;  /* anchor: Yellow hover */
+  --color-yellow-300: #E3FD5A;  /* anchor: SL Yellow, the signal */
+  --color-yellow-400: #CFE844;  /* anchor: Yellow pressed */
+  --color-yellow-500: #B9CF37;
+  --color-yellow-600: #A3B62B;  /* anchor: Focus border */
+  --color-yellow-700: #7F8E1C;
+  --color-yellow-800: #5D690E;
+  --color-yellow-900: #3D4603;
+  --color-yellow-950: #2E3500;
+
+  /* rust: Terracotta accent. Eyebrows on light grounds, errors, chart accent. */
+  --color-rust-50: #FEE7DE;
+  --color-rust-100: #FCDBCD;
+  --color-rust-200: #F7C1AB;
+  --color-rust-300: #F0A88A;  /* anchor: Rust light (error on green) */
+  --color-rust-400: #DD8C6E;
+  --color-rust-500: #C97054;
+  --color-rust-600: #B5543A;  /* anchor: Error border */
+  --color-rust-700: #8F442D;  /* anchor: Rust, eyebrows and error text on light */
+  --color-rust-800: #6D3220;
+  --color-rust-900: #4C2114;
+  --color-rust-950: #3C190E;
+
+  --color-white: #FFFFFF;
+
+  /* ---------- 2. Brand aliases ---------- */
+  --color-green: var(--color-green-900);  /* Primary ground: hero, nav, footer, most sections, cards */
+  --color-green-2: var(--color-green-850);  /* Raised panels on green */
+  --color-linen: var(--color-neutral-50);  /* Text on green; light ground */
+  --color-stone: var(--color-neutral-200);  /* Lead text on green */
+  --color-sand: var(--color-neutral-300);  /* Secondary text on green, footer */
+  --color-mute: var(--color-neutral-700);  /* Secondary text on linen and white */
+  --color-ink: var(--color-neutral-950);  /* Text on yellow */
+  --color-yel: var(--color-yellow-300);  /* Signal: primary buttons, eyebrows on green, active states, dot field */
+  --color-rust: var(--color-rust-700);  /* Eyebrows and error text on light grounds */
+
+  /* ---------- Type ---------- */
+  --font-serif: 'Ashcroft', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'SFT Schrifted Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --text-display: 68px;  /* Product page hero (Capital, Prime) */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.015em;
+  --text-display--font-weight: 400;
+  --text-h1: 58px;  /* Home hero headline */
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.015em;
+  --text-h1--font-weight: 400;
+  --text-h2: 48px;  /* Section titles */
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.012em;
+  --text-h2--font-weight: 400;
+  --text-h3: 36px;  /* Card and FAQ titles */
+  --text-h3--line-height: 1.1;
+  --text-h3--font-weight: 400;
+  --text-h4: 30px;  /* Small serif headings, team names */
+  --text-h4--line-height: 1.15;
+  --text-h4--font-weight: 400;
+  --text-figure: 64px;  /* Stats and large numbers */
+  --text-figure--line-height: 1;
+  --text-figure--letter-spacing: -0.01em;
+  --text-figure--font-weight: 300;
+  --text-lead: 18px;  /* Standfirsts */
+  --text-lead--line-height: 1.5;
+  --text-lead--font-weight: 400;
+  --text-body: 17px;  /* Body copy */
+  --text-body--line-height: 1.55;
+  --text-body--font-weight: 400;
+  --text-small: 15px;  /* Footer, help text */
+  --text-small--line-height: 1.5;
+  --text-small--font-weight: 400;
+  --text-caption: 13px;  /* Disclaimers, chart notes */
+  --text-caption--line-height: 1.45;
+  --text-caption--font-weight: 400;
+  --text-button: 16px;  /* Buttons (compact 15) */
+  --text-button--line-height: 1;
+  --text-button--font-weight: 500;
+  --text-link: 17px;  /* Arrow links */
+  --text-link--line-height: 1.2;
+  --text-link--font-weight: 500;
+  --text-eyebrow: 12px;  /* Uppercase labels */
+  --text-eyebrow--line-height: 1.333;
+  --text-eyebrow--letter-spacing: 0.07em;
+  --text-eyebrow--font-weight: 500;
+  --text-label: 11px;  /* Field labels, footer headings */
+  --text-label--line-height: 1.455;
+  --text-label--letter-spacing: 0.06em;
+  --text-label--font-weight: 500;
+
+  /* ---------- Spacing (4px base) ---------- */
+  --spacing: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 44px;
+  --space-8: 56px;
+  --space-9: 72px;
+  --space-10: 88px;
+  --space-11: 136px;
+
+  /* Layout */
+  --container-site: 1312px;     /* max width of .wrap, padding included */
+  --gutter: 64px;               /* left and right page padding */
+  --grid-gap: 24px;
+  --section-y: 136px;           /* vertical padding of a section */
+  --section-head-gap: 72px;     /* section head to content */
+  --nav-h: 96px;
+  --nav-h-scrolled: 76px;
+  --card-pad: 30px 26px 26px;
+
+  /* Radius */
+  --radius-sm: 4px;   /* buttons, inputs, tags */
+  --radius-md: 8px;   /* cards, image frames */
+  --radius-lg: 12px;  /* glass panels */
+  --radius-full: 999px;
+
+  /* Elevation (nothing has a shadow at rest) */
+  --shadow-lift: 0 27px 67px rgb(0 0 0 / .45);
+  --shadow-glass: inset 0 1px 0 rgb(245 243 239 / .12);
+  --blur-glass: 24px;
+
+  /* Motion */
+  --ease-brand: cubic-bezier(.65, 0, .35, 1);
+  --ease-settle: cubic-bezier(.2, .7, .2, 1);
+  --duration-fast: 180ms;
+  --duration-base: 350ms;
+  --duration-slow: 700ms;
+  --duration-reveal: 900ms;
+  --stagger: 160ms;
+  --lift: -6px;
+}
+
+/* ---------- 3. Role tokens ---------- */
+/* Default theme is green: the site's base ground. */
+:root,
+[data-theme="green"] {
+  --bg: var(--color-green-900);
+  --bg-raised: var(--color-green-850);
+  --bg-inverse: var(--color-neutral-50);
+  --fg: var(--color-neutral-50);
+  --fg-lead: var(--color-neutral-200);
+  --fg-muted: var(--color-neutral-300);
+  --fg-subtle: var(--color-neutral-400);
+  --eyebrow: var(--color-yellow-300);
+  --accent: var(--color-yellow-300);
+  --accent-hover: var(--color-yellow-200);
+  --accent-pressed: var(--color-yellow-400);
+  --on-accent: var(--color-neutral-950);
+  --action: var(--color-neutral-50);
+  --action-hover: var(--color-neutral-100);
+  --on-action: var(--color-green-900);
+  --arrow: var(--color-yellow-300);
+  --focus: var(--color-yellow-300);
+  --focus-field: var(--color-yellow-600);
+  --danger: var(--color-rust-300);
+  --danger-border: var(--color-rust-300);
+  --danger-bg: var(--color-rust-950);
+  --success: var(--color-green-300);
+  --success-bg: var(--color-green-850);
+  --warning: var(--color-yellow-300);
+  --warning-bg: var(--color-yellow-950);
+  --border: rgb(245 243 239 / .18);
+  --border-strong: rgb(245 243 239 / .6);
+  --border-card: rgb(113 119 99 / .6);
+  --field-border: rgb(18 48 31 / .35);
+  --focus-ring: rgb(227 253 90 / .3);
+  --accent-glow: rgb(227 253 90 / .16);
+  --scrim: rgb(18 48 31 / .88);
+  --glass: rgb(18 48 31 / .55);
+  --chart-1: var(--color-neutral-50);
+  --chart-2: var(--color-yellow-300);
+  --chart-3: var(--color-rust-300);
+  --chart-4: var(--color-green-400);
+  --chart-5: var(--color-neutral-400);
+}
+
+[data-theme="linen"],
+[data-theme="white"] {
+  --bg: var(--color-neutral-50);
+  --bg-raised: var(--color-white);
+  --bg-inverse: var(--color-green-900);
+  --fg: var(--color-green-900);
+  --fg-lead: var(--color-neutral-700);
+  --fg-muted: var(--color-neutral-700);
+  --fg-subtle: var(--color-neutral-600);
+  --eyebrow: var(--color-rust-700);
+  --accent: var(--color-yellow-300);
+  --accent-hover: var(--color-yellow-200);
+  --accent-pressed: var(--color-yellow-400);
+  --on-accent: var(--color-neutral-950);
+  --action: var(--color-green-900);
+  --action-hover: var(--color-green-800);
+  --on-action: var(--color-neutral-50);
+  --arrow: var(--color-green-900);
+  --focus: var(--color-green-900);
+  --focus-field: var(--color-yellow-600);
+  --danger: var(--color-rust-700);
+  --danger-border: var(--color-rust-600);
+  --danger-bg: var(--color-rust-50);
+  --success: var(--color-green-700);
+  --success-bg: var(--color-green-50);
+  --warning: var(--color-yellow-800);
+  --warning-bg: var(--color-yellow-50);
+  --border: rgb(18 48 31 / .14);
+  --border-strong: rgb(18 48 31 / .6);
+  --border-card: rgb(18 48 31 / .12);
+  --field-border: rgb(18 48 31 / .35);
+  --focus-ring: rgb(227 253 90 / .3);
+  --accent-glow: rgb(227 253 90 / .16);
+  --scrim: rgb(18 48 31 / .88);
+  --glass: rgb(18 48 31 / .55);
+  --chart-1: var(--color-green-900);
+  --chart-2: var(--color-yellow-700);
+  --chart-3: var(--color-rust-600);
+  --chart-4: var(--color-green-500);
+  --chart-5: var(--color-neutral-400);
+}
+[data-theme="white"] { --bg: var(--color-white); --bg-raised: var(--color-neutral-50); --border: rgb(18 48 31 / .12); }
+
+@media (max-width: 900px) {
+  :root {
+    --text-display: 44px;
+    --text-h1: 36px;
+    --text-h2: 34px;
+    --text-h3: 28px;
+    --text-h4: 24px;
+    --text-figure: 48px;
+    --text-lead: 16px;
+    --text-body: 16px;
+    --text-button: 15px;
+    --text-link: 16px;
+    --gutter: 20px;
+    --grid-gap: 16px;
+    --section-y: 88px;
+    --section-head-gap: 40px;
+    --nav-h: 64px;
+    --nav-h-scrolled: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-fast: 0ms; --duration-base: 0ms; --duration-slow: 0ms; --duration-reveal: 0ms; --stagger: 0ms; --lift: 0px; }
+}

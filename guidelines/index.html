@@ -222,11 +222,25 @@ td code{background:rgba(18,48,31,.06);padding:2px 6px;border-radius:3px;white-sp
 .tabs button{font:500 14px var(--sans);background:transparent;border:1px solid var(--rule-l);color:var(--green);padding:8px 14px;border-radius:4px;cursor:pointer}
 .tabs button[aria-selected="true"]{background:var(--green);color:var(--linen);border-color:var(--green)}
 .panel[hidden]{display:none}
+#t-md pre{white-space:pre-wrap}
 
 /* glossary */
 .gl td:first-child{font-weight:500;white-space:nowrap}
 .gl td:nth-child(2){color:var(--rust)}
 
+
+/* ramps */
+.ramps{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.rrow{display:grid;grid-template-columns:72px minmax(0,1fr);align-items:center;gap:12px}
+.rname{font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.rcells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
+.rs{height:72px;border-radius:4px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;font-size:11px;line-height:1.2;border:1px solid rgba(18,48,31,.08)}
+.rs b{font-weight:500}.rs code{font-size:10px;opacity:.85}
+.rs.gap{background:none;border:0}
+.rs.an{outline:2px solid var(--green);outline-offset:2px}
+.roles .dot{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:8px;border:1px solid rgba(18,48,31,.2)}
+.dl{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+@media (max-width:1000px){.rcells{grid-template-columns:repeat(6,minmax(0,1fr))}.rrow{grid-template-columns:1fr}}
 .foot{padding:48px 72px;font-size:13px;color:var(--mute)}
 .fam h4{color:inherit;opacity:.7}
 .stage.g h4{color:var(--sand)}
@@ -267,7 +281,7 @@ pre{max-width:100%}
 <body>
 <aside class="side" aria-label="Sections">
   <a href="#top" aria-label="SecondLane guidelines, top"><i class="logo"></i></a>
-  <small>Visual guidelines · v1.0</small>
+  <small>Visual guidelines · v1.1</small>
   <ol class="toc" id="toc">
     <li><a href="#principles"><span>01</span>Principles</a></li>
     <li><a href="#logo"><span>02</span>Logo</a></li>
@@ -295,7 +309,7 @@ pre{max-width:100%}
     <h1>Visual guidelines for the platform team</h1>
     <p class="lead">Fonts, colours, layout, components, imagery, motion and wording for building the SecondLane website. Every value on this page is taken from the approved prototype, which stays the visual reference for anything not covered here.</p>
     <dl>
-      <div><dt>Version</dt><dd>1.0</dd></div>
+      <div><dt>Version</dt><dd>1.1</dd></div>
       <div><dt>Date</dt><dd>7 Nov 2026</dd></div>
       <div><dt>Reference build</dt><dd><a href="../index.html">Live prototype</a></dd></div>
       <div><dt>Target</dt><dd>Desktop, 1440px design width</dd></div>
@@ -348,7 +362,7 @@ pre{max-width:100%}
   <div class="in">
     <span class="eb">03 · Colour</span>
     <h2>Colour</h2>
-    <p class="lead">A small palette: two grounds, three warm neutrals for text and lines, one signal yellow and one terracotta accent. Use the tokens, not raw hex values.</p>
+    <p class="lead">A small palette: two grounds, warm neutrals for text and lines, one signal yellow and one terracotta accent, each on a full shade ramp. Components use role tokens, never raw hex values.</p>
 
     <h3>Core</h3>
     <div class="grid g3 big">
@@ -367,6 +381,23 @@ pre{max-width:100%}
       <div class="sw"><i style="background:#FFFFFF"></i><div><b>White</b><code>--white · #FFFFFF</code><p>Logo rail, inputs, light cards.</p></div></div>
       <div class="sw"><i style="background:linear-gradient(90deg,#12301F 50%,#F5F3EF 50%)"></i><div><b>Lines</b><code>rgba(245,243,239,.18)</code><code>rgba(18,48,31,.14)</code><p>Hairlines on green and on linen.</p></div></div>
     </div>
+
+
+    <h3>Shade ramps</h3>
+    <p>Every brand colour sits on a ramp from 50 to 950, built in OKLCH so the steps look even. Outlined swatches are the brand anchors: fixed values the other steps are generated around.</p>
+    <div class="ramps"><div class="rrow"><span class="rname">green</span><div class="rcells"><div class="rs" style="background:#E2EEE8;color:#191A16" title=""><b>50</b><code>#E2EEE8</code></div><div class="rs" style="background:#D4E2DB;color:#191A16" title=""><b>100</b><code>#D4E2DB</code></div><div class="rs" style="background:#B9CAC2;color:#191A16" title=""><b>200</b><code>#B9CAC2</code></div><div class="rs" style="background:#9FB3AA;color:#191A16" title=""><b>300</b><code>#9FB3AA</code></div><div class="rs" style="background:#859D92;color:#191A16" title=""><b>400</b><code>#859D92</code></div><div class="rs" style="background:#6C877B;color:#F5F3EF" title=""><b>500</b><code>#6C877B</code></div><div class="rs" style="background:#547264;color:#F5F3EF" title=""><b>600</b><code>#547264</code></div><div class="rs" style="background:#3C5D4F;color:#F5F3EF" title=""><b>700</b><code>#3C5D4F</code></div><div class="rs an" style="background:#24493A;color:#F5F3EF" title="Green hover"><b>800</b><code>#24493A</code></div><div class="rs an" style="background:#17392A;color:#F5F3EF" title="Green 2, raised panels on green"><b>850</b><code>#17392A</code></div><div class="rs an" style="background:#12301F;color:#F5F3EF" title="Bottle green, the brand ground"><b>900</b><code>#12301F</code></div><div class="rs an" style="background:#0C2216;color:#F5F3EF" title="Deep green (code, deepest panels)"><b>950</b><code>#0C2216</code></div></div></div><div class="rrow"><span class="rname">neutral</span><div class="rcells"><div class="rs an" style="background:#F5F3EF;color:#191A16" title="Linen"><b>50</b><code>#F5F3EF</code></div><div class="rs" style="background:#ECE8E0;color:#191A16" title=""><b>100</b><code>#ECE8E0</code></div><div class="rs an" style="background:#D9D2C3;color:#191A16" title="Stone"><b>200</b><code>#D9D2C3</code></div><div class="rs an" style="background:#CBBFA8;color:#191A16" title="Sand"><b>300</b><code>#CBBFA8</code></div><div class="rs" style="background:#ACA68F;color:#191A16" title=""><b>400</b><code>#ACA68F</code></div><div class="rs" style="background:#8E8E78;color:#191A16" title=""><b>500</b><code>#8E8E78</code></div><div class="rs" style="background:#717763;color:#F5F3EF" title=""><b>600</b><code>#717763</code></div><div class="rs an" style="background:#55604F;color:#F5F3EF" title="Mute"><b>700</b><code>#55604F</code></div><div class="rs" style="background:#3D4236;color:#F5F3EF" title=""><b>800</b><code>#3D4236</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#252720;color:#F5F3EF" title=""><b>900</b><code>#252720</code></div><div class="rs an" style="background:#191A16;color:#F5F3EF" title="On-yellow ink"><b>950</b><code>#191A16</code></div></div></div><div class="rrow"><span class="rname">yellow</span><div class="rcells"><div class="rs" style="background:#F7FFD6;color:#191A16" title=""><b>50</b><code>#F7FFD6</code></div><div class="rs" style="background:#F4FFC2;color:#191A16" title=""><b>100</b><code>#F4FFC2</code></div><div class="rs an" style="background:#EDFF8C;color:#191A16" title="Yellow hover"><b>200</b><code>#EDFF8C</code></div><div class="rs an" style="background:#E3FD5A;color:#191A16" title="SL Yellow, the signal"><b>300</b><code>#E3FD5A</code></div><div class="rs an" style="background:#CFE844;color:#191A16" title="Yellow pressed"><b>400</b><code>#CFE844</code></div><div class="rs" style="background:#B9CF37;color:#191A16" title=""><b>500</b><code>#B9CF37</code></div><div class="rs an" style="background:#A3B62B;color:#191A16" title="Focus border"><b>600</b><code>#A3B62B</code></div><div class="rs" style="background:#7F8E1C;color:#F5F3EF" title=""><b>700</b><code>#7F8E1C</code></div><div class="rs" style="background:#5D690E;color:#F5F3EF" title=""><b>800</b><code>#5D690E</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#3D4603;color:#F5F3EF" title=""><b>900</b><code>#3D4603</code></div><div class="rs" style="background:#2E3500;color:#F5F3EF" title=""><b>950</b><code>#2E3500</code></div></div></div><div class="rrow"><span class="rname">rust</span><div class="rcells"><div class="rs" style="background:#FEE7DE;color:#191A16" title=""><b>50</b><code>#FEE7DE</code></div><div class="rs" style="background:#FCDBCD;color:#191A16" title=""><b>100</b><code>#FCDBCD</code></div><div class="rs" style="background:#F7C1AB;color:#191A16" title=""><b>200</b><code>#F7C1AB</code></div><div class="rs an" style="background:#F0A88A;color:#191A16" title="Rust light (error on green)"><b>300</b><code>#F0A88A</code></div><div class="rs" style="background:#DD8C6E;color:#191A16" title=""><b>400</b><code>#DD8C6E</code></div><div class="rs" style="background:#C97054;color:#F5F3EF" title=""><b>500</b><code>#C97054</code></div><div class="rs an" style="background:#B5543A;color:#F5F3EF" title="Error border"><b>600</b><code>#B5543A</code></div><div class="rs an" style="background:#8F442D;color:#F5F3EF" title="Rust, eyebrows and error text on light"><b>700</b><code>#8F442D</code></div><div class="rs" style="background:#6D3220;color:#F5F3EF" title=""><b>800</b><code>#6D3220</code></div><div class="rs gap" aria-hidden="true"></div><div class="rs" style="background:#4C2114;color:#F5F3EF" title=""><b>900</b><code>#4C2114</code></div><div class="rs" style="background:#3C190E;color:#F5F3EF" title=""><b>950</b><code>#3C190E</code></div></div></div></div>
+    <h3>How we use the ramps</h3>
+    <div class="grid g2">
+      <div class="box"><h4>1 · Components use role tokens</h4><p>Write <code>var(--bg)</code> or <code>bg-bg</code>, never <code>#12301F</code> or <code>bg-green-900</code>. Role tokens switch with the section theme, so one component works on green, linen and white.</p></div>
+      <div class="box"><h4>2 · Ramps feed the roles</h4><p>Use a ramp step directly only for one-off needs with no role yet: chart series, illustration fills, a tinted row, a status tag. If a step is used twice, it gets a role token.</p></div>
+      <div class="box"><h4>3 · No new hex values</h4><p>If a colour is missing, ask design for a role token rather than picking a nearby hex. Anchors never change without a brand decision.</p></div>
+      <div class="box"><h4>4 · Bands have jobs</h4><p><b>50–200</b> light surfaces and tints · <b>300–500</b> decorative fills, charts, text on green (300 and lighter) · <b>600–700</b> text and icons on light (AA) · <b>800–950</b> dark surfaces and hovers on green.</p></div>
+      <div class="box"><h4>5 · Pairing rule</h4><p>On green: neutral 400 or lighter, green and rust 300 or lighter, yellow 300. On linen and white: 700 or darker (yellow 800 or darker).</p></div>
+      <div class="box"><h4>6 · Yellow stays a signal</h4><p>300 is the brand yellow, 200 and 400 its hover and press, 600 the input focus border, 700–900 warning text on light only. Lines use transparency, not ramp steps.</p></div>
+    </div>
+    <h3>Role tokens</h3>
+    <p>Set <code>data-theme="green"</code>, <code>"linen"</code> or <code>"white"</code> on each section. Green is the default.</p>
+    <div class="tw"><table class="roles"><tr><th>Role token</th><th>Green theme</th><th>Linen / white theme</th><th>Use</th></tr><tr><td><code>--bg</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td>Section background</td></tr><tr><td><code>--bg-raised</code></td><td><span class="dot" style="background:#17392A"></span><code>green-850</code></td><td><span class="dot" style="background:#FFFFFF"></span><code>white</code></td><td>Panels and cards that sit on the background</td></tr><tr><td><code>--bg-inverse</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>A block in the opposite theme</td></tr><tr><td><code>--fg</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Headings and body text</td></tr><tr><td><code>--fg-lead</code></td><td><span class="dot" style="background:#D9D2C3"></span><code>neutral-200</code></td><td><span class="dot" style="background:#55604F"></span><code>neutral-700</code></td><td>Standfirsts and lead paragraphs</td></tr><tr><td><code>--fg-muted</code></td><td><span class="dot" style="background:#CBBFA8"></span><code>neutral-300</code></td><td><span class="dot" style="background:#55604F"></span><code>neutral-700</code></td><td>Secondary text, captions, footer links</td></tr><tr><td><code>--fg-subtle</code></td><td><span class="dot" style="background:#ACA68F"></span><code>neutral-400</code></td><td><span class="dot" style="background:#717763"></span><code>neutral-600</code></td><td>Placeholders and disabled text (large text only)</td></tr><tr><td><code>--eyebrow</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#8F442D"></span><code>rust-700</code></td><td>Uppercase labels above titles</td></tr><tr><td><code>--accent</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td>Primary button fill, active underline, arrows on green</td></tr><tr><td><code>--accent-hover</code></td><td><span class="dot" style="background:#EDFF8C"></span><code>yellow-200</code></td><td><span class="dot" style="background:#EDFF8C"></span><code>yellow-200</code></td><td>Primary button hover</td></tr><tr><td><code>--accent-pressed</code></td><td><span class="dot" style="background:#CFE844"></span><code>yellow-400</code></td><td><span class="dot" style="background:#CFE844"></span><code>yellow-400</code></td><td>Primary button pressed</td></tr><tr><td><code>--on-accent</code></td><td><span class="dot" style="background:#191A16"></span><code>neutral-950</code></td><td><span class="dot" style="background:#191A16"></span><code>neutral-950</code></td><td>Text and icons on the accent</td></tr><tr><td><code>--action</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Secondary solid button fill (green button on light)</td></tr><tr><td><code>--action-hover</code></td><td><span class="dot" style="background:#ECE8E0"></span><code>neutral-100</code></td><td><span class="dot" style="background:#24493A"></span><code>green-800</code></td><td>Secondary solid button hover</td></tr><tr><td><code>--on-action</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td><span class="dot" style="background:#F5F3EF"></span><code>neutral-50</code></td><td>Text on the secondary solid button</td></tr><tr><td><code>--arrow</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Arrow-link icon</td></tr><tr><td><code>--focus</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#12301F"></span><code>green-900</code></td><td>Focus outline (2px, 3px offset); at least 3:1 on the ground</td></tr><tr><td><code>--focus-field</code></td><td><span class="dot" style="background:#A3B62B"></span><code>yellow-600</code></td><td><span class="dot" style="background:#A3B62B"></span><code>yellow-600</code></td><td>Input border when focused, always paired with --focus-ring</td></tr><tr><td><code>--danger</code></td><td><span class="dot" style="background:#F0A88A"></span><code>rust-300</code></td><td><span class="dot" style="background:#8F442D"></span><code>rust-700</code></td><td>Error text and icons</td></tr><tr><td><code>--danger-border</code></td><td><span class="dot" style="background:#F0A88A"></span><code>rust-300</code></td><td><span class="dot" style="background:#B5543A"></span><code>rust-600</code></td><td>Error field border</td></tr><tr><td><code>--danger-bg</code></td><td><span class="dot" style="background:#3C190E"></span><code>rust-950</code></td><td><span class="dot" style="background:#FEE7DE"></span><code>rust-50</code></td><td>Error message background</td></tr><tr><td><code>--success</code></td><td><span class="dot" style="background:#9FB3AA"></span><code>green-300</code></td><td><span class="dot" style="background:#3C5D4F"></span><code>green-700</code></td><td>Success text and icons</td></tr><tr><td><code>--success-bg</code></td><td><span class="dot" style="background:#17392A"></span><code>green-850</code></td><td><span class="dot" style="background:#E2EEE8"></span><code>green-50</code></td><td>Success message background</td></tr><tr><td><code>--warning</code></td><td><span class="dot" style="background:#E3FD5A"></span><code>yellow-300</code></td><td><span class="dot" style="background:#5D690E"></span><code>yellow-800</code></td><td>Warning text and icons</td></tr><tr><td><code>--warning-bg</code></td><td><span class="dot" style="background:#2E3500"></span><code>yellow-950</code></td><td><span class="dot" style="background:#F7FFD6"></span><code>yellow-50</code></td><td>Warning message background</td></tr></table></div>
 
     <h3>Interaction states</h3>
     <div class="tw"><table>
@@ -726,164 +757,24 @@ pre{max-width:100%}
   <div class="in">
     <span class="eb">11 · Design tokens</span>
     <h2>Design tokens</h2>
-    <p class="lead">Copy these into the codebase as the single source for colour, type and spacing. The CSS version is what the prototype runs on.</p>
-    <div class="tabs" role="tablist" aria-label="Token format">
-      <button role="tab" aria-selected="true" aria-controls="t-css" id="b-css">CSS</button>
-      <button role="tab" aria-selected="false" aria-controls="t-json" id="b-json">JSON</button>
-      <button role="tab" aria-selected="false" aria-controls="t-tw" id="b-tw">Tailwind</button>
+    <p class="lead">One source, four formats. Use the Tailwind file in the Next.js build; the CSS file works anywhere; the JSON loads into Tokens Studio or Style Dictionary; DESIGN.md is the written spec for people and AI agents.</p>
+    <div class="dl">
+      <a class="btn btn-g sm" href="files/DESIGN.md" download>DESIGN.md</a>
+      <a class="btn btn-g sm" href="files/tailwind.css" download>Tailwind v4</a>
+      <a class="btn btn-g sm" href="files/tokens.css" download>CSS variables</a>
+      <a class="btn btn-g sm" href="files/tokens.json" download>Design tokens (JSON)</a>
     </div>
-    <div class="panel" id="t-css" role="tabpanel" aria-labelledby="b-css"><div class="code"><button type="button" data-copy>Copy</button><pre><code>:root {
-  /* colour */
-  --green: #12301F;      /* primary ground */
-  --green-2: #17392A;    /* raised panels on green */
-  --linen: #F5F3EF;      /* text on green, light ground */
-  --stone: #D9D2C3;      /* lead text on green */
-  --sand: #CBBFA8;       /* secondary text on green */
-  --mute: #55604F;       /* secondary text on light */
-  --rust: #8F442D;       /* eyebrows on light */
-  --yel: #E3FD5A;        /* signal: primary action, active */
-  --yel-hover: #EDFF8C;
-  --yel-press: #CFE844;
-  --on-yel: #191A16;
-  --green-hover: #24493A;
-  --white: #FFFFFF;
-  --error: #B5543A;
-  --error-on-green: #F0A88A;
-  --rule-on-green: rgba(245, 243, 239, .18);
-  --rule-on-light: rgba(18, 48, 31, .14);
-  --card-edge: rgba(122, 132, 98, .5);
-
-  /* type */
-  --serif: 'Ashcroft', 'Iowan Old Style', Georgia, serif;
-  --sans: 'SFT Schrifted Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --fs-display: 68px;  --lh-display: 1.02;
-  --fs-h1: 58px;       --lh-h1: 1.04;
-  --fs-h2: 48px;       --lh-h2: 1.05;
-  --fs-h3: 36px;       --lh-h3: 1.1;
-  --fs-h4: 30px;       --lh-h4: 1.15;
-  --fs-figure: 64px;   --lh-figure: 1;
-  --fs-lead: 18px;     --lh-lead: 1.5;
-  --fs-body: 17px;     --lh-body: 1.55;
-  --fs-small: 15px;
-  --fs-caption: 13px;
-  --fs-eyebrow: 12px;  --ls-eyebrow: .07em;
-  --ls-display: -.015em;
-  --ls-h2: -.012em;
-
-  /* layout */
-  --container: 1312px;
-  --gutter-x: 64px;
-  --grid-gap: 24px;
-  --section-y: 136px;
-  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
-  --space-5: 24px; --space-6: 32px; --space-7: 44px; --space-8: 56px;
-  --space-9: 72px; --space-10: 88px; --space-11: 136px;
-  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
-  --shadow-lift: 0 27px 67px rgba(0, 0, 0, .45);
-  --focus-ring: 0 0 0 4px rgba(227, 253, 90, .3);
-
-  /* motion */
-  --ease: cubic-bezier(.65, 0, .35, 1);
-  --ease-out: cubic-bezier(.2, .7, .2, 1);
-  --dur-fast: .18s;
-  --dur-base: .35s;
-  --dur-slow: .7s;
-  --stagger: 160ms;
-}
-
-@media (max-width: 900px) {
-  :root {
-    --fs-display: 44px; --fs-h1: 36px; --fs-h2: 34px; --fs-h3: 28px;
-    --fs-h4: 24px; --fs-figure: 48px; --fs-lead: 16px; --fs-body: 16px;
-    --gutter-x: 20px; --grid-gap: 16px; --section-y: 88px;
-  }
-}
-
-[data-theme="green"] { --bg: var(--green); --fg: var(--linen); --lead: var(--stone); --sub: var(--sand); --rule: var(--rule-on-green); --eyebrow: var(--yel); }
-[data-theme="linen"] { --bg: var(--linen); --fg: var(--green); --lead: var(--mute); --sub: var(--mute); --rule: var(--rule-on-light); --eyebrow: var(--rust); }
-[data-theme="white"] { --bg: var(--white); --fg: var(--green); --lead: var(--mute); --sub: var(--mute); --rule: rgba(18, 48, 31, .12); --eyebrow: var(--rust); }</code></pre></div></div>
-    <div class="panel" id="t-json" role="tabpanel" aria-labelledby="b-json" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code>{
-  "color": {
-    "green":   { "$value": "#12301F", "$type": "color" },
-    "green-2": { "$value": "#17392A", "$type": "color" },
-    "linen":   { "$value": "#F5F3EF", "$type": "color" },
-    "stone":   { "$value": "#D9D2C3", "$type": "color" },
-    "sand":    { "$value": "#CBBFA8", "$type": "color" },
-    "mute":    { "$value": "#55604F", "$type": "color" },
-    "rust":    { "$value": "#8F442D", "$type": "color" },
-    "yellow":  { "$value": "#E3FD5A", "$type": "color" },
-    "yellow-hover": { "$value": "#EDFF8C", "$type": "color" },
-    "yellow-press": { "$value": "#CFE844", "$type": "color" },
-    "on-yellow": { "$value": "#191A16", "$type": "color" },
-    "green-hover": { "$value": "#24493A", "$type": "color" },
-    "white":   { "$value": "#FFFFFF", "$type": "color" },
-    "error":   { "$value": "#B5543A", "$type": "color" },
-    "error-on-green": { "$value": "#F0A88A", "$type": "color" }
-  },
-  "font": {
-    "serif": { "$value": ["Ashcroft", "Iowan Old Style", "Georgia", "serif"], "$type": "fontFamily" },
-    "sans":  { "$value": ["SFT Schrifted Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"], "$type": "fontFamily" }
-  },
-  "type": {
-    "display": { "family": "serif", "weight": 400, "size": 68, "sizeMobile": 44, "lineHeight": 1.02, "letterSpacing": "-0.015em" },
-    "h1":      { "family": "serif", "weight": 400, "size": 58, "sizeMobile": 36, "lineHeight": 1.04, "letterSpacing": "-0.015em" },
-    "h2":      { "family": "serif", "weight": 400, "size": 48, "sizeMobile": 34, "lineHeight": 1.05, "letterSpacing": "-0.012em" },
-    "h3":      { "family": "serif", "weight": 400, "size": 36, "sizeMobile": 28, "lineHeight": 1.1 },
-    "h4":      { "family": "serif", "weight": 400, "size": 30, "sizeMobile": 24, "lineHeight": 1.15 },
-    "figure":  { "family": "serif", "weight": 300, "size": 64, "sizeMobile": 48, "lineHeight": 1, "letterSpacing": "-0.01em" },
-    "lead":    { "family": "sans", "weight": 400, "size": 18, "sizeMobile": 16, "lineHeight": 1.5 },
-    "body":    { "family": "sans", "weight": 400, "size": 17, "sizeMobile": 16, "lineHeight": 1.55 },
-    "small":   { "family": "sans", "weight": 400, "size": 15, "lineHeight": 1.5 },
-    "eyebrow": { "family": "sans", "weight": 500, "size": 12, "lineHeight": 16, "letterSpacing": "0.07em", "transform": "uppercase" },
-    "button":  { "family": "sans", "weight": 500, "size": 16, "sizeCompact": 15, "lineHeight": 1 },
-    "label":   { "family": "sans", "weight": 500, "size": 11, "lineHeight": 16, "letterSpacing": "0.06em", "transform": "uppercase" }
-  },
-  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 24, "6": 32, "7": 44, "8": 56, "9": 72, "10": 88, "11": 136 },
-  "radius": { "sm": 4, "md": 8, "lg": 12 },
-  "layout": { "container": 1312, "gutterX": 64, "gutterXMobile": 20, "gridGap": 24, "sectionY": 136, "sectionYMobile": 88, "breakpoint": 900 },
-  "shadow": { "lift": "0 27px 67px rgba(0,0,0,.45)", "focus": "0 0 0 4px rgba(227,253,90,.3)" },
-  "motion": {
-    "ease": "cubic-bezier(.65,0,.35,1)", "easeOut": "cubic-bezier(.2,.7,.2,1)",
-    "fast": "180ms", "base": "350ms", "slow": "700ms", "reveal": "900ms", "stagger": "160ms"
-  }
-}</code></pre></div></div>
-    <div class="panel" id="t-tw" role="tabpanel" aria-labelledby="b-tw" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code>// tailwind.config.js (theme.extend)
-module.exports = {
-  theme: {
-    screens: { md: '900px', lg: '1180px' },
-    extend: {
-      colors: {
-        green: { DEFAULT: '#12301F', 2: '#17392A', hover: '#24493A' },
-        linen: '#F5F3EF', stone: '#D9D2C3', sand: '#CBBFA8',
-        mute: '#55604F', rust: '#8F442D',
-        yellow: { DEFAULT: '#E3FD5A', hover: '#EDFF8C', press: '#CFE844', on: '#191A16' },
-        error: { DEFAULT: '#B5543A', ongreen: '#F0A88A' },
-      },
-      fontFamily: {
-        serif: ['Ashcroft', 'Iowan Old Style', 'Georgia', 'serif'],
-        sans: ['SFT Schrifted Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-      },
-      fontSize: {
-        display: ['68px', { lineHeight: '1.02', letterSpacing: '-0.015em' }],
-        h1: ['58px', { lineHeight: '1.04', letterSpacing: '-0.015em' }],
-        h2: ['48px', { lineHeight: '1.05', letterSpacing: '-0.012em' }],
-        h3: ['36px', { lineHeight: '1.1' }],
-        h4: ['30px', { lineHeight: '1.15' }],
-        figure: ['64px', { lineHeight: '1', letterSpacing: '-0.01em' }],
-        lead: ['18px', { lineHeight: '1.5' }],
-        body: ['17px', { lineHeight: '1.55' }],
-        small: ['15px', { lineHeight: '1.5' }],
-        eyebrow: ['12px', { lineHeight: '16px', letterSpacing: '0.07em' }],
-      },
-      spacing: { 11: '44px', 14: '56px', 18: '72px', 22: '88px', 34: '136px' },
-      maxWidth: { container: '1312px' },
-      borderRadius: { sm: '4px', md: '8px', lg: '12px' },
-      boxShadow: { lift: '0 27px 67px rgba(0,0,0,.45)', focus: '0 0 0 4px rgba(227,253,90,.3)' },
-      transitionTimingFunction: { brand: 'cubic-bezier(.65,0,.35,1)', out: 'cubic-bezier(.2,.7,.2,1)' },
-      transitionDuration: { 180: '180ms', 350: '350ms', 700: '700ms', 900: '900ms' },
-    },
-  },
-};</code></pre></div></div>
+    <div class="tabs" role="tablist" aria-label="Token format">
+      <button role="tab" aria-selected="true" aria-controls="t-md" id="b-md">DESIGN.md</button>
+      <button role="tab" aria-selected="false" aria-controls="t-tw" id="b-tw">Tailwind v4</button>
+      <button role="tab" aria-selected="false" aria-controls="t-css" id="b-css">CSS variables</button>
+      <button role="tab" aria-selected="false" aria-controls="t-json" id="b-json">Design tokens</button>
+    </div>
+    <div class="panel" id="t-md" role="tabpanel" aria-labelledby="b-md"><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/DESIGN.md">Loading…</code></pre></div></div>
+    <div class="panel" id="t-tw" role="tabpanel" aria-labelledby="b-tw" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tailwind.css">Loading…</code></pre></div></div>
+    <div class="panel" id="t-css" role="tabpanel" aria-labelledby="b-css" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tokens.css">Loading…</code></pre></div></div>
+    <div class="panel" id="t-json" role="tabpanel" aria-labelledby="b-json" hidden><div class="code"><button type="button" data-copy>Copy</button><pre><code data-src="files/tokens.json">Loading…</code></pre></div></div>
+    <p class="note">Tailwind v4: import after <code>tailwindcss</code>. The default palette is removed, ramps give <code>bg-green-900</code>-style utilities, role tokens give <code>bg-bg</code>, <code>text-fg-lead</code>, <code>bg-accent</code>, and each <code>text-*</code> size carries its own line height, tracking and weight. Spacing is on a 4px base, so <code>p-18</code> is 72px.</p>
   </div>
 </section>
 
@@ -919,7 +810,7 @@ module.exports = {
   </div>
 </section>
 
-<footer class="foot">SecondLane visual guidelines · v1.0 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+<footer class="foot">SecondLane visual guidelines · v1.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
 </main>
 
 <script>
@@ -943,6 +834,8 @@ module.exports = {
     t.addEventListener('click',function(){ tabs.forEach(function(o){ var on=o===t; o.setAttribute('aria-selected',on); document.getElementById(o.getAttribute('aria-controls')).hidden=!on; }); });
     t.addEventListener('keydown',function(e){ var n=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:null; if(n!==null){ tabs[n].click(); tabs[n].focus(); } });
   });
+  /* token files */
+  document.querySelectorAll('code[data-src]').forEach(function(c){ fetch(c.dataset.src).then(function(r){return r.text();}).then(function(t){ c.textContent=t; }).catch(function(){ c.textContent='Open the file with the buttons above.'; }); });
   /* copy buttons */
   document.querySelectorAll('[data-copy]').forEach(function(b){
     b.addEventListener('click',function(){ var txt=b.parentNode.querySelector('code').textContent; (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ b.textContent='Copied'; setTimeout(function(){b.textContent='Copy';},1600); },function(){ b.textContent='Select and copy'; }); });
