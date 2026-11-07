@@ -82,7 +82,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* 1. hero */
 .hero{position:relative;margin-top:-96px;padding-top:96px;min-height:820px;display:flex;align-items:center;overflow:hidden}
-.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;object-position:0% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
 .hero .wrap{position:relative;width:100%}
 .hero__body{max-width:740px;padding-block:96px 72px;display:flex;flex-direction:column;gap:28px}
 .hero .lead{font-size:18px}
@@ -276,7 +276,7 @@ a.btn{text-decoration:none}
   <main id="top">
     <!-- 1. Hero -->
     <section class="hero" data-theme="green">
-      <img class="hero__art" src="assets/quantum.jpg" alt="">
+      <img class="hero__art" src="assets/hero-drone.jpg" alt="">
       <div class="wrap">
         <div class="hero__body">
           <h1>Get into the companies defining AI, defense and space before they go public.</h1>
