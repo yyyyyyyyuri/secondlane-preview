@@ -183,6 +183,8 @@ body{margin:0}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
+/* footer column headings in SecondLane yellow */
+.ft__col b{color:#E3FD5A!important}
 </style>
 
 <header class="nav" id="nav">
@@ -325,8 +327,8 @@ a.btn{text-decoration:none}
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
         var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/300); f=Math.pow(f*f*(3-2*f),.8)*m.a; }
-        var k=f*.85, r=1.05*(1+.75*f), a=.2+.6*f;
-        ctx.fillStyle='rgba('+(203+24*k|0)+','+(191+62*k|0)+','+(168-78*k|0)+','+a+')'; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill();
+        var r=2.1*(1+.3*f), a=.22+.5*f;
+        ctx.fillStyle='rgba(227,253,90,'+a+')'; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);

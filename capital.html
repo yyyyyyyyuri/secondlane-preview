@@ -165,8 +165,11 @@ body{margin:0}
 .wip__tag span{font-size:14px;line-height:1.45}
 
 /* 3. LP advantages */
-#lp .card{background:#0E2E1B}
-.partners{margin-top:56px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+#lp .card{background:var(--green);border-color:#7A846280;padding:30px 26px 26px;gap:18px;overflow:visible;cursor:default;transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s cubic-bezier(.2,.7,.2,1)}
+#lp .card:hover{transform:translateY(-6px);box-shadow:0 27px 67px rgba(0,0,0,.45)}
+#lp .card h3{font:400 36px/1.1 var(--serif)}#lp .card p{font-size:18px;line-height:1.45}
+#lp .card .ph{margin:auto -26px -26px;aspect-ratio:5/4;border-radius:0 0 7px 7px}
+.partners{margin-top:64px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
 .partners__row{display:flex;gap:16px}
 .plogo{display:block;height:36px;background:var(--linen);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
 .partners__row{align-items:center;gap:56px}
@@ -198,6 +201,8 @@ body{margin:0}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
+/* footer column headings in SecondLane yellow */
+.ft__col b{color:#E3FD5A!important}
 </style>
 
 <header class="nav" id="nav">
@@ -244,9 +249,9 @@ a.btn{text-decoration:none}
     <div class="wrap">
       <div class="head"><h2 class="t">LP advantages</h2></div>
       <div class="g3">
-        <article class="card"><h3>First look</h3><p>Co-investment and proprietary opportunities that never reach traditional channels. Early entry into pre-IPO rounds, direct secondaries and off-market situations we source ourselves.</p><div class="ph"><img src="assets/htd1.jpg" alt=""></div></article>
-        <article class="card"><h3>No hidden fees</h3><p>Every fee is agreed per opportunity, at market rates, before any money moves.</p><div class="ph"><img src="assets/htd4.jpg" alt=""></div></article>
-        <article class="card"><h3>Independent administration</h3><p>PwC, Formidium and BitGo keep the books. Quarterly reporting you can check without taking our word for it.</p><div class="ph"><img src="assets/htd5.jpg" alt=""></div></article>
+        <article class="card lit"><h3>First look</h3><p>Co-investment and proprietary opportunities that never reach traditional channels. Early entry into pre-IPO rounds, direct secondaries and off-market situations we source ourselves.</p><div class="ph"><img src="assets/htd1.jpg" alt=""></div></article>
+        <article class="card lit"><h3>No hidden fees</h3><p>Every fee is agreed per opportunity, at market rates, before any money moves.</p><div class="ph"><img src="assets/htd4.jpg" alt=""></div></article>
+        <article class="card lit"><h3>Independent administration</h3><p>PwC, Formidium and BitGo keep the books. Quarterly reporting you can check without taking our word for it.</p><div class="ph"><img src="assets/htd5.jpg" alt=""></div></article>
       </div>
       <div class="partners"><span class="lab" style="color:var(--sand)">Independent administration and custody</span><div class="partners__row"><span class="plogo" role="img" aria-label="PwC" style="--src:url(assets/logo-pwc.svg);width:84px;height:84px;margin-block:-24px"></span><span class="plogo" role="img" aria-label="Formidium" style="--src:url(assets/logo-formidium.png);width:190px;height:30px"></span><span class="plogo" role="img" aria-label="BitGo" style="--src:url(assets/logo-bitgo.svg);width:100px;height:34px"></span></div></div>
     </div>
@@ -297,6 +302,7 @@ a.btn{text-decoration:none}
 <script>
 (function(){
   var nav=document.getElementById('nav');
+  document.querySelectorAll('.lit').forEach(function(el){ el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); }); el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); }); });
   function stick(){ nav.classList.toggle('stuck',scrollY>40); } addEventListener('scroll',stick,{passive:true}); stick();
   /* why Capital: progress through the pinned section drives each card from below into the stack.
      Eased toward the target each frame, so the motion lags a little behind the wheel and feels weighted. */

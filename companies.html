@@ -193,9 +193,9 @@ section[id]{scroll-margin-top:100px}
 .count{font-size:14px;color:var(--mute);padding-bottom:16px;border-bottom:1px solid rgba(18,48,31,.12);margin-bottom:28px}
 .grp+.grp{margin-top:48px}
 .grp[hidden]{display:none}
-.band{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:22px 28px;background:#fff;border-radius:8px;margin-bottom:4px}
+.band{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 0 14px;margin-bottom:4px}
 .band h3{font:400 30px/1.1 var(--serif)}
-.band p{color:var(--mute);font-size:15.5px;text-align:right;max-width:40ch}
+.band p{color:var(--mute);font-size:15.5px;text-align:left;max-width:60ch}
 .dir{width:100%;border-collapse:collapse;font-size:16px;color:inherit}
 .dir th{text-align:left;font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:16px 12px 12px 0;border-bottom:1px solid rgba(18,48,31,.18)}
 .dir td{padding:15px 12px 15px 0;border-bottom:1px solid rgba(18,48,31,.1);vertical-align:middle}
@@ -277,6 +277,8 @@ body:has(.nav.is-hidden) .side{top:24px}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
+/* footer column headings in SecondLane yellow */
+.ft__col b{color:#E3FD5A!important}
 </style>
 <header class="nav" id="nav">
   <div class="wrap">
