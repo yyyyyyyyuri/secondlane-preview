@@ -100,7 +100,9 @@ Chart series, in order: `--chart-1` … `--chart-5` (green theme: linen, yellow,
 7. **Yellow is a signal, not a colour scheme.** `yellow-300` appears once or twice a screen: the main button, the active nav underline, arrows and eyebrows on green, the dot field. `yellow-200` and `yellow-400` are its hover and pressed states; `yellow-600` is the input focus border; 700–900 exist only for warning text on light grounds; 50–100 for warning tints. Never use yellow as text on linen or white (1.0:1), never inside photography.
 8. **Rust is an accent.** `rust-700` for eyebrows and error text on light, `rust-600` for error borders, `rust-300` for error text on green, 50–100 and 950 for error backgrounds.
 9. **Lines use transparency, not ramp steps.** Hairlines are the text colour at 12–20% (`--border`), so they blend on any ground and over images.
-10. **Proportion.** Across a page, roughly: green 70%, linen and white 25%, neutrals for text, yellow under 5%, rust under 2%.
+10. **Proportion.** Two versions, with green and linen swapped:
+    - **Dark (green-led, the default):** green 70%, linen and white 25%, yellow under 5%, rust under 2%.
+    - **Light (linen-led):** linen and white 70%, green 25%, yellow under 5%, rust under 2%. Yellow appears only as button fills here; eyebrows and arrows switch to rust and green.
 
 ---
 

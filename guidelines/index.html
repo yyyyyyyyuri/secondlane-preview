@@ -411,7 +411,8 @@ pre{max-width:100%}
     </table></div>
 
     <h3>Proportion</h3>
-    <p>Across a page, roughly: green 70%, linen and white 25%, neutrals for text, yellow under 5%.</p>
+    <p>Roughly how much of each colour a page uses. Dark pages (the default) lead with green; light pages invert green and linen. Yellow stays under 5% and rust under 2% in both.</p>
+    <h4 style="margin-top:20px">Dark · green-led</h4>
     <div class="ratio" aria-hidden="true">
       <span style="flex:70;background:#12301F;color:#CBBFA8">Green 70%</span>
       <span style="flex:22;background:#F5F3EF;color:#55604F">Linen 22%</span>
@@ -419,6 +420,15 @@ pre{max-width:100%}
       <span style="flex:3;background:#E3FD5A;color:#191A16">Y</span>
       <span style="flex:2;background:#8F442D"></span>
     </div>
+    <h4 style="margin-top:20px">Light · linen-led</h4>
+    <div class="ratio" aria-hidden="true">
+      <span style="flex:70;background:#F5F3EF;color:#55604F">Linen 70%</span>
+      <span style="flex:22;background:#12301F;color:#CBBFA8">Green 22%</span>
+      <span style="flex:3;background:#fff"></span>
+      <span style="flex:3;background:#E3FD5A;color:#191A16">Y</span>
+      <span style="flex:2;background:#8F442D"></span>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--mute)">White counts with linen (logo rail, cards, inputs). On light pages, yellow appears only as button fills, never as text or eyebrows; eyebrows and arrows switch to rust and green.</p>
 
     <h3>Section themes</h3>
     <p>Each section sets <code>data-theme</code>; the theme swaps a few variables and every component reads from them.</p>
