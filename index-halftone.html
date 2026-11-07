@@ -1,0 +1,550 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane Halftone Hero</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: the SecondLane home page, section by section, at Baselayer proportions (72px statements, 136px sections, 1312 max width).
+   Each section carries its own background. A Mercury-style page fade between themes is built in but parked (THEME_FADE). */
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-500.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{color-scheme:dark;
+ --green:#12301F;--green-2:#17392A;--linen:#F5F3EF;--stone:#D9D2C3;--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#191A16;--mute:#55604F;--rust:#8F442D;
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --ease:cubic-bezier(.65,0,.35,1);--theme-ease:cubic-bezier(.45,0,.25,1);--max:1312px}
+body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit}
+img{display:block}
+
+/* page themes: the wrapper carries the colours, sections stay transparent */
+.site{--bg:var(--green);--fg:var(--linen);--sub:var(--sand);--lead:var(--stone);--rule:rgba(245,243,239,.18);
+ background:var(--bg);color:var(--fg);transition:background-color 1.8s var(--theme-ease),color 1.8s var(--theme-ease)}
+/* each section carries its own background; the page-wide dark-to-light fade is parked (see THEME_FADE in the script) */
+main [data-theme]{background:var(--bg);color:var(--fg)}
+main [data-theme="green"]{--bg:var(--green);--fg:var(--linen);--sub:var(--sand);--lead:var(--stone);--rule:rgba(245,243,239,.18)}
+main [data-theme="linen"]{--bg:var(--linen);--fg:var(--green);--sub:var(--mute);--lead:var(--mute);--rule:rgba(18,48,31,.14)}
+main [data-theme="white"]{--bg:#FFFFFF;--fg:var(--green);--sub:var(--mute);--lead:var(--mute);--rule:rgba(18,48,31,.12)}
+.site.fade main [data-theme]{background:transparent}
+.site.fade[data-theme="linen"]{--bg:var(--linen);--fg:var(--green);--sub:var(--mute);--lead:var(--mute);--rule:rgba(18,48,31,.14)}
+.site.fade[data-theme="white"]{--bg:#FFFFFF;--fg:var(--green);--sub:var(--mute);--lead:var(--mute);--rule:rgba(18,48,31,.12)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(64px,env(safe-area-inset-left,0px));padding-right:max(64px,env(safe-area-inset-right,0px))}
+.sec{padding-block:136px}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+main [data-theme="linen"] .lab,main [data-theme="white"] .lab{color:var(--rust)}
+.h2{font:400 60px/1.03 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.lead{font-size:22px;line-height:1.5;color:var(--lead);max-width:34em;transition:color 1.8s var(--theme-ease)}
+.head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:end;margin-bottom:72px}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;
+ transition:background .18s,border-color .18s,box-shadow .18s,transform .08s,color 1.8s var(--theme-ease)}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover{background:#EDFF8C;border-color:#EDFF8C;box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:active{background:#CFE844;border-color:#CFE844;box-shadow:none;transform:translateY(1px)}
+.btn-o{background:transparent;border-color:color-mix(in srgb,var(--fg) 60%,transparent);color:var(--fg)}
+.btn-o:hover{background:color-mix(in srgb,var(--fg) 8%,transparent);border-color:var(--fg)}
+.btn-g{background:var(--green);border-color:var(--green);color:var(--linen)}
+.btn-g:hover{background:#24493A;border-color:#24493A}
+.btn:focus-visible,.alink:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 17px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.alink:hover::after{transform:translateX(4px)}
+main [data-theme="linen"] .alink.auto::after{background:var(--green)}
+
+/* lit edge: 1px yellow edge, brightest near the cursor */
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit.on::after{--lo:.8}.lit:hover::after{--lo:1}
+
+/* nav: transparent over the hero, then a blurred bar in the current theme */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;transition:background-color .35s ease,border-color .35s ease,height .35s ease}
+.nav .wrap{display:flex;align-items:center;gap:44px;height:96px;transition:height .35s ease}
+.nav.stuck{background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-bottom:1px solid var(--rule)}
+.nav.stuck .wrap{height:76px}
+.logo{display:block;width:128px;height:32px;flex:none;background:var(--fg);transition:background-color 1.8s var(--theme-ease);
+ -webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
+.nav__links{display:flex;gap:36px;flex:1;font:500 16px/1 var(--sans)}
+.nav__links a{color:inherit;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav__links a:hover{border-bottom-color:color-mix(in srgb,var(--fg) 40%,transparent)}
+.nav__sign{font:500 16px/1 var(--sans);color:inherit;text-decoration:none}
+.nav .btn{height:46px;padding:0 22px;font-size:15px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+
+/* 1. hero */
+.hero{position:relative;margin-top:-96px;padding-top:96px;min-height:820px;display:flex;align-items:center;overflow:hidden}
+.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+.hero .wrap{position:relative;width:100%}
+canvas.hero__art{display:block}
+.hero__pause{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:32px;z-index:2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+ color:var(--linen);background:rgba(18,48,31,.5);border:1px solid rgba(245,243,239,.28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:border-color .2s,background-color .2s}
+.hero__pause:hover{border-color:var(--yel);background:rgba(18,48,31,.75)}
+.hero__pause:active{transform:scale(.95)}
+.hero__pause:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
+.hero__pause svg{width:14px;height:14px;fill:currentColor;grid-area:1/1}.hero__pause .i-pl{display:none}
+.hero__pause[aria-pressed="true"] .i-pa{display:none}.hero__pause[aria-pressed="true"] .i-pl{display:block}
+@media (prefers-reduced-motion:reduce){.hero__pause{display:none}}
+@media (max-width:900px){.hero__pause{top:112px;bottom:auto;right:max(20px,env(safe-area-inset-right,0px))}}
+.hero__body{max-width:740px;padding-block:96px 72px;display:flex;flex-direction:column;gap:28px}
+.hero h1{font:400 72px/1.02 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.disclose{font-size:13.5px;line-height:1.5;color:var(--sand);padding-bottom:36px}
+
+/* 2. fact band on the interactive soft-forms halftone */
+.band{position:relative;height:320px}
+.band canvas{position:absolute;inset:0;width:100%;height:100%}
+.band .wrap{position:relative;height:100%;display:flex;align-items:center}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%}
+.fact{background:rgba(18,48,31,.55);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(245,243,239,.2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12);padding:30px 34px;display:flex;flex-direction:column;gap:10px}
+.fact b{font:300 64px/1 var(--serif);letter-spacing:-.01em;color:var(--linen)}
+.fact span{font-size:16px;color:var(--sand)}
+
+/* entrance: one by one, from a visible resting state when motion is off */
+.rv>*{opacity:0}
+.rv.seen>*{opacity:1;animation:rise .9s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*160ms)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+
+/* 3. platform */
+.plat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:96px;align-items:center}
+.plat__list{display:flex;flex-direction:column;gap:8px}
+.pi{display:grid;grid-template-columns:48px minmax(0,1fr);gap:22px;padding:22px 0;text-align:left;background:none;border:0;cursor:pointer;color:var(--sand);transition:color .3s ease}
+.pi svg{width:48px;height:48px;padding:11px;border:1px solid rgba(245,243,239,.2);border-radius:10px;stroke:currentColor;fill:none;stroke-width:1.5;transition:background .3s,border-color .3s,stroke .3s}
+.pi h3{font:400 30px/1.15 var(--serif)}
+.pi p{font-size:17px;line-height:1.5;color:var(--stone);margin-top:12px;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .4s ease}
+.pi.on{color:var(--linen);cursor:default}
+.pi.on svg{background:var(--yel);border-color:var(--yel);stroke:var(--on-yel)}
+.pi.on p{max-height:120px;opacity:1}
+.pi:focus-visible{outline:2px solid var(--yel);outline-offset:4px;border-radius:6px}
+.stage{position:relative;height:540px;border-radius:12px;overflow:hidden;border:1px solid rgba(245,243,239,.2)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.pane{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:56px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .45s ease,transform .6s var(--ease)}
+.pane.on{opacity:1;transform:none;pointer-events:auto;transition-delay:.12s}
+.frag{width:420px;background:rgba(18,48,31,.66);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(245,243,239,.2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12),0 30px 80px rgba(0,0,0,.45);padding:34px;display:flex;flex-direction:column;gap:12px}
+.frag .eb{font:500 12px/1.6 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--sand)}
+.frag .fig{font:300 60px/1 var(--serif);color:var(--yel)}
+.frag .sm{font-size:15px;color:var(--sand)}
+.kv{display:flex;flex-direction:column;margin-top:14px}
+.kv div{display:flex;justify-content:space-between;gap:16px;padding:15px 0;font-size:17px}
+.kv div+div{border-top:1px solid rgba(245,243,239,.18)}
+.kv span:last-child{text-align:right}
+.ok i{font-style:normal;font-size:14px;color:var(--yel)}
+
+/* 4. logo rail */
+.rail{padding-block:80px}
+.rail .lab{text-align:center;margin-bottom:44px;color:var(--mute) !important}
+.logos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:44px 56px;align-items:center;justify-items:center}
+.lg{width:150px;height:40px;background:var(--fg);transition:background-color 1.8s var(--theme-ease);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+
+/* 5. audience */
+.aud{display:flex;gap:14px;height:620px}
+.col{position:relative;flex:1 1 0;min-width:0;border:0;padding:0;border-radius:12px;overflow:hidden;background:var(--green);cursor:pointer;text-align:left;color:var(--linen);transition:flex-grow .72s var(--ease)}
+.col.on{flex-grow:3.2;cursor:default}
+.col.lit::after{inset:0}
+.col:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
+.col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.04);transition:opacity .72s var(--ease),transform 1s var(--ease)}
+.col.on img{opacity:1;transform:none}
+.pb{position:absolute;left:0;right:0;bottom:0;height:52%;pointer-events:none}
+.pb i{position:absolute;inset:0}
+.pb i:nth-child(1){-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);-webkit-mask:linear-gradient(180deg,transparent 0%,#000 35%);mask:linear-gradient(180deg,transparent 0%,#000 35%)}
+.pb i:nth-child(2){-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);-webkit-mask:linear-gradient(180deg,transparent 30%,#000 65%);mask:linear-gradient(180deg,transparent 30%,#000 65%)}
+.pb i:nth-child(3){-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask:linear-gradient(180deg,transparent 55%,#000 90%);mask:linear-gradient(180deg,transparent 55%,#000 90%)}
+.pb i:nth-child(4){background:linear-gradient(180deg,rgba(18,48,31,0) 20%,rgba(18,48,31,.5) 100%)}
+.tt{position:absolute;left:20px;right:20px;bottom:22px;font:400 23px/1.15 var(--serif);text-wrap:balance;transition:opacity .25s linear .4s,transform .35s var(--ease) .36s}
+.col.on .tt{opacity:0;transform:translateY(8px);transition:opacity .15s linear,transform .15s linear}
+.tx{position:absolute;left:30px;bottom:30px;width:min(520px,calc(100vw - 140px));display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .15s linear,transform .15s linear}
+.col.on .tx{opacity:1;transform:none;pointer-events:auto;transition:opacity .4s var(--ease) .32s,transform .5s var(--ease) .3s}
+.tx h3{font:400 40px/1.06 var(--serif)}
+.tx p{font-size:16.5px;line-height:1.55;max-width:44ch}
+
+/* 6. verticals */
+.vg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.vc,.ic{background:var(--green);color:var(--linen);border:1px solid #7A846280;border-radius:8px;padding:30px 26px 26px;display:flex;flex-direction:column;gap:18px;cursor:pointer;transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s cubic-bezier(.2,.7,.2,1)}
+.vc:hover,.ic:hover{box-shadow:0 27px 67px rgba(0,0,0,.45);transform:translateY(-6px)}
+.vc h3{font:400 36px/1.1 var(--serif)}
+.vc p{font-size:18px;line-height:1.45;color:var(--sand)}
+.vc .lab{color:var(--yel) !important}
+.vc .ph,.ic .ph{margin:auto -26px -26px;aspect-ratio:5/4;overflow:hidden;border-radius:0 0 7px 7px;background:var(--green)}
+.vc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+
+
+/* 7. report */
+#report{padding-block:0}#report>.wrap{max-width:none;padding:0}
+.report{position:relative;border-radius:0;overflow:hidden;min-height:760px;display:flex;align-items:center;justify-content:center;padding:48px}
+.report>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.report__in{position:relative;background:var(--linen);color:var(--green);border-radius:12px;max-width:660px;padding:56px 52px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.report__in h2{font:400 56px/1.04 var(--serif);text-wrap:balance}
+.report__in .lead{font-size:19px}
+.fl{display:flex;flex-direction:column;gap:8px;width:100%;text-align:left}
+.fl__l{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.fl__h{font-size:13px;color:var(--mute)}
+.frow{display:flex;gap:8px}
+.in{flex:1;min-width:0;height:52px;padding:0 16px;border:1px solid rgba(18,48,31,.35);border-radius:4px;background:#FFFFFF;color:var(--green);font:400 17px var(--sans);outline:none;transition:border-color .15s,box-shadow .15s}
+.in::placeholder{color:var(--mute)}
+.in:hover{border-color:rgba(18,48,31,.6)}
+.in:focus{border-color:#A3B62B;box-shadow:0 0 0 4px rgba(227,253,90,.3)}
+.done{display:none;flex-direction:column;align-items:center;gap:10px}
+.done i{width:36px;height:36px;border-radius:50%;background:var(--yel);display:grid;place-items:center}
+.done i::after{content:"";width:18px;height:18px;background:var(--on-yel);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center/contain no-repeat}
+.done b{font:400 30px/1.1 var(--serif)}
+.report.sent form{display:none}.report.sent .done{display:flex}
+
+/* 8. team */
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.tm{display:flex;flex-direction:column;gap:6px}
+.tm .ph{aspect-ratio:3/4;border-radius:10px;overflow:hidden;margin-bottom:18px;background:var(--green)}
+.tm .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+
+.tm b{font:400 32px/1.1 var(--serif);font-weight:400}
+.tm span{font-size:16px;color:var(--sand)}
+
+/* 9. insights */
+.ig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.ic h3{font:400 36px/1.1 var(--serif)}
+.ic p{font-size:18px;line-height:1.45;color:var(--sand)}
+.ic .lab{color:var(--yel) !important}
+
+.ic .ph img{width:100%;height:100%;object-fit:cover}
+
+/* 10. closing band */
+.cb{position:relative;overflow:hidden;min-height:720px;display:flex;align-items:center}
+.cb__art{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.cb .wrap{position:relative;width:100%}
+.cb__in{max-width:720px;display:flex;flex-direction:column;gap:24px}
+.cb h2{font:400 66px/1.03 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.cb__act{display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-top:24px}
+
+/* 11. footer */
+.ft{padding-block:80px 44px;color:var(--sand);font-size:15px}
+.ft__top{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:44px;padding-bottom:40px;border-bottom:1px solid rgba(245,243,239,.18)}
+.ft__brand{display:flex;flex-direction:column;gap:18px}
+.ft__brand p{max-width:28ch;line-height:1.5}
+.ft__col{display:flex;flex-direction:column;gap:13px}
+.ft__col b{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);margin-bottom:4px}
+.ft a{color:inherit;text-decoration:none}.ft a:hover{color:var(--linen)}
+.ft__notes{display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;padding-block:32px}
+.ft__notes sup{color:var(--linen)}
+.ft__legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid rgba(245,243,239,.18);font-size:13.5px}
+.ft__legal nav{display:flex;gap:22px}
+
+/* note bar */
+.proto-note{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:40;font:500 12px/1.4 var(--sans);color:var(--linen);background:rgba(18,48,31,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(245,243,239,.2);border-radius:6px;padding:8px 12px;max-width:min(420px,calc(100vw - 32px))}
+
+@media (max-width:900px){
+ .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+ .sec{padding-block:88px}.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:44px}
+ .h2,.hero h1,.cb h2{font-size:42px}.lead{font-size:19px}
+ .nav__links,.nav__sign{display:none}
+ .hero__art{width:100%;opacity:.4}
+ .band{height:auto}.band .wrap{padding-block:40px}.facts{grid-template-columns:minmax(0,1fr)}
+ .plat{grid-template-columns:minmax(0,1fr);gap:40px}.stage{height:520px}.frag{width:100%}
+ .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .aud{flex-direction:column;height:860px}.tx{width:calc(100vw - 100px)}
+ .vg,.ig{grid-template-columns:minmax(0,1fr)}.team{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .frow{flex-direction:column}.ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .report__in{padding:36px 24px}.report__in h2{font-size:38px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:1ms !important;transition-delay:0s !important}.rv>*{opacity:1;transform:none;animation:none !important}}
+
+body{margin:0}
+
+/* shared site nav: six links */
+.nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
+
+/* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
+.nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck .logo{background:#F5F3EF!important}
+.nav.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+a.btn{text-decoration:none}
+.nav .logo{margin-right:auto}
+/* footer column headings in SecondLane yellow */
+.ft__col b{color:#E3FD5A!important}
+</style>
+
+<div class="site" id="site" data-theme="green">
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="SecondLane home"></a>
+      <nav class="nav__links" aria-label="Main"><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a><a href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
+      <a class="nav__sign" href="access.html">Sign in</a>
+      <a class="btn btn-y" href="access.html">Get introduced</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. Hero -->
+    <section class="hero" data-theme="green">
+      <!-- halftone drift: the AI accelerator print as 3D dots; scroll lifts them, the camera sways slowly -->
+      <canvas class="hero__art" id="heroDots" aria-hidden="true"></canvas>
+      <img class="hero__art" id="heroStill" src="assets/ht-accelerator.jpg" alt="" hidden>
+      <button class="hero__pause" id="heroPause" type="button" aria-label="Pause motion" aria-pressed="false"><svg class="i-pa" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2.6" height="10" rx=".8"/><rect x="9.4" y="3" width="2.6" height="10" rx=".8"/></svg><svg class="i-pl" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6a.8.8 0 0 0 1.2.7l7.6-4.8a.8.8 0 0 0 0-1.4L6.2 2.5A.8.8 0 0 0 5 3.2z"/></svg></button>
+      <div class="wrap">
+        <div class="hero__body">
+          <h1>Get into the companies defining AI, defense and space before they go public.</h1>
+          <p class="lead">Secondary opportunities in Anthropic, Anduril and the private markets' fastest-growing names, introduced to qualified participants.</p>
+          <div class="row"><a class="btn btn-y" href="access.html">Get introduced</a><button class="btn btn-o" type="button">See how it works</button></div>
+        </div>
+        <p class="disclose">SecondLane is an introduction network and is not a registered broker-dealer in the United States.</p>
+      </div>
+    </section>
+
+    <!-- 2. Fact band -->
+    <section class="band" data-theme="green" aria-label="SecondLane in numbers">
+      <canvas id="ground" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="facts rv" id="facts">
+          <div class="fact lit" style="--i:0"><b>2013</b><span>Working private markets since</span></div>
+          <div class="fact lit" style="--i:1"><b>17,000+</b><span>Qualified participants in the network</span></div>
+          <div class="fact lit" style="--i:2"><b>1,500+</b><span>Private companies covered</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Platform -->
+    <section class="sec" id="platform" data-theme="green">
+      <div class="wrap">
+        <div class="head"><div><span class="lab">One platform</span><h2 class="h2" style="margin-top:14px">From inception to succession</h2></div><p class="lead">Raising capital, releasing liquidity, planning the handover, and what comes after. Funds, founders and qualified participants meet the other side of each opportunity here.</p></div>
+        <div class="plat">
+          <div class="plat__list" role="tablist" aria-label="What you can do">
+            <button class="pi on" type="button" role="tab" aria-selected="true" data-p="0"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg><span><h3>Find the opportunity</h3><p>Browse private companies in AI, defense, space and fintech, with public funding data and where introductions are open.</p></span></button>
+            <button class="pi" type="button" role="tab" aria-selected="false" data-p="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h12M12 6l6 6-6 6"></path></svg><span><h3>Release liquidity</h3><p>Holders of private company interests get introduced to interested parties, without a public listing.</p></span></button>
+            <button class="pi" type="button" role="tab" aria-selected="false" data-p="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V8M10 18V5M16 18v-7M22 18H2"></path></svg><span><h3>Raise and plan the handover</h3><p>Tender offers, employee liquidity and succession, timed around rounds, vesting and unlocks.</p></span></button>
+            <button class="pi" type="button" role="tab" aria-selected="false" data-p="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg><span><h3>Verified on both sides</h3><p>Eligibility is checked before the first introduction, and every opportunity sits in its own dedicated vehicle.</p></span></button>
+          </div>
+          <div class="stage" id="stage">
+            <canvas id="print" aria-hidden="true"></canvas>
+            <div class="pane on"><div class="frag"><span class="eb">Anthropic · Private · Public data</span><span class="fig">$[X]B</span><span class="sm">last publicly reported valuation, [date]</span><div class="kv"><div><span>Sector</span><span>AI</span></div><div><span>Interested parties</span><span>Holders and buyers</span></div><div><span>Who can join</span><span>Qualified participants</span></div></div><div style="padding-top:14px"><button class="btn btn-y" type="button" style="width:100%">Get introduced</button></div></div></div>
+            <div class="pane"><div class="frag"><span class="eb">Your position · [Company]</span><span class="fig">[X] interested</span><span class="sm">parties matched to your position this month</span><div class="kv"><div><span>Introductions</span><span>Confidential until agreed</span></div><div><span>Listing</span><span>Not required</span></div><div><span>Transfer rules</span><span>Checked first</span></div></div></div></div>
+            <div class="pane"><div class="frag"><span class="eb">Tender offer · [Company]</span><div class="kv"><div><span>1 · Set the window</span><span>Around the round and vesting</span></div><div><span>2 · Invite holders</span><span>Employees and early backers</span></div><div><span>3 · Meet participants</span><span>Verified, from the network</span></div></div></div></div>
+            <div class="pane"><div class="frag"><span class="eb">Eligibility · Before your first introduction</span><div class="kv ok"><div><span>Identity confirmed</span><i>Done</i></div><div><span>Accredited or qualified status</span><i>Done</i></div><div><span>Jurisdiction rules</span><i>Done</i></div><div><span>Opportunity vehicle</span><i>Its own dedicated vehicle</i></div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Logo rail -->
+    <section class="rail" data-theme="white" aria-label="Teams and projects">
+      <div class="wrap">
+        <span class="lab">Teams and projects SecondLane has worked with</span>
+        <div class="logos">
+          <i class="lg" style="--src:url('assets/lg-spectral.webp')" role="img" aria-label="Spectral"></i><i class="lg" style="--src:url('assets/lg-kamino.webp')" role="img" aria-label="Kamino"></i><i class="lg" style="--src:url('assets/lg-zksync.webp')" role="img" aria-label="zkSync"></i><i class="lg" style="--src:url('assets/lg-sei.webp')" role="img" aria-label="Sei"></i><i class="lg" style="--src:url('assets/lg-scroll.webp')" role="img" aria-label="Scroll"></i>
+          <i class="lg" style="--src:url('assets/lg-manta.webp')" role="img" aria-label="Manta Network"></i><i class="lg" style="--src:url('assets/lg-spacex.webp')" role="img" aria-label="SpaceX"></i><i class="lg" style="--src:url('assets/lg-fuel.webp')" role="img" aria-label="Fuel"></i><i class="lg" style="--src:url('assets/lg-circle.webp')" role="img" aria-label="Circle"></i><i class="lg" style="--src:url('assets/lg-solana.webp')" role="img" aria-label="Solana"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Who -->
+    <section class="sec" id="who" data-theme="linen">
+      <div class="wrap">
+        <div class="head"><div><span class="lab">Who SecondLane works with</span><h2 class="h2" style="margin-top:14px">Four ways in, one network</h2></div><p class="lead">Access to secondary market opportunities for funds and family offices, founders, qualified participants and partners.</p></div>
+        <div class="aud" id="aud" role="tablist" aria-label="Who SecondLane works with">
+          <div class="col on lit" role="tab" tabindex="0" aria-selected="true"><img src="assets/funds.jpg" alt=""><span class="pb"><i></i><i></i><i></i><i></i></span><span class="tt">Funds and institutions</span><div class="tx"><h3>Funds and institutions</h3><p>Turn liquidity into AUM growth. Get indications on illiquid positions, return capital sooner and redeploy faster.</p><a class="alink" href="#verticals">See how funds use Prime</a></div></div>
+          <div class="col lit" role="tab" tabindex="-1" aria-selected="false"><img src="assets/participants.jpg" alt=""><span class="pb"><i></i><i></i><i></i><i></i></span><span class="tt">Qualified participants</span><div class="tx"><h3>Qualified participants</h3><p>Don't wait for the IPO. Access Anthropic, OpenAI, Anduril and other category-defining companies while growth is still private.</p><a class="alink" href="#verticals">Join the Access waitlist</a></div></div>
+          <div class="col lit" role="tab" tabindex="-1" aria-selected="false"><img src="assets/founders.jpg" alt=""><span class="pb"><i></i><i></i><i></i><i></i></span><span class="tt">Founders</span><div class="tx"><h3>Founders</h3><p>Keep the people who built it. Compliant tender offers and employee liquidity, so you can stay private longer.</p><a class="alink" href="#platform">See founder liquidity</a></div></div>
+          <div class="col lit" role="tab" tabindex="-1" aria-selected="false"><img src="assets/partners.jpg" alt=""><span class="pb"><i></i><i></i><i></i><i></i></span><span class="tt">Integration partners</span><div class="tx"><h3>Integration partners</h3><p>Add a revenue line without building a desk. One API for opportunity valuation, private market data and completion.</p><a class="alink" href="#top">Talk to partnerships</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Verticals -->
+    <section class="sec" id="verticals" data-theme="green">
+      <div class="wrap">
+        <div class="head"><div><span class="lab">Three verticals</span><h2 class="h2" style="margin-top:14px">Liquidity starts here.</h2></div><p class="lead">Three verticals connect participants and founders to private market opportunities. Choose the one that fits how you take part.</p></div>
+        <div class="vg rv" id="vg">
+          <article class="vc lit" data-href="access.html" role="link" tabindex="0" style="--i:0"><h3>SecondLane Access</h3><p>A platform that lets individuals get into leading private companies before they go public, from a smaller ticket.</p><span class="lab">Opening soon</span><div class="ph"><img src="assets/accelerator.jpg" alt=""></div></article>
+          <article class="vc lit" data-href="capital.html" role="link" tabindex="0" style="--i:1"><h3>SecondLane Capital</h3><p>Our institutional arm. Positions handled end to end by one team, around your mandate.</p><span class="lab">Institutions · Family offices</span><div class="ph"><img src="assets/lidar.jpg" alt=""></div></article>
+          <article class="vc lit" data-href="prime.html" role="link" tabindex="0" style="--i:2"><h3>SecondLane Prime</h3><p>Our multi-asset introductory network, connecting you with existing holders and interested parties.</p><span class="lab">Entering or exiting a position</span><div class="ph"><img src="assets/cooling.jpg" alt=""></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Report -->
+    <section class="sec" id="report" data-theme="linen">
+      <div class="wrap">
+        <div class="report" id="reportBox">
+          <img src="assets/report.jpg" alt="">
+          <div class="report__in">
+            <span class="lab">Monthly report</span>
+            <h2>Know what the market did before it moves</h2>
+            <p class="lead">Volumes, valuations, premiums and discounts, rounds and what they mean. One email a month.</p>
+            <form class="fl" id="reportForm" novalidate>
+              <label class="fl__l" for="report-email">Email</label>
+              <div class="frow"><input class="in" id="report-email" type="email" placeholder="you@company.com" autocomplete="email" required><button class="btn btn-g" type="submit">Get the report</button></div>
+              <span class="fl__h">We use your email only for the report. Leave at any time.</span>
+            </form>
+            <div class="done" role="status"><i aria-hidden="true"></i><b>You're on the list.</b><span class="fl__h">The next report lands at the start of next month.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Team -->
+    <section class="sec" id="team" data-theme="green">
+      <div class="wrap">
+        <div class="head"><div style="display:flex;flex-direction:column;gap:28px"><h2 class="h2" style="font-size:72px">Meet our team</h2><a class="alink" href="#team">Meet the whole team</a></div><p class="lead">Operators from Tier 1 finance, digital assets and energy, working secondaries through every cycle since 2013.</p></div>
+        <div class="team rv" id="teamGrid">
+          <div class="tm" style="--i:0"><div class="ph"><img src="assets/team-ben.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
+          <div class="tm" style="--i:1"><div class="ph"><img src="assets/team-frank.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
+          <div class="tm" style="--i:2"><div class="ph"><img src="assets/team-jordi.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
+          <div class="tm" style="--i:3"><div class="ph"><img src="assets/team-lior.jpg" alt=""></div><b>Name Surname</b><span>Role</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Insights -->
+    <section class="sec" id="insights" data-theme="green">
+      <div class="wrap">
+        <div class="head"><div><span class="lab">Insights</span><h2 class="h2" style="margin-top:14px">What is moving in private markets</h2></div><p class="lead">Trends, expert takes and the numbers behind the opportunities.</p></div>
+        <div class="ig rv" id="ig">
+          <article class="ic lit" style="--i:0"><h3>Late-stage interests now trade closer to the last round</h3><p>What the third quarter told us about premiums and discounts.</p><span class="lab">Report · [Date]</span><div class="ph"><img src="assets/ins-chip.jpg" alt=""></div></article>
+          <article class="ic lit" style="--i:1"><h3>Why tender offers are arriving earlier</h3><p>Founders are planning employee liquidity around the round, not after it.</p><span class="lab">Analysis · [Date]</span><div class="ph"><img src="assets/ins-cooling.jpg" alt=""></div></article>
+          <article class="ic lit" style="--i:2"><h3>Defense and space lead new interest</h3><p>Where qualified participants looked first this month.</p><span class="lab">Market note · [Date]</span><div class="ph"><img src="assets/ins-insulators.jpg" alt=""></div></article>
+        </div>
+        <div style="margin-top:44px"><a class="alink" href="#insights">Read all insights</a></div>
+      </div>
+    </section>
+
+    <!-- 10. Closing band -->
+    <section class="cb" data-theme="green">
+      <img class="cb__art" src="assets/insulator.jpg" alt="">
+      <div class="wrap">
+        <div class="cb__in">
+          <h2>The next decade's biggest companies are still private. For now.</h2>
+          <p class="lead">Explore secondary opportunities before they list, or get introduced to interested parties before the window closes.</p>
+          <div class="cb__act"><a class="btn btn-y" href="access.html">Get introduced</a><a class="alink" href="#platform">See how introductions work</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Footer -->
+    <footer class="ft" data-theme="green">
+      <div class="wrap">
+        <div class="ft__top">
+          <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
+          <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
+          <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
+          <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+        </div>
+        <div class="ft__notes">
+          <span><sup>1</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span>
+          <span><sup>2</sup> Valuations shown are the last publicly reported figures and are not a price for an opportunity.</span>
+          <span><sup>3</sup> Company names and logos are trademarks of their owners and do not imply endorsement.</span>
+        </div>
+        <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var site=document.getElementById('site'), nav=document.getElementById('nav');
+
+  /* Mercury-style theme handoff: the section crossing the middle of the screen sets the page theme */
+  var THEME_FADE=false; /* parked for later: true brings back the Mercury-style page fade */
+  if(THEME_FADE) site.classList.add('fade');
+  var secs=[].slice.call(document.querySelectorAll('main [data-theme]'));
+  function pickTheme(){
+    nav.classList.toggle('stuck', scrollY>40);
+    if(!THEME_FADE) return;
+    var mid=innerHeight*0.5, cur=null;
+    for(var i=0;i<secs.length;i++){ var r=secs[i].getBoundingClientRect(); if(r.top<=mid && r.bottom>mid){ cur=secs[i]; break; } }
+    if(cur && site.dataset.theme!==cur.dataset.theme) site.dataset.theme=cur.dataset.theme;
+    nav.classList.toggle('stuck', scrollY>40);
+  }
+  addEventListener('scroll',pickTheme,{passive:true}); addEventListener('resize',pickTheme); pickTheme();
+
+  /* entrances: cards appear one by one when their row comes into view */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(reduce||!('IntersectionObserver' in window)){ rv.forEach(function(e){e.classList.add('seen');}); }
+  else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }); },{threshold:.25}); rv.forEach(function(e){io.observe(e);}); }
+
+  /* lit edges follow the cursor */
+  document.querySelectorAll('.lit').forEach(function(el){
+    el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+    el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); });
+  });
+
+  /* platform tabs */
+  var pis=[].slice.call(document.querySelectorAll('.pi')), panes=[].slice.call(document.querySelectorAll('.pane'));
+  function plat(i){ pis.forEach(function(p,k){ p.classList.toggle('on',k===i); p.setAttribute('aria-selected',k===i?'true':'false'); }); panes.forEach(function(p,k){ p.classList.toggle('on',k===i); }); }
+  pis.forEach(function(p,i){ p.addEventListener('click',function(){plat(i);}); });
+
+  /* audience columns: hover (after 90ms) or click opens */
+  var cols=[].slice.call(document.querySelectorAll('.col')), t=null;
+  function openCol(i){ cols.forEach(function(c,k){ var on=k===i; c.classList.toggle('on',on); c.setAttribute('aria-selected',on?'true':'false'); c.tabIndex=on?0:-1; }); }
+  cols.forEach(function(c,i){
+    c.addEventListener('pointerenter',function(e){ if(e.pointerType!=='mouse')return; clearTimeout(t); t=setTimeout(function(){openCol(i);},90); });
+    c.addEventListener('pointerleave',function(){ clearTimeout(t); });
+    c.addEventListener('click',function(e){ if(e.target.closest('a'))return; openCol(i); });
+    c.addEventListener('keydown',function(e){ var n=null; if(e.key==='ArrowRight')n=(i+1)%cols.length; if(e.key==='ArrowLeft')n=(i+cols.length-1)%cols.length; if(e.key==='Enter'||e.key===' '){e.preventDefault();openCol(i);} if(n!==null){e.preventDefault();openCol(n);cols[n].focus();} });
+  });
+
+  /* report form: confirm in place */
+  var form=document.getElementById('reportForm'), box=document.getElementById('reportBox'), em=document.getElementById('report-email');
+  form.addEventListener('submit',function(e){ e.preventDefault(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){ em.focus(); em.setCustomValidity('Enter an email address, like you@company.com'); em.reportValidity(); return; } em.setCustomValidity(''); box.classList.add('sent'); });
+  em.addEventListener('input',function(){ em.setCustomValidity(''); });
+
+  /* halftone ground: one even field of small dots, used in the fact band and behind the platform panel; dots grow near the cursor */
+  var SAND=[203,191,168], LIN=[245,243,239];
+  function mix(f){ f=Math.min(1,f); return [SAND[0]+(LIN[0]-SAND[0])*f|0,SAND[1]+(LIN[1]-SAND[1])*f|0,SAND[2]+(LIN[2]-SAND[2])*f|0]; }
+  function Halftone(cv,host,mode,src){
+    var ctx=cv.getContext('2d'), W=0,H=0, C=9, lum=null, SW=0, SH=0, t0=performance.now(), m={x:-1e4,y:-1e4,tx:-1e4,ty:-1e4,a:0,ta:0}, vis=false;
+    function size(){ var r=cv.getBoundingClientRect(), d=Math.min(devicePixelRatio||1,2); W=r.width; H=r.height; cv.width=W*d; cv.height=H*d; ctx.setTransform(d,0,0,d,0,0); }
+    if(src){ var im=new Image(); im.onload=function(){ var c=document.createElement('canvas'),s=c.getContext('2d',{willReadFrequently:true}); SW=640; SH=Math.round(640*im.height/im.width); c.width=SW; c.height=SH; s.drawImage(im,0,0,SW,SH); lum=s.getImageData(0,0,SW,SH).data; }; im.src=src; }
+    function sample(u,v){ if(!lum)return 0; var sc=Math.max(W/SW,H/SH), ox=(W-SW*sc)/2, oy=(H-SH*sc)/2, x=Math.floor((u-ox)/sc), y=Math.floor((v-oy)/sc); if(x<0||y<0||x>=SW||y>=SH)return 0; var i=(y*SW+x)*4; return (lum[i]*.3+lum[i+1]*.59+lum[i+2]*.11)/255; }
+    host.addEventListener('pointermove',function(e){ var r=cv.getBoundingClientRect(); m.tx=e.clientX-r.left; m.ty=e.clientY-r.top; if(m.x<-9e3){m.x=m.tx;m.y=m.ty;} m.ta=1; });
+    host.addEventListener('pointerleave',function(){ m.ta=0; });
+    function draw(now){
+      ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
+      m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
+      for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
+        var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/220); f=f*f*(3-2*f)*m.a; }
+        var r=2.1*(1+.3*f), a=.22+.5*f;
+        ctx.fillStyle='rgba(227,253,90,'+a+')'; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill();
+      }
+    }
+    size(); addEventListener('resize',size);
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){vis=es[0].isIntersecting;}).observe(cv); else vis=true;
+    (function loop(now){ if(vis) draw(now); requestAnimationFrame(loop); })(performance.now());
+  }
+  Halftone(document.getElementById('ground'),document.querySelector('.band'),'ground');
+  Halftone(document.getElementById('print'),document.getElementById('stage'),'ground');
+})();
+
+document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ location.href=c.dataset.href; } c.addEventListener('click',go); c.addEventListener('keydown',function(e){ if(e.key==='Enter') go(); }); });
+</script>
+<script>
+/* nav: hide while scrolling down, show again as soon as the reader scrolls up */
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return; var last=scrollY, tick=false;
+  function check(){ tick=false; var y=Math.max(0,scrollY), d=y-last;
+    if(y<120||nav.contains(document.activeElement)) nav.classList.remove('is-hidden');
+    else if(d>6) nav.classList.add('is-hidden');
+    else if(d<-6) nav.classList.remove('is-hidden');
+    if(Math.abs(d)>6||y<120) last=y;
+    nav.classList.toggle('stuck',y>40); }
+  function req(){ if(!tick){ tick=true; requestAnimationFrame(check); } }
+  addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
+})();
+</script>
+<script src="assets/halftone-drift.js"></script>
+<script>
+(function(){
+  var hero=document.querySelector('.hero'), btn=document.getElementById('heroPause');
+  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:'assets/ht-accelerator.jpg',focal:[.62,.48],scrollEl:hero,fallback:document.getElementById('heroStill'),sway:.05,swayPeriod:20});
+  btn.addEventListener('click',function(){ var on=ht.playing; if(on) ht.pause(); else ht.play(); btn.setAttribute('aria-pressed',on?'true':'false'); btn.setAttribute('aria-label',on?'Play motion':'Pause motion'); });
+})();
+</script>
