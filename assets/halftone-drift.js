@@ -108,7 +108,7 @@
       gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(zf[0]-.5)*W,(zf[1]-.5)*H);
       gl.uniform2f(U.uCam,swayNow+sideX,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,swA*inA*(1-Math.min(1,Math.max(0,(fp-.78)/.2))));
       // settled at the top: show the exact reference image; any scroll, switch or arrival hands back to the dots
-      if(ST){ var still=reduce||(inT<0&&!pending&&swT===1&&swA>.97&&p<.002); stA+=((still?1:0)-stA)*(reduce?1:still?.07:.35); if(stA<.002) stA=0; if(stA>.998) stA=1; ST.style.setProperty('--st',stA.toFixed(3)); }
+      if(ST){ var landed=Math.abs(cam.d)<.4&&cam.c<.002&&Math.abs(cam.z-1)<.002&&Math.abs(swayNow+sideX)<.4, still=reduce||(inT<0&&!pending&&swT===1&&swA>.97&&p<.002&&landed); stA+=((still?1:0)-stA)*(reduce?1:still?.16:.35); if(stA<.002) stA=0; if(stA>.998) stA=1; ST.style.setProperty('--st',stA.toFixed(3)); }
       if(N&&stA<1) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }
