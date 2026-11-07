@@ -3,7 +3,7 @@
    so scrolling lifts them at different speeds and the camera sway slides the layers past each other.
 
    Usage:  SecondLaneHalftone.mount(canvas, { src:'assets/ht-accelerator.jpg', focal:[.62,.48], scrollEl:heroSection })
-   Options (all optional): preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
+   Options (all optional): clearAt .6 (share of the scroll element's height scrolled when the dots are gone), preset 'fine'|'standard'|'coarse'|'bold'|'pixel', depth 2.6, depthOrder .5, zoom 1.8,
    push .3, sway .05 (share of width, ambient), swayPeriod 20 (s), light .1, fallback <img> shown when WebGL is missing.
    Returns { pause(), play(), playing, destroy() }. Respects prefers-reduced-motion and stops drawing off screen. */
 (function(){
@@ -15,12 +15,12 @@
     'void main(){float d=aZ-uC;if(d<=0.002){gl_Position=vec4(2.,2.,0.,1.);gl_PointSize=0.;vA=0.;return;}'+
     'float sc=aZ/d*uZoom;vec2 p=((aS*aZ-uCam)/d-uFocus)*uZoom+uFocus;gl_Position=vec4(p.x/(uRes.x*.5),-p.y/(uRes.y*.5),0.,1.);'+
     'gl_PointSize=min(2.*aR*sc*uDpr,480.);vC=aC;vA=smoothstep(.015,.35,d)*clamp(1.-(sc/uZoom-5.)/14.,0.,1.);}';
-  var FS='precision mediump float;varying float vA;varying vec3 vC;uniform vec3 uL;uniform float uK;uniform float uNorm;uniform float uSoft;uniform float uSquare;'+
+  var FS='precision mediump float;varying float vA;varying vec3 vC;uniform vec3 uL;uniform float uK;uniform float uNorm;uniform float uSoft;uniform float uSquare;uniform float uFade;'+
     'void main(){vec2 q=gl_PointCoord*2.-1.;q.y=-q.y;float r=uSquare>.5?max(q.x*q.x,q.y*q.y):dot(q,q);if(r>1.)discard;'+
     'vec3 n=uSquare>.5?vec3(0.,0.,1.):vec3(q,sqrt(1.-r));float dif=max(dot(n,uL),0.);float lit=(.3+.95*dif)/uNorm;'+
     'vec3 h=normalize(uL+vec3(0.,0.,1.));float sp=pow(max(dot(n,h),0.),30.)*.42;'+
     'vec3 col=vC*mix(1.,lit,uK)+vec3(1.,.96,.86)*sp*uK*(.4+.6*length(vC));'+
-    'float e=1.-smoothstep(1.-uSoft,1.,r);gl_FragColor=vec4(col*vA*e,vA*e);}';
+    'float e=1.-smoothstep(1.-uSoft,1.,r);float al=vA*e*uFade;gl_FragColor=vec4(col*al,al);}';
   function rnd(i){var x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);}
   function io(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
   function ground(img){ // ground colour = median of the image's top and bottom edge
@@ -32,14 +32,14 @@
 
   function mount(cv,o){
     o=o||{}; var P=PRE[o.preset||'standard'], focal=o.focal||[.5,.5], spread=o.depth!=null?o.depth:2.6, order=o.depthOrder!=null?o.depthOrder:.5,
-      ZOOM=o.zoom||1.8, PUSH=o.push!=null?o.push:.3, SWAY=o.sway!=null?o.sway:.05, PER=o.swayPeriod||20, K=o.light!=null?o.light:.1, scrollEl=o.scrollEl||cv;
+      ZOOM=o.zoom||1.8, PUSH=o.push!=null?o.push:.3, SWAY=o.sway!=null?o.sway:.05, PER=o.swayPeriod||20, K=o.light!=null?o.light:.1, scrollEl=o.scrollEl||cv, CLEAR=o.clearAt||.6;
     var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     var gl=cv.getContext('webgl',{antialias:true,premultipliedAlpha:true,alpha:true});
     if(!gl){ if(o.fallback) o.fallback.hidden=false; cv.hidden=true; return {pause:function(){},play:function(){},playing:false,destroy:function(){}}; }
     function sh(t,s){var x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);return x;}
     var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);gl.useProgram(pr);
     var L={},U={};['aS','aZ','aR','aC'].forEach(function(n){L[n]=gl.getAttribLocation(pr,n);});
-    ['uRes','uC','uCam','uDpr','uZoom','uFocus','uL','uK','uNorm','uSoft','uSquare'].forEach(function(n){U[n]=gl.getUniformLocation(pr,n);});
+    ['uRes','uC','uCam','uDpr','uZoom','uFocus','uL','uK','uNorm','uSoft','uSquare','uFade'].forEach(function(n){U[n]=gl.getUniformLocation(pr,n);});
     gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
     // one fixed light, upper left and in front; uNorm keeps each dot's average colour equal to the print
     var lx=-.55,ly=.55,lz=.75,m=Math.hypot(lx,ly,lz);lx/=m;ly/=m;lz/=m;var sum=0,n=0;
@@ -77,7 +77,7 @@
       cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); gl.viewport(0,0,cv.width,cv.height); if(img) build();
     }
     // scroll: 0 while the hero sits at the top, 1 once it has scrolled out of view
-    function progress(){ var r=scrollEl.getBoundingClientRect(); return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height))); }
+    function progress(){ var r=scrollEl.getBoundingClientRect(); return Math.min(1,Math.max(0,-r.top/Math.max(1,r.height*CLEAR))); }
     var cam={d:0,c:0,z:1}, swayNow=0, clock=0, last=performance.now(), vis=true, playing=!reduce, raf=0, alive=true;
     function frame(now){
       now=now||performance.now(); var dt=Math.min(.1,(now-last)/1000); last=now;
@@ -86,10 +86,10 @@
       // ambient sway: camera to the left, back through the centre, to the right and home, once per period
       var swayT=playing?-Math.sin(2*Math.PI*clock/PER)*SWAY*W:0; swayNow+=(swayT-swayNow)*.04;
       var cEnd=.42*PUSH, need=1.22*(zMax-cEnd)+.12, ds=p-Math.sin(2*Math.PI*p)/(2*Math.PI), zm=1+io(p)*(ZOOM-1);
-      var k=reduce?1:.09; cam.d+=(ds*need*H/zm-cam.d)*k; cam.c+=(io(p)*cEnd-cam.c)*k; cam.z+=(zm-cam.z)*k;
+      var k=reduce?1:.09; cam.p=(cam.p||0)+(p-(cam.p||0))*k; var fp=cam.p; cam.d+=(ds*need*H/zm-cam.d)*k; cam.c+=(io(p)*cEnd-cam.c)*k; cam.z+=(zm-cam.z)*k;
       gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.uRes,W,H); gl.uniform1f(U.uC,cam.c); gl.uniform1f(U.uZoom,cam.z); gl.uniform2f(U.uFocus,(focal[0]-.5)*W,(focal[1]-.5)*H);
-      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr);
+      gl.uniform2f(U.uCam,swayNow,cam.d); gl.uniform1f(U.uDpr,dpr); gl.uniform1f(U.uFade,1-Math.min(1,Math.max(0,(fp-.72)/.24)));
       if(N) gl.drawArrays(gl.POINTS,0,N);
     }
     function loop(nw){ raf=0; if(!alive) return; if(vis) frame(nw); if(!reduce||!N) raf=requestAnimationFrame(loop); }
