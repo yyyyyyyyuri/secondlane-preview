@@ -81,14 +81,14 @@ main [data-theme="linen"] .alink.auto::after{background:var(--green)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
 
 /* 1. hero */
-.hero{position:relative;margin-top:-96px;padding-top:96px;min-height:820px;display:flex;align-items:center;overflow:hidden}
-.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;object-position:0% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+.hero{position:relative;margin-top:-96px;padding-top:96px;min-height:80vh;min-height:80svh;display:flex;align-items:center;overflow:hidden}
+.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;object-position:100% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
 .hero .wrap{position:relative;width:100%}
-.hero__body{max-width:740px;padding-block:96px 72px;display:flex;flex-direction:column;gap:28px}
+.hero__body{max-width:740px;padding-block:clamp(24px,7vh,96px) clamp(20px,5vh,72px);display:flex;flex-direction:column;gap:28px}
 .hero .lead{font-size:18px}
 .hero h1{font:400 58px/1.04 var(--serif);letter-spacing:-.015em;text-wrap:balance}
 .hero .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
-.disclose{font-size:13.5px;line-height:1.5;color:var(--sand);padding-bottom:36px}
+.disclose{font-size:13.5px;line-height:1.5;color:var(--sand);padding-bottom:clamp(20px,4vh,36px)}
 
 /* 2. fact band on the interactive soft-forms halftone */
 .band{position:relative;height:320px}
