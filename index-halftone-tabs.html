@@ -82,7 +82,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* 1. hero */
 .hero{position:relative;margin-top:-96px;padding-top:96px;min-height:80vh;min-height:80svh;display:flex;align-items:center;overflow:hidden}
-.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;object-position:100% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+.hero__art{position:absolute;top:0;right:0;width:64%;height:100%;object-fit:cover;object-position:100% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 34%),linear-gradient(180deg,#000 55%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 34%),linear-gradient(180deg,#000 55%,transparent 100%);mask-composite:intersect}
 .hero .wrap{position:relative;width:100%}
 canvas.hero__art{display:block}
 /* illustration tabs: top of the hero, under the nav, aligned to the right content edge */
@@ -202,7 +202,7 @@ canvas.hero__art{display:block}
 .team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 .tm{display:flex;flex-direction:column;gap:6px}
 .tm .ph{aspect-ratio:3/4;border-radius:10px;overflow:hidden;margin-bottom:18px;background:var(--green)}
-.tm .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.tm .ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.3);transform-origin:50% 100%}
 
 .tm b{font:400 32px/1.1 var(--serif);font-weight:400}
 .tm span{font-size:16px;color:var(--sand)}
@@ -286,11 +286,12 @@ a.btn{text-decoration:none}
   <main id="top">
     <!-- 1. Hero -->
     <section class="hero" data-theme="green">
-      <!-- halftone drift: four Halftone B prints as 3D dots; the tabs switch print, scroll lifts the dots at their own speeds -->
+      <!-- halftone drift: the drone and four Halftone B prints as 3D dots; the tabs switch print, scroll lifts the dots at their own speeds -->
       <canvas class="hero__art" id="heroDots" aria-hidden="true"></canvas>
-      <img class="hero__art" id="heroStill" src="assets/ht-gimbal.jpg" alt="" hidden>
+      <img class="hero__art" id="heroStill" src="assets/hero-drone.jpg" alt="" hidden>
       <div class="ht-tabs wrap"><div class="ht-tabs__row" role="tablist" aria-label="Illustration">
-        <button type="button" role="tab" aria-selected="true" data-k="gimbal">Gimbal camera</button>
+        <button type="button" role="tab" aria-selected="true" data-k="drone">Drone</button>
+        <button type="button" role="tab" aria-selected="false" data-k="gimbal">Gimbal camera</button>
         <button type="button" role="tab" aria-selected="false" data-k="accelerator">AI accelerator</button>
         <button type="button" role="tab" aria-selected="false" data-k="cooling">Liquid cooling</button>
         <button type="button" role="tab" aria-selected="false" data-k="grid">Energy grid</button>
@@ -546,16 +547,16 @@ document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ loc
   addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
 })();
 </script>
-<script src="assets/halftone-drift.js?v=6"></script>
+<script src="assets/halftone-drift.js?v=8"></script>
 <script>
 (function(){
-  var FOCAL={gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.38,.5],grid:[.52,.55]};
+  var SRC={drone:'assets/hero-drone.jpg'}, FOCAL={drone:[.6,.4],gimbal:[.56,.46],accelerator:[.62,.48],cooling:[.38,.5],grid:[.52,.55]};
   // measured object centres in each source print; each lands 60% across the canvas (centred on phones)
-  var OBJ={gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.29,.5]},grid:{c:[.65,.55]}};
-  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:'assets/ht-gimbal.jpg',focal:FOCAL.gimbal,object:OBJ.gimbal,scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
+  var OBJ={drone:{c:[.6,.42],at:[.6,.48]},gimbal:{c:[.53,.5]},accelerator:{c:[.64,.5]},cooling:{c:[.29,.5]},grid:{c:[.65,.55]}};
+  var ht=SecondLaneHalftone.mount(document.getElementById('heroDots'),{src:SRC.drone,focal:FOCAL.drone,object:OBJ.drone,preset:'fine',detail:2.5,scrollEl:document.querySelector('.hero'),fallback:document.getElementById('heroStill'),sway:0,clearAt:.9});
   var tabs=[].slice.call(document.querySelectorAll('.ht-tabs__row button')), still=document.getElementById('heroStill');
   function pick(i){ var k=tabs[i].dataset.k; tabs.forEach(function(t,j){ t.setAttribute('aria-selected',j===i?'true':'false'); t.tabIndex=j===i?0:-1; });
-    ht.show('assets/ht-'+k+'.jpg',FOCAL[k],OBJ[k]); still.src='assets/ht-'+k+'.jpg'; }
+    var src=SRC[k]||'assets/ht-'+k+'.jpg'; ht.show(src,FOCAL[k],OBJ[k]); still.src=src; }
   tabs.forEach(function(t,i){ t.tabIndex=i?-1:0; t.addEventListener('click',function(){ pick(i); });
     t.addEventListener('keydown',function(e){ var n=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:-1; if(n>=0){ e.preventDefault(); pick(n); tabs[n].focus(); } }); });
 })();
