@@ -9,7 +9,7 @@
  --green:#12301F;--linen:#F5F3EF;--yel:#E3FD5A;--sand:#CBBFA8;--moss:#7A8462;
  --clay:#DE8582;--terracotta:#A14E2B;--amber:#ECAC5F;--bronze:#77581C;--ochre:#E9D574;--olive:#6F8433;
  /* guide shorthands */
- --green-2:rgba(245,243,239,.05);--stone:var(--sand);--on-yel:var(--green);--mute:rgba(18,48,31,.72);--rust:var(--terracotta);--white:rgba(203,191,168,.3);
+ --green-2:linear-gradient(rgba(245,243,239,.05),rgba(245,243,239,.05)) #12301F;--stone:var(--sand);--on-yel:var(--green);--mute:rgba(18,48,31,.72);--rust:var(--terracotta);--white:linear-gradient(rgba(203,191,168,.3),rgba(203,191,168,.3)) #F5F3EF;
  --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
  --rule-d:rgba(245,243,239,.18);--rule-l:rgba(18,48,31,.14);
  --side:248px;
@@ -90,7 +90,7 @@ td code{background:rgba(18,48,31,.06);padding:2px 6px;border-radius:3px;white-sp
 .lg-tile.g figcaption{color:var(--sand)}
 .lg-tile.bad .logo{background:var(--yel)}
 .lg-tile.bad2 .logo{transform:scaleX(1.35)}
-.lg-tile.bad3{background:url("../assets/funds.jpg") center/cover}.lg-tile.bad3 .logo{background:var(--linen)}
+.lg-tile.bad3{background:url("../assets/people-funds.jpg") center/cover}.lg-tile.bad3 .logo{background:var(--linen)}
 .lg-tile.bad::before,.lg-tile.bad2::before,.lg-tile.bad3::before{content:"";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--rust) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F5F3EF' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4.5 4.5l7 7M11.5 4.5l-7 7'/%3E%3C/svg%3E") center/12px no-repeat}
 
 /* colour */
@@ -349,9 +349,9 @@ pre{max-width:100%}
 /* audience, steps, stats, team, rail */
 .auddemo{display:flex;gap:10px;height:260px;width:100%}
 .auddemo div{flex:1;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--linen);background:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/participants.jpg") center/cover}
-.auddemo div:nth-child(2){background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/founders.jpg")}
-.auddemo div:nth-child(3){background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/partners.jpg")}
-.auddemo div.on{flex:3.2;background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/funds.jpg")}
+.auddemo div:nth-child(2){background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/people-founders.jpg")}
+.auddemo div:nth-child(3){background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/people-partners.jpg")}
+.auddemo div.on{flex:3.2;background-image:linear-gradient(180deg,rgba(18,48,31,.1),rgba(18,48,31,.85)),url("../assets/people-funds.jpg")}
 .auddemo b{font:400 18px/1.15 var(--serif)}.auddemo .on b{font-size:26px}.auddemo small{font-size:13px;color:var(--stone);margin-top:6px}
 .stepsdemo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .stepsdemo li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:24px 28px;background:var(--green-2);border:1px solid var(--rule-d);border-radius:8px}
