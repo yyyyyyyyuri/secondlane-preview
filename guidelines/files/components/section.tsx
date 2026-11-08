@@ -1,10 +1,10 @@
-// SecondLane · Section and SectionHead · guidelines v0.1
+// SecondLane · Section and SectionHead · guidelines v0.1 (8 Nov)
 // Every page is a stack of full-width sections. The theme sets every role token inside it.
 import { useId, type HTMLAttributes, type ReactNode } from "react";
 import { cx } from "./cx";
 import { Eyebrow } from "./eyebrow";
 
-export type Theme = "green" | "linen" | "white";
+export type Theme = "green" | "linen";
 
 export type SectionProps = HTMLAttributes<HTMLElement> & {
   theme?: Theme;

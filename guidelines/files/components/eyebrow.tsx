@@ -1,5 +1,5 @@
-// SecondLane · Eyebrow · guidelines v0.1
-// Small uppercase label above a title. Yellow on green, rust on linen and white (via --eyebrow).
+// SecondLane · Eyebrow · guidelines v0.1 (8 Nov)
+// Small uppercase label above a title. Yellow on green, terracotta on linen (via --eyebrow).
 import type { HTMLAttributes } from "react";
 import { cx } from "./cx";
 

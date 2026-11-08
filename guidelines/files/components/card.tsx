@@ -1,4 +1,4 @@
-// SecondLane · Card · guidelines v0.1
+// SecondLane · Card · guidelines v0.1 (8 Nov)
 // One card style for verticals, insights and LP advantages. The title is the link; its hit area covers the card.
 import type { ReactNode } from "react";
 import { cx } from "./cx";

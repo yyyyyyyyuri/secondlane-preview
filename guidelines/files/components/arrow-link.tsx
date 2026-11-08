@@ -1,4 +1,4 @@
-// SecondLane · Arrow link · guidelines v0.1
+// SecondLane · Arrow link · guidelines v0.1 (8 Nov)
 // A quiet link to a related page. The label names the destination ("Read all insights").
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { cx } from "./cx";

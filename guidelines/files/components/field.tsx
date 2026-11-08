@@ -1,5 +1,5 @@
-// SecondLane · Text field · guidelines v0.1
-// Visible label, white input on every theme, help or error text wired up for screen readers.
+// SecondLane · Text field · guidelines v0.1 (8 Nov)
+// Visible label, linen input on every theme, help or error text wired up for screen readers.
 import { useId, type InputHTMLAttributes } from "react";
 import { cx } from "./cx";
 
@@ -26,9 +26,9 @@ export function Field({ label, hint, error, id, className, ...input }: FieldProp
         aria-invalid={error ? true : undefined}
         aria-describedby={note ? noteId : undefined}
         className={cx(
-          "h-13 w-full rounded-sm border bg-white px-4 font-sans text-[17px] text-green-900 outline-none",
-          "transition-[border-color,box-shadow] duration-150 placeholder:text-neutral-600",
-          "hover:border-green-900/60 focus:border-focus-field focus:shadow-[0_0_0_4px_var(--focus-ring)]",
+          "h-13 w-full rounded-sm border bg-field-bg px-4 font-sans text-[17px] text-green outline-none",
+          "transition-[border-color,box-shadow] duration-150 placeholder:text-moss",
+          "hover:border-green focus:border-focus-field focus:shadow-[0_0_0_4px_var(--focus-ring)]",
           "disabled:opacity-50",
           error ? "border-danger-border" : "border-field-border",
         )}

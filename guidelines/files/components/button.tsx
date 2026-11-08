@@ -1,5 +1,5 @@
-// SecondLane · Button · guidelines v0.1
-// Primary (yellow), outline and solid variants in two sizes. Renders <a> when given href, otherwise <button>.
+// SecondLane · Button · guidelines v0.1 (8 Nov)
+// Primary (yellow), outline and solid variants in two sizes. Hover is a 4px glow ring, never a lighter or darker shade. Renders <a> when given href, otherwise <button>.
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cx } from "./cx";
 
@@ -14,10 +14,9 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "border-accent bg-accent text-on-accent hover:border-accent-hover hover:bg-accent-hover " +
-    "hover:shadow-[0_0_0_4px_var(--accent-glow)] active:border-accent-pressed active:bg-accent-pressed active:shadow-none",
+    "border-accent bg-accent text-on-accent hover:shadow-[0_0_0_4px_var(--accent-glow)] active:shadow-none",
   outline: "border-border-strong bg-transparent text-fg hover:border-fg hover:bg-fg/8",
-  solid: "border-action bg-action text-on-action hover:border-action-hover hover:bg-action-hover",
+  solid: "border-action bg-action text-on-action hover:shadow-[0_0_0_4px_var(--action-glow)] active:shadow-none",
 };
 
 const sizes: Record<Size, string> = {

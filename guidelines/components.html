@@ -84,11 +84,11 @@
       <div><h4>Variants</h4><table><tr><th>Variant</th><th>Tokens</th><th>Use</th></tr>
         <tr><td>primary</td><td><code>bg-accent text-on-accent</code></td><td>The main action. Once per screen.</td></tr>
         <tr><td>outline</td><td><code>border-border-strong text-fg</code></td><td>Secondary action beside a primary.</td></tr>
-        <tr><td>solid</td><td><code>bg-action text-on-action</code></td><td>Main action on linen or white when yellow is too loud.</td></tr>
+        <tr><td>solid</td><td><code>bg-action text-on-action</code></td><td>Main action on linen when yellow is too loud.</td></tr>
         <tr><td>size md / sm</td><td>52px · 16px / 46px · 15px</td><td>sm only in the nav and dense panels.</td></tr></table></div>
       <div><h4>States</h4><table><tr><th>State</th><th>Change</th></tr>
-        <tr><td>hover</td><td>primary <code>--accent-hover</code> + 4px <code>--accent-glow</code>; outline fills <code>--fg</code> 8%; solid <code>--action-hover</code></td></tr>
-        <tr><td>pressed</td><td>primary <code>--accent-pressed</code>, moves 1px down (80ms)</td></tr>
+        <tr><td>hover</td><td>primary 4px <code>--accent-glow</code> ring (same yellow, no lighter shade); outline fills <code>--fg</code> 8%; solid 4px <code>--action-glow</code> ring</td></tr>
+        <tr><td>pressed</td><td>moves 1px down (80ms), ring drops</td></tr>
         <tr><td>focus-visible</td><td>2px <code>--focus</code> outline, 3px offset</td></tr>
         <tr><td>disabled</td><td>40% opacity, no hover, <code>aria-disabled</code>; prefer explaining why over disabling</td></tr>
         <tr><td>loading</td><td>16px spinner before the label, label changes to the ongoing verb ("Sending"), width locked, <code>aria-busy="true"</code></td></tr></table></div>
@@ -100,8 +100,8 @@
     </div>
     <div class="code"><button type="button" data-copy>Copy</button><pre><code>&lt;!-- primary --&gt;
 &lt;a class="inline-flex h-13 items-center justify-center rounded-sm border border-accent bg-accent px-6.5 text-button text-on-accent
-          transition-[background-color,box-shadow,transform] duration-180 hover:bg-accent-hover hover:border-accent-hover
-          hover:shadow-[0_0_0_4px_var(--accent-glow)] active:translate-y-px active:bg-accent-pressed"
+          transition-[background-color,box-shadow,transform] duration-180
+          hover:shadow-[0_0_0_4px_var(--accent-glow)] active:translate-y-px active:shadow-none"
    href="/get-introduced"&gt;Get introduced&lt;/a&gt;
 
 &lt;!-- React starter --&gt;
@@ -141,7 +141,7 @@
       <ol class="parts"><li><b>Title block</b> 6 of 12 columns</li><li><b>Eyebrow</b> optional, 14px above the title</li><li><b>Title</b> H2, one per section</li><li><b>Standfirst</b> 5 columns, bottom-aligned, <code>--fg-lead</code>, max 34em</li><li><b>Content</b> 72px below the head</li></ol>
     </div>
     <div class="spec2">
-      <div><h4>Section</h4><table><tr><td>Element</td><td><code>&lt;section data-theme="green|linen|white"&gt;</code></td></tr><tr><td>Padding</td><td><code>--section-y</code>: 136px (88px below 900px)</td></tr><tr><td>Container</td><td><code>.wrap</code>: max 1312px, <code>--gutter</code> 64px (20px)</td></tr><tr><td>Rhythm</td><td>Mostly green; a linen or white section every 2–3 sections. Never two light sections in a row.</td></tr><tr><td>Anchors</td><td>Give each section an <code>id</code> for in-page links; <code>scroll-margin-top</code> = nav height.</td></tr></table></div>
+      <div><h4>Section</h4><table><tr><td>Element</td><td><code>&lt;section data-theme="green|linen"&gt;</code></td></tr><tr><td>Padding</td><td><code>--section-y</code>: 136px (88px below 900px)</td></tr><tr><td>Container</td><td><code>.wrap</code>: max 1312px, <code>--gutter</code> 64px (20px)</td></tr><tr><td>Rhythm</td><td>Mostly green; a linen section every 2–3 sections. Never two light sections in a row.</td></tr><tr><td>Anchors</td><td>Give each section an <code>id</code> for in-page links; <code>scroll-margin-top</code> = nav height.</td></tr></table></div>
       <div><h4>Head variants</h4><table><tr><td>split</td><td>Default. Title left, standfirst right.</td></tr><tr><td>stacked</td><td>Title and standfirst on the left, for narrow content.</td></tr><tr><td>centred</td><td>Access page and FAQs only. Max 760px.</td></tr><tr><td>with link</td><td>Arrow link under the title (team: "Meet the whole team").</td></tr></table></div>
     </div>
     <div class="grid g2 notes"><div><h4>Below 900px</h4><p>Head stacks: eyebrow, title, standfirst, 40px above content.</p></div><div><h4>Accessibility</h4><p>Label sections with their H2 (<code>aria-labelledby</code>). The eyebrow is decorative text, not a heading.</p></div></div>
@@ -307,7 +307,7 @@
     <span class="eb">Content</span>
     <h2>Logo rail</h2>
     <div class="stage w" style="display:block;text-align:center"><span class="lab" style="color:var(--mute);margin-bottom:28px">The funds moving private markets already partner with us</span><div class="raildemo"><i style="--src:url('../assets/lg-spectral.webp')"></i><i style="--src:url('../assets/lg-kamino.webp')"></i><i style="--src:url('../assets/lg-zksync.webp')"></i><i style="--src:url('../assets/lg-sei.webp')"></i><i style="--src:url('../assets/lg-scroll.webp')"></i></div></div>
-    <ul class="list notes1"><li>White section, 80px padding. Centred eyebrow in <code>--fg-muted</code>, 44px above the logos.</li><li>Grid of 5 (2 below 900px), 44px × 56px gaps. Each logo fits 150 × 40px, single colour <code>--fg</code> via CSS mask, optically balanced by hand.</li><li>No hover effects, no links, no carousel. Each logo has <code>role="img"</code> and the company name as its label.</li><li>Use SVG logos supplied by each company, with permission.</li></ul>
+    <ul class="list notes1"><li>Linen section, 80px padding. Centred eyebrow in <code>--fg-muted</code>, 44px above the logos.</li><li>Grid of 5 (2 below 900px), 44px × 56px gaps. Each logo fits 150 × 40px, single colour <code>--fg</code> via CSS mask, optically balanced by hand.</li><li>No hover effects, no links, no carousel. Each logo has <code>role="img"</code> and the company name as its label.</li><li>Use SVG logos supplied by each company, with permission.</li></ul>
   </div>
 </section>
 
@@ -332,7 +332,7 @@
       <div class="stage l anat" style="flex-direction:column;align-items:flex-start">
         <label class="fl" data-n="1"><span class="fl__l" data-n="2">Email</span><input class="inp" type="email" placeholder="you@company.com" data-n="3"><span class="hint" data-n="4">We use your email only for news about Access.</span></label>
       </div>
-      <ol class="parts"><li><b>Field</b> 8px gap, 360px or full width</li><li><b>Label</b> <code>label</code> style (11px, uppercase), always visible</li><li><b>Input</b> 52px, white, 1px <code>--field-border</code>, <code>--radius-sm</code>, 17px text</li><li><b>Help / error</b> 13px, <code>--fg-muted</code> or <code>--danger</code></li></ol>
+      <ol class="parts"><li><b>Field</b> 8px gap, 360px or full width</li><li><b>Label</b> <code>label</code> style (11px, uppercase), always visible</li><li><b>Input</b> 52px, linen (<code>--field-bg</code>), 1px <code>--field-border</code>, <code>--radius-sm</code>, 17px text</li><li><b>Help / error</b> 13px, <code>--fg-muted</code> or <code>--danger</code></li></ol>
     </div>
     <div class="stage l" style="margin-top:16px">
       <label class="fl"><span class="fl__l">Rest</span><input class="inp" placeholder="you@company.com" aria-label="Rest example"></label>
@@ -342,7 +342,7 @@
     </div>
     <div class="spec2">
       <div><h4>States</h4><table><tr><td>hover</td><td>border <code>--fg</code> at 60%</td></tr><tr><td>focus</td><td><code>--focus-field</code> border + 4px <code>--focus-ring</code></td></tr><tr><td>error</td><td><code>--danger-border</code>, message below in <code>--danger</code>, <code>aria-invalid="true"</code>, <code>aria-describedby</code> → message</td></tr><tr><td>disabled</td><td>50% opacity, not focusable</td></tr><tr><td>read-only</td><td>no border, <code>--bg-raised</code> fill</td></tr></table></div>
-      <div><h4>Validation</h4><ul class="list"><li>Validate on submit; after the first error, re-check live as the person types.</li><li>Error text says how to fix it, in the field's terms.</li><li>Set <code>type</code>, <code>autocomplete</code> and <code>inputmode</code> (<code>email</code> for email).</li><li>Inputs stay white on every theme so text contrast never changes.</li></ul></div>
+      <div><h4>Validation</h4><ul class="list"><li>Validate on submit; after the first error, re-check live as the person types.</li><li>Error text says how to fix it, in the field's terms.</li><li>Set <code>type</code>, <code>autocomplete</code> and <code>inputmode</code> (<code>email</code> for email).</li><li>Inputs stay linen on every theme so text contrast never changes.</li></ul></div>
     </div>
   </div>
 </section>
@@ -351,7 +351,7 @@
   <div class="in">
     <span class="eb">Forms</span>
     <h2>Sign-up form</h2>
-    <p class="lead">Email capture with an in-place confirmation: the Access waitlist (glass panel) and the monthly report (white panel on a photo).</p>
+    <p class="lead">Email capture with an in-place confirmation: the Access waitlist (glass panel) and the monthly report (linen panel on a photo).</p>
     <div class="grid g2">
       <div class="stage g" style="display:block"><div class="glassdemo"><span class="lab">SecondLane Access · Opening soon</span><p class="gt">Get on the list</p><label class="fl" style="width:100%"><span class="fl__l">Email</span><input class="inp" placeholder="you@company.com" aria-label="Email"></label><span class="btn btn-y" style="width:100%;margin-top:12px">Get on the list</span><small>We use your email only for news about Access.</small></div></div>
       <div class="stage g" style="display:block"><div class="glassdemo"><div class="donedemo"><i></i><div><p class="gt" style="margin:0">You're on the list.</p><small>We sent a note to you@company.com. Confirm it and your place is held.</small><ol><li><b>Confirm your email.</b> So we can hold your place.</li><li><b>Watch your inbox.</b> Places open in small groups.</li></ol></div></div></div></div>
@@ -368,7 +368,7 @@
     <span class="eb">Forms</span>
     <h2>Search</h2>
     <div class="stage l"><div class="srchdemo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.5-4.5"></path></svg><input placeholder="Search companies" aria-label="Search companies" value="anth"><i class="clr" aria-hidden="true"></i></div><span class="hint" style="font-size:13px;color:var(--mute)">1 company</span></div>
-    <ul class="list notes1"><li>Directory filter. 48px tall, white, 1px <code>--field-border</code>, 44px padding left and right for the icons; focus as the text field.</li><li>Search icon 20px <code>--fg-muted</code>; a 28px yellow clear button appears once there is text.</li><li>Filters as you type (no submit). Result count below in a live region: "1 company", "No companies match 'xyz'".</li><li><code>type="search"</code>, visible or visually hidden label, Escape clears.</li></ul>
+    <ul class="list notes1"><li>Directory filter. 48px tall, linen, 1px <code>--field-border</code>, 44px padding left and right for the icons; focus as the text field.</li><li>Search icon 20px <code>--fg-muted</code>; a 28px yellow clear button appears once there is text.</li><li>Filters as you type (no submit). Result count below in a live region: "1 company", "No companies match 'xyz'".</li><li><code>type="search"</code>, visible or visually hidden label, Escape clears.</li></ul>
   </div>
 </section>
 
@@ -378,7 +378,7 @@
     <h2>Filters</h2>
     <div class="stage l"><div class="sfdemo"><button aria-pressed="true">All sectors <span>18</span></button><button aria-pressed="false">AI <span>7</span></button><button aria-pressed="false">Defense <span>2</span></button><button aria-pressed="false">Space <span>1</span></button></div></div>
     <div class="spec2">
-      <div><h4>Spec</h4><table><tr><td>Item</td><td>15px <code>--fg-muted</code>, 9px 12px padding, <code>--radius-md</code>, count 13px right-aligned</td></tr><tr><td>Hover</td><td><code>--fg</code>, background <code>--fg</code> at 5%</td></tr><tr><td>Selected</td><td><code>green-100</code> fill, <code>--fg</code>, weight 500 (the prototype's <code>#DCE3CF</code> maps to green-100)</td></tr><tr><td>Desktop</td><td>vertical list in the sticky sidebar</td></tr><tr><td>Below 1180px</td><td>wrapping chips with a 1px border</td></tr></table></div>
+      <div><h4>Spec</h4><table><tr><td>Item</td><td>15px <code>--fg-muted</code>, 9px 12px padding, <code>--radius-md</code>, count 13px right-aligned</td></tr><tr><td>Hover</td><td><code>--fg</code>, background <code>--fg</code> at 5%</td></tr><tr><td>Selected</td><td>green at 10% fill, <code>--fg</code>, weight 500 (replaces the prototype's <code>#DCE3CF</code>)</td></tr><tr><td>Desktop</td><td>vertical list in the sticky sidebar</td></tr><tr><td>Below 1180px</td><td>wrapping chips with a 1px border</td></tr></table></div>
       <div><h4>Behaviour</h4><ul class="list"><li>Single choice; "All" resets. Combine with search.</li><li>Update the URL (<code>?sector=ai</code>) so filtered views can be shared and indexed.</li><li><code>&lt;button aria-pressed&gt;</code> in a group labelled "Sectors"; counts are part of the accessible name ("AI, 7 companies").</li></ul></div>
     </div>
   </div>
@@ -404,7 +404,7 @@
     <span class="eb">Data</span>
     <h2>Tag</h2>
     <div class="stage l"><span class="tag hot">Most active</span><span class="tag">Active</span><span class="tag quiet">Opening soon</span><span class="tag warn">Pending review</span></div>
-    <ul class="list notes1"><li>Pill (<code>--radius-full</code>), 6px 12px padding, SFT 500 13px.</li><li>Variants: <b>highlight</b> <code>--accent</code> / <code>--on-accent</code> (one per row at most) · <b>default</b> <code>green-100</code> / <code>--fg</code> · <b>quiet</b> transparent with 1px <code>--border</code> · <b>status</b> uses <code>--warning-bg</code>, <code>--danger-bg</code> or <code>--success-bg</code> with matching text.</li><li>Tags label; they are not buttons. Status tags need text, not colour alone.</li></ul>
+    <ul class="list notes1"><li>Pill (<code>--radius-full</code>), 6px 12px padding, SFT 500 13px.</li><li>Variants: <b>highlight</b> <code>--accent</code> / <code>--on-accent</code> (one per row at most) · <b>default</b> green at 10% / <code>--fg</code> · <b>quiet</b> transparent with 1px <code>--border</code> · <b>status</b> uses <code>--warning-bg</code>, <code>--danger-bg</code> or <code>--success-bg</code> with matching text.</li><li>Tags label; they are not buttons. Status tags need text, not colour alone.</li></ul>
   </div>
 </section>
 
@@ -420,8 +420,8 @@
         <small>Illustrative figures, not real data</small></div>
     </div>
     <div class="spec2">
-      <div><h4>Spec</h4><table><tr><td>Panel</td><td>white, 1px <code>--border-card</code>, <code>--radius-lg</code>, padding 28/28/20</td></tr><tr><td>Title</td><td>SFT 500 15px <code>--fg-muted</code></td></tr><tr><td>Bars</td><td><code>--chart-1</code>; latest round <code>yellow-400</code> (prototype <code>#C9DC4E</code> maps here); hover <code>rust-700</code></td></tr><tr><td>Grid</td><td>horizontal lines only, <code>--fg</code> at 15%</td></tr><tr><td>Labels</td><td>axis SFT 500 12px <code>--fg-muted</code>; values Ashcroft 15px <code>--fg</code>, tabular figures</td></tr></table></div>
-      <div><h4>Rules</h4><ul class="list"><li>Series colours in order <code>--chart-1</code> … <code>--chart-5</code>; never encode meaning by colour alone.</li><li>Source line under every chart; "Illustrative figures, not real data" until real data is wired.</li><li>Public, reported figures only (pre-licence): rounds, amounts, lead investors. No prices.</li><li>SVG with <code>role="img"</code> + <code>aria-label</code>, and the same data as a visually hidden table. Tooltips also open on focus.</li><li>Below 900px: horizontal bars, labels on the left.</li></ul></div>
+      <div><h4>Spec</h4><table><tr><td>Panel</td><td><code>--bg-raised</code>, 1px <code>--border-card</code>, <code>--radius-lg</code>, padding 28/28/20</td></tr><tr><td>Title</td><td>SFT 500 15px <code>--fg-muted</code></td></tr><tr><td>Bars</td><td><code>--chart-1</code> clay; latest round <code>--chart-2</code> terracotta (replaces the prototype's <code>#C9DC4E</code>); hover <code>--chart-4</code> bronze. SL Yellow only when the bar is a SecondLane figure.</td></tr><tr><td>Grid</td><td>horizontal lines only, <code>--fg</code> at 15%</td></tr><tr><td>Labels</td><td>axis SFT 500 12px <code>--fg-muted</code>; values Ashcroft 15px <code>--fg</code>, tabular figures</td></tr></table></div>
+      <div><h4>Rules</h4><ul class="list"><li>Series colours in order <code>--chart-1</code> … <code>--chart-6</code> (clay, terracotta, amber, bronze, ochre, olive); <code>--chart-brand</code> SL Yellow for SecondLane only, <code>--chart-other</code> sand for "Other". Never encode meaning by colour alone.</li><li>Source line under every chart; "Illustrative figures, not real data" until real data is wired.</li><li>Public, reported figures only (pre-licence): rounds, amounts, lead investors. No prices.</li><li>SVG with <code>role="img"</code> + <code>aria-label</code>, and the same data as a visually hidden table. Tooltips also open on focus.</li><li>Below 900px: horizontal bars, labels on the left.</li></ul></div>
     </div>
   </div>
 </section>
@@ -470,7 +470,7 @@
   <div class="in">
     <span class="eb">Feedback</span>
     <h2>Not found (404)</h2>
-    <div class="stage g" style="display:block;position:relative;overflow:hidden;min-height:240px;background:#12301F radial-gradient(rgba(227,253,90,.22) 1.05px,transparent 1.3px) 0 0/9px 9px"><span class="lab">Error 404</span><p style="font:400 44px/1.05 var(--serif);margin:14px 0 12px">This page isn't here.</p><p style="color:var(--stone);max-width:30em;margin:0 0 22px">It may have moved, or the company may have listed. Try the directory or go back home.</p><div style="display:flex;gap:14px"><span class="btn btn-y">Browse companies</span><span class="btn btn-o">Go home</span></div></div>
+    <div class="stage g" style="display:block;position:relative;overflow:hidden;min-height:240px;background:#12301F radial-gradient(rgba(227,253,90,.22) 1.05px,transparent 1.3px) 0 0/9px 9px"><span class="lab">Error 404</span><p style="font:400 44px/1.05 var(--serif);margin:14px 0 12px">This page isn't here.</p><p style="color:var(--sand);max-width:30em;margin:0 0 22px">It may have moved, or the company may have listed. Try the directory or go back home.</p><div style="display:flex;gap:14px"><span class="btn btn-y">Browse companies</span><span class="btn btn-o">Go home</span></div></div>
     <ul class="list notes1"><li>Green section over the dot field, full nav and footer, centred in the first screen.</li><li>Company pages that are removed (for example after an IPO) redirect (301) to the directory instead of showing a 404.</li><li>Return the real 404 status; log the missing URL.</li></ul>
   </div>
 </section>
@@ -482,7 +482,7 @@
     <h2>Dot field <span class="pill">React starter</span></h2>
     <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
     <div class="spec2">
-      <div><h4>Spec</h4><table><tr><td>Ground</td><td><code>green-900</code>, canvas at up to 2× device pixel ratio</td></tr><tr><td>Grid</td><td>9px cell, one dot per cell</td></tr><tr><td>Rest</td><td>radius 1.05px, <code>yellow-300</code> at 22%</td></tr><tr><td>Pointer</td><td>within 220px, smoothstep falloff f: radius 1.05 × (1 + f), alpha 0.22 + 0.5 × f</td></tr><tr><td>Easing</td><td>pointer follows at 0.12 per frame; fade in 0.08, out 0.03</td></tr></table></div>
+      <div><h4>Spec</h4><table><tr><td>Ground</td><td>bottle green, canvas at up to 2× device pixel ratio</td></tr><tr><td>Grid</td><td>9px cell, one dot per cell</td></tr><tr><td>Rest</td><td>radius 1.05px, SL Yellow at 22%</td></tr><tr><td>Pointer</td><td>within 220px, smoothstep falloff f: radius 1.05 × (1 + f), alpha 0.22 + 0.5 × f</td></tr><tr><td>Easing</td><td>pointer follows at 0.12 per frame; fade in 0.08, out 0.03</td></tr></table></div>
       <div><h4>Rules</h4><ul class="list"><li>Behind stats, panels and the Access hero only; never behind body text.</li><li>Draw only while on screen (IntersectionObserver); pause when the tab is hidden.</li><li>Reduced motion: draw once, no pointer response.</li><li>Decorative: <code>aria-hidden="true"</code>, <code>pointer-events: none</code> on the canvas (listen on the parent).</li><li>Mouse only; touch devices get the static field.</li></ul></div>
     </div>
   </div>

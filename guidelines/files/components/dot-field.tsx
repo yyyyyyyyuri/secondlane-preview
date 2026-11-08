@@ -1,5 +1,5 @@
 "use client";
-// SecondLane · Dot field · guidelines v0.1
+// SecondLane · Dot field · guidelines v0.1 (8 Nov)
 // The brand texture: a 9px grid of yellow dots on green that swell near the pointer.
 // Decorative only. Draws while on screen; static under reduced motion and on touch devices.
 import { useEffect, useRef } from "react";
@@ -8,8 +8,8 @@ import { cx } from "./cx";
 const CELL = 9;
 const RADIUS = 1.05;
 const REACH = 220;
-const GROUND = "#12301F"; // green-900
-const DOT = "227,253,90"; // yellow-300
+const GROUND = "#12301F"; // --color-green
+const DOT = "227,253,90"; // --color-yellow (SL Yellow)
 
 export function DotField({ className }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);

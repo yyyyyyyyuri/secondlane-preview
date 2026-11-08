@@ -1,78 +1,29 @@
 /* SecondLane design tokens: CSS custom properties
-   v0.1 · 7 Nov 2026 · generated from the same source as tailwind.css, tokens.json and DESIGN.md.
+   v0.1 · updated 8 Nov 2026 · generated from the same source as tailwind.css, tokens.json and DESIGN.md.
 
-   Three layers:
-   1. Ramps (--color-green-900 ...): the full palette. Do not use them in components.
-   2. Brand aliases (--color-linen ...): the names the brand uses, pointing at ramp steps.
-   3. Role tokens (--bg, --fg, --accent ...): what components use. They change with data-theme. */
+   Two layers:
+   1. Palette (--color-green ...): the eleven agreed colours. Do not use them in components.
+   2. Role tokens (--bg, --fg, --accent ...): what components use. They change with data-theme.
+   There are no other colours. Tints and lines are palette colours with transparency. */
 
 :root {
-  /* ---------- 1. Ramps ---------- */
-  /* green: Brand ground. Dark steps carry surfaces; light steps are tints for charts and success states. */
-  --color-green-50: #E2EEE8;
-  --color-green-100: #D4E2DB;
-  --color-green-200: #B9CAC2;
-  --color-green-300: #9FB3AA;
-  --color-green-400: #859D92;
-  --color-green-500: #6C877B;
-  --color-green-600: #547264;
-  --color-green-700: #3C5D4F;
-  --color-green-800: #24493A;  /* anchor: Green hover */
-  --color-green-850: #17392A;  /* anchor: Green 2, raised panels on green */
-  --color-green-900: #12301F;  /* anchor: Bottle green, the brand ground */
-  --color-green-950: #0C2216;  /* anchor: Deep green (code, deepest panels) */
+  /* ---------- 1. Palette ---------- */
+  /* Core */
+  --color-green: #12301F;  /* Bottle green: Primary ground: hero, nav, footer, most sections, cards. Text on linen. */
+  --color-linen: #F5F3EF;  /* Linen: Ground for light sections. Text on green. */
+  --color-yellow: #E3FD5A;  /* SL Yellow: Signal: primary buttons, eyebrows and arrows on green. In charts, SecondLane only. */
 
-  /* neutral: Warm neutrals from linen to near-black ink. Text, lines and light surfaces. */
-  --color-neutral-50: #F5F3EF;  /* anchor: Linen */
-  --color-neutral-100: #ECE8E0;
-  --color-neutral-200: #D9D2C3;  /* anchor: Stone */
-  --color-neutral-300: #CBBFA8;  /* anchor: Sand */
-  --color-neutral-400: #ACA68F;
-  --color-neutral-500: #8E8E78;
-  --color-neutral-600: #717763;
-  --color-neutral-700: #55604F;  /* anchor: Mute */
-  --color-neutral-800: #3D4236;
-  --color-neutral-900: #252720;
-  --color-neutral-950: #191A16;  /* anchor: On-yellow ink */
+  /* Support */
+  --color-sand: #CBBFA8;  /* Sand: Secondary text on green, footer. Raised cards on linen (at 30%). "Other" in charts. */
+  --color-moss: #7A8462;  /* Moss: Card edges, placeholders and disabled text. Large text and icons only. */
 
-  /* yellow: The signal colour. 300 is the brand yellow; other steps exist for states, focus and warning text. */
-  --color-yellow-50: #F7FFD6;
-  --color-yellow-100: #F4FFC2;
-  --color-yellow-200: #EDFF8C;  /* anchor: Yellow hover */
-  --color-yellow-300: #E3FD5A;  /* anchor: SL Yellow, the signal */
-  --color-yellow-400: #CFE844;  /* anchor: Yellow pressed */
-  --color-yellow-500: #B9CF37;
-  --color-yellow-600: #A3B62B;  /* anchor: Focus border */
-  --color-yellow-700: #7F8E1C;
-  --color-yellow-800: #5D690E;
-  --color-yellow-900: #3D4603;
-  --color-yellow-950: #2E3500;
-
-  /* rust: Terracotta accent. Eyebrows on light grounds, errors, chart accent. */
-  --color-rust-50: #FEE7DE;
-  --color-rust-100: #FCDBCD;
-  --color-rust-200: #F7C1AB;
-  --color-rust-300: #F0A88A;  /* anchor: Rust light (error on green) */
-  --color-rust-400: #DD8C6E;
-  --color-rust-500: #C97054;
-  --color-rust-600: #B5543A;  /* anchor: Error border */
-  --color-rust-700: #8F442D;  /* anchor: Rust, eyebrows and error text on light */
-  --color-rust-800: #6D3220;
-  --color-rust-900: #4C2114;
-  --color-rust-950: #3C190E;
-
-  --color-white: #FFFFFF;
-
-  /* ---------- 2. Brand aliases ---------- */
-  --color-green: var(--color-green-900);  /* Primary ground: hero, nav, footer, most sections, cards */
-  --color-green-2: var(--color-green-850);  /* Raised panels on green */
-  --color-linen: var(--color-neutral-50);  /* Text on green; light ground */
-  --color-stone: var(--color-neutral-200);  /* Lead text on green */
-  --color-sand: var(--color-neutral-300);  /* Secondary text on green, footer */
-  --color-mute: var(--color-neutral-700);  /* Secondary text on linen and white */
-  --color-ink: var(--color-neutral-950);  /* Text on yellow */
-  --color-yel: var(--color-yellow-300);  /* Signal: primary buttons, eyebrows on green, active states, dot field */
-  --color-rust: var(--color-rust-700);  /* Eyebrows and error text on light grounds */
+  /* Data and charts */
+  --color-clay: #DE8582;  /* Clay: Chart series 1. Error text on green. */
+  --color-terracotta: #A14E2B;  /* Terracotta: Chart series 2. Eyebrows and error text on linen. */
+  --color-amber: #ECAC5F;  /* Amber: Chart series 3. Warning text on green. */
+  --color-bronze: #77581C;  /* Bronze: Chart series 4. Warning text on linen. */
+  --color-ochre: #E9D574;  /* Ochre: Chart series 5. */
+  --color-olive: #6F8433;  /* Olive: Chart series 6. Success icons. */
 
   /* ---------- Type ---------- */
   --font-serif: 'Ashcroft', 'Iowan Old Style', Georgia, serif;
@@ -172,92 +123,92 @@
   --lift: -6px;
 }
 
-/* ---------- 3. Role tokens ---------- */
+/* ---------- 2. Role tokens ---------- */
 /* Default theme is green: the site's base ground. */
 :root,
 [data-theme="green"] {
-  --bg: var(--color-green-900);
-  --bg-raised: var(--color-green-850);
-  --bg-inverse: var(--color-neutral-50);
-  --fg: var(--color-neutral-50);
-  --fg-lead: var(--color-neutral-200);
-  --fg-muted: var(--color-neutral-300);
-  --fg-subtle: var(--color-neutral-400);
-  --eyebrow: var(--color-yellow-300);
-  --accent: var(--color-yellow-300);
-  --accent-hover: var(--color-yellow-200);
-  --accent-pressed: var(--color-yellow-400);
-  --on-accent: var(--color-neutral-950);
-  --action: var(--color-neutral-50);
-  --action-hover: var(--color-neutral-100);
-  --on-action: var(--color-green-900);
-  --arrow: var(--color-yellow-300);
-  --focus: var(--color-yellow-300);
-  --focus-field: var(--color-yellow-600);
-  --danger: var(--color-rust-300);
-  --danger-border: var(--color-rust-300);
-  --danger-bg: var(--color-rust-950);
-  --success: var(--color-green-300);
-  --success-bg: var(--color-green-850);
-  --warning: var(--color-yellow-300);
-  --warning-bg: var(--color-yellow-950);
+  --bg: var(--color-green);
+  --bg-raised: rgb(245 243 239 / .05);
+  --bg-inverse: var(--color-linen);
+  --fg: var(--color-linen);
+  --fg-lead: rgb(245 243 239 / .85);
+  --fg-muted: var(--color-sand);
+  --fg-subtle: var(--color-moss);
+  --eyebrow: var(--color-yellow);
+  --accent: var(--color-yellow);
+  --on-accent: var(--color-green);
+  --accent-glow: rgb(227 253 90 / .16);
+  --action: var(--color-linen);
+  --on-action: var(--color-green);
+  --action-glow: rgb(245 243 239 / .16);
+  --arrow: var(--color-yellow);
+  --focus: var(--color-yellow);
+  --field-bg: var(--color-linen);
+  --field-border: rgb(18 48 31 / .6);
+  --focus-field: var(--color-green);
+  --focus-ring: rgb(227 253 90 / .45);
+  --danger: var(--color-clay);
+  --danger-bg: rgb(222 133 130 / .14);
+  --success: var(--color-olive);
+  --success-bg: rgb(111 132 51 / .2);
+  --warning: var(--color-amber);
+  --warning-bg: rgb(236 172 95 / .14);
   --border: rgb(245 243 239 / .18);
   --border-strong: rgb(245 243 239 / .6);
-  --border-card: rgb(113 119 99 / .6);
-  --field-border: rgb(18 48 31 / .35);
-  --focus-ring: rgb(227 253 90 / .3);
-  --accent-glow: rgb(227 253 90 / .16);
+  --border-card: rgb(122 132 98 / .6);
   --scrim: rgb(18 48 31 / .88);
   --glass: rgb(18 48 31 / .55);
-  --chart-1: var(--color-neutral-50);
-  --chart-2: var(--color-yellow-300);
-  --chart-3: var(--color-rust-300);
-  --chart-4: var(--color-green-400);
-  --chart-5: var(--color-neutral-400);
+  --chart-1: var(--color-clay);
+  --chart-2: var(--color-terracotta);
+  --chart-3: var(--color-amber);
+  --chart-4: var(--color-bronze);
+  --chart-5: var(--color-ochre);
+  --chart-6: var(--color-olive);
+  --chart-brand: var(--color-yellow);
+  --chart-other: var(--color-sand);
 }
 
-[data-theme="linen"],
-[data-theme="white"] {
-  --bg: var(--color-neutral-50);
-  --bg-raised: var(--color-white);
-  --bg-inverse: var(--color-green-900);
-  --fg: var(--color-green-900);
-  --fg-lead: var(--color-neutral-700);
-  --fg-muted: var(--color-neutral-700);
-  --fg-subtle: var(--color-neutral-600);
-  --eyebrow: var(--color-rust-700);
-  --accent: var(--color-yellow-300);
-  --accent-hover: var(--color-yellow-200);
-  --accent-pressed: var(--color-yellow-400);
-  --on-accent: var(--color-neutral-950);
-  --action: var(--color-green-900);
-  --action-hover: var(--color-green-800);
-  --on-action: var(--color-neutral-50);
-  --arrow: var(--color-green-900);
-  --focus: var(--color-green-900);
-  --focus-field: var(--color-yellow-600);
-  --danger: var(--color-rust-700);
-  --danger-border: var(--color-rust-600);
-  --danger-bg: var(--color-rust-50);
-  --success: var(--color-green-700);
-  --success-bg: var(--color-green-50);
-  --warning: var(--color-yellow-800);
-  --warning-bg: var(--color-yellow-50);
+[data-theme="linen"] {
+  --bg: var(--color-linen);
+  --bg-raised: rgb(203 191 168 / .3);
+  --bg-inverse: var(--color-green);
+  --fg: var(--color-green);
+  --fg-lead: rgb(18 48 31 / .8);
+  --fg-muted: rgb(18 48 31 / .72);
+  --fg-subtle: var(--color-moss);
+  --eyebrow: var(--color-terracotta);
+  --accent: var(--color-yellow);
+  --on-accent: var(--color-green);
+  --accent-glow: rgb(18 48 31 / .14);
+  --action: var(--color-green);
+  --on-action: var(--color-linen);
+  --action-glow: rgb(18 48 31 / .14);
+  --arrow: var(--color-green);
+  --focus: var(--color-green);
+  --field-bg: var(--color-linen);
+  --field-border: rgb(18 48 31 / .6);
+  --focus-field: var(--color-green);
+  --focus-ring: rgb(18 48 31 / .14);
+  --danger: var(--color-terracotta);
+  --danger-bg: rgb(161 78 43 / .08);
+  --success: var(--color-olive);
+  --success-bg: rgb(111 132 51 / .12);
+  --warning: var(--color-bronze);
+  --warning-bg: rgb(236 172 95 / .2);
   --border: rgb(18 48 31 / .14);
   --border-strong: rgb(18 48 31 / .6);
   --border-card: rgb(18 48 31 / .12);
-  --field-border: rgb(18 48 31 / .35);
-  --focus-ring: rgb(227 253 90 / .3);
-  --accent-glow: rgb(227 253 90 / .16);
   --scrim: rgb(18 48 31 / .88);
   --glass: rgb(18 48 31 / .55);
-  --chart-1: var(--color-green-900);
-  --chart-2: var(--color-yellow-700);
-  --chart-3: var(--color-rust-600);
-  --chart-4: var(--color-green-500);
-  --chart-5: var(--color-neutral-400);
+  --chart-1: var(--color-clay);
+  --chart-2: var(--color-terracotta);
+  --chart-3: var(--color-amber);
+  --chart-4: var(--color-bronze);
+  --chart-5: var(--color-ochre);
+  --chart-6: var(--color-olive);
+  --chart-brand: var(--color-yellow);
+  --chart-other: var(--color-sand);
 }
-[data-theme="white"] { --bg: var(--color-white); --bg-raised: var(--color-neutral-50); --border: rgb(18 48 31 / .12); }
 
 @media (max-width: 900px) {
   :root {
