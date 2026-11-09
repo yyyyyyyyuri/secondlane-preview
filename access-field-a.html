@@ -342,10 +342,10 @@ a.btn{text-decoration:none}
     function draw(){
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
-      ctx.fillStyle='rgba(227,253,90,0.24)';
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
         var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/480); f=f*f*(3-2*f)*m.a; }
-        ctx.beginPath(); ctx.arc(x,y,.85-.4*f,0,6.283); ctx.fill();
+        ctx.fillStyle='rgba(227,253,90,'+(0.24+(.9-0.24)*f)+')';
+        ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);
