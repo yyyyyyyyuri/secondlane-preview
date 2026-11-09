@@ -275,8 +275,8 @@
       <tr><th>Property</th><th>Value</th></tr>
       <tr><td>Ground</td><td><code>#12301F</code>, drawn on a <code>&lt;canvas&gt;</code> at up to 2× device pixel ratio</td></tr>
       <tr><td>Grid</td><td>9px cell, dot centred in each cell</td></tr>
-      <tr><td>Dot at rest</td><td>radius 1.05px, <code>rgba(227,253,90,.22)</code></td></tr>
-      <tr><td>Near the pointer</td><td>within 220px, smoothstep falloff <code>f</code>: radius <code>1.05 × (1 + f)</code>, alpha <code>.22 + .5 × f</code></td></tr>
+      <tr><td>Dot</td><td>radius 0.85px, <code>rgba(227,253,90,.216)</code>, always visible; the size never changes</td></tr>
+      <tr><td>Near the pointer</td><td>Gaussian falloff <code>f = e^-(d/200)²</code>: alpha <code>.216 + .484 × f</code> (up to 70% SL Yellow at the pointer)</td></tr>
       <tr><td>Pointer easing</td><td>follows at 0.12 per frame; fades in at 0.08, out at 0.03</td></tr>
       <tr><td>Performance</td><td>draw only while on screen (IntersectionObserver); static at rest under reduced motion</td></tr>
     </table></div>

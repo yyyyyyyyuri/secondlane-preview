@@ -237,7 +237,7 @@ Green. Brand line on the left; three link columns (Platform, Companies, SecondLa
 ### Dot Field
 **Role:** the brand texture behind stats and panels
 
-Canvas on `--color-green`. 9px grid, one dot per cell, radius 1.05px, SL Yellow at 22%. Within 220px of the pointer (smoothstep falloff `f`): radius `1.05 × (1 + f)`, alpha `0.22 + 0.5 × f`. Pointer eased at 0.12 per frame. Draw only while on screen; static under reduced motion.
+Canvas on `--color-green`. 9px grid, one dot per cell, radius 0.85px, SL Yellow at 21.6%, always visible. Near the pointer the dots brighten on a Gaussian falloff `f = e^-(d/200)²`: alpha `0.216 + 0.484 × f`, up to 70%. The dot size never changes: growing sub-pixel dots draws visible rings. Pointer eased at 0.12 per frame. Draw only while on screen; static under reduced motion.
 
 ---
 

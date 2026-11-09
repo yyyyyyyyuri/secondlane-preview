@@ -482,7 +482,7 @@
     <h2>Dot field <span class="pill">React starter</span></h2>
     <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
     <div class="spec2">
-      <div><h4>Spec</h4><table><tr><td>Ground</td><td>bottle green, canvas at up to 2× device pixel ratio</td></tr><tr><td>Grid</td><td>9px cell, one dot per cell</td></tr><tr><td>Rest</td><td>radius 1.05px, SL Yellow at 22%</td></tr><tr><td>Pointer</td><td>within 220px, smoothstep falloff f: radius 1.05 × (1 + f), alpha 0.22 + 0.5 × f</td></tr><tr><td>Easing</td><td>pointer follows at 0.12 per frame; fade in 0.08, out 0.03</td></tr></table></div>
+      <div><h4>Spec</h4><table><tr><td>Ground</td><td>bottle green, canvas at up to 2× device pixel ratio</td></tr><tr><td>Grid</td><td>9px cell, one dot per cell</td></tr><tr><td>Dot</td><td>radius 0.85px, SL Yellow at 21.6%, always visible</td></tr><tr><td>Pointer</td><td>Gaussian falloff f = e^-(d/200)²: alpha 0.216 + 0.484 × f, up to 70%</td></tr><tr><td>Size</td><td>fixed; growing sub-pixel dots draws visible rings</td></tr><tr><td>Easing</td><td>pointer follows at 0.12 per frame; fade in 0.08, out 0.03</td></tr></table></div>
       <div><h4>Rules</h4><ul class="list"><li>Behind stats, panels and the Access hero only; never behind body text.</li><li>Draw only while on screen (IntersectionObserver); pause when the tab is hidden.</li><li>Reduced motion: draw once, no pointer response.</li><li>Decorative: <code>aria-hidden="true"</code>, <code>pointer-events: none</code> on the canvas (listen on the parent).</li><li>Mouse only; touch devices get the static field.</li></ul></div>
     </div>
   </div>

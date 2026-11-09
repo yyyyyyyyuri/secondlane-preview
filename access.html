@@ -333,7 +333,8 @@ a.btn{text-decoration:none}
     qas.forEach(function(o){ o.classList.remove('open'); o.querySelector('.q').setAttribute('aria-expanded','false'); });
     if(!was){ qa.classList.add('open'); qa.querySelector('.q').setAttribute('aria-expanded','true'); } }); });
 
-  /* even dot fields: small, even dots that grow and warm near the cursor */
+  /* dot field (lighter dots, 9 Nov): 9px grid, 0.85px SL Yellow dots at 21.6%, always visible;
+     near the pointer they brighten towards 70% on a soft Gaussian falloff. Size never changes (sub-pixel size steps draw rings). */
   function Dots(cv,host){
     var ctx=cv.getContext('2d'),W=0,H=0,C=9,m={x:-1e4,y:-1e4,tx:-1e4,ty:-1e4,a:0,ta:0},vis=false;
     function size(){ var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2); W=r.width; H=r.height; cv.width=W*d; cv.height=H*d; ctx.setTransform(d,0,0,d,0,0); }
@@ -343,9 +344,9 @@ a.btn{text-decoration:none}
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
-        var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/300); f=Math.pow(f*f*(3-2*f),.8)*m.a; }
-        var r=1.05*(1+f), a=.22+.5*f;
-        ctx.fillStyle='rgba(227,253,90,'+a+')'; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill();
+        var f=0; if(m.a>.01){ var q=Math.hypot(x-m.x,y-m.y)/200; f=Math.exp(-q*q)*m.a; }
+        ctx.fillStyle='rgba(227,253,90,'+(.216+.484*f)+')';
+        ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);

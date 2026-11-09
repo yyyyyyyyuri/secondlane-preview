@@ -1,13 +1,16 @@
 "use client";
-// SecondLane · Dot field · guidelines v0.1 (8 Nov)
-// The brand texture: a 9px grid of yellow dots on green that swell near the pointer.
+// SecondLane · Dot field · guidelines v0.1 (9 Nov)
+// The brand texture: a 9px grid of faint yellow dots on green that brighten near the pointer.
+// The dot size never changes: growing sub-pixel dots draws visible rings.
 // Decorative only. Draws while on screen; static under reduced motion and on touch devices.
 import { useEffect, useRef } from "react";
 import { cx } from "./cx";
 
 const CELL = 9;
-const RADIUS = 1.05;
-const REACH = 220;
+const RADIUS = 0.85;
+const REST = 0.216; // dot opacity at rest
+const PEAK = 0.7; // dot opacity under the pointer
+const SIGMA = 200; // Gaussian falloff, px
 const GROUND = "#12301F"; // --color-green
 const DOT = "227,253,90"; // --color-yellow (SL Yellow)
 
@@ -43,12 +46,12 @@ export function DotField({ className }: { className?: string }) {
         for (let x = CELL / 2; x < w; x += CELL) {
           let f = 0;
           if (m.a > 0.01) {
-            f = Math.max(0, 1 - Math.hypot(x - m.x, y - m.y) / REACH);
-            f = f * f * (3 - 2 * f) * m.a;
+            const q = Math.hypot(x - m.x, y - m.y) / SIGMA;
+            f = Math.exp(-q * q) * m.a;
           }
-          ctx.fillStyle = `rgba(${DOT},${0.22 + 0.5 * f})`;
+          ctx.fillStyle = `rgba(${DOT},${REST + (PEAK - REST) * f})`;
           ctx.beginPath();
-          ctx.arc(x, y, RADIUS * (1 + f), 0, Math.PI * 2);
+          ctx.arc(x, y, RADIUS, 0, Math.PI * 2);
           ctx.fill();
         }
       }

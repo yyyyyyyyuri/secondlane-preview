@@ -57,8 +57,8 @@
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
-        var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/220); f=f*f*(3-2*f)*m.a; }
-        ctx.fillStyle='rgba(227,253,90,'+(.22+.5*f)+')'; ctx.beginPath(); ctx.arc(x,y,1.05*(1+f),0,6.283); ctx.fill();
+        var f=0; if(m.a>.01){ var q=Math.hypot(x-m.x,y-m.y)/200; f=Math.exp(-q*q)*m.a; }
+        ctx.fillStyle='rgba(227,253,90,'+(.216+.484*f)+')'; ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);
