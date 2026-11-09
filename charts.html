@@ -10,15 +10,15 @@
 @font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
-/* Draft, 9 Nov 2026. Only the 11 agreed colours. Series order: clay, terracotta, amber, bronze (ochre, olive only for 5–6 series);
-   sand = Other; SL Yellow = SecondLane only. Text never takes a series colour. */
+/* Draft, 9 Nov 2026. Series order: clay, terracotta, amber, bronze, ochre, olive; sand = Other; SL Yellow = SecondLane only.
+   Each sector keeps one colour everywhere. Linen version: white cards on linen. Text never takes a series colour. */
 :root{--green:#12301F;--linen:#F5F3EF;--sand:#CBBFA8;--moss:#7A8462;--yel:#E3FD5A;
  --clay:#DE8582;--terra:#A14E2B;--amber:#ECAC5F;--bronze:#77581C;--ochre:#E9D574;--olive:#6F8433;
  --serif:'Ashcroft',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif}
 [data-theme=green]{--bg:#12301F;--card:linear-gradient(rgba(245,243,239,.05),rgba(245,243,239,.05)) #12301F;--line:rgba(245,243,239,.14);--grid:rgba(245,243,239,.10);
  --fg:#F5F3EF;--fg2:rgba(245,243,239,.78);--fg3:rgba(245,243,239,.56);--eb:#E3FD5A;--one:#DE8582;--one-hi:#ECAC5F;--one-ink:#12301F;--one-hi-ink:#12301F;--you:#E3FD5A;--prog:#E3FD5A;--track:rgba(245,243,239,.10);--tip:#F5F3EF;--tipfg:#12301F;--ring:#12301F}
-[data-theme=linen]{--bg:#F5F3EF;--card:linear-gradient(rgba(203,191,168,.3),rgba(203,191,168,.3)) #F5F3EF;--line:rgba(18,48,31,.14);--grid:rgba(18,48,31,.10);
- --fg:#12301F;--fg2:rgba(18,48,31,.78);--fg3:rgba(18,48,31,.6);--eb:#A14E2B;--one:#A14E2B;--one-hi:#77581C;--one-ink:#F5F3EF;--one-hi-ink:#F5F3EF;--you:#12301F;--prog:#12301F;--track:rgba(18,48,31,.10);--tip:#12301F;--tipfg:#F5F3EF;--ring:#F5F3EF}
+[data-theme=linen]{--bg:#F5F3EF;--card:#FFFFFF;--line:rgba(18,48,31,.12);--grid:rgba(18,48,31,.09);
+ --fg:#12301F;--fg2:rgba(18,48,31,.78);--fg3:rgba(18,48,31,.6);--eb:#A14E2B;--one:#A14E2B;--one-hi:#77581C;--one-ink:#F5F3EF;--one-hi-ink:#F5F3EF;--you:#12301F;--prog:#12301F;--track:rgba(18,48,31,.08);--tip:#12301F;--tipfg:#F5F3EF;--ring:#FFFFFF}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 .wrap{max-width:1312px;margin:0 auto;padding:0 64px}
@@ -70,8 +70,7 @@ section.grp{padding:56px 0 8px}
 .blist .b{position:relative;height:34px;border-radius:4px;overflow:hidden}
 .blist .b i{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0;background:var(--one);transition:background .15s}
 .blist .b span{position:relative;font-size:14px;line-height:34px;padding-left:12px;color:var(--one-ink)}
-.blist li:hover .b i{background:var(--one-hi)}
-.blist li:hover .b span{color:var(--one-hi-ink)}
+.blist li:hover .b i{filter:brightness(1.08)}
 .blist .v{text-align:right;font-size:14px;color:var(--fg2);font-variant-numeric:tabular-nums}
 .blist li.you .b i{background:var(--you)}
 .blist li.you .b span{color:var(--bg)}
@@ -133,10 +132,9 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
     </div>
   </div>
   <div class="pal">
-    <div><b>Series, in order</b><div class="sw"><i style="background:var(--clay)" title="1 Clay #DE8582"></i><i style="background:var(--terra)" title="2 Terracotta #A14E2B"></i><i style="background:var(--amber)" title="3 Amber #ECAC5F"></i><i style="background:var(--bronze)" title="4 Bronze #77581C"></i></div>Clay · Terracotta · Amber · Bronze</div>
-    <div><b>5–6 series only</b><div class="sw"><i style="background:var(--ochre)" title="5 Ochre #E9D574"></i><i style="background:var(--olive)" title="6 Olive #6F8433"></i></div>Ochre · Olive</div>
+    <div><b>Series, in order</b><div class="sw"><i style="background:var(--clay)" title="1 Clay #DE8582"></i><i style="background:var(--terra)" title="2 Terracotta #A14E2B"></i><i style="background:var(--amber)" title="3 Amber #ECAC5F"></i><i style="background:var(--bronze)" title="4 Bronze #77581C"></i><i style="background:var(--ochre)" title="5 Ochre #E9D574"></i><i style="background:var(--olive)" title="6 Olive #6F8433"></i></div>Clay · Terracotta · Amber · Bronze · Ochre · Olive</div>
     <div><b>Other</b><div class="sw"><i style="background:var(--sand)" title="Sand #CBBFA8"></i></div>Sand</div>
-    <div><b>SecondLane</b><div class="sw"><i style="background:var(--yel)" title="SL Yellow #E3FD5A"></i></div>SL Yellow, on green only</div>
+    <div><b>SecondLane</b><div class="sw"><i style="background:var(--you)" title="SL Yellow on green, bottle green on linen"></i></div>SL Yellow on green · bottle green on linen</div>
   </div>
 </div></header>
 
@@ -171,7 +169,7 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
 <section class="grp">
   <span class="lab">03 · Comparing amounts</span>
   <h2>Bars</h2>
-  <p>Bars start at zero, rounded only at the data end, 2px apart. A single series takes one colour; the bar that carries the finding is the one that changes.</p>
+  <p>Bars start at zero, rounded only at the data end, 2px apart. Each bar takes its own colour from the series order, and a company or sector keeps the same colour in every chart.</p>
   <div class="grid">
     <div class="card c6">
       <div class="chead"><div><span class="lab">Company · Funding rounds, $B</span><h3>Anthropic raised more in 2026 than in all earlier rounds</h3></div></div>
@@ -185,7 +183,7 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
     </div>
     <div class="card c12">
       <div class="chead"><div><span class="lab">Platform · Secondary windows 2026</span><h3>Liquidity windows opened earlier in every sector</h3></div>
-        <div class="legend" style="margin-top:4px"><span><i style="background:var(--sand)"></i>Price discovery</span><span><i style="background:var(--one)"></i>Window open</span><span><i style="background:var(--you)"></i>SecondLane deal</span></div></div>
+        <div class="legend" style="margin-top:4px"><span><i style="background:var(--sand)"></i>Price discovery</span><span><i style="background:var(--you)"></i>SecondLane deal</span></div></div>
       <div class="chart" id="ch-range" role="img" aria-label="Range bars showing when the liquidity window opened and closed for each sector"></div>
       <div class="src">Source: SecondLane transaction data, 2026. Illustrative.</div>
     </div>
@@ -195,7 +193,7 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
 <section class="grp">
   <span class="lab">04 · Parts of a whole</span>
   <h2>Shares and mix</h2>
-  <p>Up to four named parts plus Other in sand. Segments sit 2px apart so terracotta and bronze never touch; labels inside only when they fit.</p>
+  <p>Up to six named parts plus Other in sand, each sector in its own colour. Segments sit 2px apart so neighbouring colours never touch; labels inside only when they fit.</p>
   <div class="grid">
     <div class="card c8">
       <div class="chead"><div><span class="lab">Report · Deal mix by sector</span><h3>AI’s share fell every quarter</h3></div></div>
@@ -204,7 +202,7 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
       <div class="src">Share of closed deals by value. Illustrative.</div>
     </div>
     <div class="card c4">
-      <div class="chead"><div><span class="lab">Fund · Allocation by sector</span><h3>42% in AI</h3></div></div>
+      <div class="chead"><div><span class="lab">Fund · Allocation by sector</span><h3>A third in AI</h3></div></div>
       <div class="chart" id="ch-donut" role="img" aria-label="Donut chart of allocation by sector"></div>
       <table class="ctable" id="ctab"></table>
     </div>
@@ -240,11 +238,11 @@ footer{padding:64px 0 64px;color:var(--fg3);font-size:13px}
   <span class="lab">06 · Rules</span>
   <h2>How the charts behave</h2>
   <ul class="rules">
-    <li><b>Order is fixed.</b> Series take clay, terracotta, amber, bronze in that order and keep their colour when filters change. A fifth and sixth take ochre and olive and must be labelled directly; past that, group into Other or split into small charts.</li>
-    <li><b>SL Yellow means SecondLane.</b> Only SecondLane’s own deals, prices or the reader’s position. On linen, SecondLane is bottle green, since yellow on linen can’t be read. Never use yellow with ochre in the same chart.</li>
+    <li><b>Order is fixed.</b> Series take clay, terracotta, amber, bronze, ochre, olive in that order and keep their colour when filters change. A company or sector keeps its colour in every chart (AI clay, Fintech terracotta, Health amber, Climate bronze, Consumer ochre, Defence olive). Past six, group into Other or split into small charts.</li>
+    <li><b>SL Yellow means SecondLane.</b> Only SecondLane’s own deals, prices or the reader’s position. On linen, SecondLane is bottle green, since yellow can’t be read on white or linen. Where yellow and ochre share a chart, both carry direct labels.</li>
     <li><b>Other is sand.</b> Moss stays out of data (too close to olive).</li>
     <li><b>Text is ink, never a series colour.</b> Values, labels and legends use the text colours; the swatch next to them carries the identity.</li>
-    <li><b>Labels where it’s low contrast.</b> Terracotta and bronze are dim on green; clay, amber and ochre are pale on linen. Those marks always carry a direct label or sit beside a table.</li>
+    <li><b>Labels where it’s low contrast.</b> Terracotta and bronze are dim on green; clay, amber, ochre and sand are pale on white. Those marks always carry a direct label or sit beside a table, and text inside a bar switches between bottle green and linen for contrast.</li>
     <li><b>One axis.</b> No dual-axis charts. Index both to 100 or draw two charts.</li>
     <li><b>Marks.</b> Lines 2px, dots 8px with a 2px ground ring, bars rounded 4px at the data end only, 2px gaps between fills. Grid lines at 10% ink, horizontal only.</li>
     <li><b>Hover.</b> Lines get a crosshair and a tooltip with every series at that point; bars, segments and slices get their own tooltip. The tooltip is the inverse ground.</li>
@@ -265,8 +263,10 @@ function txt(p,x,y,s,a){var t=el('text',Object.assign({x:x,y:y,'font-family':'SF
 function showTip(e,html){tip.innerHTML=html;tip.classList.add('on');var x=e.clientX+16,y=e.clientY+16,w=tip.offsetWidth,h=tip.offsetHeight;if(x+w>innerWidth-8)x=e.clientX-w-16;if(y+h>innerHeight-8)y=e.clientY-h-16;tip.style.left=x+'px';tip.style.top=y+'px';}
 function hideTip(){tip.classList.remove('on');}
 function sw(c){return '<i style="background:'+c+'"></i>';}
-var C={clay:'--clay',terra:'--terra',amber:'--amber',bronze:'--bronze',sand:'--sand'};
+var C={clay:'--clay',terra:'--terra',amber:'--amber',bronze:'--bronze',ochre:'--ochre',olive:'--olive',sand:'--sand'},ORDER=['clay','terra','amber','bronze','ochre','olive'];
+var SECT={'AI':'clay','AI & software':'clay','Fintech':'terra','Health':'amber','Healthcare':'amber','Climate':'bronze','Consumer':'ochre','Defence':'olive','Other':'sand'};
 function col(k){return css(C[k]||k);}
+function inkOn(k){return (k==='terra'||k==='bronze'||k==='olive')?'#F5F3EF':'#12301F';}
 var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function legend(id,items){document.getElementById(id).innerHTML=items.map(function(i){return '<span><i class="'+(i.ln?'ln':'')+'" style="background:'+i.c+'"></i>'+i.n+'</span>';}).join('');}
 function arrow(up){return '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="'+(up?'M6 10V2M2.5 5.5 6 2l3.5 3.5':'M6 2v8M2.5 6.5 6 10l3.5-3.5')+'" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';}
@@ -329,15 +329,15 @@ function bar(svg,x,y,w,h,fill,dir){var r=Math.min(4,w/2,h);var d=dir==='h'?'M'+x
 function colChart(){var host=document.getElementById('ch-col');host.innerHTML='';var W=host.clientWidth,H=260,pl=4,pr=40,pt=24,pb=28,mx=32;
   var svg=el('svg',{viewBox:'0 0 '+W+' '+H,height:H},host),bw=(W-pl-pr)/CV.length,y=function(v){return pt+(mx-v)/mx*(H-pt-pb);};
   [0,10,20,30].forEach(function(v){el('line',{x1:pl,x2:W-pr,y1:y(v),y2:y(v),stroke:v?css('--grid'):css('--line')},svg);txt(svg,W-pr+6,y(v)+4,'$'+v+'B');});
-  CV.forEach(function(d,i){var last=i===CV.length-1,x=pl+i*bw+bw*.18,w=bw*.64,b=bar(svg,x,y(d[1]),w,y(0)-y(d[1]),last?css('--one-hi'):css('--one'));
-    txt(svg,x+w/2,H-8,d[0],{'text-anchor':'middle'});if(last)txt(svg,x+w/2,y(d[1])-8,'$'+d[1]+'B',{'text-anchor':'middle',fill:css('--fg'),'font-size':13});
+  CV.forEach(function(d,i){var x=pl+i*bw+bw*.18,w=bw*.64,b=bar(svg,x,y(d[1]),w,Math.max(2,y(0)-y(d[1])),col(ORDER[i%6]));
+    txt(svg,x+w/2,H-8,d[0],{'text-anchor':'middle'});txt(svg,x+w/2,y(d[1])-8,'$'+d[1]+'B',{'text-anchor':'middle',fill:css(i===CV.length-1?'--fg':'--fg2'),'font-size':13});
     var hit=el('rect',{x:pl+i*bw,y:pt,width:bw,height:H-pt-pb,fill:'transparent'},svg);
     hit.addEventListener('pointermove',function(e){b.setAttribute('opacity',.82);showTip(e,'<b>'+d[0]+'</b><div class="r"><span>'+sw(b.getAttribute('fill'))+'Raised</span><span>$'+d[1]+'B</span></div>');});
     hit.addEventListener('pointerleave',function(){b.setAttribute('opacity',1);hideTip();});});}
 
 /* ---------- bar list ---------- */
 var BL=[['Anthropic',412],['OpenAI',388],['Anduril',301],['xAI',276],['Stripe',214],['SpaceX',198]];
-function barList(){var u=document.getElementById('blist'),mx=BL[0][1];u.innerHTML=BL.map(function(b){return '<li><div class="b"><i style="width:'+(b[1]/mx*100)+'%"></i><span>'+b[0]+'</span></div><span class="v">'+b[1]+'</span></li>';}).join('');}
+function barList(){var u=document.getElementById('blist'),mx=BL[0][1];u.innerHTML=BL.map(function(b,i){var k=ORDER[i%6];return '<li><div class="b"><i style="width:'+(b[1]/mx*100)+'%;background:'+col(k)+'"></i><span style="color:'+inkOn(k)+'">'+b[0]+'</span></div><span class="v">'+b[1]+'</span></li>';}).join('');}
 
 /* ---------- range bars ---------- */
 var RB=[['AI & software',1.0,1.5,8.8,'31 weeks'],['Fintech',2.6,3.2,8.0,'19 weeks'],['Healthcare',1.8,2.3,8.3,'26 weeks'],['Climate',5.6,6.2,10.1,'17 weeks'],['Consumer',6.6,7.2,11.1,'17 weeks'],['Defence',5.2,5.6,8.1,'SecondLane · 11 weeks',1]];
@@ -347,25 +347,25 @@ function rangeChart(){var host=document.getElementById('ch-range');host.innerHTM
   RB.forEach(function(r,i){var yy=pt+i*rh+(narrow?22:0),h=14,cy=yy+(rh-(narrow?22:0))/2-h/2;
     if(narrow)txt(svg,0,pt+i*rh+14,r[0],{fill:css('--fg'),'font-size':14});else txt(svg,0,cy+11,r[0],{fill:css('--fg'),'font-size':14});
     bar(svg,x(r[1]),cy,x(r[2])-x(r[1])-2,h,css('--sand'),'h').setAttribute('d',(function(){var a=x(r[1]),b=x(r[2])-2;return 'M'+a+','+cy+'H'+b+'V'+(cy+h)+'H'+a+'Z';})());
-    var fill=r[5]?css('--you'):css('--one');var b=bar(svg,x(r[2]),cy,x(r[3])-x(r[2]),h,fill,'h');
+    var fill=r[5]?css('--you'):col(SECT[r[0]]);var b=bar(svg,x(r[2]),cy,x(r[3])-x(r[2]),h,fill,'h');
     if(!narrow)txt(svg,x(r[3])+10,cy+11,r[4],{fill:css('--fg2'),'font-size':13});else txt(svg,W-pr,pt+i*rh+14,r[4],{fill:css('--fg2'),'font-size':12,'text-anchor':'end'});
     var hit=el('rect',{x:x(r[1]),y:cy-8,width:x(r[3])-x(r[1]),height:h+16,fill:'transparent'},svg);
     hit.addEventListener('pointermove',function(e){showTip(e,'<b>'+r[0]+'</b><div class="r"><span>'+sw(css('--sand'))+'Price discovery</span><span>'+Math.round((r[2]-r[1])*4.3)+' wks</span></div><div class="r"><span>'+sw(fill)+(r[5]?'SecondLane deal':'Window open')+'</span><span>'+r[4].replace('SecondLane · ','')+'</span></div>');});
     hit.addEventListener('pointerleave',hideTip);});}
 
 /* ---------- 100% stacked ---------- */
-var MX={keys:[['AI','clay'],['Fintech','terra'],['Health','amber'],['Climate','bronze'],['Other','sand']],rows:[['Q1',[38,22,16,10,14]],['Q2',[35,24,15,12,14]],['Q3',[33,23,17,15,12]],['Q4',[31,22,18,17,12]]]};
-function inkOn(k){return (k==='terra'||k==='bronze')?'#F5F3EF':'#12301F';}
+var MX={keys:[['AI','clay'],['Fintech','terra'],['Health','amber'],['Climate','bronze'],['Consumer','ochre'],['Defence','olive'],['Other','sand']],rows:[['Q1',[36,20,14,9,8,6,7]],['Q2',[33,21,14,10,8,8,6]],['Q3',[31,20,15,11,9,9,5]],['Q4',[29,19,15,12,9,11,5]]]};
+
 function mixChart(){var host=document.getElementById('ch-mix');host.innerHTML='';var W=host.clientWidth,lw=34,rh=44,H=MX.rows.length*rh,svg=el('svg',{viewBox:'0 0 '+W+' '+H,height:H},host),span=W-lw;
   MX.rows.forEach(function(r,i){var yy=i*rh+6,h=rh-14,x=lw;txt(svg,0,yy+h/2+5,r[0],{fill:css('--fg'),'font-size':14});
     r[1].forEach(function(v,k){var key=MX.keys[k],w=v/100*span-2,c=col(key[1]),p=el('rect',{x:x,y:yy,width:w,height:h,rx:2,fill:c},svg);
-      if(w>40)txt(svg,x+8,yy+h/2+4,v+'%',{fill:inkOn(key[1]),'font-size':12});
+      if(w>34)txt(svg,x+7,yy+h/2+4,v+'%',{fill:inkOn(key[1]),'font-size':12});
       p.addEventListener('pointermove',function(e){p.setAttribute('opacity',.85);showTip(e,'<b>'+r[0]+' 2026</b><div class="r"><span>'+sw(c)+key[0]+'</span><span>'+v+'%</span></div>');});
       p.addEventListener('pointerleave',function(){p.setAttribute('opacity',1);hideTip();});x+=w+2;});});
   legend('lg-mix',MX.keys.map(function(k){return {n:k[0],c:col(k[1])};}));}
 
 /* ---------- donut + category bar ---------- */
-var AL=[['AI','clay',42],['Fintech','terra',23],['Health','amber',18],['Climate','bronze',10],['Other','sand',7]];
+var AL=[['AI','clay',34],['Fintech','terra',19],['Health','amber',15],['Climate','bronze',11],['Consumer','ochre',9],['Defence','olive',8],['Other','sand',4]];
 function donut(){var host=document.getElementById('ch-donut');host.innerHTML='';var S=Math.min(220,host.clientWidth),R=S/2,r=R-22,svg=el('svg',{viewBox:'0 0 '+S+' '+S,height:S,style:'max-width:'+S+'px;margin:0 auto'},host);
   var a0=-Math.PI/2,gap=.025;AL.forEach(function(d){var a1=a0+d[2]/100*2*Math.PI,s=a0+gap/2,e=a1-gap/2,large=e-s>Math.PI?1:0,c=col(d[1]);
     var p=el('path',{d:'M'+(R+R*Math.cos(s))+','+(R+R*Math.sin(s))+'A'+R+','+R+' 0 '+large+' 1 '+(R+R*Math.cos(e))+','+(R+R*Math.sin(e))+'L'+(R+r*Math.cos(e))+','+(R+r*Math.sin(e))+'A'+r+','+r+' 0 '+large+' 0 '+(R+r*Math.cos(s))+','+(R+r*Math.sin(s))+'Z',fill:c},svg);
