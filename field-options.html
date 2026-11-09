@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SecondLane · Hero field options</title>
+<style>
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{--green:#12301F;--linen:#F5F3EF;--sand:#CBBFA8;--yel:#E3FD5A;--terra:#A14E2B;
+ --serif:'Ashcroft',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--linen);color:var(--green);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+header{padding:28px 40px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 40px;align-items:end;border-bottom:1px solid rgba(18,48,31,.14)}
+.lab{font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--terra)}
+h1{font:400 34px/1.1 var(--serif);margin:8px 0 0;letter-spacing:-.01em}
+.intro{margin:10px 0 0;max-width:68ch;color:rgba(18,48,31,.72)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:500 15px/1 var(--sans);color:var(--green);background:transparent;border:1px solid rgba(18,48,31,.24);border-radius:4px;height:44px;padding:0 18px;cursor:pointer;transition:box-shadow .18s,border-color .18s,background .18s}
+.tabs button:hover{border-color:var(--green);box-shadow:0 0 0 3px rgba(18,48,31,.08)}
+.tabs button[aria-selected=true]{background:var(--green);border-color:var(--green);color:var(--linen)}
+.tabs button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.note{grid-column:1/-1;display:flex;gap:10px;align-items:baseline;min-height:24px}
+.note b{font-weight:500;white-space:nowrap}
+.note span{color:rgba(18,48,31,.72)}
+.note .rec{font:500 11px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;background:var(--yel);color:var(--green);padding:5px 8px;border-radius:3px;display:none}
+.note.r .rec{display:inline-block}
+.stage{flex:1;min-height:560px;position:relative;background:var(--green)}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.hint{position:absolute;right:20px;bottom:18px;z-index:2;font:500 13px/1 var(--sans);color:var(--linen);background:rgba(18,48,31,.7);border:1px solid rgba(245,243,239,.2);padding:9px 12px;border-radius:4px;pointer-events:none;transition:opacity .4s}
+@media (max-width:820px){header{grid-template-columns:1fr;padding:20px 16px}.tabs button{flex:1 1 40%}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <span class="lab">Access hero · for review</span>
+    <h1>Background field: four options</h1>
+    <p class="intro">The current dot field next to three lighter alternatives, since the brand already carries a lot of dots in the halftone images and the logo. Each tab is the live Access page: move the pointer over the hero to see how it reacts, and scroll as normal.</p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Field option">
+    <button role="tab" aria-selected="true" data-k="now">Current</button>
+    <button role="tab" aria-selected="false" data-k="a">A · Quiet dots</button>
+    <button role="tab" aria-selected="false" data-k="b">B · Warm light</button>
+    <button role="tab" aria-selected="false" data-k="c">C · Lanes</button>
+  </div>
+  <p class="note" id="note" aria-live="polite"></p>
+</header>
+<div class="stage">
+  <iframe id="view" title="Access page with the selected field" src="access.html"></iframe>
+  <div class="hint" id="hint">Move the pointer over the hero</div>
+</div>
+<script>
+(function(){
+  var O={
+    now:{src:'access.html',name:'Current · Even dots',d:'SL Yellow dots on a 9px grid across the whole hero, growing and brightening near the pointer.'},
+    a:{src:'access-field-a.html',name:'A · Quiet dots',d:'Keeps the dot language but much lighter: sparse sand dots that almost disappear at rest and only show around the pointer. No yellow.'},
+    b:{src:'access-field-b.html',name:'B · Warm light',d:'No dots. Two slow terracotta and amber glows, like late sun on a wall, and a soft amber light that follows the pointer. Ties the green to the warm tones in the photography.',r:1},
+    c:{src:'access-field-c.html',name:'C · Lanes',d:'No dots. Fine sand lines that part and warm to amber around the pointer, a nod to the “lane” in SecondLane.'}
+  };
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]')),view=document.getElementById('view'),note=document.getElementById('note'),hint=document.getElementById('hint');
+  function show(k){ var o=O[k];
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.k===k?'true':'false');});
+    if(view.getAttribute('src')!==o.src) view.setAttribute('src',o.src);
+    note.className='note'+(o.r?' r':''); note.innerHTML='<b>'+o.name+'</b><span>'+o.d+'</span><i class="rec">Recommended</i>';
+    hint.style.opacity=1; try{history.replaceState(null,'','#'+k);}catch(e){} }
+  tabs.forEach(function(t,i){ t.addEventListener('click',function(){show(t.dataset.k);});
+    t.addEventListener('keydown',function(e){ var j=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-1; if(j<0&&e.key!=='ArrowLeft') return; j=(j+tabs.length)%tabs.length; tabs[j].focus(); show(tabs[j].dataset.k); }); });
+  view.addEventListener('load',function(){ try{ view.contentDocument.addEventListener('pointermove',function(){hint.style.opacity=0;},{once:true}); }catch(e){} });
+  show(O[location.hash.slice(1)]?location.hash.slice(1):'now');
+})();
+</script>
+</body>
+</html>
