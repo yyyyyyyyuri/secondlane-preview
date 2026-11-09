@@ -1,0 +1,379 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane · Access · Field E Wake</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: the Access waitlist page, live. Centred statement over an even halftone field, glass join card that confirms in place,
+   stats bar on a dot band, four step boxes, the desk, questions on linen, footer. Baselayer proportions, SecondLane green. */
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{color-scheme:dark;
+ --green:#12301F;--green-2:linear-gradient(rgba(245,243,239,.05),rgba(245,243,239,.05)) #12301F;--linen:#F5F3EF;--stone:rgba(245,243,239,.85);--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#12301F;--mute:rgba(18,48,31,.72);--ink-3:rgba(18,48,31,.72);--rust:#A14E2B;--clay:#DE8582;--moss:#7A8462;
+ --rule:rgba(245,243,239,.18);--rule-2:rgba(245,243,239,.2);
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --ease:cubic-bezier(.65,0,.35,1);--max:1312px}
+body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+button,input{font:inherit;color:inherit}
+img{display:block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(64px,env(safe-area-inset-left,0px));padding-right:max(64px,env(safe-area-inset-right,0px))}
+.sec{padding-block:136px}
+.c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+.t{font:400 45px/1.06 var(--serif);letter-spacing:-.012em;margin-top:14px;max-width:22ch;text-wrap:balance}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover{box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:active{transform:translateY(1px);box-shadow:none;transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.alink:hover::after{transform:translateX(4px)}
+.alink.down::after{transform:rotate(90deg)}.alink.down:hover::after{transform:rotate(90deg) translateX(4px)}
+
+/* glass and lit edge (lit only while hovered, or on the card that is set .on) */
+.glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--rule);background:rgba(18,48,31,.35);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);transition:background-color .35s ease}
+.nav.stuck{background:rgba(18,48,31,.88)}
+.nav .wrap{display:flex;align-items:center;gap:44px;height:88px;transition:height .35s ease}
+.nav.stuck .wrap{height:72px}
+.logo{display:block;width:128px;height:32px;flex:none;background:var(--linen);-webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
+.nav__links{display:flex;gap:36px;flex:1;font:500 16px/1 var(--sans)}
+.nav__links a{color:inherit;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav__links a:hover{border-bottom-color:rgba(245,243,239,.4)}
+.nav__links a.cur{border-bottom-color:var(--yel)}
+.nav__sign{font:500 16px/1 var(--sans);color:inherit;text-decoration:none}
+.nav .btn{height:46px;padding:0 22px;font-size:15px}
+
+/* dot fields */
+.dots{position:absolute;inset:0;width:100%;height:100%}
+
+/* 1. hero */
+.hero{position:relative;overflow:hidden;margin-top:-89px;padding-top:89px}
+.hero .wrap{position:relative;padding-block:120px 128px}
+.hero h1{font:400 58px/1.04 var(--serif);letter-spacing:-.015em;max-width:1000px;text-wrap:balance}
+.hero .lede{font:400 18px/1.5 var(--sans);max-width:42ch;margin-top:28px;color:var(--sand);text-wrap:balance}
+.join{width:100%;max-width:540px;margin-top:64px;text-align:left;padding:32px}
+.join h2{font:400 30px/1.12 var(--serif);margin-top:12px}
+.join>p,.join .sub{font-size:15px;line-height:1.5;color:var(--sand);margin-top:8px}
+.fl{display:flex;flex-direction:column;gap:8px;margin-top:22px}
+.fl__l{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--sand)}
+.in{display:block;width:100%;height:52px;padding:0 16px;border:1px solid rgba(245,243,239,.2);border-radius:4px;background:rgba(18,48,31,.5);color:var(--linen);font-size:17px;outline:none;transition:border-color .15s,box-shadow .15s}
+.in::placeholder{color:var(--sand)}
+.in:hover{border-color:rgba(245,243,239,.4)}
+.in:focus{border-color:var(--yel);box-shadow:0 0 0 1px var(--yel)}
+.in.e{border-color:#DE8582;box-shadow:0 0 0 1px #DE8582}
+.err{font-size:13px;color:#DE8582;display:none}
+.err.on{display:block}
+.join .btn{width:100%;margin-top:16px}
+.fine{font-size:13px;line-height:1.5;color:var(--sand);margin-top:14px}
+.done{display:none;grid-template-columns:32px minmax(0,1fr);gap:16px;align-items:start;margin-top:20px}
+.done i{width:32px;height:32px;margin-top:2px;border-radius:50%;background:var(--yel);display:grid;place-items:center}
+.done i::after{content:"";width:18px;height:18px;background:var(--on-yel);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center/contain no-repeat}
+.done b{display:block;font:400 32px/1.1 var(--serif)}
+.done span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--sand)}
+.done .alink{margin-top:16px}
+.done .next{list-style:none;margin:22px 0 0;padding:0;counter-reset:n;display:grid;gap:12px;text-align:left}
+.done .next li{counter-increment:n;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.45;color:var(--sand)}
+.done .next li::before{content:counter(n);width:26px;height:26px;border-radius:50%;border:1px solid rgba(227,253,90,.55);color:var(--yel);display:grid;place-items:center;font-size:13px}
+.done .next li b{display:inline;font-family:inherit;font-size:15px;font-weight:500;line-height:1.45;color:var(--linen,#F5F3EF)}
+.done .next li div{padding-top:3px}
+.done .resend{margin-top:18px;font-size:14px;line-height:1.5;color:var(--sand)}
+.done .resend .alink{margin-top:0;display:inline;font-size:14px}
+.join.sent form{display:none}.join.sent .done{display:grid}
+.join.sent>p{display:none}
+
+/* 2. stats band */
+.band{position:relative;height:260px}
+.band .wrap{position:relative;height:100%;display:flex;align-items:center}
+.stats{width:100%;margin-top:96px;text-align:left;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:28px;align-items:center;padding:28px 36px;background:rgba(18,48,31,.82);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid var(--rule-2);border-radius:12px}
+.stats div{display:flex;align-items:baseline;gap:14px;font-size:15.5px;color:var(--sand)}
+.stats b{font:300 60px/1 var(--serif);color:var(--linen)}
+.stats a{color:var(--linen);text-align:right;text-decoration:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+
+/* entrance */
+.rv>*{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*160ms)}
+.rv.seen>*{opacity:1;transform:none}
+.rv1{opacity:0;transform:translateY(36px);transition:opacity 1.3s cubic-bezier(.2,.7,.2,1),transform 1.3s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.rv1.seen{opacity:1;transform:none}
+.rv1.seen:hover{transform:translateY(-2px)}
+
+/* 3. steps */
+.steps{list-style:none;padding:0;margin:56px 0 0;width:100%;max-width:940px;display:flex;flex-direction:column;gap:14px;text-align:left}
+.step{display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px;align-items:start;padding:36px 44px;background:var(--green-2);border:1px solid var(--rule);border-radius:8px;transition:transform .35s ease,box-shadow .35s ease}
+.step:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.step .n{font:300 72px/1 var(--serif);color:var(--yel)}
+.step h3{font:400 32px/1.15 var(--serif)}
+.step p{font-size:17px;line-height:1.55;color:var(--sand);margin-top:12px;max-width:58ch}
+
+/* 4. desk: title, large image, copy, then the stage box */
+.desk{max-width:1152px;margin-inline:auto;display:flex;flex-direction:column;gap:36px}
+.desk .ctab{margin-top:8px}
+.desk .t{max-width:18ch}
+.desk .art{border-radius:12px;overflow:hidden;aspect-ratio:16/8}
+.desk .art img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.desk .body{font-size:18px;line-height:1.5;color:var(--sand);max-width:62ch}
+.ctab{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:28px;align-items:center;padding:32px 36px;background:var(--green-2);border:1px solid var(--rule);border-radius:8px}
+.ctab__ic{width:56px;height:56px;border-radius:12px;background:var(--yel);display:grid;place-items:center}
+.ctab__ic svg{width:26px;height:26px;stroke:var(--on-yel);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ctab h3{font:400 30px/1.15 var(--serif);margin-top:6px}
+.ctab p{font-size:16px;line-height:1.5;color:var(--sand);margin-top:6px}
+
+/* 5. questions on linen */
+.faq{background:var(--linen);color:var(--green)}
+.faq .lab{color:var(--ink-3)}
+.qas{width:100%;max-width:940px;margin-top:48px;text-align:left}
+.qa+.qa{margin-top:4px}
+.q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font:400 32px/1.15 var(--serif);background:none;border:0;cursor:pointer;text-align:left;color:var(--green)}
+.q i{position:relative;flex:none;width:18px;height:18px}
+.q i::before,.q i::after{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:var(--green);transition:transform .35s var(--ease)}
+.q i::after{transform:rotate(90deg)}
+.qa.open .q i::after{transform:rotate(0deg)}
+.a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.a>div{overflow:hidden}
+.a p{font-size:18px;line-height:1.6;max-width:62ch;padding-bottom:26px;color:var(--mute)}
+.qa.open .a{grid-template-rows:1fr}
+.disc{margin-top:40px;max-width:940px;text-align:left;font-size:13.5px;line-height:1.55;color:var(--mute)}
+
+/* 6. footer */
+.ft{padding-block:80px 44px;color:var(--sand);font-size:15px}
+.ft__top{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:44px;padding-bottom:40px;border-bottom:1px solid var(--rule)}
+.ft__brand{display:flex;flex-direction:column;gap:18px}
+.ft__brand p{max-width:28ch;line-height:1.5}
+.ft__col{display:flex;flex-direction:column;gap:13px}
+.ft__col b{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);margin-bottom:4px}
+.ft a{color:inherit;text-decoration:none}.ft a:hover{color:var(--linen)}
+.ft__notes{display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;padding-block:32px}
+.ft__notes sup{color:var(--linen)}
+.ft__legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px}
+.ft__legal nav{display:flex;gap:22px}
+
+@media (max-width:900px){
+ .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+ .sec{padding-block:88px}.hero .wrap{padding-block:72px 88px}
+ .hero h1{font-size:40px}.t{font-size:32px}.lede{font-size:16px}.desk .body{font-size:16px}
+ .nav__links,.nav__sign{display:none}
+ .band{height:auto}.band .wrap{padding-block:40px}.stats{grid-template-columns:minmax(0,1fr);gap:16px}.stats a{align-items:flex-start}
+ .step{grid-template-columns:56px minmax(0,1fr);padding:24px 22px;gap:16px}.step .n{font-size:44px}.step h3{font-size:26px}
+ .desk{gap:28px}.desk .art{aspect-ratio:4/3}.ctab{grid-template-columns:44px minmax(0,1fr);padding:24px 22px;gap:18px}.ctab__ic{width:44px;height:44px}.ctab .btn{grid-column:1/-1}
+ .q{font-size:24px}.ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:1ms !important;transition-delay:0s !important}.rv>*,.rv1{opacity:1;transform:none}}
+
+body{margin:0}
+
+/* shared site nav: six links */
+.nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
+
+/* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
+.nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck .logo{background:#F5F3EF!important}
+.nav.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+a.btn{text-decoration:none}
+.nav .logo{margin-right:auto}
+/* footer column headings in SecondLane yellow */
+.ft__col b{color:#E3FD5A!important}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="SecondLane home"></a>
+    <nav class="nav__links" aria-label="Main"><a class="cur" href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a><a href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
+    <a class="nav__sign" href="access.html">Sign in</a>
+    <a class="btn btn-y" href="#join" style="text-decoration:none">Get on the list</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. Hero -->
+  <section class="hero" id="hero">
+    <canvas class="dots" id="heroDots" aria-hidden="true"></canvas>
+    <div class="wrap c">
+      <h1>Be part of Anthropic, OpenAI and Anduril before they go public.</h1>
+      <p class="lede">For years, the companies defining the future were open only to funds and insiders. SecondLane Access opens the door, from a ticket that fits you.</p>
+      <div class="glass lit on join" id="join">
+        <span class="lab">SecondLane Access · Opening soon</span>
+        <h2>Get on the list</h2>
+        <p>It takes a minute and commits you to nothing. Places open in small groups, and the waitlist hears first.</p>
+        <form id="joinForm" novalidate>
+          <div class="fl"><label class="fl__l" for="join-email">Email</label><input class="in" id="join-email" type="email" placeholder="you@company.com" autocomplete="email"><span class="err" id="joinErr">Enter an email address, like you@company.com</span></div>
+          <button class="btn btn-y" type="submit">Get on the list</button>
+          <p class="fine">We use your email only for news about Access. You can leave the list at any time.</p>
+        </form>
+        <div class="done" role="status"><i aria-hidden="true"></i><div><b>You're on the list.</b><span id="doneTxt">We sent you a note. Confirm it and your place is held.</span><ol class="next">
+            <li><div><b>Confirm your email.</b> So we can hold your place.</div></li>
+            <li><div><b>Watch your inbox.</b> Places open in small groups, and yours could be next.</div></li>
+            <li><div><b>Get verified.</b> A quick identity and eligibility check, done once.</div></li>
+            <li><div><b>See your first opportunity.</b> Read the memo, with terms and risks included, before you commit.</div></li>
+          </ol>
+          <p class="resend">No email after 10 minutes? Check your spam folder, or <button class="alink" type="button" id="resend">send it again</button>.</p>
+          <button class="alink" type="button" id="change">Change email</button></div></div>
+      </div>
+      <div class="stats lit">
+        <div><b>0%</b>platform fee at launch</div>
+        <div><b>1</b>dedicated vehicle per opportunity</div>
+        <div><b>2</b>ways to fund: USDC or wire</div>
+        <a href="#how"><span class="lab">How it works</span><span class="alink down">See the 4 steps</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. How it works -->
+  <section class="sec c" id="how">
+    <div class="wrap c" style="width:100%">
+      <span class="lab">How it works</span>
+      <h2 class="t">Four steps between you and your first private company.</h2>
+      <ol class="steps" id="steps">
+        <li class="step lit rv1"><span class="n">1</span><div><h3>Join the waitlist</h3><p>One minute, no commitment.</p></div></li>
+        <li class="step lit rv1"><span class="n">2</span><div><h3>Get verified</h3><p>Identity and eligibility, checked once.</p></div></li>
+        <li class="step lit rv1"><span class="n">3</span><div><h3>Read the memo</h3><p>Every opportunity, with its terms and risks laid out before you decide.</p></div></li>
+        <li class="step lit rv1"><span class="n">4</span><div><h3>Sign and fund</h3><p>By USDC or wire, straight into that opportunity's own vehicle.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. The desk -->
+  <section class="sec" id="desk">
+    <div class="wrap"><div class="desk">
+      <div><span class="lab">Why SecondLane</span>
+      <h2 class="t">Get the call before the round is news.</h2></div>
+      <p class="body">For more than a decade, SecondLane has worked private markets from the inside. Until now, what came through our network stayed with a close circle of funds and family offices. SecondLane Access is the first time it opens to individuals.</p>
+      <div class="art"><img src="assets/people-stair.jpg" alt="Two people walking down a bronze staircase, talking"></div>
+      <div class="ctab lit"><span class="ctab__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg></span><div><span class="lab">Opening in stages</span><h3>Access opens one group at a time.</h3><p>The waitlist hears first.</p></div><a class="btn btn-y" href="#join" style="text-decoration:none">Get on the list</a></div>
+    </div></div>
+  </section>
+
+  <!-- 5. Before you join -->
+  <section class="sec faq" id="questions">
+    <div class="wrap c">
+      <span class="lab">Questions</span>
+      <h2 class="t">Before you join</h2>
+      <div class="qas" id="qas">
+        <div class="qa open"><button class="q" type="button" aria-expanded="true">What can I get into?<i aria-hidden="true"></i></button><div class="a"><div><p>Private companies across AI, defense, space and the sectors shaping what comes next, sourced through our network.</p></div></div></div>
+        <div class="qa"><button class="q" type="button" aria-expanded="false">Who can join?<i aria-hidden="true"></i></button><div class="a"><div><p>Accredited investors in the US and qualified participants elsewhere, as individuals, through an entity or through an adviser. We confirm eligibility before your first opportunity.</p></div></div></div>
+        <div class="qa"><button class="q" type="button" aria-expanded="false">What does it cost?<i aria-hidden="true"></i></button><div class="a"><div><p>Nothing to join, and no platform fee at launch. Each opportunity sets out its own terms in its documents, so you know exactly what you are signing.</p></div></div></div>
+        <div class="qa"><button class="q" type="button" aria-expanded="false">How do I fund?<i aria-hidden="true"></i></button><div class="a"><div><p>By USDC or wire. Every opportunity sits in its own dedicated vehicle, so your money goes only to the one you chose.</p></div></div></div>
+        <div class="qa"><button class="q" type="button" aria-expanded="false">When does Access open?<i aria-hidden="true"></i></button><div class="a"><div><p>Soon, in small groups. The waitlist hears first.</p></div></div></div>
+      </div>
+      <p class="disc">Private company interests are illiquid and you may lose the full amount you put in. Nothing on this page is an offer to buy or sell, or a recommendation. SecondLane is not a registered broker-dealer in the United States.</p>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft__top">
+        <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
+        <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
+        <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+      </div>
+      <div class="ft__notes">
+        <span><sup>1</sup> SecondLane Access is not open. This page is not an offer to sell, or a solicitation of an offer to buy, any security.</span>
+        <span><sup>2</sup> SecondLane is not a registered broker-dealer in the United States.</span>
+      </div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, nav=document.getElementById('nav');
+  addEventListener('scroll',function(){ nav.classList.toggle('stuck',scrollY>40); },{passive:true});
+
+  /* entrances */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(reduce||!('IntersectionObserver' in window)) rv.forEach(function(e){e.classList.add('seen');});
+  else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }); },{threshold:.2}); rv.forEach(function(e){io.observe(e);}); }
+  var r1=[].slice.call(document.querySelectorAll('.rv1'));
+  if(reduce||!('IntersectionObserver' in window)) r1.forEach(function(e){e.classList.add('seen');});
+  else { var io1=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); io1.unobserve(e.target);} }); },{threshold:.6,rootMargin:'0px 0px -18% 0px'}); r1.forEach(function(e){io1.observe(e);}); }
+
+  /* lit edges follow the cursor; the join card returns to its top-left glow */
+  document.querySelectorAll('.lit').forEach(function(el){
+    el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+    el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); });
+  });
+
+  /* join form: check, then confirm in place */
+  var join=document.getElementById('join'), form=document.getElementById('joinForm'), em=document.getElementById('join-email'), err=document.getElementById('joinErr');
+  form.addEventListener('submit',function(e){ e.preventDefault();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())){ em.classList.add('e'); err.classList.add('on'); em.focus(); return; }
+    document.getElementById('doneTxt').textContent='We sent a note to '+em.value.trim()+'. Confirm it and your place is held.';
+    join.classList.add('sent'); });
+  em.addEventListener('input',function(){ em.classList.remove('e'); err.classList.remove('on'); });
+  document.getElementById('change').addEventListener('click',function(){ join.classList.remove('sent'); em.focus(); });
+  document.getElementById('resend').addEventListener('click',function(){ this.textContent='sent again'; });
+
+  /* questions: one open at a time */
+  var qas=[].slice.call(document.querySelectorAll('.qa'));
+  qas.forEach(function(qa){ qa.querySelector('.q').addEventListener('click',function(){ var was=qa.classList.contains('open');
+    qas.forEach(function(o){ o.classList.remove('open'); o.querySelector('.q').setAttribute('aria-expanded','false'); });
+    if(!was){ qa.classList.add('open'); qa.querySelector('.q').setAttribute('aria-expanded','true'); } }); });
+
+  /* even dot fields: small, even dots that grow and warm near the cursor */
+  function Dots(cv,host){
+    var ctx=cv.getContext('2d'),W=0,H=0,C=9,m={x:-1e4,y:-1e4,tx:-1e4,ty:-1e4,a:0,ta:0},vis=false;
+    function size(){ var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2); W=r.width; H=r.height; cv.width=W*d; cv.height=H*d; ctx.setTransform(d,0,0,d,0,0); }
+    host.addEventListener('pointermove',function(e){ var r=cv.getBoundingClientRect(); m.tx=e.clientX-r.left; m.ty=e.clientY-r.top; if(m.x<-9e3){m.x=m.tx;m.y=m.ty;} m.ta=(e.target.closest&&e.target.closest('.join,.stats'))?0:1; });
+    host.addEventListener('pointerleave',function(){ m.ta=0; });
+    var P=null,PW=0,lx=-1e4,ly=-1e4;
+    function draw(){
+      ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
+      m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
+      var cols=Math.ceil(W/C),rows=Math.ceil(H/C),n=cols*rows;
+      if(!P||PW!==n){P=new Float32Array(n*4);PW=n;}
+      var vx=m.x-lx,vy=m.y-ly; if(lx<-9e3){vx=vy=0;} lx=m.x; ly=m.y;
+      var sp=Math.min(Math.hypot(vx,vy),40)*m.a;
+      ctx.fillStyle='rgba(227,253,90,.16)';
+      for(var j=0;j<rows;j++)for(var i=0;i<cols;i++){
+        var k=(j*cols+i)*4,x=i*C+C/2,y=j*C+C/2,ox=P[k],oy=P[k+1],ux=P[k+2],uy=P[k+3];
+        if(sp>.5){ var dx=x+ox-m.x,dy=y+oy-m.y,dd=Math.hypot(dx,dy);
+          if(dd<110&&dd>.1){ var s=(1-dd/110)*sp*.06; ux+=dx/dd*s; uy+=dy/dd*s; } }
+        ux=(ux-ox*.06)*.86; uy=(uy-oy*.06)*.86; ox+=ux; oy+=uy;
+        P[k]=ox;P[k+1]=oy;P[k+2]=ux;P[k+3]=uy;
+        var g=Math.min(1,Math.hypot(ox,oy)/10);
+        ctx.beginPath(); ctx.arc(x+ox,y+oy,.7+.9*g,0,6.283); ctx.fill();
+      }
+    }
+    size(); addEventListener('resize',size);
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){vis=es[0].isIntersecting;}).observe(cv); else vis=true;
+    (function loop(){ if(vis) draw(); requestAnimationFrame(loop); })();
+  }
+  Dots(document.getElementById('heroDots'),document.getElementById('hero'));
+  })();
+</script>
+<script>
+/* nav: hide while scrolling down, show again as soon as the reader scrolls up */
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return; var last=scrollY, tick=false;
+  function check(){ tick=false; var y=Math.max(0,scrollY), d=y-last;
+    if(y<120||nav.contains(document.activeElement)) nav.classList.remove('is-hidden');
+    else if(d>6) nav.classList.add('is-hidden');
+    else if(d<-6) nav.classList.remove('is-hidden');
+    if(Math.abs(d)>6||y<120) last=y;
+    nav.classList.toggle('stuck',y>40); }
+  function req(){ if(!tick){ tick=true; requestAnimationFrame(check); } }
+  addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
+})();
+</script>

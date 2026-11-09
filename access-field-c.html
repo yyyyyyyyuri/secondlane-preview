@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SecondLane · Access · Field C Lanes</title>
+<title>SecondLane · Access · Field C Subtle grid</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: the Access waitlist page, live. Centred statement over an even halftone field, glass join card that confirms in place,
@@ -339,20 +339,18 @@ a.btn{text-decoration:none}
     host.addEventListener('pointerleave',function(){ m.ta=0; });
     function draw(){
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
-      m.x+=(m.tx-m.x)*.1; m.y+=(m.ty-m.y)*.1; m.a+=(m.ta-m.a)*(m.ta>m.a?.06:.03);
-      var G=26, R=260;
-      for(var y=G/2;y<H;y+=G){
-        var dy=y-m.y, near=Math.max(0,1-Math.abs(dy)/R)*m.a;
-        ctx.beginPath();
-        for(var x=0;x<=W;x+=8){
-          var f=0; if(near>.001){ f=Math.max(0,1-Math.hypot(x-m.x,dy)/R); f=f*f*(3-2*f)*m.a; }
-          var yy=y+(dy>0?1:-1)*f*10; x?ctx.lineTo(x,yy):ctx.moveTo(x,yy);
-        }
-        ctx.lineWidth=1; ctx.strokeStyle='rgba(203,191,168,.075)'; ctx.stroke();
-        if(near>.01){ var g=ctx.createLinearGradient(m.x-R,0,m.x+R,0);
-          g.addColorStop(0,'rgba(236,172,95,0)'); g.addColorStop(.5,'rgba(236,172,95,'+(.45*near)+')'); g.addColorStop(1,'rgba(236,172,95,0)');
-          ctx.strokeStyle=g; ctx.stroke(); }
-      }
+      m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
+      var G=48, ox=(W%G)/2, R=320; ctx.lineWidth=1;
+      ctx.strokeStyle='rgba(245,243,239,.045)'; ctx.beginPath();
+      for(var x=ox+.5;x<W;x+=G){ctx.moveTo(x,0);ctx.lineTo(x,H);}
+      for(var y=.5;y<H;y+=G){ctx.moveTo(0,y);ctx.lineTo(W,y);}
+      ctx.stroke();
+      if(m.a>.01){ var g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,R);
+        g.addColorStop(0,'rgba(245,243,239,'+(.09*m.a)+')'); g.addColorStop(1,'rgba(245,243,239,0)');
+        ctx.strokeStyle=g; ctx.beginPath();
+        for(var x=ox+.5;x<W;x+=G){ctx.moveTo(x,Math.max(0,m.y-R));ctx.lineTo(x,Math.min(H,m.y+R));}
+        for(var y=.5;y<H;y+=G){ctx.moveTo(Math.max(0,m.x-R),y);ctx.lineTo(Math.min(W,m.x+R),y);}
+        ctx.stroke(); }
     }
     size(); addEventListener('resize',size);
     if('IntersectionObserver' in window) new IntersectionObserver(function(es){vis=es[0].isIntersecting;}).observe(cv); else vis=true;
