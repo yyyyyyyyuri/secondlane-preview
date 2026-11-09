@@ -195,10 +195,12 @@ body{margin:0}
 
 /* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
 .nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
-.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:0!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
 .nav.stuck .logo{background:#F5F3EF!important}
 .nav.is-hidden{transform:translateY(-100%)}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
+/* no line under the nav, light or dark, resting or scrolled */
+.nav,.nav.stuck{border-bottom:0!important}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
 /* footer column headings in SecondLane yellow */

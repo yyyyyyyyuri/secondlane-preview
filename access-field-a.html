@@ -184,10 +184,12 @@ body{margin:0}
 
 /* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
 .nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
-.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:0!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
 .nav.stuck .logo{background:#F5F3EF!important}
 .nav.is-hidden{transform:translateY(-100%)}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
+/* no line under the nav, light or dark, resting or scrolled */
+.nav,.nav.stuck{border-bottom:0!important}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
 /* footer column headings in SecondLane yellow */
@@ -340,7 +342,7 @@ a.btn{text-decoration:none}
     function draw(){
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
-      ctx.fillStyle='rgba(227,253,90,0.12)';
+      ctx.fillStyle='rgba(227,253,90,0.24)';
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
         var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/480); f=f*f*(3-2*f)*m.a; }
         ctx.beginPath(); ctx.arc(x,y,.85-.4*f,0,6.283); ctx.fill();

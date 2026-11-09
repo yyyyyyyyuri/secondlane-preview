@@ -69,7 +69,7 @@ main [data-theme="linen"] .alink.auto::after{background:var(--green)}
 /* nav: transparent over the hero, then a blurred bar in the current theme */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;transition:background-color .35s ease,border-color .35s ease,height .35s ease}
 .nav .wrap{display:flex;align-items:center;gap:44px;height:96px;transition:height .35s ease}
-.nav.stuck{background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-bottom:1px solid var(--rule)}
+.nav.stuck{background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
 .nav.stuck .wrap{height:76px}
 .logo{display:block;width:128px;height:32px;flex:none;background:var(--fg);transition:background-color 1.8s var(--theme-ease);
  -webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
@@ -264,7 +264,7 @@ body{margin:0}
 
 /* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
 .nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
-.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:1px solid rgba(245,243,239,.18)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:0!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
 .nav.stuck .logo{background:#F5F3EF!important}
 .nav.is-hidden{transform:translateY(-100%)}
 @media (prefers-reduced-motion:reduce){.nav{transition:none}}
@@ -272,6 +272,8 @@ a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
 /* footer column headings in SecondLane yellow */
 .ft__col b{color:#E3FD5A!important}
+/* no line under the nav, light or dark, resting or scrolled */
+.nav,.nav.stuck{border-bottom:0!important}
 </style>
 
 <div class="site" id="site" data-theme="green">
