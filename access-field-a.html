@@ -345,7 +345,7 @@ a.btn{text-decoration:none}
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
         var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/480); f=f*f*(3-2*f)*m.a; }
         ctx.fillStyle='rgba(227,253,90,'+(0.24+(.9-0.24)*f)+')';
-        ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
+        ctx.beginPath(); ctx.arc(x,y,.85+.2*f,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);
