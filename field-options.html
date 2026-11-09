@@ -39,16 +39,14 @@ iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 <header>
   <div>
     <span class="lab">Access hero · for review</span>
-    <h1>Background field: six options</h1>
-    <p class="intro">The current dot field next to five lighter alternatives, since the brand already carries a lot of dots in the halftone images and the logo. Each tab is the live Access page: move the pointer over the hero to see how it reacts, and scroll as normal.</p>
+    <h1>Background field: four options</h1>
+    <p class="intro">The current dot field next to three lighter alternatives, since the brand already carries a lot of dots in the halftone images and the logo. Each tab is the live Access page: move the pointer over the hero to see how it reacts, and scroll as normal.</p>
   </div>
   <div class="tabs" role="tablist" aria-label="Field option">
     <button role="tab" aria-selected="true" data-k="now">Current</button>
     <button role="tab" aria-selected="false" data-k="a">A · Lighter dots</button>
-    <button role="tab" aria-selected="false" data-k="b">B · White dots</button>
-    <button role="tab" aria-selected="false" data-k="c">C · Subtle grid</button>
-    <button role="tab" aria-selected="false" data-k="d">D · Magnetic dots</button>
-    <button role="tab" aria-selected="false" data-k="e">E · Wake</button>
+    <button role="tab" aria-selected="false" data-k="b">B · Magnetic dots</button>
+    <button role="tab" aria-selected="false" data-k="c">C · Wake</button>
   </div>
   <p class="note" id="note" aria-live="polite"></p>
 </header>
@@ -60,12 +58,11 @@ iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 (function(){
   var O={
     now:{src:'access.html',name:'Current · Even dots',d:'SL Yellow dots on a 9px grid across the whole hero, growing and brightening near the pointer.'},
-    a:{src:'access-field-a.html',name:'A · Lighter dots',d:'The same yellow grid, thinner and fainter at rest. Near the pointer the dots grow back to today\'s size, with no change in colour or brightness.'},
-    b:{src:'access-field-b.html',name:'B · White dots',d:'As A, in linen instead of yellow, so the yellow stays only on buttons and calls to action.'},
-    c:{src:'access-field-c.html',name:'C · Subtle grid',d:'No dots. A very faint linen grid, a touch brighter around the pointer.'},
-    d:{src:'access-field-d.html',name:'D · Magnetic dots',d:'The lighter dots from A, gently drawn towards the pointer as it moves, then easing back when it leaves.'},
-    e:{src:'access-field-e.html',name:'E · Wake',d:'The lighter dots from A, pushed aside as the pointer passes through, then settling back into the grid. Move the pointer quickly to see it.'}
+    a:{src:'access-field-a.html',name:'A · Lighter dots',d:'The same yellow grid, smaller dots at a lower opacity, always visible. Near the pointer they grow to today\'s size, with no change in colour or brightness.'},
+    b:{src:'access-field-d.html',name:'B · Magnetic dots',d:'The lighter dots from A, gently drawn towards the pointer as it moves, then easing back when it leaves.'},
+    c:{src:'access-field-e.html',name:'C · Wake',d:'The lighter dots from A, pushed aside across a wide area as the pointer passes through, then settling back into the grid. Move the pointer quickly to see it.'}
   };
+
 
   var tabs=[].slice.call(document.querySelectorAll('[role=tab]')),view=document.getElementById('view'),note=document.getElementById('note'),hint=document.getElementById('hint');
   function show(k){ var o=O[k];

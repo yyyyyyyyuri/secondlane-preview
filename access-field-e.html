@@ -345,15 +345,15 @@ a.btn{text-decoration:none}
       if(!P||PW!==n){P=new Float32Array(n*4);PW=n;}
       var vx=m.x-lx,vy=m.y-ly; if(lx<-9e3){vx=vy=0;} lx=m.x; ly=m.y;
       var sp=Math.min(Math.hypot(vx,vy),40)*m.a;
-      ctx.fillStyle='rgba(227,253,90,.16)';
+      ctx.fillStyle='rgba(227,253,90,.24)';
       for(var j=0;j<rows;j++)for(var i=0;i<cols;i++){
         var k=(j*cols+i)*4,x=i*C+C/2,y=j*C+C/2,ox=P[k],oy=P[k+1],ux=P[k+2],uy=P[k+3];
         if(sp>.5){ var dx=x+ox-m.x,dy=y+oy-m.y,dd=Math.hypot(dx,dy);
-          if(dd<110&&dd>.1){ var s=(1-dd/110)*sp*.06; ux+=dx/dd*s; uy+=dy/dd*s; } }
+          if(dd<330&&dd>.1){ var s=(1-dd/330)*sp*.06; ux+=dx/dd*s; uy+=dy/dd*s; } }
         ux=(ux-ox*.06)*.86; uy=(uy-oy*.06)*.86; ox+=ux; oy+=uy;
         P[k]=ox;P[k+1]=oy;P[k+2]=ux;P[k+3]=uy;
         var g=Math.min(1,Math.hypot(ox,oy)/10);
-        ctx.beginPath(); ctx.arc(x+ox,y+oy,.7+.9*g,0,6.283); ctx.fill();
+        ctx.beginPath(); ctx.arc(x+ox,y+oy,.85+.8*g,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);
