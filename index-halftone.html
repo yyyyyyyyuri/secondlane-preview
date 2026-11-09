@@ -464,9 +464,9 @@ a.btn{text-decoration:none}
   else { var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target);} }); },{threshold:.25}); rv.forEach(function(e){io.observe(e);}); }
 
   /* lit edges follow the cursor */
+  /* lit edge: the glow follows the pointer and stays where it left (no reset on leave) */
   document.querySelectorAll('.lit').forEach(function(el){
     el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
-    el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); });
   });
 
   /* platform tabs */

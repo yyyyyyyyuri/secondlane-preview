@@ -190,6 +190,25 @@ body{margin:0}
 .why__txt p{font-size:17px;line-height:1.6;color:var(--mute);max-width:52ch}
 @media (max-height:820px) and (min-width:901px){.stk__pin{gap:32px;padding-top:100px}.stk__deck,.stk__card{height:380px}.why__txt{padding:36px 44px}.why__txt p{font-size:16px}}
 
+/* hero text entrance (9 Nov): the headline rises word by word, then the copy and actions follow */
+.hx h1 .w{display:inline-block;opacity:0;transform:translateY(.42em);animation:hxw .95s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d)*55ms + 150ms)}
+.hx>:not(h1):not(nav){opacity:0;animation:hxr .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--dl,600ms)}
+@keyframes hxw{to{opacity:1;transform:none}}
+@keyframes hxr{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hx h1 .w,.hx>*{opacity:1!important;transform:none!important;animation:none!important}}
+
+/* investment strategy (9 Nov): finished look; copy still in draft, so a small tag says so */
+.draft{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px dashed var(--rust);border-radius:999px;font:500 12px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--rust);margin-bottom:18px}
+.strat .barbell__bar b,.strat .barbell__bar u{transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.strat .barbell__bar b:first-child{transform-origin:left}.strat .barbell__bar u{transform-origin:left;transition-delay:.35s}.strat .barbell__bar b:last-child{transform-origin:right;transition-delay:.6s}
+.strat.seen .barbell__bar b,.strat.seen .barbell__bar u{transform:none}
+.strat .barbell__bar b:last-child{background:var(--rust)}
+.track{box-shadow:0 20px 50px rgba(18,48,31,.12)}
+.track .lab{color:var(--yel)}
+.track dl div+div{border-top:1px solid rgba(245,243,239,.14)}
+.track dl div:first-child{border-top:1px solid rgba(245,243,239,.14)}
+@media (prefers-reduced-motion:reduce){.strat .barbell__bar b,.strat .barbell__bar u{transform:none}}
+
 /* shared site nav: six links */
 .nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
 
@@ -229,10 +248,10 @@ a.btn{text-decoration:none}
   </section>
 
   <!-- 2. Investment strategy and track record -->
-  <section class="sec light wip" id="strategy">
-    <div class="wip__tag" role="note"><b>Work in progress</b><span>Investment strategy is still being written. Layout and copy will change.</span></div>
+  <section class="sec light" id="strategy">
     <div class="wrap strat">
       <div>
+        <span class="draft">Draft copy</span>
         <h2 class="t">Investment strategy</h2>
         <p class="lead" style="margin-top:24px">A barbell approach, targeting assets we believe are mispriced relative to their fundamentals, where a liquidity event may be nearer than the market assumes. It pairs higher-conviction positions with disciplined risk mitigation across pre-IPO and secondaries, so each mandate stays balanced through the cycle.</p>
         <div class="barbell" aria-hidden="true"><div class="barbell__bar"><b></b><u></u><b></b></div><div class="barbell__lab"><span>Higher-conviction positions</span><span>Disciplined risk mitigation</span></div></div>
@@ -304,7 +323,8 @@ a.btn{text-decoration:none}
 <script>
 (function(){
   var nav=document.getElementById('nav');
-  document.querySelectorAll('.lit').forEach(function(el){ el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); }); el.addEventListener('pointerleave',function(){ el.style.removeProperty('--mx'); el.style.removeProperty('--my'); }); });
+  /* lit edge: the glow follows the pointer and stays where it left (no reset on leave) */
+  document.querySelectorAll('.lit').forEach(function(el){ el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
   function stick(){ nav.classList.toggle('stuck',scrollY>40); } addEventListener('scroll',stick,{passive:true}); stick();
   /* why Capital: progress through the pinned section drives each card from below into the stack.
      Eased toward the target each frame, so the motion lags a little behind the wheel and feels weighted. */
@@ -328,6 +348,25 @@ a.btn{text-decoration:none}
   addEventListener('scroll',target,{passive:true}); addEventListener('resize',target); target(); cur=tgt;
   if(reduce) paint(1); frame();
 
+})();
+</script>
+<script>
+/* hero text entrance: split the headline into words; the rest follows once the last word is up */
+(function(){
+  var b=document.querySelector('.hero__body'); if(!b) return; var h=b.querySelector('h1'); if(!h) return;
+  var words=h.textContent.trim().split(/\s+/); h.setAttribute('aria-label',h.textContent.trim());
+  h.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="--d:'+i+'">'+w+'</span>';}).join(' ');
+  var t=150+words.length*55+260; [].slice.call(b.children).forEach(function(c){ if(c.tagName!=='H1'&&c.tagName!=='NAV'){ c.style.setProperty('--dl',t+'ms'); t+=130; } });
+  b.classList.add('hx');
+})();
+</script>
+<script>
+/* investment strategy: barbell draws in and the track record counts up the first time it is on screen */
+(function(){
+  var st=document.querySelector('.strat'); if(!st) return; var fig=st.querySelector('.track .fig'), end=77, red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(){ st.classList.add('seen'); if(red||!fig) return; var t0=performance.now(); (function f(now){ var k=Math.min(1,(now-t0)/1400); k=1-Math.pow(1-k,3); fig.textContent='$'+Math.round(end*k)+'M'; if(k<1) requestAnimationFrame(f); })(t0); }
+  if(!('IntersectionObserver' in window)) return go();
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ go(); io.disconnect(); } },{threshold:.4}); io.observe(st);
 })();
 </script>
 <script>

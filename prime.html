@@ -172,6 +172,25 @@ body{margin:0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:1ms !important}}
 
+/* hero text entrance (9 Nov): the headline rises word by word, then the copy and actions follow */
+.hx h1 .w{display:inline-block;opacity:0;transform:translateY(.42em);animation:hxw .95s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d)*55ms + 150ms)}
+.hx>:not(h1):not(nav){opacity:0;animation:hxr .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--dl,600ms)}
+@keyframes hxw{to{opacity:1;transform:none}}
+@keyframes hxr{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hx h1 .w,.hx>*{opacity:1!important;transform:none!important;animation:none!important}}
+
+/* founders (9 Nov): same card as Capital's "Why SecondLane Capital": halftone illustration left, number and copy right */
+.stk__deck{width:min(1152px,100%);height:420px}
+.stk__card{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;align-items:stretch;padding:0;height:420px;border-radius:12px;overflow:hidden}
+.why__img{position:relative;background:#12301F}
+.why__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.why__txt{padding:48px 56px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.why__txt .n{font:300 56px/1 var(--serif);color:var(--yel)}
+.why__txt h3{font:400 40px/1.1 var(--serif)}
+.why__txt p{font-size:17px;line-height:1.6;color:var(--sand);margin:0;max-width:52ch}
+@media (max-height:820px) and (min-width:901px){.stk__deck,.stk__card{height:380px}.why__txt{padding:36px 44px}.why__txt p{font-size:16px}}
+@media (max-width:900px){.stk__card{grid-template-columns:minmax(0,1fr);height:auto;padding:0}.why__img{aspect-ratio:4/3}.why__txt{padding:28px 22px}.why__txt h3{font-size:30px}.why__txt .n{font-size:44px}}
+
 /* shared site nav: six links */
 .nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
 
@@ -217,10 +236,10 @@ a.btn{text-decoration:none}
         <p class="lead">Liquidity on your terms, timed around the moments that matter for the company.</p>
       </div>
       <ol class="stk__deck" id="deck">
-          <li class="stk__card" data-i="0"><span class="n">1</span><div><h3>Reduce sell pressure</h3><p>Introduce large sales to verified interested parties instead of the open market, so a single exit never sets your secondary opportunity value.</p></div></li>
-          <li class="stk__card" data-i="1"><span class="n">2</span><div><h3>Stabilize your secondary opportunity value</h3><p>Time and size liquidity around vesting, unlocks and fundraises, so the market keeps its confidence in you.</p></div></li>
-          <li class="stk__card" data-i="2"><span class="n">3</span><div><h3>Retain your best people</h3><p>Give your team a way to turn ownership interest into cash without selling into the open market. Structured employee liquidity, delivered through a compliant tender offer, rewards the people who built the company and makes it far easier to attract and keep talent.</p></div></li>
-          <li class="stk__card" data-i="3"><span class="n">4</span><div><h3>Expand your participant network</h3><p>Bring in institutional participants, family offices and qualified interested parties, and add credibility as well as reach.</p></div></li>
+          <li class="stk__card" data-i="0"><div class="why__img"><img src="assets/htd1.jpg" alt=""></div><div class="why__txt"><span class="n">01</span><h3>Reduce sell pressure</h3><p>Introduce large sales to verified interested parties instead of the open market, so a single exit never sets your secondary opportunity value.</p></div></li>
+          <li class="stk__card" data-i="1"><div class="why__img"><img src="assets/htd2.jpg" alt=""></div><div class="why__txt"><span class="n">02</span><h3>Stabilize your secondary opportunity value</h3><p>Time and size liquidity around vesting, unlocks and fundraises, so the market keeps its confidence in you.</p></div></li>
+          <li class="stk__card" data-i="2"><div class="why__img"><img src="assets/htd4.jpg" alt=""></div><div class="why__txt"><span class="n">03</span><h3>Retain your best people</h3><p>Give your team a way to turn ownership interest into cash without selling into the open market. Structured employee liquidity, delivered through a compliant tender offer, rewards the people who built the company and makes it far easier to attract and keep talent.</p></div></li>
+          <li class="stk__card" data-i="3"><div class="why__img"><img src="assets/htd5.jpg" alt=""></div><div class="why__txt"><span class="n">04</span><h3>Expand your participant network</h3><p>Bring in institutional participants, family offices and qualified interested parties, and add credibility as well as reach.</p></div></li>
       </ol>
     </div>
   </section>
@@ -324,6 +343,16 @@ a.btn{text-decoration:none}
     t.addEventListener('click',function(){pick(t);});
     t.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(d){ e.preventDefault(); pick(tabs[(i+d+tabs.length)%tabs.length],true); } });
   });
+})();
+</script>
+<script>
+/* hero text entrance: split the headline into words; the rest follows once the last word is up */
+(function(){
+  var b=document.querySelector('.hero__body'); if(!b) return; var h=b.querySelector('h1'); if(!h) return;
+  var words=h.textContent.trim().split(/\s+/); h.setAttribute('aria-label',h.textContent.trim());
+  h.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="--d:'+i+'">'+w+'</span>';}).join(' ');
+  var t=150+words.length*55+260; [].slice.call(b.children).forEach(function(c){ if(c.tagName!=='H1'&&c.tagName!=='NAV'){ c.style.setProperty('--dl',t+'ms'); t+=130; } });
+  b.classList.add('hx');
 })();
 </script>
 <script>
