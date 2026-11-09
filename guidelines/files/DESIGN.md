@@ -227,7 +227,7 @@ Rows separated by `--border`. Question in Ashcroft 32px (24px on phones), plus/m
 ### Top Navigation
 **Role:** site-wide navigation
 
-Sticky. Transparent over the hero; once scrolled past 40px, `--scrim` fill with 24px blur and a bottom `--border`, height 96 → 76px. Logo 128×32 on the left, links SFT 500 15px 36–44px apart, current page underlined 2px in `--accent`, Sign in and the page's primary button on the right.
+Sticky. Transparent over the hero; once scrolled past 40px, `--scrim` fill with 24px blur, height 96 → 76px. No line under the nav, on green or linen, resting or scrolled. Logo 128×32 on the left, links SFT 500 15px 36–44px apart, current page underlined 2px in `--accent`, Sign in and the page's primary button on the right.
 
 ### Footer
 **Role:** site-wide footer
