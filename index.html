@@ -487,7 +487,7 @@ a.btn{text-decoration:none}
   form.addEventListener('submit',function(e){ e.preventDefault(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){ em.focus(); em.setCustomValidity('Enter an email address, like you@company.com'); em.reportValidity(); return; } em.setCustomValidity(''); box.classList.add('sent'); });
   em.addEventListener('input',function(){ em.setCustomValidity(''); });
 
-  /* halftone ground: one even field of small dots, used in the fact band and behind the platform panel; dots grow near the cursor */
+  /* dot field (lighter dots, 9 Nov): fact band and behind the platform panel; 0.85px SL Yellow at 21.6%, brightening towards 70% near the pointer; size fixed */
   var SAND=[203,191,168], LIN=[245,243,239];
   function mix(f){ f=Math.min(1,f); return [SAND[0]+(LIN[0]-SAND[0])*f|0,SAND[1]+(LIN[1]-SAND[1])*f|0,SAND[2]+(LIN[2]-SAND[2])*f|0]; }
   function Halftone(cv,host,mode,src){
@@ -501,9 +501,8 @@ a.btn{text-decoration:none}
       ctx.fillStyle='#12301F'; ctx.fillRect(0,0,W,H);
       m.x+=(m.tx-m.x)*.12; m.y+=(m.ty-m.y)*.12; m.a+=(m.ta-m.a)*(m.ta>m.a?.08:.03);
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
-        var f=0; if(m.a>.01){ f=Math.max(0,1-Math.hypot(x-m.x,y-m.y)/220); f=f*f*(3-2*f)*m.a; }
-        var r=1.05*(1+f), a=.22+.5*f;
-        ctx.fillStyle='rgba(227,253,90,'+a+')'; ctx.beginPath(); ctx.arc(x,y,r,0,6.283); ctx.fill();
+        var f=0; if(m.a>.01){ var q=Math.hypot(x-m.x,y-m.y)/200; f=Math.exp(-q*q)*m.a; }
+        ctx.fillStyle='rgba(227,253,90,'+(.216+.484*f)+')'; ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);
