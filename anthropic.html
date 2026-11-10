@@ -31,7 +31,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* buttons and links */
 .btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
 .btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
-.btn-y:hover{box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:hover{box-shadow:none}
 .btn-y:active{transform:translateY(1px);box-shadow:none;transform:translateY(1px)}
 .btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
 .alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
 .lit{position:relative}
 .lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
- background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(245,243,239,.55) 0%,rgba(245,243,239,.2) 35%,rgba(245,243,239,0) 100%);
  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 .lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
 
@@ -153,7 +153,7 @@ body{margin:0}
 .crumb li+li::before{content:"/";color:rgba(245,243,239,.35)}
 .crumb a{position:relative;color:inherit;text-decoration:none;padding:4px 0;transition:color .25s ease}
 .crumb a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--yel);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.crumb a:hover,.crumb a:focus-visible{color:var(--yel)}
+.crumb a:hover,.crumb a:focus-visible{color:var(--linen)}
 .crumb a:hover::after,.crumb a:focus-visible::after{transform:scaleX(1)}
 .crumb [aria-current]{color:var(--linen)}
 @media (max-width:900px){.crumb{top:108px;left:20px}}
@@ -291,6 +291,11 @@ body{margin:0}
 .nav,.nav.stuck{border-bottom:0!important}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
+/* round 2 (10 Nov): square buttons and controls, linen main button on green, no glow-ring hovers */
+.btn,button.btn,a.btn,.chip,.sf,.tab,.lk,.az__rail a,input.in,select.in,textarea.in,.srch input,.seg button,.flt button,.side a{border-radius:0!important}
+.btn-y{background:#F5F3EF!important;border-color:#F5F3EF!important;color:#12301F!important}
+.btn-y:hover{background:rgba(245,243,239,.84)!important;border-color:rgba(245,243,239,.84)!important;box-shadow:none!important}
+.btn-g:hover{background:rgba(18,48,31,.86)!important;box-shadow:none!important}
 /* footer column headings in SecondLane yellow */
 .ft__col b{color:#E3FD5A!important}
 </style>
@@ -333,7 +338,7 @@ a.btn{text-decoration:none}
       <div>
         <p class="lead">Anthropic is an AI safety and research company. It builds Claude, a family of AI models used by people and businesses.</p>
         <p class="lead">Founded in 2021 and based in San Francisco, it sells to developers and enterprises through its own products and the major cloud platforms.</p>
-        <a class="alink" href="#top" style="color:var(--green)">Read the full profile</a>
+        <a class="alink" href="#funding" style="color:var(--green)">See the funding history</a>
       </div>
     </div>
   </section>
@@ -375,7 +380,7 @@ a.btn{text-decoration:none}
           <dl><div><dt>Buy-side indications</dt><dd>28</dd></div><div><dt>Sell-side indications</dt><dd>17</dd></div><div><dt>Updated</dt><dd>[date]</dd></div></dl></div>
         <div class="p2box"><span class="tag">Phase 2</span><h3>Minimum size and structure</h3>
           <dl><div><dt>Minimum ticket</dt><dd>$25,000</dd></div><div><dt>Structure</dt><dd>Dedicated vehicle</dd></div><div><dt>Fees</dt><dd>Set per opportunity</dd></div><div><dt>Typical completion</dt><dd>2 to 4 weeks</dd></div></dl>
-          <div class="acts"><a class="btn btn-g" href="#top">Buy</a><a class="btn btn-ol" href="#top">Sell</a></div></div>
+          <div class="acts"><a class="btn btn-g" href="contact.html?topic=buy&amp;company=Anthropic">Buy</a><a class="btn btn-ol" href="contact.html?topic=sell&amp;company=Anthropic">Sell</a></div></div>
       </div>
     </div>
   </section>
@@ -396,10 +401,10 @@ a.btn{text-decoration:none}
     <div class="wrap">
       <div class="head" style="display:block"><h2 class="t" style="max-width:none">More private companies in AI</h2></div>
       <div class="g4">
-        <a class="rel" href="#top"><span class="cl rl" role="img" aria-label="OpenAI" style="--src:url(assets/lg-openai.svg)"></span><b>OpenAI</b><span>AI</span><span class="alink">View company</span></a>
-        <a class="rel" href="#top"><span class="cl rl" role="img" aria-label="Perplexity" style="--src:url(assets/lg-perplexity.svg)"></span><b>Perplexity</b><span>AI search</span><span class="alink">View company</span></a>
-        <a class="rel" href="#top"><span class="cl rl" role="img" aria-label="Databricks" style="--src:url(assets/lg-databricks.svg)"></span><b>Databricks</b><span>AI data</span><span class="alink">View company</span></a>
-        <a class="rel" href="#top"><span class="cl rl" role="img" aria-label="Groq" style="--src:url(assets/lg-groq.svg)"></span><b>Groq</b><span>AI chips</span><span class="alink">View company</span></a>
+        <a class="rel" href="contact.html?topic=buy&amp;company=OpenAI"><span class="cl rl" role="img" aria-label="OpenAI" style="--src:url(assets/lg-openai.svg)"></span><b>OpenAI</b><span>AI</span><span class="alink">Get introduced</span></a>
+        <a class="rel" href="contact.html?topic=buy&amp;company=Perplexity"><span class="cl rl" role="img" aria-label="Perplexity" style="--src:url(assets/lg-perplexity.svg)"></span><b>Perplexity</b><span>AI search</span><span class="alink">Get introduced</span></a>
+        <a class="rel" href="contact.html?topic=buy&amp;company=Databricks"><span class="cl rl" role="img" aria-label="Databricks" style="--src:url(assets/lg-databricks.svg)"></span><b>Databricks</b><span>AI data</span><span class="alink">Get introduced</span></a>
+        <a class="rel" href="contact.html?topic=buy&amp;company=Groq"><span class="cl rl" role="img" aria-label="Groq" style="--src:url(assets/lg-groq.svg)"></span><b>Groq</b><span>AI chips</span><span class="alink">Get introduced</span></a>
       </div>
     </div>
   </section>
@@ -420,14 +425,14 @@ a.btn{text-decoration:none}
         <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
         <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
         <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
-        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="contact.html">Contact</a></div>
       </div>
       <div class="ft__notes">
         <span><sup>1</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span>
         <span><sup>2</sup> Valuations and funding rounds are as publicly reported and are not a price for an opportunity.</span>
         <span><sup>3</sup> SecondLane is not affiliated with Anthropic. Company names and logos are trademarks of their owners.</span>
       </div>
-      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#cookies">Cookies</a></nav></div>
     </div>
   </footer>
 </main>
@@ -465,7 +470,7 @@ a.btn{text-decoration:none}
       for(var y=C/2;y<H;y+=C)for(var x=C/2;x<W;x+=C){
         var edge=from>0?Math.min(1,Math.max(0,(x-x0)/(W*.12))):1; if(edge<=0) continue;
         var f=0; if(m.a>.01){ var q=Math.hypot(x-m.x,y-m.y)/200; f=Math.exp(-q*q)*m.a; }
-        ctx.fillStyle='rgba(227,253,90,'+((.216+.484*f)*edge)+')'; ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
+        ctx.fillStyle='rgba(227,253,90,'+((.216*edge))+')'; ctx.beginPath(); ctx.arc(x,y,.85,0,6.283); ctx.fill();
       }
     }
     size(); addEventListener('resize',size);

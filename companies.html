@@ -31,7 +31,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* buttons and links */
 .btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
 .btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
-.btn-y:hover{box-shadow:0 0 0 4px rgba(227,253,90,.16)}
+.btn-y:hover{box-shadow:none}
 .btn-y:active{transform:translateY(1px);box-shadow:none;transform:translateY(1px)}
 .btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
 .alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
 .lit{position:relative}
 .lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
- background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(227,253,90,.95) 0%,rgba(227,253,90,.45) 35%,rgba(227,253,90,0) 100%);
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(245,243,239,.55) 0%,rgba(245,243,239,.2) 35%,rgba(245,243,239,0) 100%);
  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 .lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
 
@@ -168,7 +168,7 @@ body{background:var(--linen)}
 .srch{position:relative}
 .srch svg{position:absolute;left:14px;top:14px;width:20px;height:20px;stroke:var(--mute);fill:none;stroke-width:1.6;pointer-events:none}
 .srch input{width:100%;height:48px;padding:0 44px;border:1px solid rgba(18,48,31,.35);border-radius:4px;background:var(--linen);color:var(--green);font:400 16px var(--sans);outline:none;transition:border-color .15s,box-shadow .15s}
-.srch input:focus{border-color:#12301F;box-shadow:0 0 0 4px rgba(227,253,90,.3)}
+.srch input:focus{border-color:#12301F;box-shadow:0 0 0 3px rgba(18,48,31,.14)}
 .srch input::-webkit-search-cancel-button{display:none}
 .srch .clr{position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;border:0;background:var(--yel);cursor:pointer;display:none;place-items:center}
 .srch.has .clr{display:grid}
@@ -243,7 +243,7 @@ section[id]{scroll-margin-top:100px}
 .az__rail{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
 .az__rail a,.az__rail span{display:grid;place-items:center;width:34px;height:34px;border-radius:6px;font:500 15px/1 var(--sans)}
 .az__rail a{color:var(--green);background:linear-gradient(rgba(203,191,168,.3),rgba(203,191,168,.3)) #F5F3EF;text-decoration:none;transition:background .2s}
-.az__rail a:hover,.az__rail a.on{background:var(--yel)}
+.az__rail a:hover,.az__rail a.on{background:var(--green);color:var(--linen)}
 .az__rail span{color:rgba(18,48,31,.25)}
 .az__g{display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding:26px 0;border-top:1px solid rgba(18,48,31,.12);scroll-margin-top:100px}
 .az__letter{font:300 44px/1 var(--serif);color:var(--rust)}
@@ -280,6 +280,11 @@ body:has(.nav.is-hidden) .side{top:24px}
 .nav,.nav.stuck{border-bottom:0!important}
 a.btn{text-decoration:none}
 .nav .logo{margin-right:auto}
+/* round 2 (10 Nov): square buttons and controls, linen main button on green, no glow-ring hovers */
+.btn,button.btn,a.btn,.chip,.sf,.tab,.lk,.az__rail a,input.in,select.in,textarea.in,.srch input,.seg button,.flt button,.side a{border-radius:0!important}
+.btn-y{background:#F5F3EF!important;border-color:#F5F3EF!important;color:#12301F!important}
+.btn-y:hover{background:rgba(245,243,239,.84)!important;border-color:rgba(245,243,239,.84)!important;box-shadow:none!important}
+.btn-g:hover{background:rgba(18,48,31,.86)!important;box-shadow:none!important}
 /* footer column headings in SecondLane yellow */
 .ft__col b{color:#E3FD5A!important}
 </style>
@@ -313,31 +318,31 @@ a.btn{text-decoration:none}
         <p class="count" id="count" aria-live="polite"></p>
         <div class="grp" data-s="AI">
           <div class="band"><h3>AI</h3><p>Model builders, AI chips and the data companies behind them.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="AI" data-n="anthropic"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anthropic</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="anthropic.html">View company</a></td></tr><tr data-s="AI" data-n="openai"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OpenAI</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="perplexity"><td><span class="co"><i class="co__lg" aria-hidden="true">P</i>Perplexity</span></td><td>AI search</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="tenstorrent"><td><span class="co"><i class="co__lg" aria-hidden="true">T</i>Tenstorrent</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="databricks"><td><span class="co"><i class="co__lg" aria-hidden="true">D</i>Databricks</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="groq"><td><span class="co"><i class="co__lg" aria-hidden="true">G</i>Groq</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="AI" data-n="scale ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Scale AI</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="AI" data-n="anthropic"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anthropic</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="anthropic.html">View company</a></td></tr><tr data-s="AI" data-n="openai"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OpenAI</span></td><td>AI</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=OpenAI">Get introduced</a></td></tr><tr data-s="AI" data-n="perplexity"><td><span class="co"><i class="co__lg" aria-hidden="true">P</i>Perplexity</span></td><td>AI search</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Perplexity">Get introduced</a></td></tr><tr data-s="AI" data-n="tenstorrent"><td><span class="co"><i class="co__lg" aria-hidden="true">T</i>Tenstorrent</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Tenstorrent">Get introduced</a></td></tr><tr data-s="AI" data-n="databricks"><td><span class="co"><i class="co__lg" aria-hidden="true">D</i>Databricks</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Databricks">Get introduced</a></td></tr><tr data-s="AI" data-n="groq"><td><span class="co"><i class="co__lg" aria-hidden="true">G</i>Groq</span></td><td>AI chips</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Groq">Get introduced</a></td></tr><tr data-s="AI" data-n="scale ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Scale AI</span></td><td>AI data</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Scale AI">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Defense">
           <div class="band"><h3>Defense</h3><p>Autonomy and the companies rebuilding defense production.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Defense" data-n="anduril"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anduril</span></td><td>Defense and robotics</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Defense" data-n="shield ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Shield AI</span></td><td>Defense</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Defense" data-n="anduril"><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anduril</span></td><td>Defense and robotics</td><td><span class="ist ist--hot">Most active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Anduril">Get introduced</a></td></tr><tr data-s="Defense" data-n="shield ai"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Shield AI</span></td><td>Defense</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Shield AI">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Space">
           <div class="band"><h3>Space</h3><p>Launch and the supply chain in orbit.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Space" data-n="blue origin"><td><span class="co"><i class="co__lg" aria-hidden="true">B</i>Blue Origin</span></td><td>Space</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Space" data-n="blue origin"><td><span class="co"><i class="co__lg" aria-hidden="true">B</i>Blue Origin</span></td><td>Space</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Blue Origin">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Digital assets and markets">
           <div class="band"><h3>Digital assets and markets</h3><p>Payments networks and prediction markets.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Digital assets and markets" data-n="ripple"><td><span class="co"><i class="co__lg" aria-hidden="true">R</i>Ripple</span></td><td>Digital assets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Digital assets and markets" data-n="kalshi"><td><span class="co"><i class="co__lg" aria-hidden="true">K</i>Kalshi</span></td><td>Markets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Digital assets and markets" data-n="ripple"><td><span class="co"><i class="co__lg" aria-hidden="true">R</i>Ripple</span></td><td>Digital assets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Ripple">Get introduced</a></td></tr><tr data-s="Digital assets and markets" data-n="kalshi"><td><span class="co"><i class="co__lg" aria-hidden="true">K</i>Kalshi</span></td><td>Markets</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Kalshi">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Fintech">
           <div class="band"><h3>Fintech</h3><p>Payments infrastructure for the internet.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Fintech" data-n="stripe"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Stripe</span></td><td>Fintech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Fintech" data-n="stripe"><td><span class="co"><i class="co__lg" aria-hidden="true">S</i>Stripe</span></td><td>Fintech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Stripe">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Robotics and neurotech">
           <div class="band"><h3>Robotics and neurotech</h3><p>Humanoid robots and brain-computer interfaces.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Robotics and neurotech" data-n="figure ai"><td><span class="co"><i class="co__lg" aria-hidden="true">F</i>Figure AI</span></td><td>Robotics</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Robotics and neurotech" data-n="neuralink"><td><span class="co"><i class="co__lg" aria-hidden="true">N</i>Neuralink</span></td><td>Neurotech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Robotics and neurotech" data-n="figure ai"><td><span class="co"><i class="co__lg" aria-hidden="true">F</i>Figure AI</span></td><td>Robotics</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Figure AI">Get introduced</a></td></tr><tr data-s="Robotics and neurotech" data-n="neuralink"><td><span class="co"><i class="co__lg" aria-hidden="true">N</i>Neuralink</span></td><td>Neurotech</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Neuralink">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="grp" data-s="Consumer and software">
           <div class="band"><h3>Consumer and software</h3><p>Games, design tools and creator platforms.</p></div>
-          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Consumer and software" data-n="epic games"><td><span class="co"><i class="co__lg" aria-hidden="true">E</i>Epic Games</span></td><td>Gaming</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Consumer and software" data-n="canva"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>Canva</span></td><td>Software</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr><tr data-s="Consumer and software" data-n="onlyfans"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OnlyFans</span></td><td>Creator platform</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="#top">View company</a></td></tr></tbody></table>
+          <table class="dir"><thead><tr><th>Company</th><th>Focus</th><th>Interest</th><th><span class="sr">Profile</span></th></tr></thead><tbody><tr data-s="Consumer and software" data-n="epic games"><td><span class="co"><i class="co__lg" aria-hidden="true">E</i>Epic Games</span></td><td>Gaming</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Epic Games">Get introduced</a></td></tr><tr data-s="Consumer and software" data-n="canva"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>Canva</span></td><td>Software</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=Canva">Get introduced</a></td></tr><tr data-s="Consumer and software" data-n="onlyfans"><td><span class="co"><i class="co__lg" aria-hidden="true">O</i>OnlyFans</span></td><td>Creator platform</td><td><span class="ist ist--on">Active</span></td><td><a class="lk" href="contact.html?topic=buy&amp;company=OnlyFans">Get introduced</a></td></tr></tbody></table>
         </div>
         <div class="empty" id="empty"><b>No companies match that search.</b>Try another name, or clear the filters.</div>
       </section>
@@ -365,15 +370,15 @@ a.btn{text-decoration:none}
         <div class="shead"><span class="lab">IPO Watch</span><h2>Upcoming IPOs 2026, and how to own them before the bell.</h2><p class="lead">Private companies with a reported listing window, and where each one stands today.</p></div>
         <table class="dir"><thead><tr><th>Company</th><th>Sector</th><th>Reported timing</th><th><span class="sr">Profile</span></th></tr></thead><tbody>
           <tr><td><span class="co"><i class="co__lg" aria-hidden="true">A</i>Anthropic</span></td><td>AI</td><td>Reported as early as October</td><td><a class="lk" href="anthropic.html">View company</a></td></tr>
-          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="#top">View company</a></td></tr>
-          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="#top">View company</a></td></tr>
+          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="contact.html?topic=buy&amp;company=[Company]">Get introduced</a></td></tr>
+          <tr class="ph-row"><td><span class="co"><i class="co__lg" aria-hidden="true">C</i>[Company]</span></td><td>[Sector]</td><td>[Reported timing, with source]</td><td><a class="lk" href="contact.html?topic=buy&amp;company=[Company]">Get introduced</a></td></tr>
         </tbody></table>
       </section>
 
       <!-- Buying guide -->
       <section id="guide">
         <article class="guide">
-          <div class="guide__t"><span class="lab">Guide</span><h2>How to buy pre-IPO stock in 2026 (and get an allocation).</h2><p class="lead">Who can take part, how secondary opportunities are introduced, and what to read before you commit.</p><a class="btn btn-g" href="#top">Read the guide</a></div>
+          <div class="guide__t"><span class="lab">Guide</span><h2>How to buy pre-IPO stock in 2026 (and get an allocation).</h2><p class="lead">Who can take part, how secondary opportunities are introduced, and what to read before you commit.</p><a class="btn btn-g" href="#glossary">Read the glossary</a></div>
           <div class="guide__img"><img src="assets/pb1.jpg" alt=""></div>
         </article>
       </section>
@@ -403,13 +408,13 @@ a.btn{text-decoration:none}
         <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane" style="background:var(--linen)"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
         <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
         <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
-        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="access.html">Contact</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="contact.html">Contact</a></div>
       </div>
       <div class="ft__notes">
         <span><sup>1</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span>
         <span><sup>2</sup> Company names are trademarks of their owners. SecondLane is not affiliated with the companies listed. Interest levels are illustrative.</span>
       </div>
-      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></nav></div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#cookies">Cookies</a></nav></div>
     </div>
   </footer>
 </main>
