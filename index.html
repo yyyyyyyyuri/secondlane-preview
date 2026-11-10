@@ -248,12 +248,15 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 body{margin:0}
 
 /* ===== Home round 2 (10 Nov) ===== */
+/* nav as on Capital: full bleed, 88px resting, 72px once scrolled */
+.nav .wrap{max-width:none;height:88px}.nav.stuck .wrap{height:72px}
+.hero{margin-top:-88px;padding-top:88px}
 .sec{padding-block:152px}
 /* hero: satellite artwork, quiet numbers */
 .hero--sat{min-height:max(720px,100svh)}
 .hero__sat{position:absolute;inset:0;display:block;overflow:hidden}
 .hero__sat img{position:absolute;right:0;bottom:0;width:min(87vw,1760px);height:auto}
-.hero--sat .wrap{display:flex;flex-direction:column;justify-content:center;min-height:calc(max(720px,100svh) - 96px);padding-bottom:60px}
+.hero--sat .wrap{display:flex;flex-direction:column;justify-content:center;min-height:calc(max(720px,100svh) - 88px);padding-bottom:60px}
 .hero--sat .hero__body{max-width:640px;padding-block:0}
 .hero__foot{position:absolute;left:0;right:0;bottom:36px;display:flex;flex-direction:column;gap:10px;padding-inline:inherit}
 .proof{font:500 12px/16px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--linen)}
