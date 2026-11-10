@@ -339,7 +339,8 @@ main [data-theme="linen"] .sq--g:hover{background:rgba(18,48,31,.06)}
 .mt.on{border-top-color:var(--rust);color:var(--rust)}
 .mt:hover{color:var(--rust)}.mt:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .mi__nav{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:24px;color:var(--green)}.mi__nav .tst__count{margin-right:12px}
-/* team: halftones fade into the green, one frame for all four */
+/* team: seven portraits in the client style, 4 + 3 */
+.team{row-gap:56px}.tm b{font-size:28px}
 .tm .ph{aspect-ratio:4/5;border-radius:0;background:none;overflow:visible}
 .tm .ph img{transform:none;-webkit-mask-image:radial-gradient(ellipse 66% 70% at 50% 44%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 66% 70% at 50% 44%,#000 60%,transparent 100%)}
 /* insights cards on linen */
@@ -532,12 +533,7 @@ a.btn{text-decoration:none}
     <section class="sec" id="team" data-theme="green">
       <div class="wrap">
         <div class="head"><div style="display:flex;flex-direction:column;gap:28px"><h2 class="h2" style="font-size:54px">Meet our team</h2></div><p class="lead">Led by operators from Tier 1 finance, digital assets and energy, we are powering the next generation of private markets, turning decades of experience into bespoke liquidity solutions across secondaries.</p></div>
-        <div class="team rv" id="teamGrid">
-          <div class="tm" style="--i:0"><div class="ph"><img src="assets/pt-benjamin-roth.webp" alt=""></div><b>Name Surname</b><span>Role</span></div>
-          <div class="tm" style="--i:1"><div class="ph"><img src="assets/pt-frank-wang.webp" alt=""></div><b>Name Surname</b><span>Role</span></div>
-          <div class="tm" style="--i:2"><div class="ph"><img src="assets/pt-jordi-alexander.webp" alt=""></div><b>Name Surname</b><span>Role</span></div>
-          <div class="tm" style="--i:3"><div class="ph"><img src="assets/pt-lior-messika.webp" alt=""></div><b>Name Surname</b><span>Role</span></div>
-        </div>
+        <div class="team rv" id="teamGrid"><div class="tm" style="--i:0"><div class="ph"><img src="assets/tm-omar-shakeeb.webp" alt="" width="640" height="800" loading="lazy"></div><b>Omar Shakeeb</b><span>Chief Executive Officer</span></div><div class="tm" style="--i:1"><div class="ph"><img src="assets/tm-oleg-ivanov.webp" alt="" width="640" height="800" loading="lazy"></div><b>Oleg Ivanov</b><span>Chief Operating Officer</span></div><div class="tm" style="--i:2"><div class="ph"><img src="assets/tm-nick-cote.webp" alt="" width="640" height="800" loading="lazy"></div><b>Nick Cote</b><span>Chief AI Strategy Officer</span></div><div class="tm" style="--i:3"><div class="ph"><img src="assets/tm-andre-nabais.webp" alt="" width="640" height="800" loading="lazy"></div><b>André Nabais</b><span>Chief Financial Officer</span></div><div class="tm" style="--i:4"><div class="ph"><img src="assets/tm-miguel-nabais.webp" alt="" width="640" height="800" loading="lazy"></div><b>Miguel Nabais</b><span>Chief Business Development Officer</span></div><div class="tm" style="--i:5"><div class="ph"><img src="assets/tm-eugenie-gutmann.webp" alt="" width="640" height="800" loading="lazy"></div><b>Eugenie Gutmann</b><span>Chief Marketing Officer</span></div><div class="tm" style="--i:6"><div class="ph"><img src="assets/tm-matthew-wimberly.webp" alt="" width="640" height="800" loading="lazy"></div><b>Matthew Wimberly</b><span>Chief Technology Officer</span></div></div>
       </div>
     </section>
 
