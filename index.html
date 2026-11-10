@@ -367,6 +367,120 @@ main [data-theme="linen"] .sq--g:hover{background:rgba(18,48,31,.06)}
  .rail[data-theme="linen"]{padding-block:72px 0}
 }
 
+/* hero text entrance (9 Nov): the headline rises word by word, then the copy and actions follow */
+.hx h1 .w{display:inline-block;opacity:0;transform:translateY(.42em);animation:hxw .95s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d)*55ms + 150ms)}
+.hx>:not(h1):not(nav){opacity:0;animation:hxr .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--dl,600ms)}
+@keyframes hxw{to{opacity:1;transform:none}}
+@keyframes hxr{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hx h1 .w,.hx>*{opacity:1!important;transform:none!important;animation:none!important}}
+
+/* ===== Home round 3 (10 Nov walkthrough) ===== */
+main [data-theme="white"]{--bg:#FFFFFF;--fg:var(--green);--sub:var(--mute);--lead:var(--mute);--rule:rgba(18,48,31,.12)}
+main [data-theme="white"] .lab{color:var(--rust)}
+/* stand-firsts sit under their titles */
+.head{display:block}.head .lead{margin-top:24px;max-width:40em}.head>div{display:block}
+/* nav: one outlined action */
+.nav__out{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px 0 20px;border:1px solid rgba(245,243,239,.6);color:var(--linen);text-decoration:none;font:500 15px/1 var(--sans);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.nav__out svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;transition:transform .2s}
+.nav__out:hover,.nav__out:active{background:var(--linen);border-color:var(--linen);color:var(--green)}
+.nav__out:hover svg{transform:translateX(3px)}
+.nav__out:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+/* hero: artwork slides in from the right */
+.hero__sat img{animation:satin 1.8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes satin{from{opacity:0;transform:translateX(9%)}to{opacity:1;transform:none}}
+/* who */
+.who3{position:relative;min-height:min(1000px,max(820px,70vw));display:flex;align-items:center}
+.who3__img{position:absolute;left:0;top:0;bottom:0;width:50%}
+.who3__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:100% 60%}
+.who3[data-v="a"] .vb,.who3[data-v="b"] .va{display:none}
+.who3 .vb{-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%)}
+.who3__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%}
+.who3__r{grid-column:2;padding-left:56px}
+.who3__h{margin-top:18px;font-size:52px;line-height:1.05}
+.who3 .lead{margin:24px 0 36px;max-width:none}
+.who3 .acc,.who3 .acc__i{border:0}
+.who3 .acc__q{grid-template-columns:minmax(0,1fr);padding:16px 0}
+.who3 .acc__t b{transition:opacity .25s;opacity:.45}
+.who3 .acc__t em{opacity:.45;transition:opacity .25s}
+.who3 .acc__q:hover b,.who3 .acc__q:hover em,.who3 .acc__i.open b,.who3 .acc__i.open em{opacity:1}
+.who3 .acc__a>div{padding-left:0}
+/* how it works: photo instead of the panel */
+.plat3 .pi{color:var(--mute)}.plat3 .pi.on{color:var(--green)}
+.plat3 .pi svg{border-color:var(--rule)}.plat3 .pi p{color:var(--mute)}
+.stage--img{height:600px;border:0;border-radius:0;background:none}
+.stage--img img{width:100%;height:100%;object-fit:cover}
+/* verticals: light cards */
+.verts2 .vc{background:#FFFFFF;color:var(--green);border:1px solid rgba(18,48,31,.1);border-radius:0}
+.verts2 .vc p{color:var(--mute)}.verts2 .vc .lab{color:var(--rust)!important}
+.verts2 .vc .ph{border-radius:0}
+.verts2[data-v="b"]{--bg:#FFFFFF}.verts2[data-v="b"] .vc{background:var(--linen);border-color:transparent}
+.rail[data-theme="linen"]{background:var(--linen)}
+.vc:hover{box-shadow:0 20px 50px rgba(18,48,31,.14)}
+/* market insights: full-bleed photo, white card */
+.mi3{position:relative;overflow:hidden;min-height:820px;display:flex;align-items:center;padding-block:120px}
+.mi3__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mi3__wrap{position:relative;width:100%;display:flex;justify-content:center}
+.mi3[data-v="b"] .mi3__wrap{justify-content:flex-start}
+.mi3__card{background:#FFFFFF;color:var(--green);max-width:640px;padding:56px;display:flex;flex-direction:column;gap:20px}
+.mi3[data-v="a"] .mi3__card{text-align:center;align-items:center}
+.mi3__card .h2{font-size:52px}
+.mi3__card .lead{color:var(--mute)}
+.mi3__card form{width:100%;margin-top:8px}
+/* testimonials: wide slides, progress bar */
+.tst3{padding-block:128px 112px;overflow:hidden}
+.tst3{--edge:max(64px,calc((100vw - var(--max))/2 + 64px))}
+.tst3__track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--edge);padding-inline:var(--edge);scrollbar-width:none;cursor:grab;outline:none}
+.tst3__track::-webkit-scrollbar{display:none}
+.tst3__track.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.ts{flex:0 0 min(80vw,1180px);scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:40px;align-items:center;padding:56px 64px;min-height:560px;background:rgba(245,243,239,.05);transition:opacity .4s}
+.tst3[data-v="b"] .ts{background:none;padding-inline:0}
+.ts:not(.on){opacity:.45}
+.ts__pull{font:400 42px/1.14 var(--serif);letter-spacing:-.012em;text-wrap:balance;margin:0}
+.ts__sub{font-size:18px;line-height:1.5;color:var(--stone);margin:22px 0 0;max-width:34em}
+.ts__who{margin:32px 0 0;display:flex;flex-direction:column;gap:4px}.ts__who b{font:500 19px/1.3 var(--sans)}.ts__who span{color:var(--sand)}
+.ts blockquote{margin:0}
+.ts__ph img{width:100%;height:auto;max-width:400px;margin-left:auto;-webkit-mask-image:radial-gradient(ellipse 56% 62% at 50% 44%,#000 42%,transparent 100%);mask-image:radial-gradient(ellipse 56% 62% at 50% 44%,#000 42%,transparent 100%);pointer-events:none}
+.tst3__bar{display:flex;align-items:center;gap:28px;margin-top:40px}
+.tst3__prog{flex:1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.tst3__prog button{all:unset;cursor:pointer;height:16px;display:flex;align-items:center}
+.tst3__prog button::before{content:"";display:block;width:100%;height:2px;background:rgba(245,243,239,.22)}
+.tst3__prog button{position:relative}
+.tst3__prog b{position:absolute;left:0;top:7px;height:2px;width:0;background:var(--linen)}
+.tst3__prog button.done b{width:100%}
+.tst3__prog button.run b{animation:prog var(--dur,7s) linear forwards}
+.tst3.paused .tst3__prog button.run b{animation-play-state:paused}
+@keyframes prog{to{width:100%}}
+.tst3__prog button:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+/* team: more room */
+.team3{padding-block:184px}.team3 .team{column-gap:40px;row-gap:96px}
+.team3[data-v="b"] .team{display:grid;grid-auto-flow:column;grid-auto-columns:300px;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.team3[data-v="b"] .tm{scroll-snap-align:start}
+/* insights: dark */
+.ins3 .ic{background:rgba(245,243,239,.05);border:1px solid rgba(245,243,239,.12);border-radius:0}
+.ins3 .ic .ph{border-radius:0}
+.ins3[data-v="b"] .ic{background:none;border:0;padding:0}
+.ins3[data-v="b"] .ic .ph{order:-1;margin:0 0 6px}
+/* options panel (prototype review only) */
+.opts{position:fixed;left:16px;bottom:16px;z-index:60;background:#FFFFFF;color:var(--green);box-shadow:0 12px 40px rgba(0,0,0,.25);font:400 13px/1.3 var(--sans);max-width:calc(100vw - 32px)}
+.opts__t{all:unset;cursor:pointer;display:block;padding:10px 14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.opts__b{padding:0 14px 12px;display:grid;gap:6px}
+.opts.min .opts__b{display:none}
+.opts__r{display:grid;grid-template-columns:118px auto auto;gap:6px;align-items:center}
+.opts__r button{all:unset;cursor:pointer;padding:5px 9px;border:1px solid rgba(18,48,31,.25);white-space:nowrap}
+.opts__r button.on{background:var(--green);color:var(--linen);border-color:var(--green)}
+.opts__r button:focus-visible,.opts__t:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+@media (max-width:900px){
+ .who3{display:flex;flex-direction:column;min-height:0;padding-bottom:0}.who3__grid{order:1}.who3__img{order:2}.who3__grid{grid-template-columns:minmax(0,1fr)}.who3__r{grid-column:1;padding-left:0}
+ .who3__img{position:relative;width:100%;height:420px;margin-top:48px}.who3__h{font-size:36px}
+ .stage--img{height:380px}
+ .mi3{min-height:0;padding-block:72px}.mi3__card{padding:32px 24px}.mi3__card .h2{font-size:36px}
+ .tst3{--edge:20px}.ts{flex-basis:86vw;grid-template-columns:minmax(0,1fr);padding:32px 24px;min-height:0}.ts__ph{order:-1}.ts__ph img{max-width:220px;margin:0}
+ .ts__pull{font-size:26px}
+ .team3{padding-block:104px}.team3 .team{row-gap:56px;column-gap:20px}
+ .opts__r{grid-template-columns:100px auto auto}
+}
+@media (prefers-reduced-motion:reduce){.hero__sat img{animation:none}}
+
 /* shared site nav: six links */
 .nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
 
@@ -395,8 +509,7 @@ a.btn{text-decoration:none}
     <div class="wrap">
       <a class="logo" href="index.html" aria-label="SecondLane home"></a>
       <nav class="nav__links" aria-label="Main"><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a><a href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
-      <a class="nav__sign" href="access.html">Sign in</a>
-      <a class="btn btn-y" href="access.html">Get introduced</a>
+      <a class="nav__out" href="access.html">Sign in<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </header>
 
@@ -421,24 +534,25 @@ a.btn{text-decoration:none}
     </section>
 
     <!-- 2. Who -->
-    <section class="sec who2" id="who" data-theme="linen">
-      <img class="who2__img" src="assets/office-dots.webp" alt="" width="1254" height="1254" loading="lazy">
-      <div class="wrap who2__grid">
-        <div class="who2__l"><span class="lab">Who we work with</span><h2 class="h2 who2__h">One platform from inception to succession.</h2></div>
-        <div class="who2__r">
+    <section class="sec who3" id="who" data-theme="linen" data-v="a">
+      <div class="who3__img" aria-hidden="true"><img class="va" src="assets/office-dots-r.webp" alt=""><img class="vb" src="assets/office-solid.jpg" alt=""></div>
+      <div class="wrap who3__grid">
+        <div class="who3__r">
+          <span class="lab">Who we work with</span>
+          <h2 class="h2 who3__h">One platform from inception to succession.</h2>
           <p class="lead">At SecondLane we cover the whole lifecycle: raising capital, releasing liquidity, planning the handover, and what comes after. Access to secondary market opportunities for funds and family offices, founders, qualified participants and partners.</p>
           <div class="acc" id="acc">
-<div class="acc__i open"><h3><button class="acc__q" type="button" id="accq1" aria-expanded="true" aria-controls="acca1"><span class="acc__n">01</span><span class="acc__t"><b>For funds &amp; institutions</b><em>Turn liquidity into AUM growth.</em></span><i class="acc__ic" aria-hidden="true"></i></button></h3><div class="acc__a" id="acca1" role="region" aria-labelledby="accq1"><div><p>Access the secondary market to return capital sooner, redeploy faster and support your next fundraise, from private equity secondaries to token interests.</p><a class="alink" href="prime.html">See how funds use Prime</a></div></div></div>
-<div class="acc__i"><h3><button class="acc__q" type="button" id="accq2" aria-expanded="false" aria-controls="acca2"><span class="acc__n">02</span><span class="acc__t"><b>For qualified participants</b><em>Don't wait for the IPO.</em></span><i class="acc__ic" aria-hidden="true"></i></button></h3><div class="acc__a" id="acca2" role="region" aria-labelledby="accq2"><div><p>Access Anthropic, OpenAI, Anduril and other category-defining companies while growth is still private. Institutional diligence, real opportunity valuation and clean completion come as standard.</p><a class="alink" href="access.html#join">Join the Access waitlist</a></div></div></div>
-<div class="acc__i"><h3><button class="acc__q" type="button" id="accq3" aria-expanded="false" aria-controls="acca3"><span class="acc__n">03</span><span class="acc__t"><b>For founders</b><em>Keep the people who built it.</em></span><i class="acc__ic" aria-hidden="true"></i></button></h3><div class="acc__a" id="acca3" role="region" aria-labelledby="accq3"><div><p>Afford the people you need next. Compliant tender offers and employee liquidity programs turn ownership interest into cash, ease sell pressure, broaden your participant base and help you stay private longer.</p><a class="alink" href="prime.html#founders">See founder liquidity</a></div></div></div>
-<div class="acc__i"><h3><button class="acc__q" type="button" id="accq4" aria-expanded="false" aria-controls="acca4"><span class="acc__n">04</span><span class="acc__t"><b>For integration partners</b><em>Add a revenue line without building a desk.</em></span><i class="acc__ic" aria-hidden="true"></i></button></h3><div class="acc__a" id="acca4" role="region" aria-labelledby="accq4"><div><p>Give your clients access to pre-IPO private company interest in hard-to-reach names, and earn on every opportunity. One API for opportunity valuation, private market data and completion.</p><a class="alink" href="contact.html?topic=partnerships">Talk to partnerships</a></div></div></div>
+<div class="acc__i open"><h3><button class="acc__q" type="button" id="accq1" aria-expanded="true" aria-controls="acca1"><span class="acc__t"><b>For funds &amp; institutions</b><em>Turn liquidity into AUM growth.</em></span></button></h3><div class="acc__a" id="acca1" role="region" aria-labelledby="accq1"><div><p>Access the secondary market to return capital sooner, redeploy faster and support your next fundraise, from private equity secondaries to token interests.</p><a class="alink" href="prime.html">See how funds use Prime</a></div></div></div>
+<div class="acc__i"><h3><button class="acc__q" type="button" id="accq2" aria-expanded="false" aria-controls="acca2"><span class="acc__t"><b>For qualified participants</b><em>Don't wait for the IPO.</em></span></button></h3><div class="acc__a" id="acca2" role="region" aria-labelledby="accq2"><div><p>Access Anthropic, OpenAI, Anduril and other category-defining companies while growth is still private. Institutional diligence, real opportunity valuation and clean completion come as standard.</p><a class="alink" href="access.html#join">Join the Access waitlist</a></div></div></div>
+<div class="acc__i"><h3><button class="acc__q" type="button" id="accq3" aria-expanded="false" aria-controls="acca3"><span class="acc__t"><b>For founders</b><em>Keep the people who built it.</em></span></button></h3><div class="acc__a" id="acca3" role="region" aria-labelledby="accq3"><div><p>Afford the people you need next. Compliant tender offers and employee liquidity programs turn ownership interest into cash, ease sell pressure, broaden your participant base and help you stay private longer.</p><a class="alink" href="prime.html#founders">See founder liquidity</a></div></div></div>
+<div class="acc__i"><h3><button class="acc__q" type="button" id="accq4" aria-expanded="false" aria-controls="acca4"><span class="acc__t"><b>For integration partners</b><em>Add a revenue line without building a desk.</em></span></button></h3><div class="acc__a" id="acca4" role="region" aria-labelledby="accq4"><div><p>Give your clients access to pre-IPO private company interest in hard-to-reach names, and earn on every opportunity. One API for opportunity valuation, private market data and completion.</p><a class="alink" href="contact.html?topic=partnerships">Talk to partnerships</a></div></div></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 3. How it works -->
-    <section class="sec" id="platform" data-theme="green">
+    <section class="sec plat3" id="platform" data-theme="white" data-v="a">
       <div class="wrap">
         <div class="head"><div><span class="lab">How it works</span><h2 class="h2" style="margin-top:14px">How introductions work</h2></div><p class="lead">From the first look at a company to an introduction both sides have been checked for.</p></div>
         <div class="plat">
@@ -448,13 +562,7 @@ a.btn{text-decoration:none}
             <button class="pi" type="button" role="tab" aria-selected="false" data-p="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V8M10 18V5M16 18v-7M22 18H2"></path></svg><span><h3>Raise and plan the handover</h3><p>Tender offers, employee liquidity and succession, timed around rounds, vesting and unlocks.</p></span></button>
             <button class="pi" type="button" role="tab" aria-selected="false" data-p="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg><span><h3>Verified on both sides</h3><p>Eligibility is checked before the first introduction, and every opportunity sits in its own dedicated vehicle.</p></span></button>
           </div>
-          <div class="stage" id="stage">
-            <canvas id="print" aria-hidden="true"></canvas>
-            <div class="pane on"><div class="frag"><span class="eb">Anthropic · Private · Public data</span><span class="fig">$[X]B</span><span class="sm">last publicly reported valuation, [date]</span><div class="kv"><div><span>Sector</span><span>AI</span></div><div><span>Interested parties</span><span>Holders and buyers</span></div><div><span>Who can join</span><span>Qualified participants</span></div></div><div style="padding-top:14px"><button class="btn btn-y" type="button" style="width:100%">Get introduced</button></div></div></div>
-            <div class="pane"><div class="frag"><span class="eb">Your position · [Company]</span><span class="fig">[X] interested</span><span class="sm">parties matched to your position this month</span><div class="kv"><div><span>Introductions</span><span>Confidential until agreed</span></div><div><span>Listing</span><span>Not required</span></div><div><span>Transfer rules</span><span>Checked first</span></div></div></div></div>
-            <div class="pane"><div class="frag"><span class="eb">Tender offer · [Company]</span><div class="kv"><div><span>1 · Set the window</span><span>Around the round and vesting</span></div><div><span>2 · Invite holders</span><span>Employees and early backers</span></div><div><span>3 · Meet participants</span><span>Verified, from the network</span></div></div></div></div>
-            <div class="pane"><div class="frag"><span class="eb">Eligibility · Before your first introduction</span><div class="kv ok"><div><span>Identity confirmed</span><i>Done</i></div><div><span>Accredited or qualified status</span><i>Done</i></div><div><span>Jurisdiction rules</span><i>Done</i></div><div><span>Opportunity vehicle</span><i>Its own dedicated vehicle</i></div></div></div></div>
-          </div>
+          <div class="stage stage--img"><img src="assets/people-funds.jpg" alt="" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -471,7 +579,7 @@ a.btn{text-decoration:none}
     </section>
 
     <!-- 6. Verticals -->
-    <section class="sec verts2" id="verticals" data-theme="linen">
+    <section class="sec verts2" id="verticals" data-theme="linen" data-v="a">
       <div class="wrap">
         <div class="head"><div><span class="lab">Three verticals</span><h2 class="h2" style="margin-top:14px">Liquidity starts here.</h2></div><p class="lead">Three verticals connect our participants and founders to private market opportunities. Get in early, build at scale or move a position on. Choose the vertical that fits how you participate.</p></div>
         <div class="vg rv" id="vg">
@@ -482,55 +590,32 @@ a.btn{text-decoration:none}
       </div>
     </section>
 
-    <!-- 5. Testimonials -->
-    <section class="sec tst" id="clients" data-theme="green">
-      <div class="wrap">
-        <div class="tst__stage">
-          <div class="tst__txt">
-            <span class="lab">We do it for their success</span>
-            <blockquote class="tst__q" id="tstQ"><p class="tst__pull">“With the strongest network in the industry and exceptional market visibility, SecondLane excels.”</p><p class="tst__sub">The team&#x27;s expertise, communication, and ongoing support are truly best-in-class.</p></blockquote>
-            <p class="tst__who" id="tstWho"><b>Santiago R Santos</b><span>Founder, SRS Family Office</span></p>
-          </div>
-          <div class="tst__ph"><img id="tstImg" src="assets/pt-santiago-r-santos.webp" alt="" width="640" height="800"></div>
+    <!-- 6. Market insights -->
+    <section class="sec mi3" id="report" data-theme="linen" data-v="a">
+      <img class="mi3__bg" src="assets/water-full.jpg" alt="" loading="lazy">
+      <div class="wrap mi3__wrap">
+        <div class="mi3__card report-f" id="reportBox">
+          <span class="lab">Monthly research</span>
+          <h2 class="h2">Market insights</h2>
+          <p class="lead">Make better decisions with private market data on secondary market volumes, valuations, opportunity maturities, premiums, discounts and opportunity valuation spreads. Our monthly report brings it together so you can benchmark opportunities, set expectations and negotiate with a clearer view of the market.</p>
+          <form class="fl" id="reportForm" novalidate>
+            <label class="fl__l" for="report-email">Email</label>
+            <div class="frow"><input class="in" id="report-email" type="email" placeholder="you@company.com" autocomplete="email" required><button class="btn btn-g" type="submit">Get the report</button></div>
+            <span class="fl__h">We use your email only for the report. Leave at any time.</span>
+          </form>
+          <div class="done" role="status"><b>You're on the list.</b><span class="fl__h">The next report lands at the start of next month.</span></div>
         </div>
-        <div class="tst__bar"><span class="lab">Choose a client</span><span class="tst__nav"><span class="tst__count" id="tstCount">01 / 09</span><button class="sq" type="button" id="tstPrev" aria-label="Previous client"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button class="sq sq--y" type="button" id="tstNext" aria-label="Next client"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></span></div>
-        <div class="tst__pick" id="tstPick" role="tablist" aria-label="Clients"><button class="tp on" type="button" role="tab" aria-selected="true" data-i="0"><img src="assets/pt-santiago-r-santos-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Santiago R Santos</b><em>SRS Family Office</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="1"><img src="assets/pt-roger-lim-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Roger Lim</b><em>NGC Ventures</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="2"><img src="assets/pt-min-teo-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Min Teo</b><em>Ethereal Ventures</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="3"><img src="assets/pt-frank-wang-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Frank Wang</b><em>BitGo</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="4"><img src="assets/pt-lior-messika-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Lior Messika</b><em>Eden Block</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="5"><img src="assets/pt-diego-perez-de-ayala-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Diego Perez de Ayala</b><em>Frictionless Fund</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="6"><img src="assets/pt-benjamin-roth-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Benjamin Roth</b><em>Auros</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="7"><img src="assets/pt-jordi-alexander-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Jordi Alexander</b><em>Selini Capital</em></span></button><button class="tp" type="button" role="tab" aria-selected="false" data-i="8"><img src="assets/pt-andrew-kang-sm.webp" alt="" width="64" height="80" loading="lazy"><span><b>Andrew Kang</b><em>Mechanism Capital</em></span></button></div>
       </div>
     </section>
 
-    <!-- 6. Market insights -->
-    <section class="sec mi" id="report" data-theme="linen">
-      <img class="mi__water" src="assets/water-band.webp" alt="" width="1800" height="860" loading="lazy">
-      <div class="wrap mi__grid">
-        <div class="mi__l">
-          <span class="lab">Monthly research</span>
-          <h2 class="h2 mi__h">Market insights</h2>
-          <p class="lead">Make better decisions with private market data on secondary market volumes, valuations, opportunity maturities, premiums, discounts and opportunity valuation spreads. Our monthly report brings it together so you can benchmark opportunities, set expectations and negotiate with a clearer view of the market.</p>
-          <div class="report-f" id="reportBox">
-            <form class="fl" id="reportForm" novalidate>
-              <label class="fl__l" for="report-email">Email</label>
-              <div class="frow"><input class="in" id="report-email" type="email" placeholder="you@company.com" autocomplete="email" required><button class="btn btn-g" type="submit">Get the report</button></div>
-              <span class="fl__h">We use your email only for the report. Leave at any time.</span>
-            </form>
-            <div class="done" role="status"><b>You're on the list.</b><span class="fl__h">The next report lands at the start of next month.</span></div>
-          </div>
-        </div>
-        <div class="mi__r">
-          <div class="mi__chart">
-            <h3 class="mi__t" id="miTitle">Order book activity</h3>
-            <p class="mi__note">Illustrative chart</p>
-            <div class="mi__svg" id="miSvg" role="img" aria-label="Illustrative chart"></div>
-          </div>
-          <div class="mi__tabs" role="tablist" aria-label="Chart">
-            <button class="mt on" type="button" role="tab" aria-selected="true" data-c="0">Order book</button><button class="mt" type="button" role="tab" aria-selected="false" data-c="1">Buy / sell</button><button class="mt" type="button" role="tab" aria-selected="false" data-c="2">Pricing</button>
-          </div>
-          <div class="mi__nav"><span class="tst__count" id="miCount">01 / 03</span><button class="sq sq--g" type="button" id="miPrev" aria-label="Previous chart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button class="sq sq--y" type="button" id="miNext" aria-label="Next chart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
-        </div>
-      </div>
+    <!-- 7. Testimonials -->
+    <section class="sec tst3" id="clients" data-theme="green" data-v="a" aria-roledescription="carousel" aria-label="What our clients say">
+      <div class="tst3__track" id="tstTrack" tabindex="0"><article class="ts" aria-roledescription="slide" aria-label="1 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“With the strongest network in the industry and exceptional market visibility, SecondLane excels.”</p><p class="ts__sub">The team's expertise, communication, and ongoing support are truly best-in-class.</p></blockquote><p class="ts__who"><b>Santiago R Santos</b><span>Founder, SRS Family Office</span></p></div><div class="ts__ph"><img src="assets/pt-santiago-r-santos.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="2 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“Working with SecondLane has been a game-changer for us in navigating the digital assets private market.”</p><p class="ts__sub">Their team has been exceptional—their expertise and proactive approach have made the entire process seamless and efficient.</p></blockquote><p class="ts__who"><b>Roger Lim</b><span>Partner, NGC Ventures</span></p></div><div class="ts__ph"><img src="assets/pt-roger-lim.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="3 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“Their expertise in secondary markets and high regulatory standards make SecondLane an invaluable resource for ventures in the private digital asset market.”</p><p class="ts__sub">For companies seeking reliable, future-focused liquidity options, SecondLane offers the insight and support to navigate liquidity with confidence and foresight.</p></blockquote><p class="ts__who"><b>Min Teo</b><span>Managing Partner, Ethereal Ventures</span></p></div><div class="ts__ph"><img src="assets/pt-min-teo.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="4 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“Through SecondLane, we've simplified the process by grouping smaller investors, making onboarding and contracting far more efficient.”</p><p class="ts__sub">Additionally, we get introductions to key foundations from SecondLane, helping BitGo form valuable partnerships.</p></blockquote><p class="ts__who"><b>Frank Wang</b><span>Executive Director of Platform Sales, BitGo</span></p></div><div class="ts__ph"><img src="assets/pt-frank-wang.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="5 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“SecondLane has proven to be a standout partner in the secondary digital asset market, bringing unmatched credibility, market expertise, and efficiency.”</p><p class="ts__sub">For any company navigating complex liquidity needs in private digital markets, SecondLane is the partner that truly understands and meets the demands of the ecosystem.</p></blockquote><p class="ts__who"><b>Lior Messika</b><span>Founder & CEO, Eden Block</span></p></div><div class="ts__ph"><img src="assets/pt-lior-messika.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="6 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“Frictionless Fund is dedicated to investing in transformative, high-performance blockchain projects, and SecondLane is a key ally in that mission.”</p><p class="ts__sub">With expertise, strong regulatory standards and a global client network, SecondLane offers a market-leading platform that offers top-tier opportunities across the stack.</p></blockquote><p class="ts__who"><b>Diego Perez de Ayala</b><span>Co-Founder and Managing Partner, Frictionless Fund</span></p></div><div class="ts__ph"><img src="assets/pt-diego-perez-de-ayala.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="7 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“SecondLane distinguishes itself not only as a deal facilitator but as a strategic partner skilled in managing complex transactions.”</p><p class="ts__sub">Their insight, transparency, and commitment to client success make them invaluable in the digital asset space.</p></blockquote><p class="ts__who"><b>Benjamin Roth</b><span>Co-Founder & Chief Investment Officer, Auros</span></p></div><div class="ts__ph"><img src="assets/pt-benjamin-roth.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="8 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“We are impressed with the team's market insight, clear communication, and consistent ability to deliver results.”</p></blockquote><p class="ts__who"><b>Jordi Alexander</b><span>Founder, Selini Capital</span></p></div><div class="ts__ph"><img src="assets/pt-jordi-alexander.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article><article class="ts" aria-roledescription="slide" aria-label="9 of 9"><div class="ts__txt"><blockquote><p class="ts__pull">“Having worked closely with SecondLane for over six years, I can confidently say they are one of the top firms in the secondary market space.”</p><p class="ts__sub">Their deep expertise, professionalism, and commitment to delivering results make them an exceptional partner in this rapidly evolving landscape.</p></blockquote><p class="ts__who"><b>Andrew Kang</b><span>Managing Partner, Mechanism Capital</span></p></div><div class="ts__ph"><img src="assets/pt-andrew-kang.webp" alt="" width="640" height="800" loading="lazy" draggable="false"></div></article></div>
+      <div class="wrap tst3__bar"><div class="tst3__prog" id="tstProg"><button type="button" aria-label="Show client 1"><b></b></button><button type="button" aria-label="Show client 2"><b></b></button><button type="button" aria-label="Show client 3"><b></b></button><button type="button" aria-label="Show client 4"><b></b></button><button type="button" aria-label="Show client 5"><b></b></button><button type="button" aria-label="Show client 6"><b></b></button><button type="button" aria-label="Show client 7"><b></b></button><button type="button" aria-label="Show client 8"><b></b></button><button type="button" aria-label="Show client 9"><b></b></button></div><span class="tst__count" id="tstCount">01 / 09</span></div>
     </section>
 
     <!-- 7. Team -->
-    <section class="sec" id="team" data-theme="green">
+    <section class="sec team3" id="team" data-theme="green" data-v="a">
       <div class="wrap">
         <div class="head"><div style="display:flex;flex-direction:column;gap:28px"><h2 class="h2" style="font-size:54px">Meet our team</h2></div><p class="lead">Led by operators from Tier 1 finance, digital assets and energy, we are powering the next generation of private markets, turning decades of experience into bespoke liquidity solutions across secondaries.</p></div>
         <div class="team rv" id="teamGrid"><div class="tm" style="--i:0"><div class="ph"><img src="assets/tm-omar-shakeeb.webp" alt="" width="640" height="800" loading="lazy"></div><b>Omar Shakeeb</b><span>Chief Executive Officer</span></div><div class="tm" style="--i:1"><div class="ph"><img src="assets/tm-oleg-ivanov.webp" alt="" width="640" height="800" loading="lazy"></div><b>Oleg Ivanov</b><span>Chief Operating Officer</span></div><div class="tm" style="--i:2"><div class="ph"><img src="assets/tm-nick-cote.webp" alt="" width="640" height="800" loading="lazy"></div><b>Nick Cote</b><span>Chief AI Strategy Officer</span></div><div class="tm" style="--i:3"><div class="ph"><img src="assets/tm-andre-nabais.webp" alt="" width="640" height="800" loading="lazy"></div><b>André Nabais</b><span>Chief Financial Officer</span></div><div class="tm" style="--i:4"><div class="ph"><img src="assets/tm-miguel-nabais.webp" alt="" width="640" height="800" loading="lazy"></div><b>Miguel Nabais</b><span>Chief Business Development Officer</span></div><div class="tm" style="--i:5"><div class="ph"><img src="assets/tm-eugenie-gutmann.webp" alt="" width="640" height="800" loading="lazy"></div><b>Eugenie Gutmann</b><span>Chief Marketing Officer</span></div><div class="tm" style="--i:6"><div class="ph"><img src="assets/tm-matthew-wimberly.webp" alt="" width="640" height="800" loading="lazy"></div><b>Matthew Wimberly</b><span>Chief Technology Officer</span></div></div>
@@ -538,7 +623,7 @@ a.btn{text-decoration:none}
     </section>
 
     <!-- 8. Insights -->
-    <section class="sec ins2" id="insights" data-theme="linen">
+    <section class="sec ins3" id="insights" data-theme="green" data-v="a">
       <div class="wrap">
         <div class="head"><div><h2 class="h2">Insights</h2></div><p class="lead">Explore what's moving in private markets, and why. Trends, expert takes and the numbers behind the opportunities.</p></div>
         <div class="ig rv" id="ig">
@@ -579,6 +664,7 @@ a.btn{text-decoration:none}
         <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#cookies">Cookies</a></nav></div>
       </div>
     </footer>
+<aside class="opts" id="opts" aria-label="Prototype options"><button class="opts__t" type="button" aria-expanded="true">Options</button><div class="opts__b"><div class="opts__r" data-s="who"><span>Who we work with</span><button type="button" data-v="a" class="on">Dot edge</button><button type="button" data-v="b">Soft fade</button></div><div class="opts__r" data-s="platform"><span>How it works</span><button type="button" data-v="a" class="on">White</button><button type="button" data-v="b">Linen</button></div><div class="opts__r" data-s="verticals"><span>Verticals</span><button type="button" data-v="a" class="on">White cards</button><button type="button" data-v="b">Linen cards</button></div><div class="opts__r" data-s="report"><span>Market insights</span><button type="button" data-v="a" class="on">Centred card</button><button type="button" data-v="b">Left card</button></div><div class="opts__r" data-s="clients"><span>Testimonials</span><button type="button" data-v="a" class="on">Cards</button><button type="button" data-v="b">Open</button></div><div class="opts__r" data-s="team"><span>Team</span><button type="button" data-v="a" class="on">Grid</button><button type="button" data-v="b">Row</button></div><div class="opts__r" data-s="insights"><span>Insights</span><button type="button" data-v="a" class="on">Dark cards</button><button type="button" data-v="b">No cards</button></div></div></aside>
   </main>
 </div>
 
@@ -661,6 +747,16 @@ a.btn{text-decoration:none}
 document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ location.href=c.dataset.href; } c.addEventListener('click',go); c.addEventListener('keydown',function(e){ if(e.key==='Enter') go(); }); });
 </script>
 <script>
+/* hero text entrance: split the headline into words; the rest follows once the last word is up */
+(function(){
+  var b=document.querySelector('.hero__body'); if(!b) return; var h=b.querySelector('h1'); if(!h) return;
+  var words=h.textContent.trim().split(/\s+/); h.setAttribute('aria-label',h.textContent.trim());
+  h.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="--d:'+i+'">'+w+'</span>';}).join(' ');
+  var t=150+words.length*55+260; [].slice.call(b.children).forEach(function(c){ if(c.tagName!=='H1'&&c.tagName!=='NAV'){ c.style.setProperty('--dl',t+'ms'); t+=130; } });
+  b.classList.add('hx');
+})();
+</script>
+<script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* who: one answer open at a time */
@@ -669,49 +765,39 @@ document.querySelectorAll('[data-href]').forEach(function(c){ function go(){ loc
     items.forEach(function(o){ o.classList.remove('open'); o.querySelector('.acc__q').setAttribute('aria-expanded','false'); });
     if(!was){ it.classList.add('open'); this.setAttribute('aria-expanded','true'); } }); });
 
-  /* testimonials: pick a client, or step with the arrows */
-  var T=[{"k": "santiago-r-santos", "n": "Santiago R Santos", "r": "Founder, SRS Family Office", "q": "With the strongest network in the industry and exceptional market visibility, SecondLane excels.", "s": "The team's expertise, communication, and ongoing support are truly best-in-class."}, {"k": "roger-lim", "n": "Roger Lim", "r": "Partner, NGC Ventures", "q": "Working with SecondLane has been a game-changer for us in navigating the digital assets private market.", "s": "Their team has been exceptional—their expertise and proactive approach have made the entire process seamless and efficient."}, {"k": "min-teo", "n": "Min Teo", "r": "Managing Partner, Ethereal Ventures", "q": "Their expertise in secondary markets and high regulatory standards make SecondLane an invaluable resource for ventures in the private digital asset market.", "s": "For companies seeking reliable, future-focused liquidity options, SecondLane offers the insight and support to navigate liquidity with confidence and foresight."}, {"k": "frank-wang", "n": "Frank Wang", "r": "Executive Director of Platform Sales, BitGo", "q": "Through SecondLane, we've simplified the process by grouping smaller investors, making onboarding and contracting far more efficient.", "s": "Additionally, we get introductions to key foundations from SecondLane, helping BitGo form valuable partnerships."}, {"k": "lior-messika", "n": "Lior Messika", "r": "Founder & CEO, Eden Block", "q": "SecondLane has proven to be a standout partner in the secondary digital asset market, bringing unmatched credibility, market expertise, and efficiency.", "s": "For any company navigating complex liquidity needs in private digital markets, SecondLane is the partner that truly understands and meets the demands of the ecosystem."}, {"k": "diego-perez-de-ayala", "n": "Diego Perez de Ayala", "r": "Co-Founder and Managing Partner, Frictionless Fund", "q": "Frictionless Fund is dedicated to investing in transformative, high-performance blockchain projects, and SecondLane is a key ally in that mission.", "s": "With expertise, strong regulatory standards and a global client network, SecondLane offers a market-leading platform that offers top-tier opportunities across the stack."}, {"k": "benjamin-roth", "n": "Benjamin Roth", "r": "Co-Founder & Chief Investment Officer, Auros", "q": "SecondLane distinguishes itself not only as a deal facilitator but as a strategic partner skilled in managing complex transactions.", "s": "Their insight, transparency, and commitment to client success make them invaluable in the digital asset space."}, {"k": "jordi-alexander", "n": "Jordi Alexander", "r": "Founder, Selini Capital", "q": "We are impressed with the team's market insight, clear communication, and consistent ability to deliver results.", "s": ""}, {"k": "andrew-kang", "n": "Andrew Kang", "r": "Managing Partner, Mechanism Capital", "q": "Having worked closely with SecondLane for over six years, I can confidently say they are one of the top firms in the secondary market space.", "s": "Their deep expertise, professionalism, and commitment to delivering results make them an exceptional partner in this rapidly evolving landscape."}], tst=document.querySelector('.tst'), q=document.getElementById('tstQ'), who=document.getElementById('tstWho'), img=document.getElementById('tstImg'),
-      count=document.getElementById('tstCount'), pick=document.getElementById('tstPick'), tps=[].slice.call(pick.querySelectorAll('.tp')), cur=0;
-  T.forEach(function(t){ var im=new Image(); im.src='assets/pt-'+t.k+'.webp'; });
+  /* testimonials: wide slides; the bar fills, then the next client comes in; drag or swipe at any time */
+  var sec=document.getElementById('clients'), tr=document.getElementById('tstTrack'), slides=[].slice.call(tr.querySelectorAll('.ts')),
+      segs=[].slice.call(document.querySelectorAll('#tstProg button')), count=document.getElementById('tstCount'), cur=-1, DUR=7000, timer=null, seen=false, hover=false;
   function pad(n){ return (n<10?'0':'')+n; }
-  function show(i){ i=(i+T.length)%T.length; if(i===cur) return; cur=i; var t=T[i];
-    function put(){ q.innerHTML='<p class="tst__pull">\u201c'+t.q+'\u201d</p>'+(t.s?'<p class="tst__sub">'+t.s+'</p>':'');
-      who.innerHTML='<b>'+t.n+'</b><span>'+t.r+'</span>'; img.src='assets/pt-'+t.k+'.webp'; tst.classList.remove('swap'); }
-    if(reduce) put(); else { tst.classList.add('swap'); setTimeout(put,330); }
-    count.textContent=pad(i+1)+' / '+pad(T.length);
-    tps.forEach(function(b,k){ b.classList.toggle('on',k===i); b.setAttribute('aria-selected',k===i?'true':'false'); });
-    var b=tps[i], l=b.offsetLeft-pick.offsetLeft; if(l<pick.scrollLeft||l+b.offsetWidth>pick.scrollLeft+pick.clientWidth) pick.scrollTo({left:l,behavior:reduce?'auto':'smooth'}); }
-  tps.forEach(function(b,k){ b.addEventListener('click',function(){ show(k); }); });
-  document.getElementById('tstPrev').addEventListener('click',function(){ show(cur-1); });
-  document.getElementById('tstNext').addEventListener('click',function(){ show(cur+1); });
+  function left(i){ return slides[i].offsetLeft-slides[0].offsetLeft; }
+  function mark(i){ if(i===cur) return; cur=i; slides.forEach(function(sl,k){ sl.classList.toggle('on',k===i); });
+    segs.forEach(function(b,k){ b.classList.remove('run'); b.classList.toggle('done',k<i); });
+    void segs[i].offsetWidth; if(!reduce) segs[i].classList.add('run'); count.textContent=pad(i+1)+' / '+pad(slides.length); arm(); }
+  function go(i){ i=(i+slides.length)%slides.length; tr.scrollTo({left:left(i),behavior:reduce?'auto':'smooth'}); mark(i); }
+  function arm(){ clearTimeout(timer); if(reduce||!seen||hover) return; timer=setTimeout(function(){ go(cur+1); },DUR); }
+  segs.forEach(function(b,k){ b.addEventListener('click',function(){ go(k); }); });
+  var st=null; tr.addEventListener('scroll',function(){ clearTimeout(st); st=setTimeout(function(){ var x=tr.scrollLeft, best=0, d=1e9;
+    slides.forEach(function(sl,k){ var dd=Math.abs(left(k)-x); if(dd<d){d=dd;best=k;} }); mark(best); },120); },{passive:true});
+  /* mouse drag (touch and trackpads scroll natively) */
+  var down=false, sx=0, sl0=0, moved=false;
+  tr.addEventListener('pointerdown',function(e){ if(e.pointerType!=='mouse') return; down=true; moved=false; sx=e.clientX; sl0=tr.scrollLeft; });
+  addEventListener('pointermove',function(e){ if(!down) return; var dx=e.clientX-sx; if(Math.abs(dx)>4){ moved=true; tr.classList.add('drag'); } if(moved) tr.scrollLeft=sl0-dx; });
+  addEventListener('pointerup',function(e){ if(!down) return; down=false; tr.classList.remove('drag'); if(!moved) return;
+    var dx=e.clientX-sx, n=cur+(dx<-60?1:dx>60?-1:0); go(Math.max(0,Math.min(slides.length-1,n))); });
+  tr.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){e.preventDefault();go(cur+1);} if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);} });
+  sec.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse'){ hover=true; sec.classList.add('paused'); clearTimeout(timer);} });
+  sec.addEventListener('pointerleave',function(){ hover=false; sec.classList.remove('paused'); if(cur>=0){ segs[cur].classList.remove('run'); void segs[cur].offsetWidth; if(!reduce) segs[cur].classList.add('run'); } arm(); });
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; if(seen) arm(); else clearTimeout(timer); },{threshold:.35}).observe(sec);
+  mark(0);
 
-  /* market insights: three illustrative charts in the series colours */
-  var C={clay:'#DE8582',terra:'#A14E2B',amber:'#ECAC5F',green:'#12301F',rule:'rgba(18,48,31,.14)'};
-  function bars(){ var v=[14,22,30,38,46,58,70,80,94,72,58,48,40,30,22], w=560, h=200, bw=26, gap=(w-bw*v.length)/(v.length-1), cols=[C.clay,C.amber,C.terra], o='';
-    v.forEach(function(x,i){ var bh=x*1.9; o+='<rect x="'+(i*(bw+gap)).toFixed(1)+'" y="'+(h-bh)+'" width="'+bw+'" height="'+bh+'" fill="'+cols[i%3]+'"/>'; });
-    return '<svg viewBox="0 0 560 230" preserveAspectRatio="none">'+o+'<line x1="0" x2="560" y1="200.5" y2="200.5" stroke="'+C.green+'" stroke-opacity=".4"/><text x="0" y="224">Lower bids</text><text x="560" y="224" text-anchor="end">Higher asks</text></svg>'; }
-  function buysell(){ var g=[['AI',.92,.56],['Defense and space',.68,.94]], o='';
-    g.forEach(function(r,i){ var y=i*104; o+='<text x="0" y="'+(y+12)+'" style="font-weight:500">'+r[0]+'</text>'+
-      '<text x="0" y="'+(y+40)+'">Buy</text><rect x="64" y="'+(y+26)+'" width="'+(r[1]*480).toFixed(0)+'" height="20" fill="'+C.clay+'"/>'+
-      '<text x="0" y="'+(y+72)+'">Sell</text><rect x="64" y="'+(y+58)+'" width="'+(r[2]*480).toFixed(0)+'" height="20" fill="'+C.amber+'"/>'; });
-    return '<svg viewBox="0 0 560 210">'+o+'</svg>'; }
-  function pricing(){ function path(f){ var d=''; for(var x=0;x<=560;x+=8){ var y=f(x/560); d+=(x?'L':'M')+x+','+y.toFixed(1); } return d; }
-    var grid=''; for(var i=0;i<=4;i++) grid+='<line x1="0" x2="560" y1="'+(i*45+5)+'" y2="'+(i*45+5)+'" stroke="'+C.rule+'"/>';
-    return '<svg viewBox="0 0 560 230">'+grid+
-      '<path d="'+path(function(t){return 120-40*Math.sin(t*6.2+.4)-50*t;})+'" fill="none" stroke="'+C.clay+'" stroke-width="2.5"/>'+
-      '<path d="'+path(function(t){return 140+28*Math.sin(t*5.4+1.6)-10*t;})+'" fill="none" stroke="'+C.amber+'" stroke-width="2.5"/>'+
-      '<rect x="0" y="212" width="18" height="3" fill="'+C.clay+'"/><text x="26" y="218">Premium</text><rect x="118" y="212" width="18" height="3" fill="'+C.amber+'"/><text x="144" y="218">Discount</text></svg>'; }
-  var charts=[['Order book activity',bars],['Buy and sell interest',buysell],['Pricing signals',pricing]];
-  var mi=document.querySelector('.mi'), svg=document.getElementById('miSvg'), title=document.getElementById('miTitle'), mc=document.getElementById('miCount'),
-      mts=[].slice.call(document.querySelectorAll('.mt')), mcur=0;
-  function chart(i,first){ i=(i+3)%3; mcur=i;
-    function put(){ svg.innerHTML=charts[i][1](); title.textContent=charts[i][0]; svg.setAttribute('aria-label','Illustrative chart: '+charts[i][0]); mi.classList.remove('swap'); }
-    if(first||reduce) put(); else { mi.classList.add('swap'); setTimeout(put,280); }
-    mc.textContent='0'+(i+1)+' / 03'; mts.forEach(function(b,k){ b.classList.toggle('on',k===i); b.setAttribute('aria-selected',k===i?'true':'false'); }); }
-  mts.forEach(function(b,k){ b.addEventListener('click',function(){ chart(k); }); });
-  document.getElementById('miPrev').addEventListener('click',function(){ chart(mcur-1); });
-  document.getElementById('miNext').addEventListener('click',function(){ chart(mcur+1); });
-  chart(0,true);
+  /* prototype options */
+  var THEME={platform:{a:'white',b:'linen'}};
+  var op=document.getElementById('opts'); if(innerWidth<900){ op.classList.add('min'); op.querySelector('.opts__t').setAttribute('aria-expanded','false'); }
+  op.querySelector('.opts__t').addEventListener('click',function(){ var m=op.classList.toggle('min'); this.setAttribute('aria-expanded',m?'false':'true'); });
+  [].slice.call(op.querySelectorAll('.opts__r')).forEach(function(r){ var id=r.dataset.s, el=document.getElementById(id);
+    [].slice.call(r.querySelectorAll('button')).forEach(function(b){ b.addEventListener('click',function(){ var v=b.dataset.v; el.dataset.v=v;
+      if(THEME[id]) el.dataset.theme=THEME[id][v];
+      r.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on',x===b); }); }); }); });
 })();
 </script>
 <script>
