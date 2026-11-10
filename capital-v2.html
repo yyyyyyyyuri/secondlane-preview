@@ -1,0 +1,604 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLane · Capital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Capital, live. 50/50 hero with the photograph behind the nav; investment strategy with the track record;
+   LP advantages on green with the administrators; why Capital as three boxes that come in one at a time; closing band; footer. */
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-300.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:'Ashcroft';src:url("assets/fonts/ashcroft-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-400.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:'SFT';src:url("assets/fonts/schrifted-500.otf") format("opentype");font-weight:500;font-display:swap}
+:root{color-scheme:dark;
+ --green:#12301F;--green-2:linear-gradient(rgba(245,243,239,.05),rgba(245,243,239,.05)) #12301F;--linen:#F5F3EF;--stone:rgba(245,243,239,.85);--sand:#CBBFA8;--yel:#E3FD5A;--on-yel:#12301F;--mute:rgba(18,48,31,.72);--ink-3:rgba(18,48,31,.72);--rust:#A14E2B;--clay:#DE8582;--moss:#7A8462;
+ --rule:rgba(245,243,239,.18);--rule-2:rgba(245,243,239,.2);
+ --serif:'Ashcroft','Iowan Old Style',Georgia,serif;--sans:'SFT','Helvetica Neue',Helvetica,Arial,sans-serif;
+ --ease:cubic-bezier(.65,0,.35,1);--max:1312px}
+body{background:var(--green);color:var(--linen);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+button,input{font:inherit;color:inherit}
+img{display:block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--green)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(64px,env(safe-area-inset-left,0px));padding-right:max(64px,env(safe-area-inset-right,0px))}
+.sec{padding-block:136px}
+.c{display:flex;flex-direction:column;align-items:center;text-align:center}
+.lab{display:block;font:500 12px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--yel)}
+.t{font:400 45px/1.06 var(--serif);letter-spacing:-.012em;margin-top:14px;max-width:22ch;text-wrap:balance}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:4px;border:1px solid transparent;font:500 16px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .18s,border-color .18s,box-shadow .18s,transform .08s}
+.btn-y{background:var(--yel);border-color:var(--yel);color:var(--on-yel)}
+.btn-y:hover{box-shadow:none}
+.btn-y:active{transform:translateY(1px);box-shadow:none;transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,.q:focus-visible{outline:2px solid var(--linen);outline-offset:3px}
+.alink{display:inline-flex;align-items:center;gap:10px;font:500 16px/1.2 var(--sans);color:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;background:none;border:0;padding:0}
+.alink::after{content:"";width:16px;height:16px;flex:none;background:var(--yel);transition:transform .18s;
+ -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat;
+ mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h12M9 3l5 5-5 5'/%3E%3C/svg%3E") center/contain no-repeat}
+.alink:hover::after{transform:translateX(4px)}
+.alink.down::after{transform:rotate(90deg)}.alink.down:hover::after{transform:rotate(90deg) translateX(4px)}
+
+/* glass and lit edge (lit only while hovered, or on the card that is set .on) */
+.glass{position:relative;background:#f5f3ef17;-webkit-backdrop-filter:blur(36px);backdrop-filter:blur(36px);border:1px solid var(--rule-2);border-radius:12px;box-shadow:inset 0 1px 0 rgba(245,243,239,.12)}
+.lit{position:relative}
+.lit::after{content:"";position:absolute;inset:-1px;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:var(--lo,0);transition:opacity .35s ease;
+ background:radial-gradient(420px circle at var(--mx,30px) var(--my,20px),rgba(245,243,239,.55) 0%,rgba(245,243,239,.2) 35%,rgba(245,243,239,0) 100%);
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lit.on::after{--lo:.85}.lit:hover::after{--lo:1}
+
+/* nav: sits over the hero photograph */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--rule);background:transparent;transition:background-color .35s ease,-webkit-backdrop-filter .35s,backdrop-filter .35s}
+.nav.stuck{background:rgba(18,48,31,.88);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.nav .wrap{display:flex;align-items:center;gap:44px;height:88px;max-width:none;transition:height .35s ease}
+.nav.stuck .wrap{height:72px}
+.logo{display:block;width:128px;height:32px;flex:none;background:var(--linen);-webkit-mask:url("assets/logo.svg") center/contain no-repeat;mask:url("assets/logo.svg") center/contain no-repeat}
+.nav__links{display:flex;gap:36px;flex:1;font:500 16px/1 var(--sans)}
+.nav__links a{color:inherit;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav__links a:hover{border-bottom-color:rgba(245,243,239,.4)}
+.nav__links a.cur{border-bottom-color:var(--yel)}
+.nav__sign{font:500 16px/1 var(--sans);color:inherit;text-decoration:none}
+.nav .btn{height:46px;padding:0 22px;font-size:15px}
+.btn-o{border-color:rgba(245,243,239,.6);color:var(--linen);background:transparent}
+.btn-o:hover{border-color:var(--linen);background:rgba(245,243,239,.06)}
+a.btn{text-decoration:none}
+
+body{margin:0}
+/* 1. hero, 50/50 */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:max(820px,100svh);margin-top:-89px}
+.hero__body{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:160px 64px 104px max(64px,env(safe-area-inset-left,0px))}
+.hero h1{font:400 68px/1.02 var(--serif);letter-spacing:-.015em}
+.hero .lead{font-size:18px;line-height:1.5;color:var(--stone);max-width:30em}
+.hero__act{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.hero__media{position:relative;overflow:hidden}
+.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:settle 2.4s var(--ease) both}
+.hero__media::after{content:"";position:absolute;inset:0 0 auto;height:220px;background:linear-gradient(rgba(18,48,31,.7),rgba(18,48,31,0))}
+@keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+
+.lead{font-size:18px;line-height:1.5;color:var(--stone)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:end;margin-bottom:64px}
+.head .t{margin-top:0}
+
+/* cards */
+.card{position:relative;display:flex;flex-direction:column;gap:14px;padding:32px 28px 0;background:var(--green-2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.card h3{font:400 32px/1.12 var(--serif)}
+.card p{font-size:17px;line-height:1.55;color:var(--sand)}
+.card .lab{margin-top:4px}
+.card .ph{margin:18px -28px 0;aspect-ratio:4/3;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+
+.card .ph{margin-top:auto}
+/* 4. trust on linen */
+.trust{background:var(--linen);color:var(--green)}
+.trust .lead{color:var(--mute)}
+.trust .card{background:var(--linen);border-color:rgba(122,132,98,.35)}
+.trust .card .ph{margin-top:auto;margin-bottom:0;padding-top:18px;box-sizing:content-box;aspect-ratio:auto;height:240px}
+.trust .card .ph img{mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.04);-webkit-mask-image:linear-gradient(transparent,#000 28%);mask-image:linear-gradient(transparent,#000 28%)}
+.trust .card p{color:var(--mute)}
+.trust .card .lab{color:var(--rust)}
+.trust .card:hover{box-shadow:0 14px 32px rgba(18,48,31,.08)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+
+/* 5. closing band */
+.cb{position:relative;overflow:hidden;min-height:720px;display:flex;align-items:center}
+.cb__art{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%);mask-image:linear-gradient(90deg,transparent 0%,#000 40%)}
+.cb .wrap{position:relative;width:100%}
+.cb__in{max-width:720px;display:flex;flex-direction:column;gap:24px}
+.cb h2{font:400 53px/1.05 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.cb__act{display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-top:24px}
+
+/* 6. footer */
+.ft{padding-block:80px 44px;color:var(--sand);font-size:15px;border-top:1px solid var(--rule)}
+.ft__top{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:44px;padding-bottom:40px;border-bottom:1px solid var(--rule)}
+.ft__brand{display:flex;flex-direction:column;gap:18px}
+.ft__brand p{max-width:28ch;line-height:1.5}
+.ft__col{display:flex;flex-direction:column;gap:13px}
+.ft__col b{font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);margin-bottom:4px}
+.ft a{color:inherit;text-decoration:none}.ft a:hover{color:var(--linen)}
+.ft__notes{display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;padding-block:32px}
+.ft__notes sup{color:var(--linen)}
+.ft__legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px}
+.ft__legal nav{display:flex;gap:22px}
+
+@media (max-width:900px){
+ .wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+ .sec{padding-block:88px}
+ .nav__links,.nav__sign{display:none}
+ .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+ .hero__body{padding:150px 20px 56px}.hero h1{font-size:44px}.lead{font-size:16px}.hero .lead{font-size:16px}
+ .hero__media{aspect-ratio:4/5}
+ .t{font-size:32px}.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:40px}
+ .g3,.strat{grid-template-columns:minmax(0,1fr);gap:32px}.partners__row{flex-wrap:wrap;gap:32px}
+ .stk{height:auto}.stk__pin{position:static;height:auto;padding:88px 20px;gap:32px}.stk__deck{height:auto !important;display:flex;flex-direction:column;gap:16px}
+ .stk__card{position:relative;height:auto;transform:none !important;opacity:1 !important;grid-template-columns:minmax(0,1fr)}.why__img{aspect-ratio:4/3}.why__txt{padding:28px 22px}.why__txt h3{font-size:30px}
+ .cb{min-height:0;padding-block:96px}.cb__art{width:100%;opacity:.35}.cb h2{font-size:34px}
+ .ft__top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:1ms !important}}
+
+/* 2. investment strategy on linen */
+.light{background:var(--linen);color:var(--green)}
+.light .lead{color:var(--mute)}
+.strat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:80px;align-items:start}
+@media (max-width:900px){.strat{grid-template-columns:minmax(0,1fr);gap:32px}}
+.strat .t{margin-top:0}
+.barbell{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.barbell__bar{display:grid;grid-template-columns:3fr 4fr 2fr;align-items:center;gap:0;height:56px}
+.barbell__bar b{display:block;height:56px;border-radius:6px;background:var(--green)}
+.barbell__bar b:last-child{height:40px;background:var(--moss,#7A8462)}
+.barbell__bar u{display:block;height:2px;background:rgba(18,48,31,.35)}
+.barbell__lab{display:flex;justify-content:space-between;font-size:15px;color:var(--mute)}
+.track{padding:40px;border-radius:12px;background:var(--green);color:var(--linen);display:flex;flex-direction:column}
+.track .fig{font:300 96px/1 var(--serif);margin-top:20px}
+.track .sub{color:var(--sand);margin-top:10px}
+.track dl{margin:32px 0 0;display:flex;flex-direction:column}
+.track dl div{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;font-size:17px;color:var(--sand)}
+.track dd{margin:0;font:400 30px/1 var(--serif);color:var(--linen)}
+
+.wip{position:relative}
+.wip>.wrap{opacity:.45;filter:saturate(.6);pointer-events:none}
+.wip__tag{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-3deg);display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:22px 34px;background:var(--yel);color:var(--on-yel);border-radius:6px;box-shadow:0 10px 30px rgba(18,48,31,.18);max-width:420px}
+.wip__tag b{font:400 34px/1 var(--serif)}
+.wip__tag span{font-size:14px;line-height:1.45}
+
+/* 3. LP advantages */
+#lp .card{background:var(--green);border-color:#7A846280;padding:30px 26px 26px;gap:18px;overflow:visible;cursor:default;transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s cubic-bezier(.2,.7,.2,1)}
+#lp .card:hover{transform:translateY(-6px);box-shadow:0 27px 67px rgba(0,0,0,.45)}
+#lp .card h3{font:400 36px/1.1 var(--serif)}#lp .card p{font-size:18px;line-height:1.45}
+#lp .card .ph{margin:auto -26px -26px;aspect-ratio:5/4;border-radius:0 0 7px 7px}
+.partners{margin-top:64px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
+.partners__row{display:flex;gap:16px}
+.plogo{display:block;height:36px;background:var(--linen);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.partners__row{align-items:center;gap:56px}
+
+/* 4. why Capital: pinned stack, as the Prime founders section */
+.stk{position:relative;height:340vh;background:var(--linen);color:var(--green)}
+.stk__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;padding:112px 64px 56px;overflow:hidden}
+.stk__head{text-align:center}.stk__head .t{margin:0 auto}
+.stk__deck{list-style:none;margin:0;padding:0;position:relative;width:min(1152px,100%);height:420px}
+.stk__card{position:absolute;inset:0 0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);height:420px;background:linear-gradient(rgba(203,191,168,.3),rgba(203,191,168,.3)) #F5F3EF;border:1px solid rgba(122,132,98,.35);border-radius:12px;overflow:hidden;box-shadow:0 -8px 24px rgba(18,48,31,.08);will-change:transform,opacity;transform:translateY(110vh)}
+.stk__card:first-child{transform:none}
+.stk__card::after{content:"";position:absolute;inset:0;background:var(--linen);opacity:var(--dim,0);pointer-events:none;border-radius:inherit}
+.why__img{position:relative}
+.why__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.04)}
+.why__txt{padding:48px 56px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.why__txt .n{font:300 56px/1 var(--serif);color:var(--rust)}
+.why__txt h3{font:400 40px/1.1 var(--serif)}
+.why__txt p{font-size:17px;line-height:1.6;color:var(--mute);max-width:52ch}
+@media (max-height:820px) and (min-width:901px){.stk__pin{gap:32px;padding-top:100px}.stk__deck,.stk__card{height:380px}.why__txt{padding:36px 44px}.why__txt p{font-size:16px}}
+
+/* hero text entrance (9 Nov): the headline rises word by word, then the copy and actions follow */
+.hx h1 .w{display:inline-block;opacity:0;transform:translateY(.42em);animation:hxw .95s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d)*55ms + 150ms)}
+.hx>:not(h1):not(nav){opacity:0;animation:hxr .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--dl,600ms)}
+@keyframes hxw{to{opacity:1;transform:none}}
+@keyframes hxr{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hx h1 .w,.hx>*{opacity:1!important;transform:none!important;animation:none!important}}
+
+/* investment strategy (9 Nov): finished look; copy still in draft, so a small tag says so */
+.draft{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px dashed var(--rust);border-radius:999px;font:500 12px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--rust);margin-bottom:18px}
+.strat .barbell__bar b,.strat .barbell__bar u{transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.strat .barbell__bar b:first-child{transform-origin:left}.strat .barbell__bar u{transform-origin:left;transition-delay:.35s}.strat .barbell__bar b:last-child{transform-origin:right;transition-delay:.6s}
+.strat.seen .barbell__bar b,.strat.seen .barbell__bar u{transform:none}
+.strat .barbell__bar b:last-child{background:var(--rust)}
+.track{box-shadow:0 20px 50px rgba(18,48,31,.12)}
+.track .lab{color:var(--yel)}
+.track dl div+div{border-top:1px solid rgba(245,243,239,.14)}
+.track dl div:first-child{border-top:1px solid rgba(245,243,239,.14)}
+@media (prefers-reduced-motion:reduce){.strat .barbell__bar b,.strat .barbell__bar u{transform:none}}
+
+/* ===== Capital round 2 (11 Nov): Home and Prime rules ===== */
+.nav .wrap{max-width:none}
+.nav__out{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px 0 20px;border:1px solid rgba(245,243,239,.6);color:#F5F3EF;text-decoration:none;font:500 15px/1 var(--sans);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.nav__out svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;transition:transform .2s}
+.nav__out:hover{background:#F5F3EF;border-color:#F5F3EF;color:#12301F}.nav__out:hover svg{transform:translateX(3px)}
+.btn,input,button.btn{border-radius:0!important}
+/* hero: full height; the solid part of the photo fills half the screen, the dot edge runs into the text side */
+.hero{position:relative;min-height:max(640px,100vh);min-height:max(640px,100svh)}
+.hero__body{position:relative;z-index:1}
+.hero__media{margin-left:-16vw;z-index:0}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
+.hero__media::after{display:none}
+/* as the hero scrolls away the background advances into the photo along the dot curve (dotedge.js data-grow) and the photo drifts a little slower than the page */
+.hero__media img{transform:translateY(calc(var(--hp,0)*90px));will-change:transform}
+@media (prefers-reduced-motion:reduce){.hero__media img{transform:none}}
+/* the hero fades to linen with the page as you scroll, so there is no hard line between it and the section below */
+.hero{--bgc:#12301F;--ink:#F5F3EF;background:var(--bgc)}
+.hero h1{color:var(--ink)}
+.hero .lead,.hero__body p{color:color-mix(in srgb,var(--ink) 78%,transparent)!important}
+.hero .btn-y{background:var(--ink)!important;border-color:var(--ink)!important;color:var(--bgc)!important}
+/* below the hero: linen, fading in from green as the hero scrolls away */
+.strat-wrap{}
+#strategy{--bgc:#12301F;--ink:#F5F3EF;background:var(--bgc)!important;color:var(--ink)}
+#strategy .t{color:var(--ink)}#strategy .lead{color:color-mix(in srgb,var(--ink) 72%,transparent)!important}
+.track{background:none!important;color:inherit!important;border-radius:0!important;padding:0!important;border-top:1px solid color-mix(in srgb,var(--ink) 22%,transparent);padding-top:28px!important;box-shadow:none!important}
+.track .lab{color:color-mix(in srgb,var(--ink) 60%,transparent)!important}.track .sub,.track dt{color:color-mix(in srgb,var(--ink) 72%,transparent)!important}
+.track dl>div{border-color:color-mix(in srgb,var(--ink) 16%,transparent)!important}
+.barbell__bar b{border-radius:0!important}
+.lp2,.wy2{background:#F5F3EF!important;color:#12301F}
+.lp2 .wrap,.wy2 .wrap{max-width:max(var(--max,1312px),80vw)}
+.lp2 .head{display:block!important;text-align:center}.lp2 .head .t,.lp2 .head>div{margin-inline:auto;text-align:center}
+.track dd{color:var(--ink)!important}
+.lp2__row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px;margin-top:64px}
+.lp2__c{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.lp2__ph{height:260px;margin-bottom:12px;overflow:hidden}
+.lp2__ph img{width:100%;height:100%;object-fit:cover;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%)}
+.lp2__c h3{margin:0;font:400 30px/1.15 var(--serif)}
+.lp2__c p{margin:0;font-size:16.5px;line-height:1.55;color:rgba(18,48,31,.72);max-width:40ch}
+.lp2 .partners .lab{color:rgba(18,48,31,.6)!important}.lp2 .plogo{background:#12301F}
+/* investment strategy: centred copy, a small track record under the standfirst, then the barbell running edge to edge */
+#strategy{padding-block:136px 0;overflow:hidden}
+.st2{display:flex;flex-direction:column;align-items:center;gap:48px}
+.st2__head{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:760px}
+.st2__head .t{margin:0}.st2__head .lead{margin-top:22px}
+.tr2{display:flex;flex-direction:column;align-items:center;gap:16px}
+.tr2__lab{font:500 11px/16px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 60%,transparent)}
+.tr2__row{display:grid;grid-template-columns:repeat(3,200px);gap:0;text-align:center}
+.tr2__s{display:flex;flex-direction:column;align-items:center}.tr2__s b{font:300 36px/1 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.tr2__s>span{font-size:13px;color:color-mix(in srgb,var(--ink) 70%,transparent);margin-top:8px}
+.bb{width:100vw;margin:24px 0 0;align-self:center}
+.bb__plot{position:relative;height:min(320px,26vw)}
+.bb__grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}
+.bb__grid b{display:block;height:1px;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.bb__cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:2px;align-items:end}
+.bb__cols i{display:block;height:var(--a);background:#CBBFA8;border-radius:4px 4px 0 0;transition:height 1.4s cubic-bezier(.65,0,.35,1),background-color 1s ease;transition-delay:calc(var(--k)*40ms)}
+.bb.go .bb__cols i{height:var(--b)}
+.bb.go .bb__cols i.lo{background:#DE8582}.bb.go .bb__cols i.hi{background:#A14E2B}
+.bb__keys{display:flex;justify-content:space-between;gap:24px;padding:16px 64px 56px;font-size:14px;color:color-mix(in srgb,var(--ink) 78%,transparent)}
+.bb__keys .k{display:inline-flex;align-items:center;gap:8px;opacity:0;transition:opacity .6s ease 1.6s}.bb.go .bb__keys .k{opacity:1}
+.bb__keys .k::before{content:"";width:10px;height:10px;border-radius:2px;background:#DE8582}.bb__keys .k.hi::before{background:#A14E2B}
+.bb__src{font-size:12px;color:color-mix(in srgb,var(--ink) 55%,transparent);padding:8px 64px 40px}
+@media (max-width:900px){.tr2__row{grid-template-columns:repeat(3,minmax(0,1fr))}.bb__keys,.bb__src{padding-inline:20px}}
+@media (prefers-reduced-motion:reduce){.bb__cols i{transition:none}.bb__keys .k{opacity:1!important}}
+/* reveals: each group rises and comes into focus once, children a beat apart */
+.rv{transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--rv,0)*110ms)}
+.rv.rv-wait{opacity:0;transform:translateY(28px);filter:blur(8px)}
+.cb__art.rv.rv-wait{transform:translateX(40px) scale(1.03)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+/* why: illustration on the left edge, accordion on the right */
+.wy2{position:relative;min-height:max(760px,90vh);display:flex;align-items:center;overflow:hidden}.wy2>.wrap{width:100%}
+.wy2__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:center}.wy2__txt{grid-column:2}
+.wy2 .t{margin-bottom:36px}
+.wy2__img{position:absolute;top:0;left:0;bottom:0;width:44%}
+.wy2__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.wy2__img img.on{opacity:1}
+.pa__i+.pa__i{border-top:1px solid rgba(18,48,31,.16)}
+.pa h3{margin:0;font:inherit}
+.pa__q{all:unset;box-sizing:border-box;width:100%;cursor:pointer;padding:22px 0;font:400 30px/1.15 var(--serif);color:#12301F;opacity:.45;transition:opacity .25s}
+.pa__q:hover,.pa__i.open .pa__q{opacity:1}.pa__q:focus-visible{outline:2px solid #12301F;outline-offset:4px}
+.pa__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.65,0,.35,1)}
+.pa__i.open .pa__a{grid-template-rows:1fr}.pa__a>div{overflow:hidden}
+.pa__a p{margin:0 0 26px;max-width:40em;font-size:16.5px;line-height:1.55;color:rgba(18,48,31,.72)}
+/* motion, once: LP columns rise in one by one; why slides in */
+.lp2__c{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--k,0)*320ms)}
+.lp2.wait .lp2__c{opacity:0;transform:translateY(60px)}
+.wy2__txt,.wy2__img{transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.wy2.wait .wy2__txt{opacity:0;transform:translateX(56px)}.wy2.wait .wy2__img{opacity:0;transform:translateX(-56px)}
+@media (prefers-reduced-motion:reduce){.lp2__c,.wy2__txt,.wy2__img{opacity:1!important;transform:none!important;transition:none!important}}
+@media (max-width:900px){
+ .hero__media{margin-left:0}
+ .lp2__row{grid-template-columns:minmax(0,1fr);gap:40px}
+ .wy2{display:block}.wy2__grid{grid-template-columns:minmax(0,1fr)}.wy2__txt{grid-column:1}.wy2__img{position:relative;width:100%;height:360px}
+}
+
+/* shared site nav: six links */
+.nav__sign{white-space:nowrap}.nav__links{gap:clamp(18px,2.2vw,36px)}.nav .wrap{gap:clamp(20px,3vw,44px)}
+
+/* nav: dark green once scrolled; slides away on scroll down, comes back on scroll up */
+.nav{transition:transform .35s ease,background-color .35s ease,color .35s ease,border-color .35s ease,height .35s ease}
+.nav.stuck{background:rgba(18,48,31,.92)!important;color:#F5F3EF!important;border-bottom:0!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+.nav.stuck .logo{background:#F5F3EF!important}
+.nav.is-hidden{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.nav{transition:none}}
+/* no line under the nav, light or dark, resting or scrolled */
+.nav,.nav.stuck{border-bottom:0!important}
+a.btn{text-decoration:none}
+.nav .logo{margin-right:auto}
+/* round 2 (10 Nov): square buttons and controls, linen main button on green, no glow-ring hovers */
+.btn,button.btn,a.btn,.chip,.sf,.tab,.lk,.az__rail a,input.in,select.in,textarea.in,.srch input,.seg button,.flt button,.side a{border-radius:0!important}
+.btn-y{background:#F5F3EF!important;border-color:#F5F3EF!important;color:#12301F!important}
+.btn-y:hover{background:rgba(245,243,239,.84)!important;border-color:rgba(245,243,239,.84)!important;box-shadow:none!important}
+.btn-g:hover{background:rgba(18,48,31,.86)!important;box-shadow:none!important}
+/* over the hero photo the outlined Sign in disappears, so it fills in linen there */
+.nav.nav--hero .nav__out{background:#F5F3EF!important;border-color:#F5F3EF!important;color:#12301F!important}
+.nav.nav--hero .nav__out:hover{background:rgba(245,243,239,.86)!important}
+/* light nav: linen bar with bottle green type and logo whenever a light section sits under it */
+.nav.nav--light,.nav.nav--light.stuck{background:rgba(245,243,239,.94)!important;color:#12301F!important}
+.nav.nav--light .logo,.nav.nav--light.stuck .logo{background:#12301F!important}
+.nav.nav--light .nav__out{border-color:rgba(18,48,31,.45)!important;color:#12301F!important}
+.nav.nav--light .nav__out:hover{background:#12301F!important;border-color:#12301F!important;color:#F5F3EF!important}
+.nav.nav--light .btn-y{background:#12301F!important;border-color:#12301F!important;color:#F5F3EF!important}
+/* 11 Nov, Eugenie: fewer neon accents. Footer headings and the current-page underline in linen */
+.ft__col b{color:rgba(245,243,239,.6)!important}
+.nav__links a.cur{border-bottom-color:currentColor!important}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="SecondLane home"></a>
+    <nav class="nav__links" aria-label="Main"><a href="access.html">Access</a><a class="cur" href="capital.html">Capital</a><a href="prime.html">Prime</a><a href="companies.html">Companies</a><a href="index.html#insights">Insights</a><a href="index.html#team">About</a></nav>
+    <a class="nav__out" href="access.html">Sign in<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="hero__body">
+      <h1>SecondLane Capital</h1>
+      <p class="lead">Institutional positions, handled end to end. One dedicated team sources, structures and manages opportunities around your mandate, from digital assets and energy to the private companies building what comes next. For institutions, family offices and qualified participants.</p>
+      <p style="color:var(--sand);font-size:16px;max-width:36em">Capital raising, market intelligence and advisory, across private credit, special situations and bespoke lending.</p>
+      <div class="hero__act"><a class="btn btn-y" href="contact.html?topic=capital">Get connected</a></div>
+    </div>
+    <div class="hero__media"><img src="assets/people-founders.jpg" alt="" data-curve=".06,0 .083,.23 .114,.35 .167,.54 .24,.68 .356,.76 .545,.82 .773,.845 1,.86" data-band=".26" data-grow=".18" data-dotedge="left" style="object-position:52% 50%"></div>
+  </section>
+
+  <!-- 2. Investment strategy and track record -->
+  <section class="sec light" id="strategy">
+    <div class="wrap st2">
+      <div class="st2__head">
+        <span class="draft">Draft copy</span>
+        <h2 class="t">Investment strategy</h2>
+        <p class="lead">A barbell approach, targeting assets we believe are mispriced relative to their fundamentals, where a liquidity event may be nearer than the market assumes. It pairs higher-conviction positions with disciplined risk mitigation across pre-IPO and secondaries, so each mandate stays balanced through the cycle.</p>
+      </div>
+      <div class="tr2" id="track">
+        <span class="tr2__lab">Track record<sup>1</sup></span>
+        <div class="tr2__row">
+          <div class="tr2__s"><b>$77M</b><span>Introduced transaction value</span></div>
+          <div class="tr2__s"><b>$31M+</b><span>Capital deployed</span></div>
+          <div class="tr2__s"><b>15+</b><span>LPs</span></div>
+        </div>
+      </div>
+      <figure class="bb" id="barbell" aria-label="Barbell approach: higher-conviction positions paired with disciplined risk mitigation. Illustrative.">
+        <div class="bb__plot"><div class="bb__grid"><b></b><b></b><b></b><b></b></div><div class="bb__cols"><i style="--a:14%;--b:88%;--k:0" class="lo"></i><i style="--a:16%;--b:74%;--k:1" class="lo"></i><i style="--a:20%;--b:52%;--k:2" class="lo"></i><i style="--a:29%;--b:22%;--k:3" class="lo"></i><i style="--a:45%;--b:8%;--k:4" class="mid"></i><i style="--a:65%;--b:4%;--k:5" class="mid"></i><i style="--a:84%;--b:3%;--k:6" class="mid"></i><i style="--a:92%;--b:3%;--k:7" class="mid"></i><i style="--a:84%;--b:3%;--k:8" class="mid"></i><i style="--a:65%;--b:4%;--k:9" class="mid"></i><i style="--a:45%;--b:8%;--k:10" class="mid"></i><i style="--a:29%;--b:26%;--k:11" class="hi"></i><i style="--a:20%;--b:58%;--k:12" class="hi"></i><i style="--a:16%;--b:82%;--k:13" class="hi"></i><i style="--a:14%;--b:96%;--k:14" class="hi"></i></div></div>
+        <div class="bb__keys"><span class="k lo">Disciplined risk mitigation</span><span class="k hi">Higher-conviction positions</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3. LP advantages -->
+  <section class="sec lp2" id="lp">
+    <div class="wrap">
+      <div class="head"><h2 class="t">LP advantages</h2></div>
+      <div class="lp2__row">
+        <article class="lp2__c"><div class="lp2__ph"><img src="assets/lp-first-look.webp" alt=""></div><h3>First look</h3><p>Co-investment and proprietary opportunities that never reach traditional channels. Early entry into pre-IPO rounds, direct secondaries and off-market situations we source ourselves.</p></article>
+        <article class="lp2__c"><div class="lp2__ph"><img src="assets/lp-no-hidden-fees.webp" alt=""></div><h3>No hidden fees</h3><p>Every fee is agreed per opportunity, at market rates, before any money moves.</p></article>
+        <article class="lp2__c"><div class="lp2__ph"><img src="assets/lp-independent-admin.webp" alt=""></div><h3>Independent administration</h3><p>PwC, Formidium and BitGo keep the books. Quarterly reporting you can check without taking our word for it.</p></article>
+      </div>
+      <div class="partners"><span class="lab" style="color:var(--sand)">Independent administration and custody</span><div class="partners__row"><span class="plogo" role="img" aria-label="PwC" style="--src:url(assets/logo-pwc.svg);width:84px;height:84px;margin-block:-24px"></span><span class="plogo" role="img" aria-label="Formidium" style="--src:url(assets/logo-formidium.png);width:190px;height:30px"></span><span class="plogo" role="img" aria-label="BitGo" style="--src:url(assets/logo-bitgo.svg);width:100px;height:34px"></span></div></div>
+    </div>
+  </section>
+
+  <!-- 4. Why SecondLane Capital: pins like the Prime founders; the title stays, the three boxes slide up and stack -->
+  <section class="sec wy2" id="why">
+    <div class="wy2__img" aria-hidden="true"><img src="assets/why-data.webp" alt="" class=on><img src="assets/why-experience.webp" alt=""><img src="assets/why-network.webp" alt=""></div>
+    <div class="wrap wy2__grid">
+      <div class="wy2__txt">
+        <h2 class="t">Why SecondLane Capital</h2>
+        <div class="pa" id="pa"><div class="pa__i open"><h3><button class="pa__q" type="button" id="wq0" aria-expanded="true" aria-controls="wa0">Data advantage</button></h3><div class="pa__a" id="wa0" role="region" aria-labelledby="wq0"><div><p>Four years of transaction data we access through our network, across ownership interests, fund interests, private credit and digital assets, gathered since 2022 through every mood this market has had. Systematic analysis of that flow surfaces relative value and overlooked opportunities, in a market where almost everyone else is working from rumour, stale marks and a screenshot of someone else's term sheet.</p></div></div></div><div class="pa__i"><h3><button class="pa__q" type="button" id="wq1" aria-expanded="false" aria-controls="wa1">Experience</button></h3><div class="pa__a" id="wa1" role="region" aria-labelledby="wq1"><div><p>Career operators from institutional finance, exchange infrastructure and private markets, structuring the opportunities that do not fit a template. We have worked secondaries since 2013, through every cycle since.</p></div></div></div><div class="pa__i"><h3><button class="pa__q" type="button" id="wq2" aria-expanded="false" aria-controls="wa2">Network</button></h3><div class="pa__a" id="wa2" role="region" aria-labelledby="wq2"><div><p>Most of what we see never gets published. A two-sided network of 17,000+ qualified participants and 1,500+ companies puts distressed assets, private auctions and off-market secondaries in front of us first.</p></div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Closing band (copy not in the deck yet) -->
+  <section class="cb">
+    <img class="cb__art" src="assets/closing-arm.webp" alt="">
+    <div class="wrap">
+      <div class="cb__in">
+        <h2>Positions handled end to end, around your mandate.</h2>
+        <p class="lead">For institutions, family offices and qualified participants.</p>
+        <div class="cb__act"><a class="btn btn-y" href="contact.html?topic=capital">Get connected</a><a class="alink" href="#strategy">See how Capital works</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft__top">
+        <div class="ft__brand"><span class="logo" role="img" aria-label="SecondLane"></span><p>Secondary market introductions for private companies, since 2013.</p></div>
+        <div class="ft__col"><b>Platform</b><a href="access.html">Access</a><a href="capital.html">Capital</a><a href="prime.html">Prime</a></div>
+        <div class="ft__col"><b>Companies</b><a href="companies.html#directory">Directory</a><a href="companies.html#ipo">IPO Watch</a><a href="companies.html#sell">For holders</a><a href="companies.html#guide">Buying guide</a><a href="companies.html#glossary">Glossary</a></div>
+        <div class="ft__col"><b>SecondLane</b><a href="index.html#team">About</a><a href="index.html#team">Team</a><a href="index.html#insights">Insights</a><a href="contact.html">Contact</a></div>
+      </div>
+      <div class="ft__notes">
+        <span><sup>1</sup> Figures as introduced through the SecondLane network to date. Past performance is not indicative of future results.</span>
+        <span><sup>2</sup> SecondLane is not a registered broker-dealer in the United States. This page is for information only and is not an offer to buy or sell.</span>
+      </div>
+      <div class="ft__legal"><span>© 2026 SecondLane</span><nav><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#cookies">Cookies</a></nav></div>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  /* lit edge: the glow follows the pointer and stays where it left (no reset on leave) */
+  document.querySelectorAll('.lit').forEach(function(el){ el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
+  function stick(){ nav.classList.toggle('stuck',scrollY>40); } addEventListener('scroll',stick,{passive:true}); stick();
+
+})();
+</script>
+<script>
+/* hero text entrance: split the headline into words; the rest follows once the last word is up */
+(function(){
+  var b=document.querySelector('.hero__body'); if(!b) return; var h=b.querySelector('h1'); if(!h) return;
+  var words=h.textContent.trim().split(/\s+/); h.setAttribute('aria-label',h.textContent.trim());
+  h.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="--d:'+i+'">'+w+'</span>';}).join(' ');
+  var t=150+words.length*55+260; [].slice.call(b.children).forEach(function(c){ if(c.tagName!=='H1'&&c.tagName!=='NAV'){ c.style.setProperty('--dl',t+'ms'); t+=130; } });
+  b.classList.add('hx');
+})();
+</script>
+<script>
+/* investment strategy: barbell draws in and the track record counts up the first time it is on screen */
+(function(){
+  var st=document.querySelector('.strat'); if(!st) return; var fig=st.querySelector('.track .fig'), end=77, red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(){ st.classList.add('seen'); if(red||!fig) return; var t0=performance.now(); (function f(now){ var k=Math.min(1,(now-t0)/1400); k=1-Math.pow(1-k,3); fig.textContent='$'+Math.round(end*k)+'M'; if(k<1) requestAnimationFrame(f); })(t0); }
+  if(!('IntersectionObserver' in window)) return go();
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ go(); io.disconnect(); } },{threshold:.4}); io.observe(st);
+})();
+</script>
+<script>
+(function(){
+  /* the strategy section fades from green to linen as the hero scrolls away */
+  var st=document.getElementById('strategy'), hero=document.querySelector('.hero');
+  function tone(){ if(!st) return; var end=st?Math.min(innerHeight*.8,st.offsetTop+st.offsetHeight-innerHeight):innerHeight*.8, q=Math.min(1,Math.max(0,scrollY/Math.max(1,end))), mix=function(a,b){ return 'rgb('+a.map(function(v,k){return Math.round(v+(b[k]-v)*q);}).join(',')+')'; };
+    var bg=mix([18,48,31],[245,243,239]), ink=mix([245,243,239],[18,48,31]); [st,hero].forEach(function(el){ if(el){ el.style.setProperty('--bgc',bg); el.style.setProperty('--ink',ink); } });
+    if(hero) hero.style.setProperty('--hp',Math.min(1,Math.max(0,scrollY/Math.max(1,hero.offsetHeight))).toFixed(4)); }
+  addEventListener('scroll',tone,{passive:true}); addEventListener('resize',tone); tone();
+  /* why: accordion swaps the illustration */
+  var items=[].slice.call(document.querySelectorAll('.pa__i')), imgs=[].slice.call(document.querySelectorAll('.wy2__img img'));
+  items.forEach(function(it,k){ it.querySelector('.pa__q').addEventListener('click',function(){ var was=it.classList.contains('open');
+    items.forEach(function(o){ o.classList.remove('open'); o.querySelector('.pa__q').setAttribute('aria-expanded','false'); });
+    if(!was){ it.classList.add('open'); this.setAttribute('aria-expanded','true'); imgs.forEach(function(m,n){ m.classList.toggle('on',n===k); }); } }); });
+  var pa=document.getElementById('pa');
+  function reserve(){ if(!pa) return; var max=0, was=items.filter(function(i){return i.classList.contains('open');}); pa.style.minHeight='';
+    var css=document.createElement('style'); css.textContent='.pa *{transition:none!important}'; document.head.appendChild(css);
+    items.forEach(function(it){ items.forEach(function(o){o.classList.remove('open');}); it.classList.add('open'); max=Math.max(max,pa.getBoundingClientRect().height); });
+    items.forEach(function(o){o.classList.remove('open');}); was.forEach(function(o){o.classList.add('open');}); css.remove(); pa.style.minHeight=Math.ceil(max)+'px'; }
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(reserve);
+  [].slice.call(document.querySelectorAll('.lp2__c')).forEach(function(c,k){ c.style.setProperty('--k',k); });
+  var bb=document.getElementById('barbell'), tr=document.getElementById('track');
+  function chart(){ if(bb.classList.contains('go')) return; bb.classList.add('go'); setTimeout(function(){ tr.classList.add('go'); },2100); }
+  if(bb&&tr){ if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){ bb.classList.add('go'); tr.classList.add('go'); }
+    else { var bio=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ setTimeout(chart,400); bio.disconnect(); } },{threshold:0,rootMargin:'0px 0px -35% 0px'}); bio.observe(bb); } }
+  /* reveals: groups of elements, observed by their container, children staggered */
+  (function(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)) return;
+    [['#strategy .st2__head',' > *'],['#strategy .tr2',' .tr2__lab, .tr2__s'],['#lp .head',' > *'],['#lp .partners',' .lab, .plogo'],
+     ['.cb',' h2, .lead, .cb__act, .cb__art'],['.ft',' .ft__brand, .ft__col, .ft__notes, .ft__legal']].forEach(function(g){
+      var host=document.querySelector(g[0]); if(!host) return; var kids=[].slice.call(host.querySelectorAll(g[1].split(',').map(function(x){ return ':scope '+x.trim().replace(/^> */,'> '); }).join(',')));
+      if(!kids.length) return; kids.forEach(function(k,i){ k.classList.add('rv','rv-wait'); k.style.setProperty('--rv',i); });
+      var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting||es[0].boundingClientRect.bottom<0){ kids.forEach(function(k){ k.classList.remove('rv-wait'); }); io.disconnect();
+        setTimeout(function(){ kids.forEach(function(k){ k.style.removeProperty('--rv'); }); },2500); } },{threshold:0,rootMargin:'0px 0px -15% 0px'}); io.observe(host); });
+    addEventListener('scroll',function(){ [].slice.call(document.querySelectorAll('.rv-wait')).forEach(function(k){ if(k.getBoundingClientRect().bottom<0) k.classList.remove('rv-wait'); }); },{passive:true}); })();
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)) return;
+  [['lp','.lp2__row'],['why',null]].forEach(function(p){ var el=document.getElementById(p[0]); if(!el) return; el.classList.add('wait');
+    var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ el.classList.remove('wait'); io.disconnect(); } },{threshold:0,rootMargin:'0px 0px -30% 0px'}); io.observe(p[1]?el.querySelector(p[1]):el); });
+})();
+</script>
+<script>
+/* Dot edge in code (11 Nov): the halftone dissolve from tools/dotfade.py, drawn live as a mask over the untouched photo.
+   Two ways to mark an image:
+   1. Box mode (Capital, Prime):  <img data-dotedge="left|right" [data-band=".22"] [data-lean=".113"] [data-cell="4"]>
+      the edge is drawn across the image's box; dots fade towards the named side.
+   2. Image mode (Home, same maths as tools/edge_slant.py): <img data-dotedge="left|right" data-xt=".97" data-xb=".86" data-band=".2">
+      xt / xb: where the photo ends at the top and bottom, as fractions of the photo's own width. The mask is drawn at
+      the photo's natural size and placed exactly like the photo (object-fit / object-position), so the framing never shifts. */
+(function(){
+  function sm(t){ t=Math.min(1,Math.max(0,t)); return t*t*(3-2*t); }
+  function paint(W,H,cell,g,dpr){
+    var c=document.createElement('canvas'); c.width=Math.round(W*dpr); c.height=Math.round(H*dpr);
+    var x=c.getContext('2d'); x.scale(dpr,dpr); x.fillStyle='#000'; var rmax=cell*.74;
+    for(var py=0;py<H;py+=1){ /* solid rows: fill every run where g reaches .97 */
+      var run=-1; for(var px=0;px<=W;px+=1){ var on=px<W&&g(px,py)>=.97; if(on&&run<0) run=px; if(!on&&run>=0){ x.fillRect(run,py,px-run,1); run=-1; } } }
+    for(var cy=cell/2;cy<H+cell;cy+=cell) for(var cx=cell/2;cx<W+cell;cx+=cell){
+      var v=g(Math.min(cx,W-1),Math.min(cy,H-1)); if(v<=.02) continue;
+      x.globalAlpha=Math.pow(.25+.75*sm(v/.9),1.2); x.beginPath(); x.arc(cx,cy,rmax*Math.sqrt(v),0,6.2832); x.fill(); }
+    return c.toDataURL('image/png');
+  }
+  function apply(img,url,size,pos){
+    var u='url('+url+')';
+    img.style.webkitMaskImage=img.style.maskImage=u; img.style.webkitMaskRepeat=img.style.maskRepeat='no-repeat';
+    img.style.webkitMaskSize=img.style.maskSize=size; img.style.webkitMaskPosition=img.style.maskPosition=pos;
+  }
+  function draw(img){
+    var side=img.dataset.dotedge||'left', cell=parseFloat(img.dataset.cell||4);
+    if(img.dataset.xt){ /* image mode: once per photo, at its natural size */
+      if(img._de) { var cs0=getComputedStyle(img); apply(img,img._de,cs0.objectFit==='contain'?'contain':cs0.objectFit==='fill'?'100% 100%':'cover',cs0.objectPosition); return; }
+      var W=img.naturalWidth, H=img.naturalHeight; if(!W||!H){ img.addEventListener('load',function(){ draw(img); },{once:true}); return; }
+      var xt=parseFloat(img.dataset.xt), xb=parseFloat(img.dataset.xb), band=parseFloat(img.dataset.band||.2)*W;
+      var url=paint(W,H,cell,function(px,py){ var line=(xt+(xb-xt)*py/H)*W, d=side==='right'?line-px:px-line; return sm(d/band); },1);
+      img._de=url; draw(img); return;
+    }
+    /* box mode: redrawn whenever the box changes size */
+    var BW=Math.round(img.clientWidth), BH=Math.round(img.clientHeight); if(!BW||!BH) return;
+    var key=BW+'x'+BH; if(img._deb===key) return; img._deb=key;
+    if(img.dataset.curve){ /* curve mode: data-curve="x,y x,y …" (fractions of the box, top to bottom) is where the fade starts;
+         the photo is on the right / upper side and turns solid data-band (fraction of the box width) further in */
+      var pts=img.dataset.curve.trim().split(/\s+/).map(function(p){ var a=p.split(','); return [parseFloat(a[0])*BW,parseFloat(a[1])*BH]; });
+      var poly=[]; for(var i=0;i<pts.length-1;i++){ var p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+        for(var t=0;t<1;t+=.02){ var t2=t*t,t3=t2*t; poly.push([.5*((2*p1[0])+(-p0[0]+p2[0])*t+(2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*t2+(-p0[0]+3*p1[0]-3*p2[0]+p3[0])*t3),
+                                                          .5*((2*p1[1])+(-p0[1]+p2[1])*t+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*t2+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*t3)]); } }
+      poly.push(pts[pts.length-1]);
+      /* extend both ends along their tangent so every point has a sensible nearest stretch of line */
+      var A=poly[0],A2=poly[1],Z=poly[poly.length-1],Z2=poly[poly.length-2], L=4*(BW+BH);
+      function ext(p,q){ var dx=p[0]-q[0],dy=p[1]-q[1],n=Math.hypot(dx,dy)||1; return [p[0]+dx/n*L,p[1]+dy/n*L]; }
+      poly.unshift(ext(A,A2)); poly.push(ext(Z,Z2));
+      /* signed distance on a coarse grid (positive on the photo side: right of the line's direction of travel… i.e. up/right) */
+      var step=4, GW=Math.ceil(BW/step)+2, GH=Math.ceil(BH/step)+2, F=new Float32Array(GW*GH);
+      for(var gy=0;gy<GH;gy++) for(var gx=0;gx<GW;gx++){ var X=gx*step, Y=gy*step, best=1e9, sgn=1;
+        for(var k=0;k<poly.length-1;k++){ var a=poly[k], c2=poly[k+1], vx=c2[0]-a[0], vy=c2[1]-a[1], ll=vx*vx+vy*vy||1,
+            t=Math.max(0,Math.min(1,((X-a[0])*vx+(Y-a[1])*vy)/ll)), ex=a[0]+vx*t-X, ey=a[1]+vy*t-Y, dd=ex*ex+ey*ey;
+          if(dd<best){ best=dd; sgn=(vx*(Y-a[1])-vy*(X-a[0]))<0?1:-1; } }
+        F[gy*GW+gx]=sgn*Math.sqrt(best); }
+      function sd(px,py){ var fx=px/step, fy=py/step, ix=Math.floor(fx), iy=Math.floor(fy), tx=fx-ix, ty=fy-iy, i=iy*GW+ix;
+        return (F[i]*(1-tx)+F[i+1]*tx)*(1-ty)+(F[i+GW]*(1-tx)+F[i+GW+1]*tx)*ty; }
+      var bc=parseFloat(img.dataset.band||.15)*BW, dpr=Math.min(2,window.devicePixelRatio||1);
+      function maskAt(off){ return paint(BW,BH,cell,function(px,py){ return sm((sd(px,py)+bc*.5-off)/bc); },dpr); }
+      var grow=parseFloat(img.dataset.grow||0)*BW;
+      if(!grow){ apply(img,maskAt(0),'100% 100%','0 0'); return; }
+      /* data-grow: as its section scrolls away the background advances into the photo along the same curve.
+         The mask is drawn at N steps (first on demand, the rest while the browser is idle) and swapped as you scroll. */
+      var N=40, cache=new Array(N), sec=img.closest('section')||img.parentElement, cur=-1;
+      function at(k){ if(!cache[k]) cache[k]=maskAt(grow*k/(N-1)); return cache[k]; }
+      function upd(){ if(img._deb!==key) return; var r=sec.getBoundingClientRect(), p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height))), k=Math.round(sm(p)*(N-1));
+        if(k!==cur){ cur=k; apply(img,at(k),'100% 100%','0 0'); } }
+      addEventListener('scroll',upd,{passive:true}); upd();
+      var idle=window.requestIdleCallback||function(f){ return setTimeout(f,60); }, q=0;
+      (function fill(){ if(img._deb!==key) return; while(q<N&&cache[q]) q++; if(q<N){ idle(function(){ if(img._deb===key&&!cache[q]) cache[q]=maskAt(grow*q/(N-1)); fill(); }); } })();
+      return;
+    }
+    var b=parseFloat(img.dataset.band||.22)*BW, lean=parseFloat(img.dataset.lean||.113)*BH/BW;
+    var u2=paint(BW,BH,cell,function(px,py){ var xx=side==='left'?BW-1-px:px, solid=(.97-lean-b/BW+lean*py/BH)*BW; return sm(((solid+b)-xx)/b); },Math.min(2,window.devicePixelRatio||1));
+    apply(img,u2,'100% 100%','0 0');
+  }
+  function all(){ document.querySelectorAll('img[data-dotedge]').forEach(draw); }
+  var t; addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(all,120); });
+  if('ResizeObserver' in window){ var ro=new ResizeObserver(function(es){ es.forEach(function(e){ draw(e.target); }); });
+    document.querySelectorAll('img[data-dotedge]').forEach(function(i){ ro.observe(i); }); }
+  all();
+})();
+</script>
+<script>
+/* nav: hide while scrolling down, show again as soon as the reader scrolls up */
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return; var last=scrollY, tick=false;
+  function check(){ tick=false; var y=Math.max(0,scrollY), d=y-last;
+    if(y<120||nav.contains(document.activeElement)) nav.classList.remove('is-hidden');
+    else if(d>6) nav.classList.add('is-hidden');
+    else if(d<-6) nav.classList.remove('is-hidden');
+    if(Math.abs(d)>6||y<120) last=y;
+    nav.classList.toggle('stuck',y>40); tone(); }
+  /* light nav over light sections: read the background of whatever sits just under the bar */
+  function bgOf(el){ while(el&&el!==document.documentElement){ var c=getComputedStyle(el).backgroundColor, m=c.match(/[0-9.]+/g);
+      if(m&&(m.length<4||parseFloat(m[3])>.5)) return m.map(Number); el=el.parentElement; } return [18,48,31]; }
+  function tone(){ var h=nav.getBoundingClientRect().bottom+2, x=Math.min(innerWidth-2,48);
+    var under=document.elementsFromPoint(x,h).filter(function(e){ return !nav.contains(e); })[0];
+    var c=bgOf(under), lum=(.2126*c[0]+.7152*c[1]+.0722*c[2])/255; nav.classList.toggle('nav--light',lum>.6);
+    var hero=document.querySelector('main > section:first-of-type, .hero'), hb=hero?hero.getBoundingClientRect().bottom:0; nav.classList.toggle('nav--hero',lum<=.6&&hb>h); }
+  function req(){ if(!tick){ tick=true; requestAnimationFrame(check); } }
+  addEventListener('scroll',req,{passive:true}); nav.addEventListener('focusin',function(){ nav.classList.remove('is-hidden'); }); check();
+})();
+</script>
