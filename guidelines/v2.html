@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterns v2 · SecondLane Guidelines</title>
+<meta name="description" content="SecondLane visual guidelines for the platform team: patterns v2.">
+<link rel="stylesheet" href="gl.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="side" aria-label="Guide">
+  <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
+  <small>Visual guidelines · v0.2</small>
+  <nav aria-label="Pages"><ol class="toc" id="toc">
+<li><a class="pg" href="index.html"><span>00</span>Overview</a>
+</li>
+<li><a class="pg" href="foundations.html"><span>01</span>Foundations</a>
+</li>
+<li><a class="pg" href="components.html"><span>02</span>Components</a>
+</li>
+<li><a class="pg" href="standards.html"><span>03</span>Standards</a>
+</li>
+<li><a class="pg" href="tokens.html"><span>04</span>Tokens and code</a>
+</li>
+<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+</li>
+<li><a class="pg" href="v2.html" aria-current="page"><span>06</span>Patterns v2</a>
+<ol class="sub"><li><a href="#principles">Principles</a></li><li><a href="#hero">Hero</a></li><li><a href="#head">Section head</a></li><li><a href="#columns">Feature columns</a></li><li><a href="#steps">Steps</a></li><li><a href="#accordion">Accordion with image</a></li><li><a href="#band">Image band</a></li><li><a href="#join">Sign-up card</a></li><li><a href="#cta">CTA strip</a></li><li><a href="#closing">Closing band</a></li><li><a href="#panel">Dark panel</a></li><li><a href="#faq">FAQ</a></li><li><a href="#motion">Motion</a></li><li><a href="#imagery">Imagery</a></li><li><a href="#code">Code</a></li></ol>
+</li>
+<li><a class="pg" href="library.html"><span>07</span>Image library</a>
+</li>
+</ol></nav>
+  <div class="meta">Desktop specification. Phone layouts follow the same patterns, stacked.</div>
+</aside>
+<main id="main">
+<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.2</span><h1>Patterns v2</h1></div></header>
+<section class="sec" id="principles">
+  <div class="in">
+    <span class="eb">Patterns v2 · Principles</span>
+    <h2>How the v2 pages are built</h2>
+    <p class="lead">Capital v2 is the closest example of the system and the reference for type, spacing and motion. Each page is judged against the client feedback (10 Nov), not against Capital: keep a page's own layout and adapt its components, borders, illustrations and photography. One alignment per section, no decorative shapes, no panels behind accordion rows, square buttons, no hover zoom on images.</p>
+    <div class="grid g4" style="margin-top:32px">
+      <div class="box"><h4>Capital</h4><p><a href="https://yyyyyyyyuri.github.io/secondlane-preview/capital-v2.html">capital-v2.html</a></p></div>
+      <div class="box"><h4>Companies</h4><p><a href="https://yyyyyyyyuri.github.io/secondlane-preview/companies-v2.html">companies-v2.html</a></p></div>
+      <div class="box"><h4>Access</h4><p><a href="https://yyyyyyyyuri.github.io/secondlane-preview/access-v2.html">access-v2.html</a></p></div>
+      <div class="box"><h4>Prime</h4><p><a href="https://yyyyyyyyuri.github.io/secondlane-preview/prime-v2.html">prime-v2.html</a></p></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="hero">
+  <div class="in">
+    <span class="eb">Patterns v2 · Hero</span>
+    <h2>Hero with a halftone edge</h2>
+    <p class="lead">Full-height green hero, copy on the left, a Round 6 photograph on the right whose left edge dissolves into the green along a curve of dots. As the page scrolls the green advances into the photo along the curve and the photo drifts a little slower than the page.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-hero-curve.webp" alt="" loading="lazy" style="height:auto"><figcaption>Capital v2 · hero</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Ground</td><td>#12301F, text #F5F3EF; standfirst at 78%</td></tr>
+      <tr><td>Title</td><td>Ashcroft 400, 64px / 1.05</td></tr>
+      <tr><td>Photo</td><td>Round 6 photography, 3:2, object-position chosen per image</td></tr>
+      <tr><td>Edge</td><td><code>data-dotedge="left" data-curve="x,y …" data-band=".26" data-grow=".18"</code> (dotedge.js curve mode)</td></tr>
+      <tr><td>Drift</td><td>photo translateY up to 90px across the hero height</td></tr>
+      <tr><td>Buttons</td><td>primary linen on green; Sign in filled linen over the hero, outlined elsewhere</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="head">
+  <div class="in">
+    <span class="eb">Patterns v2 · Section head</span>
+    <h2>Section heading and standfirst</h2>
+    <p class="lead">Every section opens with the same pair: a serif heading and one line of standfirst underneath, centred for overviews and left-aligned when the section has a column of copy.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-section-head.webp" alt="" loading="lazy" style="height:auto"><figcaption>Capital v2 · Investment strategy</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Heading</td><td>h2 · Ashcroft 400, 45px / 1.1, #12301F on linen</td></tr>
+      <tr><td>Standfirst</td><td>18px Schrifted at 72% ink, 22px under the heading</td></tr>
+      <tr><td>Ground</td><td>Linen #F5F3EF; dark sections invert to linen type on #12301F</td></tr>
+      <tr><td>Spacing</td><td>136px section padding top and bottom, 72px from head to content</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="columns">
+  <div class="in">
+    <span class="eb">Patterns v2 · Feature columns</span>
+    <h2>Feature columns (open, no cards)</h2>
+    <p class="lead">Three or four points in open columns: an illustration on top, a serif title, a short line of copy. No card, no border, no top rule. Used for LP advantages, Built on trust, the four Access steps and Empowering founders.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-feature-columns.webp" alt="" loading="lazy" style="height:auto"><figcaption>Capital v2 · LP advantages</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Columns</td><td>3 or 4, max width 1312px, gap 64px (Prime founders 104px)</td></tr>
+      <tr><td>Illustration</td><td>halftone object, light version, 5:4 frame, radial mask so the edges dissolve into linen</td></tr>
+      <tr><td>Title</td><td>Ashcroft 400; 30px for three columns, 1.17em for four</td></tr>
+      <tr><td>Copy</td><td>15 to 16.5px, max 28 to 52ch, centred</td></tr>
+      <tr><td>Steps</td><td>numbered variant: small number above the title, 15px at 60%</td></tr>
+      <tr><td>Motion</td><td>columns rise in one by one, 240ms apart</td></tr>
+      <tr><td>Hover</td><td>none on the cards or images</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="steps">
+  <div class="in">
+    <span class="eb">Patterns v2 · Steps</span>
+    <h2>Numbered steps</h2>
+    <p class="lead">The same open-column pattern with a small number above each title, for sequences such as the four Access steps.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-step-columns.webp" alt="" loading="lazy" style="height:auto"><figcaption>Access v2 · four steps</figcaption></figure>
+  </div>
+</section>
+<section class="sec" id="accordion">
+  <div class="in">
+    <span class="eb">Patterns v2 · Accordion with image</span>
+    <h2>Accordion with an image strip</h2>
+    <p class="lead">A list of points on the right; one open at a time. The open row shows its copy and link, the closed rows are titles at 45% opacity. A tall halftone illustration on the opposite edge swaps with a crossfade when a row opens.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-accordion-image.webp" alt="" loading="lazy" style="height:auto"><figcaption>Capital v2 · Why SecondLane Capital</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Rows</td><td>plain rows, 1px hairline between them, no panels or tinted layers</td></tr>
+      <tr><td>Titles</td><td>Ashcroft 400, 30px; closed rows at 45%, full on hover and when open</td></tr>
+      <tr><td>Image strip</td><td>44% of the section width, flush to the edge; Prime uses 80% of the section height with the whole illustration shown</td></tr>
+      <tr><td>Swap</td><td>opacity crossfade, 0.7s ease</td></tr>
+      <tr><td>Ground</td><td>linen</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="band">
+  <div class="in">
+    <span class="eb">Patterns v2 · Image band</span>
+    <h2>Full-bleed image with a dot-fade top</h2>
+    <p class="lead">A full-width photograph that dissolves up into the page through a band of halftone dots and ends in a hard line underneath. The fade can be angled.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-image-band.webp" alt="" loading="lazy" style="height:auto"><figcaption>Prime v2 · Empowering founders</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Script</td><td>dotedge.js top mode: <code>data-dotedge="top" data-band=".85" data-tilt=".18" data-cell="5"</code></td></tr>
+      <tr><td>data-band</td><td>share of the image height that fades (0 to 1)</td></tr>
+      <tr><td>data-tilt</td><td>how much lower the edge sits on the right than on the left (negative = higher on the right)</td></tr>
+      <tr><td>data-cell</td><td>dot cell size in px</td></tr>
+      <tr><td>data-bottom</td><td>optional fade at the bottom as well</td></tr>
+      <tr><td>Bottom edge</td><td>hard line by default</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="join">
+  <div class="in">
+    <span class="eb">Patterns v2 · Sign-up card</span>
+    <h2>Sign-up card over a photograph</h2>
+    <p class="lead">The Access sign-up sits on a linen card centred over a full-bleed photo that dissolves into the green hero above it. The card rises in shortly after load.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-join-card.webp" alt="" loading="lazy" style="height:auto"><figcaption>Access v2 · Get on the list</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Card</td><td>linen #F5F3EF, square corners, max width 460px, padding 36px 40px</td></tr>
+      <tr><td>Title</td><td>Ashcroft 400, 30px</td></tr>
+      <tr><td>Field</td><td>1px border, 48px high; button green #12301F, full width, hover rgba(18,48,31,.86)</td></tr>
+      <tr><td>Fine print</td><td>12px at 60%</td></tr>
+      <tr><td>Load</td><td>rise 36px with an 8px blur, 0.9s</td></tr>
+      <tr><td>Photo edge</td><td>top mode, band .5, tilt .1</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="cta">
+  <div class="in">
+    <span class="eb">Patterns v2 · Call-to-action strip</span>
+    <h2>Full-width call-to-action strip</h2>
+    <p class="lead">The key action under a section: one full-width outlined strip with an icon tile, a title and a button. Same ground as the page.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-cta-strip.webp" alt="" loading="lazy" style="height:auto"><figcaption>Access v2 · Opening in stages</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Strip</td><td>full container width, 1px rgba(18,48,31,.16) border, 8px radius, transparent ground, padding 40px 44px</td></tr>
+      <tr><td>Icon tile</td><td>64px, 12px radius, green with a linen line icon</td></tr>
+      <tr><td>Title</td><td>Ashcroft 400, 38px</td></tr>
+      <tr><td>Button</td><td>green primary</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="closing">
+  <div class="in">
+    <span class="eb">Patterns v2 · Closing band</span>
+    <h2>Closing band with a dark halftone object</h2>
+    <p class="lead">Every page ends on a green band: a heading, a standfirst, a primary and an arrow link, and a dark halftone object in the right half with a soft dot halo.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-closing-band.webp" alt="" loading="lazy" style="height:auto"><figcaption>Capital v2 · closing band</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Ground</td><td>#12301F</td></tr>
+      <tr><td>Object</td><td>halftone dark version, right half, halo fades out into the green</td></tr>
+      <tr><td>Actions</td><td>linen primary button plus an arrow link</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="panel">
+  <div class="in">
+    <span class="eb">Patterns v2 · Dark panel</span>
+    <h2>Dark panel with three short columns</h2>
+    <p class="lead">A green panel inside a linen page for a secondary audience (Companies, For holders): headline, copy and outlined button on the left, a dark halftone object on the right, three short columns underneath with no dividers.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-dark-panel.webp" alt="" loading="lazy" style="height:auto"><figcaption>Companies v2 · For holders</figcaption></figure>
+  </div>
+</section>
+<section class="sec" id="faq">
+  <div class="in">
+    <span class="eb">Patterns v2 · FAQ</span>
+    <h2>FAQ accordion</h2>
+    <p class="lead">Plus and minus rows on linen, one open at a time, risk line underneath. The heading uses the section-head size; questions are a level smaller.</p>
+    <figure class="shot" style="margin-top:32px;background:#F5F3EF"><img src="shots/v2-faq.webp" alt="" loading="lazy" style="height:auto"><figcaption>Access v2 · Before you join</figcaption></figure>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Questions</td><td>Ashcroft 400, 22px, 20px vertical padding</td></tr>
+      <tr><td>Icon</td><td>18px plus that rotates to a minus</td></tr>
+      <tr><td>Width</td><td>max 940px, centred</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="motion">
+  <div class="in">
+    <span class="eb">Patterns v2 · Motion</span>
+    <h2>Reveals and scroll effects</h2>
+    <p class="lead">Things settle rather than bounce. Sections reveal as they enter, once; nothing loops; everything rests under reduced motion.</p>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Reveal</td><td>opacity 0 to 1, translateY 28px to 0, blur 8px to 0, 1s cubic-bezier(.16,1,.3,1)</td></tr>
+      <tr><td>Stagger</td><td>110ms between items (240ms for feature columns)</td></tr>
+      <tr><td>Trigger</td><td>IntersectionObserver, rootMargin 0 0 -15% 0, runs once per group</td></tr>
+      <tr><td>Classes</td><td><code>v2rv</code> and <code>v2rv-wait</code> (not <code>rv</code>, which older pages use)</td></tr>
+      <tr><td>Hero</td><td>green advances into the photo along the curve (data-grow) and the photo drifts</td></tr>
+      <tr><td>Colour fade</td><td>Capital only: hero and first section fade green to linen on scroll. Access keeps a hard cut.</td></tr>
+      <tr><td>Reduced motion</td><td>all reveals and drifts off, content visible</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="imagery">
+  <div class="in">
+    <span class="eb">Patterns v2 · Imagery</span>
+    <h2>Imagery rules for new images</h2>
+    <p class="lead">Two kinds of image only. Every image in the library follows these rules; new ones should too.</p>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>Photography</td><td>Round 6: people together in elevated spaces, low warm sun, deep green shade, travertine, bronze, walnut, glass; tailoring in wool, camel and charcoal; one terracotta accent; faces in soft profile, nobody looks at the camera</td></tr>
+      <tr><td>People</td><td>vary ages and looks; do not reuse the older grey-haired man that recurs in generated images</td></tr>
+      <tr><td>Avoid</td><td>detail and furniture shots without people (water textures excepted), handshakes, laptops, charts, staged stock</td></tr>
+      <tr><td>Halftone objects</td><td>one object per image from a SecondLane sector (AI, crypto, fintech, consumer tech, gaming, space, deep tech, autonomy, defense, energy); light version alone on #F5F3EF, dark version on #12301F with a soft halo; one terracotta or bronze accent; no yellow or neon</td></tr>
+      <tr><td>Generation</td><td>GPT Image 2.5 through ComfyUI, 1536×1024 or 1024×1536 (1K), style reference images r5_73_style_light, r5_73_style_dark, r5_74_fb_lounge; flatten light backgrounds to #F5F3EF</td></tr>
+      <tr><td>Delivery</td><td>WebP for halftones, JPEG for photos; empty alt for decorative halftones</td></tr>
+    </table></div>
+  </div>
+</section>
+<section class="sec" id="code">
+  <div class="in">
+    <span class="eb">Patterns v2 · Code</span>
+    <h2>Files for these patterns</h2>
+    <p class="lead">The v2 pages are plain HTML and CSS with two small scripts. Each page carries its own CSS block at the end of the head, after the shared site styles.</p>
+    <div class="tw" style="margin-top:28px"><table>
+      <tr><th>Property</th><th>Value</th></tr>
+      <tr><td>dotedge.js</td><td><a href="files/dotedge.js">files/dotedge.js</a> · halftone edges for images and boxes: box, image, curve, top modes</td></tr>
+      <tr><td>Reveals</td><td>inline script at the end of each v2 page: groups of selectors, staggered, observed once</td></tr>
+      <tr><td>Source</td><td>the GitHub repository yyyyyyyyuri/secondlane-preview: capital-v2.html, companies-v2.html, access-v2.html, prime-v2.html and assets/</td></tr>
+      <tr><td>Tokens</td><td><a href="tokens.html">Tokens and code</a> · colours, type and spacing unchanged from v0.1</td></tr>
+    </table></div>
+  </div>
+</section>
+<nav class="pnav" aria-label="Pages"><a href="resources.html"><small>Previous</small><b>Resources</b></a><a href="library.html"><small>Next</small><b>Image library</b></a></nav>
+<footer class="foot">SecondLane visual guidelines · v0.2 · 11 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+</main>
+<script src="gl.js"></script>
+</body>
+</html>
