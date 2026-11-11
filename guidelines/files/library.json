@@ -1,5 +1,6 @@
 [
  {
+  "download": "library/people-founders.jpg",
   "file": "people-founders.jpg",
   "type": "Photography",
   "page": "Capital",
@@ -11,6 +12,7 @@
   "url": "assets/people-founders.jpg"
  },
  {
+  "download": "library/prime-hero.jpg",
   "file": "prime-hero.jpg",
   "type": "Photography",
   "page": "Prime",
@@ -22,6 +24,7 @@
   "url": "assets/prime-hero.jpg"
  },
  {
+  "download": "library/access-hero-table.jpg",
   "file": "access-hero-table.jpg",
   "type": "Photography",
   "page": "Access",
@@ -33,6 +36,7 @@
   "url": "assets/access-hero-table.jpg"
  },
  {
+  "download": "library/access-phone2.jpg",
   "file": "access-phone2.jpg",
   "type": "Photography",
   "page": "Access",
@@ -44,6 +48,7 @@
   "url": "assets/access-phone2.jpg"
  },
  {
+  "download": "library/guide-memo.jpg",
   "file": "guide-memo.jpg",
   "type": "Photography",
   "page": "Companies",
@@ -55,6 +60,7 @@
   "url": "assets/guide-memo.jpg"
  },
  {
+  "download": "library/office-solid.jpg",
   "file": "office-solid.jpg",
   "type": "Photography",
   "page": "Home",
@@ -66,6 +72,7 @@
   "url": "assets/office-solid.jpg"
  },
  {
+  "download": "library/partners-crop.jpg",
   "file": "partners-crop.jpg",
   "type": "Photography",
   "page": "Home",
@@ -77,6 +84,7 @@
   "url": "assets/partners-crop.jpg"
  },
  {
+  "download": "library/water-full.jpg",
   "file": "water-full.jpg",
   "type": "Photography",
   "page": "Home",
@@ -88,6 +96,7 @@
   "url": "assets/water-full.jpg"
  },
  {
+  "download": "library/water-founders-macro.jpg",
   "file": "water-founders-macro.jpg",
   "type": "Photography",
   "page": "Prime",
@@ -99,6 +108,7 @@
   "url": "assets/water-founders-macro.jpg"
  },
  {
+  "download": "library/lp-first-look.jpg",
   "file": "lp-first-look.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -110,6 +120,7 @@
   "url": "assets/lp-first-look.webp"
  },
  {
+  "download": "library/lp-no-hidden-fees.jpg",
   "file": "lp-no-hidden-fees.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -121,6 +132,7 @@
   "url": "assets/lp-no-hidden-fees.webp"
  },
  {
+  "download": "library/lp-independent-admin.jpg",
   "file": "lp-independent-admin.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -132,6 +144,7 @@
   "url": "assets/lp-independent-admin.webp"
  },
  {
+  "download": "library/why-data.jpg",
   "file": "why-data.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -143,6 +156,7 @@
   "url": "assets/why-data.webp"
  },
  {
+  "download": "library/why-experience.jpg",
   "file": "why-experience.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -154,6 +168,7 @@
   "url": "assets/why-experience.webp"
  },
  {
+  "download": "library/why-network.jpg",
   "file": "why-network.webp",
   "type": "Halftone light",
   "page": "Capital",
@@ -165,6 +180,7 @@
   "url": "assets/why-network.webp"
  },
  {
+  "download": "library/fd-damper.jpg",
   "file": "fd-damper.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -176,6 +192,7 @@
   "url": "assets/fd-damper.webp"
  },
  {
+  "download": "library/fd-gimbal.jpg",
   "file": "fd-gimbal.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -187,6 +204,7 @@
   "url": "assets/fd-gimbal.webp"
  },
  {
+  "download": "library/fd-magnet.jpg",
   "file": "fd-magnet.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -198,6 +216,7 @@
   "url": "assets/fd-magnet.webp"
  },
  {
+  "download": "library/fd-satellite.jpg",
   "file": "fd-satellite.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -209,6 +228,7 @@
   "url": "assets/fd-satellite.webp"
  },
  {
+  "download": "library/inv-premarket.jpg",
   "file": "inv-premarket.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -220,6 +240,7 @@
   "url": "assets/inv-premarket.webp"
  },
  {
+  "download": "library/inv-rebalance.jpg",
   "file": "inv-rebalance.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -231,6 +252,7 @@
   "url": "assets/inv-rebalance.webp"
  },
  {
+  "download": "library/inv-liquidity.jpg",
   "file": "inv-liquidity.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -242,6 +264,7 @@
   "url": "assets/inv-liquidity.webp"
  },
  {
+  "download": "library/inv-compliance.jpg",
   "file": "inv-compliance.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -253,6 +276,7 @@
   "url": "assets/inv-compliance.webp"
  },
  {
+  "download": "library/trust-data.jpg",
   "file": "trust-data.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -264,6 +288,7 @@
   "url": "assets/trust-data.webp"
  },
  {
+  "download": "library/trust-privacy.jpg",
   "file": "trust-privacy.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -275,6 +300,7 @@
   "url": "assets/trust-privacy.webp"
  },
  {
+  "download": "library/trust-network.jpg",
   "file": "trust-network.webp",
   "type": "Halftone light",
   "page": "Prime",
@@ -286,6 +312,7 @@
   "url": "assets/trust-network.webp"
  },
  {
+  "download": "library/step-join2.jpg",
   "file": "step-join2.webp",
   "type": "Halftone light",
   "page": "Access",
@@ -297,6 +324,7 @@
   "url": "assets/step-join2.webp"
  },
  {
+  "download": "library/step-verify2.jpg",
   "file": "step-verify2.webp",
   "type": "Halftone light",
   "page": "Access",
@@ -308,6 +336,7 @@
   "url": "assets/step-verify2.webp"
  },
  {
+  "download": "library/step-glasses.jpg",
   "file": "step-glasses.webp",
   "type": "Halftone light",
   "page": "Access",
@@ -319,6 +348,7 @@
   "url": "assets/step-glasses.webp"
  },
  {
+  "download": "library/step-fund.jpg",
   "file": "step-fund.webp",
   "type": "Halftone light",
   "page": "Access",
@@ -330,6 +360,7 @@
   "url": "assets/step-fund.webp"
  },
  {
+  "download": "library/htl1.jpg",
   "file": "htl1.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -341,6 +372,7 @@
   "url": "assets/htl1.jpg"
  },
  {
+  "download": "library/htl3.jpg",
   "file": "htl3.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -352,6 +384,7 @@
   "url": "assets/htl3.jpg"
  },
  {
+  "download": "library/htl5.jpg",
   "file": "htl5.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -363,6 +396,7 @@
   "url": "assets/htl5.jpg"
  },
  {
+  "download": "library/ins-chip.jpg",
   "file": "ins-chip.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -374,6 +408,7 @@
   "url": "assets/ins-chip.jpg"
  },
  {
+  "download": "library/ins-cooling.jpg",
   "file": "ins-cooling.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -385,6 +420,7 @@
   "url": "assets/ins-cooling.jpg"
  },
  {
+  "download": "library/ins-insulators.jpg",
   "file": "ins-insulators.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -396,6 +432,7 @@
   "url": "assets/ins-insulators.jpg"
  },
  {
+  "download": "library/insulator.jpg",
   "file": "insulator.jpg",
   "type": "Halftone light",
   "page": "Home",
@@ -407,6 +444,7 @@
   "url": "assets/insulator.jpg"
  },
  {
+  "download": "library/sat-hero.webp",
   "file": "sat-hero.webp",
   "type": "Halftone dark",
   "page": "Home",
@@ -418,6 +456,7 @@
   "url": "assets/sat-hero.webp"
  },
  {
+  "download": "library/sat-hero-2560.webp",
   "file": "sat-hero-2560.webp",
   "type": "Halftone dark",
   "page": "Home",
@@ -429,6 +468,7 @@
   "url": "assets/sat-hero-2560.webp"
  },
  {
+  "download": "library/sat-hero-m.webp",
   "file": "sat-hero-m.webp",
   "type": "Halftone dark",
   "page": "Home",
@@ -440,6 +480,7 @@
   "url": "assets/sat-hero-m.webp"
  },
  {
+  "download": "library/closing-arm.jpg",
   "file": "closing-arm.webp",
   "type": "Halftone dark",
   "page": "Capital",
@@ -451,6 +492,7 @@
   "url": "assets/closing-arm.webp"
  },
  {
+  "download": "library/closing-gears.jpg",
   "file": "closing-gears.webp",
   "type": "Halftone dark",
   "page": "Prime",
@@ -462,6 +504,7 @@
   "url": "assets/closing-gears.webp"
  },
  {
+  "download": "library/closing-rocket.jpg",
   "file": "closing-rocket.webp",
   "type": "Halftone dark",
   "page": "Companies",
@@ -473,6 +516,7 @@
   "url": "assets/closing-rocket.webp"
  },
  {
+  "download": "library/holders-padlock-c.jpg",
   "file": "holders-padlock-c.webp",
   "type": "Halftone dark",
   "page": "Companies",
@@ -484,6 +528,7 @@
   "url": "assets/holders-padlock-c.webp"
  },
  {
+  "download": "library/tm-andre-nabais.webp",
   "file": "tm-andre-nabais.webp",
   "type": "Portraits",
   "page": "Home",
@@ -495,6 +540,7 @@
   "url": "assets/tm-andre-nabais.webp"
  },
  {
+  "download": "library/tm-eugenie-gutmann.webp",
   "file": "tm-eugenie-gutmann.webp",
   "type": "Portraits",
   "page": "Home",
@@ -506,6 +552,7 @@
   "url": "assets/tm-eugenie-gutmann.webp"
  },
  {
+  "download": "library/tm-matthew-wimberly.webp",
   "file": "tm-matthew-wimberly.webp",
   "type": "Portraits",
   "page": "Home",
@@ -517,6 +564,7 @@
   "url": "assets/tm-matthew-wimberly.webp"
  },
  {
+  "download": "library/tm-miguel-nabais.webp",
   "file": "tm-miguel-nabais.webp",
   "type": "Portraits",
   "page": "Home",
@@ -528,6 +576,7 @@
   "url": "assets/tm-miguel-nabais.webp"
  },
  {
+  "download": "library/tm-nick-cote.webp",
   "file": "tm-nick-cote.webp",
   "type": "Portraits",
   "page": "Home",
@@ -539,6 +588,7 @@
   "url": "assets/tm-nick-cote.webp"
  },
  {
+  "download": "library/tm-oleg-ivanov.webp",
   "file": "tm-oleg-ivanov.webp",
   "type": "Portraits",
   "page": "Home",
@@ -550,6 +600,7 @@
   "url": "assets/tm-oleg-ivanov.webp"
  },
  {
+  "download": "library/tm-omar-shakeeb.webp",
   "file": "tm-omar-shakeeb.webp",
   "type": "Portraits",
   "page": "Home",
@@ -561,6 +612,7 @@
   "url": "assets/tm-omar-shakeeb.webp"
  },
  {
+  "download": "library/pt-andrew-kang.webp",
   "file": "pt-andrew-kang.webp",
   "type": "Portraits",
   "page": "Home",
@@ -572,6 +624,7 @@
   "url": "assets/pt-andrew-kang.webp"
  },
  {
+  "download": "library/pt-benjamin-roth.webp",
   "file": "pt-benjamin-roth.webp",
   "type": "Portraits",
   "page": "Home",
@@ -583,6 +636,7 @@
   "url": "assets/pt-benjamin-roth.webp"
  },
  {
+  "download": "library/pt-diego-perez-de-ayala.webp",
   "file": "pt-diego-perez-de-ayala.webp",
   "type": "Portraits",
   "page": "Home",
@@ -594,6 +648,7 @@
   "url": "assets/pt-diego-perez-de-ayala.webp"
  },
  {
+  "download": "library/pt-frank-wang.webp",
   "file": "pt-frank-wang.webp",
   "type": "Portraits",
   "page": "Home",
@@ -605,6 +660,7 @@
   "url": "assets/pt-frank-wang.webp"
  },
  {
+  "download": "library/pt-jordi-alexander.webp",
   "file": "pt-jordi-alexander.webp",
   "type": "Portraits",
   "page": "Home",
@@ -616,6 +672,7 @@
   "url": "assets/pt-jordi-alexander.webp"
  },
  {
+  "download": "library/pt-lior-messika.webp",
   "file": "pt-lior-messika.webp",
   "type": "Portraits",
   "page": "Home",
@@ -627,6 +684,7 @@
   "url": "assets/pt-lior-messika.webp"
  },
  {
+  "download": "library/pt-min-teo.webp",
   "file": "pt-min-teo.webp",
   "type": "Portraits",
   "page": "Home",
@@ -638,6 +696,7 @@
   "url": "assets/pt-min-teo.webp"
  },
  {
+  "download": "library/pt-roger-lim.webp",
   "file": "pt-roger-lim.webp",
   "type": "Portraits",
   "page": "Home",
@@ -649,6 +708,7 @@
   "url": "assets/pt-roger-lim.webp"
  },
  {
+  "download": "library/pt-santiago-r-santos.webp",
   "file": "pt-santiago-r-santos.webp",
   "type": "Portraits",
   "page": "Home",
@@ -660,6 +720,7 @@
   "url": "assets/pt-santiago-r-santos.webp"
  },
  {
+  "download": "library/lg-circle.webp",
   "file": "lg-circle.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -671,6 +732,7 @@
   "url": "assets/lg-circle.webp"
  },
  {
+  "download": "library/lg-fuel.webp",
   "file": "lg-fuel.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -682,6 +744,7 @@
   "url": "assets/lg-fuel.webp"
  },
  {
+  "download": "library/lg-kamino.webp",
   "file": "lg-kamino.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -693,6 +756,7 @@
   "url": "assets/lg-kamino.webp"
  },
  {
+  "download": "library/lg-manta.webp",
   "file": "lg-manta.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -704,6 +768,7 @@
   "url": "assets/lg-manta.webp"
  },
  {
+  "download": "library/lg-scroll.webp",
   "file": "lg-scroll.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -715,6 +780,7 @@
   "url": "assets/lg-scroll.webp"
  },
  {
+  "download": "library/lg-sei.webp",
   "file": "lg-sei.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -726,6 +792,7 @@
   "url": "assets/lg-sei.webp"
  },
  {
+  "download": "library/lg-solana.webp",
   "file": "lg-solana.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -737,6 +804,7 @@
   "url": "assets/lg-solana.webp"
  },
  {
+  "download": "library/lg-spacex.webp",
   "file": "lg-spacex.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -748,6 +816,7 @@
   "url": "assets/lg-spacex.webp"
  },
  {
+  "download": "library/lg-spectral.webp",
   "file": "lg-spectral.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -759,6 +828,7 @@
   "url": "assets/lg-spectral.webp"
  },
  {
+  "download": "library/lg-zksync.webp",
   "file": "lg-zksync.webp",
   "type": "Logos (third party)",
   "page": "Home",
@@ -770,6 +840,7 @@
   "url": "assets/lg-zksync.webp"
  },
  {
+  "download": "library/logo-bitgo.svg",
   "file": "logo-bitgo.svg",
   "type": "Logos (third party)",
   "page": "Capital",
@@ -781,6 +852,7 @@
   "url": "assets/logo-bitgo.svg"
  },
  {
+  "download": "library/logo-formidium.png",
   "file": "logo-formidium.png",
   "type": "Logos (third party)",
   "page": "Capital",
@@ -792,6 +864,7 @@
   "url": "assets/logo-formidium.png"
  },
  {
+  "download": "library/logo-pwc.svg",
   "file": "logo-pwc.svg",
   "type": "Logos (third party)",
   "page": "Capital",
@@ -803,6 +876,7 @@
   "url": "assets/logo-pwc.svg"
  },
  {
+  "download": "library/anthropic.svg",
   "file": "anthropic.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -814,6 +888,7 @@
   "url": "assets/logos/anthropic.svg"
  },
  {
+  "download": "library/canva.svg",
   "file": "canva.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -825,6 +900,7 @@
   "url": "assets/logos/canva.svg"
  },
  {
+  "download": "library/databricks.svg",
   "file": "databricks.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -836,6 +912,7 @@
   "url": "assets/logos/databricks.svg"
  },
  {
+  "download": "library/epicgames.svg",
   "file": "epicgames.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -847,6 +924,7 @@
   "url": "assets/logos/epicgames.svg"
  },
  {
+  "download": "library/onlyfans.svg",
   "file": "onlyfans.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -858,6 +936,7 @@
   "url": "assets/logos/onlyfans.svg"
  },
  {
+  "download": "library/openai.svg",
   "file": "openai.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -869,6 +948,7 @@
   "url": "assets/logos/openai.svg"
  },
  {
+  "download": "library/perplexity.svg",
   "file": "perplexity.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -880,6 +960,7 @@
   "url": "assets/logos/perplexity.svg"
  },
  {
+  "download": "library/ripple.svg",
   "file": "ripple.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -891,6 +972,7 @@
   "url": "assets/logos/ripple.svg"
  },
  {
+  "download": "library/stripe.svg",
   "file": "stripe.svg",
   "type": "Logos (third party)",
   "page": "Companies",
@@ -902,6 +984,7 @@
   "url": "assets/logos/stripe.svg"
  },
  {
+  "download": "library/logo.svg",
   "file": "logo.svg",
   "type": "Brand",
   "page": "All",
@@ -911,5 +994,653 @@
   "original": "",
   "size": "vector",
   "url": "assets/logo.svg"
+ },
+ {
+  "download": "library/r6-photo-a-01.jpg",
+  "file": "r6-photo-a-01.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 01",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-01.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-01.webp"
+ },
+ {
+  "download": "library/r6-photo-a-02.jpg",
+  "file": "r6-photo-a-02.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 02",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-02.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-02.webp"
+ },
+ {
+  "download": "library/r6-photo-a-03.jpg",
+  "file": "r6-photo-a-03.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 03",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-03.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-03.webp"
+ },
+ {
+  "download": "library/r6-photo-a-04.jpg",
+  "file": "r6-photo-a-04.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 04",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-04.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-04.webp"
+ },
+ {
+  "download": "library/r6-photo-a-05.jpg",
+  "file": "r6-photo-a-05.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 05",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-05.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-05.webp"
+ },
+ {
+  "download": "library/r6-photo-a-06.jpg",
+  "file": "r6-photo-a-06.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 06",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-06.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-06.webp"
+ },
+ {
+  "download": "library/r6-photo-a-07.jpg",
+  "file": "r6-photo-a-07.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 07",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-07.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-07.webp"
+ },
+ {
+  "download": "library/r6-photo-a-08.jpg",
+  "file": "r6-photo-a-08.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 08",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-08.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-08.webp"
+ },
+ {
+  "download": "library/r6-photo-a-09.jpg",
+  "file": "r6-photo-a-09.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 09",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-09.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-09.webp"
+ },
+ {
+  "download": "library/r6-photo-a-10.jpg",
+  "file": "r6-photo-a-10.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 10",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-10.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-10.webp"
+ },
+ {
+  "download": "library/r6-photo-a-11.jpg",
+  "file": "r6-photo-a-11.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 11",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-11.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-11.webp"
+ },
+ {
+  "download": "library/r6-photo-a-12.jpg",
+  "file": "r6-photo-a-12.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 12",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-12.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-12.webp"
+ },
+ {
+  "download": "library/r6-photo-a-13.jpg",
+  "file": "r6-photo-a-13.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 13",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-13.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-13.webp"
+ },
+ {
+  "download": "library/r6-photo-a-14.jpg",
+  "file": "r6-photo-a-14.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 14",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-14.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-14.webp"
+ },
+ {
+  "download": "library/r6-photo-a-15.jpg",
+  "file": "r6-photo-a-15.jpg",
+  "type": "Round 6 \u00b7 Photography A",
+  "page": "Round 6 route",
+  "section": "Photographic style A \u00b7 15",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography A/original/r6-photo-a-15.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-a-15.webp"
+ },
+ {
+  "download": "library/r6-photo-b-01.jpg",
+  "file": "r6-photo-b-01.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 01",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-01.jpg",
+  "size": "928x1152",
+  "url": "guidelines/library/web/r6-photo-b-01.webp"
+ },
+ {
+  "download": "library/r6-photo-b-02.jpg",
+  "file": "r6-photo-b-02.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 02",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-02.jpg",
+  "size": "928x1152",
+  "url": "guidelines/library/web/r6-photo-b-02.webp"
+ },
+ {
+  "download": "library/r6-photo-b-03.jpg",
+  "file": "r6-photo-b-03.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 03",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-03.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-03.webp"
+ },
+ {
+  "download": "library/r6-photo-b-04.jpg",
+  "file": "r6-photo-b-04.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 04",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-04.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-04.webp"
+ },
+ {
+  "download": "library/r6-photo-b-05.jpg",
+  "file": "r6-photo-b-05.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 05",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-05.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-05.webp"
+ },
+ {
+  "download": "library/r6-photo-b-06.jpg",
+  "file": "r6-photo-b-06.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 06",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-06.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-06.webp"
+ },
+ {
+  "download": "library/r6-photo-b-07.jpg",
+  "file": "r6-photo-b-07.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 07",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-07.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-07.webp"
+ },
+ {
+  "download": "library/r6-photo-b-08.jpg",
+  "file": "r6-photo-b-08.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 08",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-08.jpg",
+  "size": "928x1152",
+  "url": "guidelines/library/web/r6-photo-b-08.webp"
+ },
+ {
+  "download": "library/r6-photo-b-09.jpg",
+  "file": "r6-photo-b-09.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 09",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-09.jpg",
+  "size": "928x1152",
+  "url": "guidelines/library/web/r6-photo-b-09.webp"
+ },
+ {
+  "download": "library/r6-photo-b-10.jpg",
+  "file": "r6-photo-b-10.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 10",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-10.jpg",
+  "size": "1024x1024",
+  "url": "guidelines/library/web/r6-photo-b-10.webp"
+ },
+ {
+  "download": "library/r6-photo-b-11.jpg",
+  "file": "r6-photo-b-11.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 11",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-11.jpg",
+  "size": "928x1152",
+  "url": "guidelines/library/web/r6-photo-b-11.webp"
+ },
+ {
+  "download": "library/r6-photo-b-12.jpg",
+  "file": "r6-photo-b-12.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 12",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-12.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-12.webp"
+ },
+ {
+  "download": "library/r6-photo-b-13.jpg",
+  "file": "r6-photo-b-13.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 13",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-13.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-13.webp"
+ },
+ {
+  "download": "library/r6-photo-b-14.jpg",
+  "file": "r6-photo-b-14.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 14",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-14.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-photo-b-14.webp"
+ },
+ {
+  "download": "library/r6-photo-b-15.jpg",
+  "file": "r6-photo-b-15.jpg",
+  "type": "Round 6 \u00b7 Photography B",
+  "page": "Round 6 route",
+  "section": "Photographic style B \u00b7 15",
+  "subject": "Approved Round 6 photograph",
+  "web": "",
+  "original": "Round 6 \u00b7 Photography B/original/r6-photo-b-15.jpg",
+  "size": "1024x1024",
+  "url": "guidelines/library/web/r6-photo-b-15.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-01.jpg",
+  "file": "r6-halftone-a-01.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 01",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-01.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-01.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-02.jpg",
+  "file": "r6-halftone-a-02.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 02",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-02.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-02.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-03.jpg",
+  "file": "r6-halftone-a-03.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 03",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-03.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-03.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-04.jpg",
+  "file": "r6-halftone-a-04.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 04",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-04.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-04.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-05.jpg",
+  "file": "r6-halftone-a-05.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 05",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-05.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-05.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-06.jpg",
+  "file": "r6-halftone-a-06.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 06",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-06.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-06.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-07.jpg",
+  "file": "r6-halftone-a-07.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 07",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-07.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-07.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-08.jpg",
+  "file": "r6-halftone-a-08.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 08",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-08.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-08.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-09.jpg",
+  "file": "r6-halftone-a-09.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 09",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-09.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-09.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-10.jpg",
+  "file": "r6-halftone-a-10.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 10",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-10.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-10.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-11.jpg",
+  "file": "r6-halftone-a-11.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 11",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-11.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-11.webp"
+ },
+ {
+  "download": "library/r6-halftone-a-12.jpg",
+  "file": "r6-halftone-a-12.jpg",
+  "type": "Round 6 \u00b7 Halftone A",
+  "page": "Round 6 route",
+  "section": "Halftone A \u00b7 12",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone A/original/r6-halftone-a-12.jpg",
+  "size": "1264x848",
+  "url": "guidelines/library/web/r6-halftone-a-12.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-01.jpg",
+  "file": "r6-halftone-b-01.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 01",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-01.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-01.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-02.jpg",
+  "file": "r6-halftone-b-02.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 02",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-02.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-02.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-03.jpg",
+  "file": "r6-halftone-b-03.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 03",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-03.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-03.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-04.jpg",
+  "file": "r6-halftone-b-04.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 04",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-04.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-04.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-05.jpg",
+  "file": "r6-halftone-b-05.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 05",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-05.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-05.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-06.jpg",
+  "file": "r6-halftone-b-06.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 06",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-06.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-06.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-07.jpg",
+  "file": "r6-halftone-b-07.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 07",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-07.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-07.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-08.jpg",
+  "file": "r6-halftone-b-08.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 08",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-08.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-08.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-09.jpg",
+  "file": "r6-halftone-b-09.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 09",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-09.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-09.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-10.jpg",
+  "file": "r6-halftone-b-10.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 10",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-10.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-10.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-11.jpg",
+  "file": "r6-halftone-b-11.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 11",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-11.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-11.webp"
+ },
+ {
+  "download": "library/r6-halftone-b-12.jpg",
+  "file": "r6-halftone-b-12.jpg",
+  "type": "Round 6 \u00b7 Halftone B",
+  "page": "Round 6 route",
+  "section": "Halftone B \u00b7 12",
+  "subject": "Approved Round 6 halftone object",
+  "web": "",
+  "original": "Round 6 \u00b7 Halftone B/original/r6-halftone-b-12.jpg",
+  "size": "1536x1024",
+  "url": "guidelines/library/web/r6-halftone-b-12.webp"
  }
 ]

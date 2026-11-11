@@ -5,14 +5,14 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Foundations · SecondLane Guidelines</title>
-<meta name="description" content="SecondLane visual guidelines v0.1 for the platform team: foundations.">
+<meta name="description" content="SecondLane visual guidelines v0.2 for the platform team: foundations.">
 <link rel="stylesheet" href="gl.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <aside class="side" aria-label="Guide">
   <a href="index.html" aria-label="SecondLane guidelines, overview"><i class="logo"></i></a>
-  <small>Visual guidelines · v0.1</small>
+  <small>Visual guidelines · v0.2</small>
   <nav aria-label="Pages"><ol class="toc" id="toc">
 <li><a class="pg" href="index.html"><span>00</span>Overview</a>
 </li>
@@ -21,15 +21,13 @@
 </li>
 <li><a class="pg" href="components.html"><span>02</span>Components</a>
 </li>
-<li><a class="pg" href="standards.html"><span>03</span>Standards</a>
+<li><a class="pg" href="patterns.html"><span>03</span>Patterns</a>
 </li>
-<li><a class="pg" href="tokens.html"><span>04</span>Tokens and code</a>
+<li><a class="pg" href="standards.html"><span>04</span>Standards</a>
 </li>
-<li><a class="pg" href="resources.html"><span>05</span>Resources</a>
+<li><a class="pg" href="tokens.html"><span>05</span>Tokens and code</a>
 </li>
-
-
-<li><a class="pg" href="v2.html"><span>06</span>Patterns v2</a>
+<li><a class="pg" href="resources.html"><span>06</span>Resources</a>
 </li>
 <li><a class="pg" href="library.html"><span>07</span>Image library</a>
 </li>
@@ -37,7 +35,7 @@
   <div class="meta">Desktop specification. Phone layouts follow once the desktop layouts are approved.</div>
 </aside>
 <main id="main">
-<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.1</span><h1>Foundations</h1></div></header>
+<header class="sec pagehead"><div class="in"><span class="eb">SecondLane guidelines · v0.2</span><h1>Foundations</h1></div></header>
 <!-- 02 LOGO -->
 <section class="sec" id="logo">
   <div class="in">
@@ -241,7 +239,7 @@
       <tr><td><code>--radius-md</code></td><td>8px</td><td>Cards, image frames</td></tr>
       <tr><td><code>--radius-lg</code></td><td>12px</td><td>Glass panels (stats, waitlist form)</td></tr>
       <tr><td><code>--shadow-lift</code></td><td><code>0 27px 67px rgba(0,0,0,.45)</code></td><td>Card hover only. Nothing has a shadow at rest.</td></tr>
-      <tr><td><code>--glass</code></td><td>fill <code>rgba(18,48,31,.55)</code>, <code>blur(24px)</code>, 1px line at 20%, inner top highlight 12%</td><td>Panels over the dot field or photos</td></tr>
+      <tr><td><code>--glass</code></td><td>fill <code>rgba(18,48,31,.55)</code>, <code>blur(24px)</code>, 1px line at 20%, inner top highlight 12%</td><td>Panels over photos</td></tr>
     </table></div>
     <p class="note">Breakpoints: <code>900px</code> switches to the phone layout, <code>1180px</code> moves the company directory's sidebar above the list. Phone layouts are not designed yet: they follow once the desktop layouts and components are approved. Until then, stack columns in reading order at 900px.</p>
   </div>
@@ -251,7 +249,7 @@
   <div class="in">
     <span class="eb">Foundations · Imagery</span>
     <h2>Imagery</h2>
-    <p class="lead">Two approved styles, both from Round 6: editorial photography of people together in elevated spaces, and halftone objects for the sectors SecondLane covers. Plus one generated pattern, the dot field.</p>
+    <p class="lead">Two approved styles, both from Round 6: editorial photography of people together in elevated spaces, and halftone objects for the sectors SecondLane covers.</p>
     <h3>Photography</h3>
     <div class="grid g2">
       <figure class="shot" style="aspect-ratio:3/2"><img src="../assets/people-founders.jpg" alt="A founder in conversation with two team members at a walnut table by tall windows"><figcaption>Conversation</figcaption></figure>
@@ -275,17 +273,6 @@
       <li>Dark version: object on <code>#12301F</code> with a soft dot halo that fades out, never an opaque glow. Light version: object alone on <code>#F5F3EF</code>.</li>
       <li>One small terracotta or bronze accent per image. No yellow or neon inside images: yellow belongs to the interface.</li>
     </ul>
-    <h3>Dot field</h3>
-    <div class="dots" id="dotDemo"><canvas id="dotCanvas" aria-hidden="true"></canvas><span>Move the pointer over the field</span></div>
-    <div class="tw" style="margin-top:20px"><table>
-      <tr><th>Property</th><th>Value</th></tr>
-      <tr><td>Ground</td><td><code>#12301F</code>, drawn on a <code>&lt;canvas&gt;</code> at up to 2× device pixel ratio</td></tr>
-      <tr><td>Grid</td><td>9px cell, dot centred in each cell</td></tr>
-      <tr><td>Dot</td><td>radius 0.85px, <code>rgba(227,253,90,.216)</code>, always visible; the size never changes</td></tr>
-      <tr><td>Near the pointer</td><td>Gaussian falloff <code>f = e^-(d/200)²</code>: alpha <code>.216 + .484 × f</code> (up to 70% SL Yellow at the pointer)</td></tr>
-      <tr><td>Pointer easing</td><td>follows at 0.12 per frame; fades in at 0.08, out at 0.03</td></tr>
-      <tr><td>Performance</td><td>draw only while on screen (IntersectionObserver); static at rest under reduced motion</td></tr>
-    </table></div>
     <h3>Image ratios</h3>
     <div class="ar" aria-hidden="true">
       <div style="width:160px;aspect-ratio:3/2">3:2 · hero art</div>
@@ -311,13 +298,13 @@
       <div class="mo" style="--d:.6s;--e:cubic-bezier(.65,0,.35,1)"><div class="track"><i></i></div><div><b>Panels</b> · tabs and accordions, <code>--ease: cubic-bezier(.65,0,.35,1)</code></div></div>
     </div>
     <div class="grid g2" style="margin-top:32px">
-      <div class="do"><b>Do</b><ul class="list"><li>Animate <code>transform</code> and <code>opacity</code> only.</li><li>Honour <code>prefers-reduced-motion</code>: no lifts, rises or moving dots; everything visible at once.</li><li>Keep content readable if scripts fail: hidden-until-revealed content must default to visible.</li></ul></div>
+      <div class="do"><b>Do</b><ul class="list"><li>Animate <code>transform</code> and <code>opacity</code> only.</li><li>Honour <code>prefers-reduced-motion</code>: no lifts or rises; everything visible at once.</li><li>Keep content readable if scripts fail: hidden-until-revealed content must default to visible.</li></ul></div>
       <div class="dont"><b>Don't</b><ul class="list"><li>Parallax, auto-playing carousels, tilt or bouncing easings.</li><li>Zoom images on hover.</li><li>Loop anything for more than 5 seconds without a pause control.</li></ul></div>
     </div>
   </div>
 </section>
 <nav class="pnav" aria-label="Pages"><a href="index.html"><small>Previous</small><b>Overview</b></a><a href="components.html"><small>Next</small><b>Components</b></a></nav>
-<footer class="foot">SecondLane visual guidelines · v0.1 · 7 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
+<footer class="foot">SecondLane visual guidelines · v0.2 · 11 Nov 2026 · Prepared by Yuri Tamburrini. SecondLane is an introduction network and is not a registered broker-dealer in the United States.</footer>
 </main>
 <script src="gl.js"></script>
 </body>

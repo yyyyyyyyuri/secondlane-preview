@@ -1,5 +1,5 @@
 /* SecondLane design tokens: CSS custom properties
-   v0.1 · updated 8 Nov 2026 · generated from the same source as tailwind.css, tokens.json and DESIGN.md.
+   v0.2 · updated 11 Nov 2026 · generated from the same source as tailwind.css, tokens.json and DESIGN.md.
 
    Two layers:
    1. Palette (--color-green ...): the eleven agreed colours. Do not use them in components.
@@ -121,6 +121,27 @@
   --duration-reveal: 900ms;
   --stagger: 160ms;
   --lift: -6px;
+
+  /* Patterns (v0.2, from the live pages) */
+  --ease-reveal: cubic-bezier(.16, 1, .3, 1);   /* section reveals */
+  --duration-reveal-v2: 1000ms;                  /* reveal of a section group */
+  --duration-crossfade: 700ms;                   /* accordion image swap */
+  --stagger-reveal: 110ms;                       /* between items in a revealed group */
+  --stagger-columns: 240ms;                      /* feature columns and steps, one by one */
+  --reveal-distance: 28px;                       /* items rise this far */
+  --reveal-blur: 8px;                            /* and come into focus from this blur */
+  --radius-button: 0px;                          /* buttons are square */
+  --radius-cta: 8px;                             /* call-to-action strip */
+  --radius-icon-tile: 12px;                      /* icon tile in the CTA strip */
+  --size-icon-tile: 64px;
+  --type-feature-title: 30px;                    /* three feature columns */
+  --type-feature-title-sm: 1.17em;               /* four feature columns and steps */
+  --type-faq-question: 22px;
+  --type-cta-title: 38px;
+  --type-step-number: 15px;
+  --gap-columns: 64px;                           /* feature columns and steps */
+  --edge-cell: 4px;                              /* halftone edge dot cell (dotedge.js data-cell) */
+  --edge-band: .5;                               /* share of an image that dissolves (data-band) */
 }
 
 /* ---------- 2. Role tokens ---------- */
@@ -232,5 +253,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root { --duration-fast: 0ms; --duration-base: 0ms; --duration-slow: 0ms; --duration-reveal: 0ms; --stagger: 0ms; --lift: 0px; }
+  :root { --duration-fast: 0ms; --duration-base: 0ms; --duration-slow: 0ms; --duration-reveal: 0ms; --stagger: 0ms; --lift: 0px; --duration-reveal-v2: 0ms; --duration-crossfade: 0ms; --stagger-reveal: 0ms; --stagger-columns: 0ms; --reveal-distance: 0px; --reveal-blur: 0px; }
 }

@@ -2,11 +2,11 @@
 > private office in bottle green and linen
 
 **Theme:** dark-first (green), with linen sections
-**Version:** 0.1 · updated 8 Nov 2026 (colours aligned to the agreed Warm earth palette)
-**Files:** `tokens.css` (CSS custom properties) · `tailwind.css` (Tailwind v4 theme) · `tokens.json` (W3C design tokens) · this file · React starters in `components/` (Button, ArrowLink, Eyebrow, Section, Card, Field, DotField)
+**Version:** 0.2 · updated 11 Nov 2026 (page patterns and image library added; dot field removed)
+**Files:** `tokens.css` (CSS custom properties) · `tailwind.css` (Tailwind v4 theme) · `tokens.json` (W3C design tokens) · this file · React starters in `components/` (Button, ArrowLink, Eyebrow, Section, Card, Field)
 **Visual reference:** the live prototype, https://yyyyyyyyuri.github.io/secondlane-preview/ · full guide: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/ · component specs: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/components.html
 
-SecondLane is an introduction network for secondary opportunities in private companies (AI, defense, space, fintech). The site should feel like a private office: calm, established, discreet and expensive, never like a trading app. Bottle green carries most of the page, with linen sections for contrast. A single signal yellow marks the main action and active states; terracotta marks labels on light grounds, and six warm earth colours (clay, terracotta, amber, bronze, ochre, olive) carry the charts. Headlines are set in Ashcroft, a warm serif, at regular weight with slight negative tracking; everything else is set in SFT Schrifted Sans. Imagery is warm editorial photography plus halftone renderings of sector objects, with a generated yellow dot field as the one recurring texture. Motion is slow and soft: cards lift 6px, content rises once, nothing loops.
+SecondLane is an introduction network for secondary opportunities in private companies (AI, defense, space, fintech). The site should feel like a private office: calm, established, discreet and expensive, never like a trading app. Bottle green carries most of the page, with linen sections for contrast. A single signal yellow marks the main action and active states; terracotta marks labels on light grounds, and six warm earth colours (clay, terracotta, amber, bronze, ochre, olive) carry the charts. Headlines are set in Ashcroft, a warm serif, at regular weight with slight negative tracking; everything else is set in SFT Schrifted Sans. Imagery is warm editorial photography plus halftone renderings of sector objects. Motion is slow and soft: cards lift 6px, content rises once, nothing loops.
 
 ---
 
@@ -212,7 +212,7 @@ SFT 500 12/16px, +0.07em, uppercase, `--eyebrow` (yellow on green, terracotta on
 ### Stat Panel
 **Role:** key figures (2013 · 17,000+ · 1,500+)
 
-Glass: `--glass` fill, 24px backdrop blur, 1px line at 20%, `--shadow-glass`, `--radius-lg`, padding 30px 34px. Figure in Ashcroft 300 64px; label 14px in `--fg-muted`. Sits over the dot field.
+Glass: `--glass` fill, 24px backdrop blur, 1px line at 20%, `--shadow-glass`, `--radius-lg`, padding 30px 34px. Figure in Ashcroft 300 64px; label 14px in `--fg-muted`.
 
 ### Text Field
 **Role:** email capture (waitlist, report)
@@ -234,10 +234,6 @@ Sticky. Transparent over the hero; once scrolled past 40px, `--scrim` fill with 
 
 Green. Brand line on the left; three link columns (Platform, Companies, SecondLane) with headings in the `label` style in `--accent`; links 15px in `--fg-muted`; disclaimers 13px; copyright row.
 
-### Dot Field
-**Role:** the brand texture behind stats and panels
-
-Canvas on `--color-green`. 9px grid, one dot per cell, radius 0.85px, SL Yellow at 21.6%, always visible. Near the pointer the dots brighten on a Gaussian falloff `f = e^-(d/200)²`: alpha `0.216 + 0.484 × f`, up to 70%. The dot size never changes: growing sub-pixel dots draws visible rings. Pointer eased at 0.12 per frame. Draw only while on screen; static under reduced motion.
 
 ---
 
@@ -250,7 +246,7 @@ Canvas on `--color-green`. 9px grid, one dot per cell, radius 0.85px, SL Yellow 
 - Use sentence case for headings and buttons, balanced headline lines, body lines of 50–75 characters
 - Keep one card style, one primary button style and one radius scale across the site
 - Leave generous space: 136px between sections, 72px under a section head
-- Respect `prefers-reduced-motion`: no lift, rise or moving dots, all content visible
+- Respect `prefers-reduced-motion`: no lift or rise, all content visible
 
 ### Don't
 - Don't type hex values, use palette colours inside components, or invent lighter or darker shades
@@ -269,7 +265,7 @@ Canvas on `--color-green`. 9px grid, one dot per cell, radius 0.85px, SL Yellow 
 | 0 | Green ground | `green` #12301F | Default page and section background |
 | 0 | Linen ground | `linen` #F5F3EF | Contrast sections (audiences, FAQ) |
 | 1 | Raised green | linen at 5% | Panels on green |
-| 1 | Glass | `rgb(18 48 31 / .55)` + 24px blur | Stats and forms over the dot field or photos |
+| 1 | Glass | `rgb(18 48 31 / .55)` + 24px blur | Stats and forms over photos |
 | 1 | Sand card | sand at 30% | Panels on linen |
 
 ## Elevation
@@ -326,7 +322,7 @@ EXAMPLE COMPONENT PROMPTS:
 
 2. Create a three-card row. Section head: eyebrow "Three verticals" (`eyebrow` style), H2 "Liquidity starts here." in 6 columns, standfirst in 5 columns, bottom-aligned, 72px above the cards. Three cards on a 12-column grid (4 columns each, 24px gap): `--bg` fill, 1px `--border-card`, radius 8, padding 30px 26px 26px, title in Ashcroft 36px, body 18px `--fg-muted`, eyebrow at the bottom, 5:4 image bleeding to the card's sides and bottom. Hover: translateY(−6px) with `--shadow-lift` over 700ms `--ease-settle`.
 
-3. Create the stats band. Green section with the dot field canvas behind. Three glass panels side by side: `--glass` fill, 24px backdrop blur, 1px `rgb(245 243 239 / .2)` line, radius 12, padding 30px 34px. Figures in Ashcroft 300 64px `--fg` (2013, 17,000+, 1,500+), labels 14px `--fg-muted`.
+3. Create the stats band. Green section over a full-bleed photo. Three glass panels side by side: `--glass` fill, 24px backdrop blur, 1px `rgb(245 243 239 / .2)` line, radius 12, padding 30px 34px. Figures in Ashcroft 300 64px `--fg` (2013, 17,000+, 1,500+), labels 14px `--fg-muted`.
 
 4. Create the waitlist form on Access. Glass panel 12px radius, eyebrow "SecondLane Access · Opening soon", H2-size title "Get on the list" in Ashcroft 32px, 15px intro in `--fg-lead`. Field label "Email" (`label` style), linen 52px input with `--field-border`, focus `--focus-field` border plus 4px `--focus-ring`. Full-width primary button "Get on the list". 13px help line in `--fg-muted`. On submit, replace the form with "You're on the list." and four numbered next steps.
 
@@ -367,3 +363,20 @@ EXAMPLE COMPONENT PROMPTS:
 ### Design tokens
 
 `tokens.json` follows the W3C Design Tokens Community Group format (2025.10): `color` (the eleven agreed colours), `theme.green` and `theme.linen` (role tokens), plus `font`, `typography`, `space`, `layout`, `radius`, `shadow`, `duration` and `easing`. Load it in Figma Tokens Studio or Style Dictionary to generate platform files.
+
+---
+
+## Patterns (v0.2)
+
+The page patterns as built on the live pages (Capital, Companies, Access, Prime). Full specs with screenshots: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/patterns.html
+
+- **Hero with a halftone edge:** green hero, copy left, Round 6 photo right whose left edge dissolves into the green along a curve of dots (`dotedge.js`, curve mode); on scroll the green advances into the photo and the photo drifts up to 90px.
+- **Section head:** H2 45px Ashcroft plus one standfirst line at 18px, 72% ink, on linen.
+- **Feature columns and steps:** 3 or 4 open columns, no cards or rules; halftone object on top in a 5:4 frame with a radial mask; titles `--type-feature-title` (30px) or `--type-feature-title-sm` (1.17em); steps add a 15px number; columns reveal `--stagger-columns` apart; no hover.
+- **Accordion with an image strip:** plain rows with hairlines, 30px titles at 45% when closed; the illustration on the opposite edge crossfades over `--duration-crossfade`.
+- **Image band:** full-bleed photo that dissolves up into the page (`dotedge.js` top mode: `data-band`, `data-tilt`, `data-cell`) and ends in a hard line.
+- **Sign-up card:** linen card, square corners, max 460px, over a full-bleed photo.
+- **Call-to-action strip:** full width, 1px border, `--radius-cta`, transparent ground, 64px green icon tile, 38px title, green button.
+- **Closing band:** green, heading, standfirst, buttons, dark halftone object in the right half.
+- **Motion:** reveals rise `--reveal-distance` from `--reveal-blur` over `--duration-reveal-v2` with `--ease-reveal`, items `--stagger-reveal` apart, once; reduced motion shows everything at once.
+- **Imagery:** Round 6 photography of people together, and halftone objects from SecondLane sectors only. Every image on the site: https://yyyyyyyyuri.github.io/secondlane-preview/guidelines/library.html

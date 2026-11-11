@@ -71,7 +71,7 @@ td code{background:rgba(18,48,31,.06);padding:2px 6px;border-radius:3px;white-sp
 
 /* cover */
 .cover{background:var(--green);color:var(--linen);padding:120px 72px 96px;position:relative;overflow:hidden;border:0}
-.cover canvas{position:absolute;inset:0;width:100%;height:100%}
+
 .cover .in{position:relative}
 .cover .lead{color:var(--stone)}
 .cover .eb{color:var(--yel)}
@@ -196,9 +196,9 @@ td code{background:rgba(18,48,31,.06);padding:2px 6px;border-radius:3px;white-sp
 .shot{border-radius:8px;overflow:hidden;position:relative;background:var(--green)}
 .shot img{width:100%;height:100%;object-fit:cover}
 .shot figcaption{position:absolute;left:12px;bottom:10px;font:500 11px/16px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--linen);background:rgba(18,48,31,.7);padding:4px 8px;border-radius:3px}
-.dots{height:260px;border-radius:8px;overflow:hidden;position:relative;cursor:crosshair}
-.dots canvas{width:100%;height:100%;display:block}
-.dots span{position:absolute;left:16px;bottom:12px;font-size:12.5px;color:var(--sand)}
+
+
+
 .ar{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
 .ar div{background:var(--stone);border-radius:6px;display:flex;align-items:flex-end;padding:8px;font-size:12.5px;color:var(--green)}
 
@@ -260,7 +260,7 @@ pre{max-width:100%}
 @media (max-width:600px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}.stage{padding:24px}.fam .glyph{font-size:72px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.card:hover{transform:none}}
 @media print{
- .side,.code button,.tabs,.cover canvas{display:none}
+ .side,.code button,.tabs{display:none}
  .cover{background:var(--green)!important;color:var(--linen)!important;min-height:255mm;display:flex;align-items:flex-end}
  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
  main{margin:0}
@@ -436,7 +436,7 @@ pre{max-width:100%}
 .anat-wrap.wide .parts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .anat .navdemo{overflow:visible}
 @media (max-width:1000px){.anat-wrap.wide .parts{grid-template-columns:1fr}.anat .navdemo{overflow-x:auto}}
-.cmp h2+.stage,.cmp h2+.grid,.cmp h2+.dots,.cmp h2+.anat-wrap{margin-top:28px}
+.cmp h2+.stage,.cmp h2+.grid,.cmp h2+
 @media (max-width:1000px){
  .spec2>div,.stage{overflow-x:auto}
  .spec2 table td code{white-space:normal;word-break:break-word}
